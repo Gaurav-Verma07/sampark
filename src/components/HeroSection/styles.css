@@ -1,51 +1,48 @@
+.hero-section {
+  width: 98.9vw;
+  height: 100vh;
+  /* background-color: black; */
+  background-image: url('../../assets/Images/homeImg.jpg');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+}
+.hero-section h1 {
+  font-size: 4rem;
+  font-family: 'Tilt Neon', cursive;
+}
+.hero-section p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+}
+.hero-section button {
+  margin: 1rem;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  transition: all 0.5s;
+  border: none;
+}
+.hero-section button:hover {
+  transform: scale(1.2);
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 1000px;
+  width: 80%;
+  text-align: center;
+}
 
-.hero-section{
-  
-    width: 98.9vw;
-    height: 100vh;
-    /* background-color: black; */
-    background-image: url("../../assets/Images/homeImg.jpg");
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: white;
-   }
-   .hero-section h1{
-     font-size: 4rem;
-     font-family: 'Tilt Neon', cursive;
-   }
-   .hero-section p{
-    font-family: 'Poppins', sans-serif;;
-   font-size: 1.5rem;
-  }
-   .hero-section button{
-     margin: 1rem;
-    padding: 0.5rem;
-    font-size: 1.5rem;
-    border-radius: 0.2rem;
-    cursor: pointer;
-    transition:all 0.5s;
-    border: none;
- 
-  }
-  .hero-section button:hover{
-   transform: scale(1.2);
-  }
-  .container{
-   display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    max-width: 1000px;
-    width: 80%;
-    text-align: center;
-  }
- 
-  .value-section h1{
-    margin: 2rem;
-    font-size: 3rem;
-   text-align: center;
-   font-family: "futura-pt",sans-serif;
-  }
+.value-section h1 {
+  margin: 2rem;
+  font-size: 3rem;
+  text-align: center;
+  font-family: 'futura-pt', sans-serif;
+}

@@ -34,7 +34,10 @@ const AuthenticationForm = (props: PaperProps) => {
 
     validate: {
       email: (val) => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
-      password: (val) => (val.length <= 6 ? 'Password should include at least 6 characters' : null),
+      password: (val) =>
+        val.length <= 6
+          ? 'Password should include at least 6 characters'
+          : null,
     },
   });
 
@@ -59,7 +62,9 @@ const AuthenticationForm = (props: PaperProps) => {
               label="Name"
               placeholder="Your name"
               value={form.values.name}
-              onChange={(event) => form.setFieldValue('name', event.currentTarget.value)}
+              onChange={(event) =>
+                form.setFieldValue('name', event.currentTarget.value)
+              }
             />
           )}
 
@@ -68,7 +73,9 @@ const AuthenticationForm = (props: PaperProps) => {
             label="Email"
             placeholder="hello@mantine.dev"
             value={form.values.email}
-            onChange={(event) => form.setFieldValue('email', event.currentTarget.value)}
+            onChange={(event) =>
+              form.setFieldValue('email', event.currentTarget.value)
+            }
             error={form.errors.email && 'Invalid email'}
           />
 
@@ -77,22 +84,37 @@ const AuthenticationForm = (props: PaperProps) => {
             label="Password"
             placeholder="Your password"
             value={form.values.password}
-            onChange={(event) => form.setFieldValue('password', event.currentTarget.value)}
-            error={form.errors.password && 'Password should include at least 6 characters'}
+            onChange={(event) =>
+              form.setFieldValue('password', event.currentTarget.value)
+            }
+            error={
+              form.errors.password &&
+              'Password should include at least 6 characters'
+            }
           />
 
           {type === 'register' && (
             <Checkbox
               label="I accept terms and conditions"
               checked={form.values.terms}
-              onChange={(event) => form.setFieldValue('terms', event.currentTarget.checked)}
+              onChange={(event) =>
+                form.setFieldValue('terms', event.currentTarget.checked)
+              }
             />
           )}
         </Stack>
 
         <Group position="apart" mt="xl">
-          <Anchor component="button" type="button" color="dimmed" onClick={() => toggle()} size="xs">
-            {type === 'register' ? 'Already have an account? Login' : "Don't have an account? Register"}
+          <Anchor
+            component="button"
+            type="button"
+            color="dimmed"
+            onClick={() => toggle()}
+            size="xs"
+          >
+            {type === 'register'
+              ? 'Already have an account? Login'
+              : "Don't have an account? Register"}
           </Anchor>
           <Button type="submit">{upperFirst(type)}</Button>
         </Group>
