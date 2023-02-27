@@ -1,6 +1,7 @@
 
 import React from 'react'
 // import homeImg from '../assets/Images/homeImg.jpg'
+import "./styles.css"
 
 function HeroSection() {
   return (
