@@ -23,5 +23,6 @@
       "error",
       { "extensions": [".js", ".jsx", ".tsx"] }
     ]
-  }
+  },
+  "ignorePatterns": ["dist/*"]
 }

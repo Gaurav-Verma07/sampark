@@ -15,7 +15,8 @@ import {
   createStyles,
 } from '@mantine/core';
 // import { GoogleButton, TwitterButton } from '../SocialButtons/SocialButtons';
-const useStyles = createStyles((theme) => {
+
+const useStyles = createStyles(() => {
   return {
     main: { margin: '5% auto', width: 500 },
   };
