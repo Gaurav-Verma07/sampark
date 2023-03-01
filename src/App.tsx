@@ -10,7 +10,7 @@ import Seeker from './Pages/Seeker';
 function App() {
   return (
     <div className="App">
-      <Routes>
+       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<AuthenticationForm />} />
         <Route path="/admin" element={<Admin />} />
