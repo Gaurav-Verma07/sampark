@@ -1,6 +1,12 @@
 import React from 'react';
 // import homeImg from '../assets/Images/homeImg.jpg'
 import './styles.css';
+// import { Wrapper, Status } from "@googlemaps/react-wrapper";
+
+// const render = (status: Status): ReactElement => {
+//   if (status === Status.FAILURE) return <ErrorComponent />;
+//   return <Spinner />;
+// };
 
 function HeroSection() {
   return (
@@ -13,6 +19,9 @@ function HeroSection() {
         </p>
         <button>Donate</button>
       </div>
+      {/* <Wrapper apiKey={"YOUR_API_KEY"}>
+    <MyMapComponent /> */}
+  {/* </Wrapper> */}
     </div>
   );
 }
