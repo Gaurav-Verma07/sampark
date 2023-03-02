@@ -1,8 +1,17 @@
-import { Grid, Container, Text, Title, Paper } from '@mantine/core';
+import { Grid, Container, Text, Title, Paper, createStyles } from '@mantine/core';
 
 // const child = <Skeleton height={140} radius="md" animate={false} />;
+const useStyles = createStyles(() => ({
+  grid:{
+    backgroundColor:'red'
+  },
+}));
+
+
 
 export function OurValues() {
+  const { classes, cx } = useStyles();
+
   return (
     <Paper className="value-section">
       <Title order={1} weight={100}>
@@ -10,9 +19,9 @@ export function OurValues() {
       </Title>
       <Container my="md">
         <Grid>
-          <Grid.Col className="grid-col" xs={4}>
+          <Grid.Col  xs={4} className= {cx("grid-col", classes.grid)}>
             <Title order={2}>INTERCONNECTION</Title>
-            <Text>
+            <Text fz="xs" color= "teal">
               Our liberty is bound together. No person, community, or ecosystem
               exists in isolation, which means we need each other, and we need
               to learn from each other. It also means the safety and wellbeing

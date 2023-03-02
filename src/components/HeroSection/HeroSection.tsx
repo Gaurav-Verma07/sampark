@@ -1,19 +1,14 @@
 
 import React from 'react';
-// import { NavbarMinimal } from './NavbarMinimal';
+// import NavBar from '../NavBar';
 // import homeImg from '../assets/Images/homeImg.jpg'
 import './styles.css';
-import NavBar from '../NavBar';
 
 
 function HeroSection() {
   return (
     <>
     <div className="hero-section">
-   <NavBar/>
-    {/* <NavbarMinimal/> */}
-    
-
       <div className="container">
       <h1>SAMPARK</h1>
         <p>
@@ -22,7 +17,6 @@ function HeroSection() {
         </p>
         <button>Donate</button>
       </div>
-       
     </div>
     </>
   );

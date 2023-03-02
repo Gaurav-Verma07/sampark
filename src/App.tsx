@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<AuthenticationForm />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/provider" element={<Provider />} />
+        <Route path="/provider/*" element={<Provider />} />
         <Route path="/seeker" element={<Seeker />} />
       </Routes>
     </div>
