@@ -1,15 +1,23 @@
+.navbar{
+  margin-bottom: 5rem;
+}
+
+
+
 .hero-section {
-  width: 98.9vw;
+  width: 99vw;
   height: 100vh;
   /* background-color: black; */
   background-image: url('../../assets/Images/homeImg.jpg');
-  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-size: cover;
   color: white;
 }
+
+
 .hero-section h1 {
   font-size: 4rem;
   font-family: 'Tilt Neon', cursive;
@@ -46,3 +54,4 @@
   text-align: center;
   font-family: 'futura-pt', sans-serif;
 }
+
