@@ -1,4 +1,13 @@
-import { createStyles, Card, Avatar, Text, Group, Button, Table, Badge } from '@mantine/core';
+import {
+  createStyles,
+  Card,
+  Avatar,
+  Text,
+  Group,
+  Button,
+  Table,
+  Badge,
+} from '@mantine/core';
 import ProviderStats from '../ProviderStats/ProviderStats';
 import { data } from './data';
 
@@ -12,7 +21,9 @@ const useStyles = createStyles((theme) => ({
   },
 
   avatar: {
-    border: `2px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white}`,
+    border: `2px solid ${
+      theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white
+    }`,
   },
   tableRow: {
     borderBottom: 'none !important',
@@ -58,7 +69,11 @@ const ProviderMain = () => {
       <Button fullWidth radius="md" mt="xl" size="md" color={theme.colorScheme === 'dark' ? undefined : 'dark'}>
         Follow
       </Button> */}
-        <Table verticalSpacing="md" className={classes.tableRow} sx={{ width: 500 }}>
+        <Table
+          verticalSpacing="md"
+          className={classes.tableRow}
+          sx={{ width: 500 }}
+        >
           <tbody>
             <tr>
               <td className={classes.tableRow}>
@@ -72,7 +87,11 @@ const ProviderMain = () => {
               <td>
                 <Group spacing="sm" position="apart">
                   <Text size="md">Designation</Text>
-                  <Badge size="xl" variant="gradient" gradient={{ from: 'teal', to: 'lime', deg: 105 }}>
+                  <Badge
+                    size="xl"
+                    variant="gradient"
+                    gradient={{ from: 'teal', to: 'lime', deg: 105 }}
+                  >
                     Volunteer
                   </Badge>
                   {/* <Text size="md" color= "red">Volunteer</Text> */}

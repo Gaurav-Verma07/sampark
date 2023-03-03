@@ -1,22 +1,22 @@
-import { createStyles } from "@mantine/core";
+import { createStyles } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   header: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: "100%",
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '100%',
   },
 
   links: {
-    [theme.fn.smallerThan("xs")]: {
-      display: "none",
+    [theme.fn.smallerThan('xs')]: {
+      display: 'none',
     },
   },
 
   burger: {
-    [theme.fn.largerThan("xs")]: {
-      display: "none",
+    [theme.fn.largerThan('xs')]: {
+      display: 'none',
     },
   },
 
@@ -27,28 +27,28 @@ const useStyles = createStyles((theme) => ({
     // borderRadius: theme.radius.sm,
     // textDecoration: 'none',
     color:
-      theme.colorScheme === "dark"
+      theme.colorScheme === 'dark'
         ? theme.colors.dark[0]
         : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
-    "&:hover": {
-      cursor: "pointer",
+    '&:hover': {
+      cursor: 'pointer',
       backgroundColor:
-        theme.colorScheme === "dark"
+        theme.colorScheme === 'dark'
           ? theme.colors.dark[6]
           : theme.colors.gray[0],
     },
   },
 
   linkActive: {
-    "&, &:hover": {
+    '&, &:hover': {
       backgroundColor: theme.fn.variant({
-        variant: "light",
+        variant: 'light',
         color: theme.primaryColor,
       }).background,
-      color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
+      color: theme.fn.variant({ variant: 'light', color: theme.primaryColor })
         .color,
     },
   },

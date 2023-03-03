@@ -1,4 +1,4 @@
-import {  Header, Container, Group, Burger, Avatar } from '@mantine/core';
+import { Header, Container, Group, Burger, Avatar } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 // import { MantineLogo } from '@mantine/ds';
 // import DarkThemeToggle from '../DarkThemeToggle/DarkThemeToggle';
@@ -43,7 +43,12 @@ const MainHeader = () => {
           {/* <DarkThemeToggle /> */}
         </Group>
 
-        <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          className={classes.burger}
+          size="sm"
+        />
       </Container>
     </Header>
   );

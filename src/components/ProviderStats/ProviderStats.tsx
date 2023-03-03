@@ -1,4 +1,11 @@
-import { createStyles, ThemeIcon, Progress, Text, Group, Paper } from '@mantine/core';
+import {
+  createStyles,
+  ThemeIcon,
+  Progress,
+  Text,
+  Group,
+  Paper,
+} from '@mantine/core';
 import { IconArchive, IconStar } from '@tabler/icons';
 
 const ICON_SIZE = 60;
@@ -15,7 +22,7 @@ const useStyles = createStyles((theme) => ({
     padding: theme.spacing.xl,
     paddingTop: theme.spacing.xl * 1.5 + ICON_SIZE / 3,
     display: 'flex',
-    flexDirection:"column",
+    flexDirection: 'column',
     justifyContent: 'space-between',
   },
 
@@ -44,7 +51,13 @@ const ProviderStats = () => {
         <Text align="center" weight={700} className={classes.title}>
           Points Achieved
         </Text>
-        <Text align="center" weight={400} color="red" py={'sm'} className={classes.title}>
+        <Text
+          align="center"
+          weight={400}
+          color="red"
+          py={'sm'}
+          className={classes.title}
+        >
           Level 1
         </Text>
         <Text color="dimmed" align="center" size="sm">
