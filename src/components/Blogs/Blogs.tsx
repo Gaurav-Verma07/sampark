@@ -13,7 +13,7 @@ import {
 } from '@mantine/core';
 import { mockdata } from './sampleData';
 import useStyles from './styles';
-import Logo from '../../assets/Images/sampark-logo-transparent.png';
+import Logo from '../../assets/Images/samparklogotransparent.png';
 
 const Blogs = () => {
   const { classes } = useStyles();
@@ -61,7 +61,7 @@ const Blogs = () => {
         {cards}
         <Card
           shadow="lg"
-        //   align= "center"
+          //   align= "center"
           p="md"
           radius="md"
           sx={{ backgroundColor: theme.colors.teal[0] }}
@@ -70,7 +70,7 @@ const Blogs = () => {
           className={classes.card}
         >
           {/* <AspectRatio ratio={1920 / 1080} > */}
-            <Image pl= {56} src={Logo} width= {250} height= {250}/>
+          <Image pl={56} src={Logo} width={250} height={250} />
           {/* </AspectRatio> */}
           <Text
             color="dimmed"

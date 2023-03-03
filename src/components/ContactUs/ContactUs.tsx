@@ -21,7 +21,6 @@ const useStyles = createStyles((theme) => ({
     minHeight: 400,
     boxSizing: 'border-box',
     backgroundImage: `linear-gradient(-60deg, ${theme.colors.gray[5]} 0%, ${theme.colors.gray[8]} 100%)`,
-    borderRadius: theme.radius.md,
     padding: theme.spacing.xl * 2.5,
 
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
@@ -49,7 +48,7 @@ const useStyles = createStyles((theme) => ({
     padding: theme.spacing.xl,
     borderRadius: theme.radius.md,
     boxShadow: theme.shadows.lg,
-    textAlign:'left'
+    textAlign: 'left',
   },
 
   social: {
@@ -116,7 +115,6 @@ export function ContactUs() {
         </div>
         <div className={classes.form}>
           <TextInput
-          
             label="Email"
             placeholder="your@email.com"
             required

@@ -5,7 +5,7 @@ import { IconArrowNarrowRight } from '@tabler/icons';
 const ImageGallery = () => {
   const theme = useMantineTheme();
   return (
-    <Paper m={20} p={70}>
+    <Paper m={20} p={70} id= "gallery">
       <Box>
         <Title order={1} weight="100" align="left" my={20}>
           Our Gallery
