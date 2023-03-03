@@ -49,6 +49,7 @@ const useStyles = createStyles((theme) => ({
     padding: theme.spacing.xl,
     borderRadius: theme.radius.md,
     boxShadow: theme.shadows.lg,
+    textAlign:'left'
   },
 
   social: {
@@ -115,6 +116,7 @@ export function ContactUs() {
         </div>
         <div className={classes.form}>
           <TextInput
+          
             label="Email"
             placeholder="your@email.com"
             required
