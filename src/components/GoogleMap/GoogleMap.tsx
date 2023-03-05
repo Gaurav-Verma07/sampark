@@ -8,7 +8,7 @@ import React from 'react';
 
 //     <div className="google-map">
 //       <GoogleMapReact
-//         bootstrapURLKeys={{ key: 'AIzaSyCVrp5nlNyegc98V9ueMQaMqac5YMI769c' }}
+//         bootstrapURLKeys={{ key: import.meta.env.VITE_FIREBASE_GOOGLE_MAP_API_KEY || '' }}
 //         defaultCenter={location}
 //         defaultZoom={zoomLevel}
 //       >
