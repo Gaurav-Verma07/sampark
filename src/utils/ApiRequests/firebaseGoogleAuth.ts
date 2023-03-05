@@ -5,12 +5,11 @@ import {
   signInWithPopup,
   signInWithRedirect,
 } from 'firebase/auth';
-import { app } from '../firebase';
+import { app, auth } from '../firebase';
 
 //Will work only when the app has verified.
 const provider = new GoogleAuthProvider();
 provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-const auth = getAuth(app);
 auth.languageCode = 'it';
 export const firebaseGoogleAuth = () => {
   signInWithPopup(auth, provider)

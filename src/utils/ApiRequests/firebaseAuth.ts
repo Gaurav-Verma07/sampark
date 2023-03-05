@@ -1,11 +1,8 @@
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { app } from '../firebase';
-
-const auth = getAuth(app);
+import { auth } from '../firebase';
 
 export const registerHandler = (email: any, password: any) => {
   createUserWithEmailAndPassword(auth, email, password)
@@ -30,6 +27,7 @@ export const firebaseSignIn = (email: any, password: any) => {
       const user = userCredential.user;
       console.log({ user });
       // ...
+      localStorage.setItem('user_uid', user.uid);
     })
     .catch((error) => {
       const errorCode = error.code;
