@@ -2,7 +2,6 @@
 //   data: { avatar: string; name: string; job: string; email: string; phone: string }[];
 // }
 
-
 const data = {
   data: [
     {
@@ -47,6 +46,5 @@ const data = {
     },
   ],
 };
-
 
 export default data;

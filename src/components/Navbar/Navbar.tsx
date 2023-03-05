@@ -36,7 +36,9 @@ const HomeNavbar = () => {
   const links = data.map((item) => {
     return (
       <NavLink
-        className={cx(classes.link, { [classes.linkActive]: item.label === active })}
+        className={cx(classes.link, {
+          [classes.linkActive]: item.label === active,
+        })}
         to={item.link}
         key={item.label}
         onClick={(event) => {
@@ -67,7 +69,11 @@ const HomeNavbar = () => {
       </Navbar.Section>
 
       <Navbar.Section className={classes.footer}>
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
+        <a
+          href="#"
+          className={classes.link}
+          onClick={(event) => event.preventDefault()}
+        >
           <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
           <span>Change account</span>
         </a>

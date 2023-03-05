@@ -1,14 +1,13 @@
-.navbar{
+.navbar {
   margin-bottom: 5rem;
 }
-
-
 
 .hero-section {
   width: 99vw;
   height: 100vh;
   /* background-color: black; */
   background-image: url('../../assets/Images/homeImg.jpg');
+  /* clip-path: polygon(0 0, 90% 0%, 100% 100%, 0% 100%); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +15,6 @@
   background-size: cover;
   color: white;
 }
-
 
 .hero-section h1 {
   font-size: 4rem;
@@ -54,4 +52,3 @@
   text-align: center;
   font-family: 'futura-pt', sans-serif;
 }
-
