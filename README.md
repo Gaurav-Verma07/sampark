@@ -1,4 +1,3 @@
-
 ![Samplark Logo](https://github.com/Gaurav-Verma07/sampark/blob/main/public/sampark-logo-transparent.png?raw=true)
 
 A social platform to connect NGOs and orphanage to potential social suppliers including schools and colleges.
