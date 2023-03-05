@@ -18,7 +18,7 @@ export function OurValues() {
   const { classes, cx } = useStyles();
 
   return (
-    <Paper className="value-section">
+    <Paper className="value-section" id="values">
       <Title order={1} weight={100}>
         OUR VALUES
       </Title>

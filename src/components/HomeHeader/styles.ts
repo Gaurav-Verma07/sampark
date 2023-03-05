@@ -12,6 +12,7 @@ const useStyles = createStyles((theme) => ({
   dropdown: {
     position: 'absolute',
     top: HEADER_HEIGHT,
+    color: '#000 !important',
     left: 0,
     right: 0,
     zIndex: 0,
@@ -62,6 +63,7 @@ const useStyles = createStyles((theme) => ({
     [theme.fn.smallerThan('sm')]: {
       borderRadius: 0,
       padding: theme.spacing.md,
+      color: theme.black,
     },
   },
 

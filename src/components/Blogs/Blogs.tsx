@@ -28,6 +28,7 @@ const Blogs = () => {
       component="a"
       href="#"
       className={classes.card}
+      id="blogs"
     >
       <AspectRatio ratio={1920 / 1080}>
         <Image src={article.image} />

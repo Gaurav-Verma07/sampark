@@ -2,7 +2,7 @@ import React from 'react';
 import './Values.css';
 function OurValues1() {
   return (
-    <div>
+    <div id="values">
       <div className="values-container">
         <h1 className="values-heading">OUR VALUES</h1>
         <hr />

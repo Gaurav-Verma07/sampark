@@ -95,7 +95,7 @@ export function ContactUs() {
   ));
 
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.wrapper} id="contact">
       <SimpleGrid
         cols={2}
         spacing={50}
