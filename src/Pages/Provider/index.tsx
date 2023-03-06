@@ -11,7 +11,7 @@ const Provider = () => {
   return (
     <AppShell
       padding="md"
-      navbar={<HomeNavbar />}
+      navbar={<HomeNavbar section="provider"/>}
       header={<MainHeader />}
       styles={(theme) => ({
         main: {

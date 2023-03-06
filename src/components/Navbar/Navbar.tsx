@@ -28,7 +28,7 @@ const data = [
   { link: 'settings', label: 'Settings', icon: IconSettings },
 ];
 
-const HomeNavbar = () => {
+const HomeNavbar = ({}) => {
   const navigate = useNavigate();
   const { classes, cx } = useStyles();
   const [active, setActive] = useState('Billing');
