@@ -40,7 +40,6 @@ export const firebaseGoogleAuth = () => {
 
       // The signed-in user info.
       const user = result.user;
-      console.log({ token, user });
       // IdP data available using getAdditionalUserInfo(result)
       // ...
     })
@@ -52,8 +51,6 @@ export const firebaseGoogleAuth = () => {
       const email = error.customData.email;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
-      console.log({ errorCode, errorMessage, email, credential });
       // ...
     });
-  console.log({ data });
 };
