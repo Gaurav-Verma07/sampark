@@ -34,24 +34,19 @@ const links: any = [
 const HomeHeader = () => {
   const user: any = localStorage.getItem('user_uid');
   const [opened, { toggle, close }] = useDisclosure(false);
-  // const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
   const navigate = useNavigate();
 
   const items = links.map((link: any) => (
-    <a
-      key={link.label}
-      href={link.link}
-      className={cx(classes.link)}
-      // onClick={(event) => {
-      //   event.preventDefault();
-      //   setActive(link.link);
-      //   close();
-      // }}
-    >
+    <a key={link.label} href={link.link} className={cx(classes.link)}>
       {link.label}
     </a>
   ));
+
+  // useEffect(()=>{
+  //   writeUserData(user, 'Ganga NGO', 'sample2@gmail.com', 'seeker')
+  //   console.log("Data posted")
+  // }, [])
 
   const isLoggedIn = user ? (
     <Avatar

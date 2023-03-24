@@ -1,3 +1,4 @@
+import { getDatabase, ref, child, get } from 'firebase/database';
 import {
   Paper,
   createStyles,
@@ -11,9 +12,8 @@ import {
   Image,
   Group,
   Divider,
-  // rem,
 } from '@mantine/core';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { redirect, useNavigate } from 'react-router-dom';
 import GoogleLogo from '../../assets/googleLogo.svg';
 import {
@@ -21,10 +21,10 @@ import {
   registerHandler,
 } from '../../utils/ApiRequests/firebaseAuth';
 import { firebaseGoogleAuth } from '../../utils/ApiRequests/firebaseGoogleAuth';
-import { updateUser } from '../../utils/ApiRequests/userProfile';
+import { getUserData } from '../../utils/ApiRequests/userProfile';
+import { auth } from '../../utils/firebase';
 const useStyles = createStyles((theme) => ({
   wrapper: {
-    // minHeight: rem(900),
     height: '100vh',
     width: '100vw',
     backgroundSize: 'cover',
@@ -35,11 +35,8 @@ const useStyles = createStyles((theme) => ({
     borderRight: `1px solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[3]
     }`,
-    //   minHeight: rem(900),
     height: '100vh',
-    //   maxWidth: rem(450),
     maxWidth: '28rem',
-    //   paddingTop: rem(80),
     paddingTop: '5rem',
 
     [theme.fn.smallerThan('sm')]: {
@@ -57,17 +54,34 @@ const Auth = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
   const [details, setDetails] = useState({ email: '', password: '' });
+  const user: any = localStorage.getItem('user_uid');
 
   const submitHandler = () => {
-    firebaseSignIn(details.email, details.password);
-    // redirect("/provider")
-    navigate('/provider');
-    // updateUser();
+    const signInResult: any = firebaseSignIn(details.email, details.password);
+    console.log({ signInResult });
+    if (auth.currentUser) {
+      const dbRef = ref(getDatabase());
+      get(child(dbRef, `users/${user}`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.val();
+            navigate(`/${userData?.role}/home`);
+          } else {
+            console.log('No data available');
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      console.log(signInResult);
+      console.error(signInResult.errorMessage);
+    }
   };
 
-  const signWithGoogle = () => {
-    firebaseGoogleAuth();
-  };
+  /// useEffect(()=>{
+  ///     registerHandler("sample2@gmail.com", "123456")
+  /// }, [])
 
   return (
     <div className={classes.wrapper}>
@@ -113,7 +127,7 @@ const Auth = () => {
         </Text>
 
         <Divider my={20} label="or" labelPosition="center" />
-        <Group
+        {/* <Group
           mx="auto"
           py={10}
           my={20}
@@ -128,7 +142,7 @@ const Auth = () => {
         >
           <Image src={GoogleLogo} width={20} height={20} />
           <Text>Continue with Google</Text>
-        </Group>
+        </Group> */}
       </Paper>
     </div>
   );

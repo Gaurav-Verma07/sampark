@@ -1,4 +1,4 @@
-import { getDatabase, ref, set } from 'firebase/database';
+import { child, get, getDatabase, onValue, ref, set } from 'firebase/database';
 
 export const writeUserData = (
   userId: any,
@@ -10,6 +10,24 @@ export const writeUserData = (
   set(ref(db, 'users/' + userId), {
     username: name,
     email: email,
-    rolo: role,
+    role: role,
   });
+};
+
+export const getUserData = (userID: any) => {
+  let userData;
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `users/${userID}`))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        userData = snapshot.val();
+        return userData;
+      } else {
+        console.log('No data available');
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  return userData;
 };

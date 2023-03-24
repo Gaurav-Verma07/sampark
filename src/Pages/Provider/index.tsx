@@ -23,7 +23,7 @@ const Provider = () => {
       })}
     >
       <Routes>
-        {/* <Route path="/*" element={<ProviderMain />} /> */}
+        {/* <Route path="/" to= /> */}
         <Route path="home" element={<ProviderMain />} />
         <Route path="team" element={<ProviderCollegeTeam />} />
         {/* <Route path="assignments" element={<Assignments />} /> */}
