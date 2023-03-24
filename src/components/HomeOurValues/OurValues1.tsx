@@ -43,7 +43,7 @@ function OurValues1() {
           </div>
         </div>
 
-        <div className="values-box-2">
+        {/* <div className="values-box-2">
           <div className="values-content">
             <h1>INTEGRITY</h1>
             <hr />
@@ -66,7 +66,7 @@ function OurValues1() {
               our natural world.
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -4,8 +4,9 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  width: 100vw;
+  width: 97vw;
   min-height: 100vh;
+  overflow-x: hidden ;
 }
 
 * {

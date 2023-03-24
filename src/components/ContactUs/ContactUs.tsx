@@ -8,11 +8,18 @@ import {
   Button,
   Group,
   ActionIcon,
+  Paper,
+  Box,
+  Space,
 } from '@mantine/core';
 import {
   IconBrandTwitter,
   IconBrandYoutube,
   IconBrandInstagram,
+  IconAt,
+  IconPhone,
+  IconMapPins
+
 } from '@tabler/icons';
 // import { ContactIconsList } from '../ContactIcons/ContactIcons';
 
@@ -76,6 +83,13 @@ const useStyles = createStyles((theme) => ({
   control: {
     backgroundColor: theme.colors[theme.primaryColor][6],
   },
+
+  iconList:{
+    color: theme.white,
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`
+  }
+
+ 
 }));
 
 const social = [IconBrandTwitter, IconBrandYoutube, IconBrandInstagram];
@@ -101,7 +115,7 @@ export function ContactUs() {
         spacing={50}
         breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
       >
-        <div>
+        <Box align= "left" className={classes.iconList} >
           <Title align="left" className={classes.title}>
             Contact us
           </Title>
@@ -110,9 +124,20 @@ export function ContactUs() {
           </Text>
 
           {/* <ContactIconsList variant="white" /> */}
-
+          <div className="email_contactUS">
+          <IconAt color= "#fff" /> Email : Sampark@gmail.com
+          </div>
+          <Space h="md"/>
+          <div className="phone_contactUs">
+          <IconPhone color= "#fff"/> Phone : +91 2569751165
+            </div>  
+            <Space h="md"/>
+          <div className="map_contactUs">
+          <IconMapPins color="#fff"/> Address : IET LUCKNOW Sitapur Road Lucknow
+          </div>
+            
           <Group mt="xl">{icons}</Group>
-        </div>
+        </Box>
         <div className={classes.form}>
           <TextInput
             label="Email"
