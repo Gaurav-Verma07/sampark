@@ -1,7 +1,6 @@
 import './Values.css';
 
 function OurValues1() {
-
   return (
     <div id="values">
       <div className="values-container">

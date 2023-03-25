@@ -20,7 +20,7 @@ function Home() {
       </div>
       <OurValues1 />
       <ImageGallery />
-      <MapBox/>
+      <MapBox />
       <Divider m={20} mx={70} size="xs" />
       <Blogs />
       <ContactUs />

@@ -13,7 +13,6 @@ import { IconPencil, IconTrash } from '@tabler/icons';
 import { getDatabase, ref, child, get } from 'firebase/database';
 import { useEffect, useState } from 'react';
 
-
 interface UsersTableProps {
   data: {
     avatar: string;
@@ -31,25 +30,36 @@ const jobColors: Record<string, string> = {
 };
 
 const ProviderCollegeTeam = () => {
-  const [teamData, setTeamData]:any= useState([{'Name':'', 'Applying as?':''}]);
+  const [teamData, setTeamData]: any = useState([
+    { Name: '', 'Applying as?': '' },
+  ]);
   const theme = useMantineTheme();
 
   const getResponses = async () => {
     console.log('Here we are');
     const dbRef = ref(getDatabase());
-    const response = await get(child(dbRef, `/1MN-kjuUq3k-jp6g-2L1maBkUsB9AggqbYUcgoB1GoH4/Form responses 1`));
+    const response = await get(
+      child(
+        dbRef,
+        `/1MN-kjuUq3k-jp6g-2L1maBkUsB9AggqbYUcgoB1GoH4/Form responses 1`,
+      ),
+    );
     const responseData = Object.values(response.val());
     console.log(responseData);
-    const userMail: any = JSON.parse(localStorage.getItem('email')||'');
+    const userMail: any = JSON.parse(localStorage.getItem('email') || '');
     console.log(userMail);
-    const user: any = responseData.filter((el: any) => el.Email === 'sample@gmail.com');
-    console.log(user)
-    const collegeName= user[0]['College Name'];
-    console.log(collegeName); 
-    const allTeamUsers= responseData.filter((el:any)=>(el['College Name']=== collegeName));
+    const user: any = responseData.filter(
+      (el: any) => el.Email === 'sample@gmail.com',
+    );
+    console.log(user);
+    const collegeName = user[0]['College Name'];
+    console.log(collegeName);
+    const allTeamUsers = responseData.filter(
+      (el: any) => el['College Name'] === collegeName,
+    );
     setTeamData(allTeamUsers);
   };
-  console.log(teamData)
+  console.log(teamData);
 
   useEffect(() => {
     getResponses();
@@ -66,9 +76,7 @@ const ProviderCollegeTeam = () => {
       </td>
 
       <td>
-        <Badge
-          variant={theme.colorScheme === 'dark' ? 'light' : 'outline'}
-        >
+        <Badge variant={theme.colorScheme === 'dark' ? 'light' : 'outline'}>
           {item['Applying as?']}
         </Badge>
       </td>

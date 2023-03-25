@@ -1,4 +1,13 @@
-import { AspectRatio, Button, Card, Col, Grid, Paper, Text, Title } from '@mantine/core';
+import {
+  AspectRatio,
+  Button,
+  Card,
+  Col,
+  Grid,
+  Paper,
+  Text,
+  Title,
+} from '@mantine/core';
 import React, { useMemo, useState } from 'react';
 // import './Values.css';
 import Map, {
@@ -91,16 +100,24 @@ const MapBox = () => {
         alignItems: 'left',
       }}
     >
-      <Card sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column' }} w="50%">
+      <Card
+        sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column' }}
+        w="50%"
+      >
         <Title order={1} weight={300}>
           We provide assistanace. Register your NGO/orphanage at Sampark.
         </Title>
         <Text weight={500} mb={20}>
           Fill out the given google form, Our team will soon connect with you
         </Text>
-        <Button component= "a" href= "https://docs.google.com/forms/d/e/1FAIpQLScgCOCZWTQmA-EWHNlW55S35v3UcT3ExMQs-TDKnP6eL6VVVQ/viewform?embedded=true" 
-        target= "_blank"
-        > Click here </Button>
+        <Button
+          component="a"
+          href="https://docs.google.com/forms/d/e/1FAIpQLScgCOCZWTQmA-EWHNlW55S35v3UcT3ExMQs-TDKnP6eL6VVVQ/viewform?embedded=true"
+          target="_blank"
+        >
+          {' '}
+          Click here{' '}
+        </Button>
         <AspectRatio ratio={3 / 4} maw={600} mx="auto">
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLScgCOCZWTQmA-EWHNlW55S35v3UcT3ExMQs-TDKnP6eL6VVVQ/viewform?embedded=true"

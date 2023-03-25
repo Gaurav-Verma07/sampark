@@ -15,7 +15,6 @@ import {
 import { useForm } from '@mantine/form';
 // import AuthContext from '../../store/auth-context';
 // import { registerUser } from '../../utils/apiRequests';
-import { googleFormsToJson } from 'react-google-forms-hooks'
 // import { runSample } from '../../utils/ApiRequests/firebaseAuth';
 import { getDatabase, ref, child, get } from 'firebase/database';
 import { useNavigate } from 'react-router';
@@ -26,7 +25,7 @@ const useStyles = createStyles(() => {
 });
 
 const Register = () => {
-  const navigate= useNavigate();
+  const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const { classes } = useStyles();
 
@@ -40,8 +39,14 @@ const Register = () => {
     validate: (values) => {
       if (active === 0) {
         return {
-          name: values.name.trim().length < 6 ? 'Username must include at least 6 characters' : null,
-          password: values.password.length < 6 ? 'Password must include at least 6 characters' : null,
+          name:
+            values.name.trim().length < 6
+              ? 'Username must include at least 6 characters'
+              : null,
+          password:
+            values.password.length < 6
+              ? 'Password must include at least 6 characters'
+              : null,
           email: /^\S+@\S+$/.test(values.email) ? null : 'Invalid email',
         };
       }
@@ -49,18 +54,22 @@ const Register = () => {
     },
   });
 
-  const getResponses= async()=>{
-    console.log("Here we are")
+  const getResponses = async () => {
+    console.log('Here we are');
     const dbRef = ref(getDatabase());
-     const response= await get(child(dbRef, `/1MN-kjuUq3k-jp6g-2L1maBkUsB9AggqbYUcgoB1GoH4/Form responses 1`))
-     const responseData= response.val();
-     console.log({responseData})
-  } 
+    const response = await get(
+      child(
+        dbRef,
+        `/1MN-kjuUq3k-jp6g-2L1maBkUsB9AggqbYUcgoB1GoH4/Form responses 1`,
+      ),
+    );
+    const responseData = response.val();
+    console.log({ responseData });
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getResponses();
-  }, [])
-
+  }, []);
 
   // runSample();
 
@@ -72,13 +81,14 @@ const Register = () => {
       return current < 3 ? current + 1 : current;
     });
 
-  const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
+  const prevStep = () =>
+    setActive((current) => (current > 0 ? current - 1 : current));
 
   const registerHandler = () => {
-    registerUserHandler(form.values.email, form.values.password)
+    registerUserHandler(form.values.email, form.values.password);
     console.log(form.values);
-    localStorage.setItem('email', JSON.stringify(form.values.email))
-    navigate(`/provider/home`)
+    localStorage.setItem('email', JSON.stringify(form.values.email));
+    navigate(`/provider/home`);
   };
 
   return (
@@ -88,9 +98,23 @@ const Register = () => {
       </Text>
       <Stepper active={active} breakpoint="sm">
         <Stepper.Step label="First step" description="Profile settings">
-          <TextInput label="Name" placeholder="Name" {...form.getInputProps('name')} />
-          <PasswordInput mt="md" label="Password" placeholder="Password" {...form.getInputProps('password')} />
-          <TextInput mt="md" label="Email" placeholder="Email" {...form.getInputProps('email')} />
+          <TextInput
+            label="Name"
+            placeholder="Name"
+            {...form.getInputProps('name')}
+          />
+          <PasswordInput
+            mt="md"
+            label="Password"
+            placeholder="Password"
+            {...form.getInputProps('password')}
+          />
+          <TextInput
+            mt="md"
+            label="Email"
+            placeholder="Email"
+            {...form.getInputProps('email')}
+          />
         </Stepper.Step>
 
         <Stepper.Step label="Second step" description="Personal information">

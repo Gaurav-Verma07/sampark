@@ -54,14 +54,14 @@ const useStyles = createStyles((theme) => ({
 const Auth = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
-  const [isRegistering, setIsRegistering]= useState(false);
-  const [details, setDetails] = useState({name:'', email: '', password: '' });
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [details, setDetails] = useState({ name: '', email: '', password: '' });
   const user: any = localStorage.getItem('user_uid');
 
   const submitHandler = () => {
     const signInResult: any = firebaseSignIn(details.email, details.password);
     if (auth.currentUser) {
-      localStorage.setItem('email', JSON.stringify(details.email))
+      localStorage.setItem('email', JSON.stringify(details.email));
       const dbRef = ref(getDatabase());
       get(child(dbRef, `users/${user}`))
         .then((snapshot) => {
@@ -81,12 +81,12 @@ const Auth = () => {
     }
   };
 
-// const registerHandler= ()=> {
-//   // e.preventDefault();
-//   setIsRegistering(true);
-//   // registerUserHandler(details.name, details.email, details.password)
+  // const registerHandler= ()=> {
+  //   // e.preventDefault();
+  //   setIsRegistering(true);
+  //   // registerUserHandler(details.name, details.email, details.password)
 
-// }
+  // }
 
   /// useEffect(()=>{
   ///     registerHandler("sample2@gmail.com", "123456")
@@ -101,7 +101,7 @@ const Auth = () => {
         <Text color="dimmed" ta="center" mt="md" mb={50}>
           Let&apos;s make a change.
         </Text>
-       {/* {isRegistering && <TextInput
+        {/* {isRegistering && <TextInput
           label="Enter Your name"
           onChange={(e) =>
             setDetails((prev) => ({ ...prev, name: e.target.value }))
@@ -127,15 +127,21 @@ const Auth = () => {
           size="md"
         />
         <Checkbox label="Keep me logged in" mt="xl" size="md" />
-        <Button fullWidth mt="xl" size="md" onClick={()=>{
-          // if(isRegistering)
-          // // registerHandler()
-          // else
-          submitHandler()}}>
-           Login
+        <Button
+          fullWidth
+          mt="xl"
+          size="md"
+          onClick={() => {
+            // if(isRegistering)
+            // // registerHandler()
+            // else
+            submitHandler();
+          }}
+        >
+          Login
         </Button>
 
-            {/* { isRegistering && <Text color= "red" sx= {{cursor:'pointer'}} onClick= {()=>{
+        {/* { isRegistering && <Text color= "red" sx= {{cursor:'pointer'}} onClick= {()=>{
               setIsRegistering(false)
             }} >
               Login.
@@ -145,8 +151,8 @@ const Auth = () => {
           <Anchor<'a'>
             href="#"
             weight={700}
-            onClick={()=>{
-              navigate('/register')
+            onClick={() => {
+              navigate('/register');
             }}
           >
             Register

@@ -18,8 +18,7 @@ import {
   IconBrandInstagram,
   IconAt,
   IconPhone,
-  IconMapPins
-
+  IconMapPins,
 } from '@tabler/icons';
 // import { ContactIconsList } from '../ContactIcons/ContactIcons';
 
@@ -84,12 +83,10 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: theme.colors[theme.primaryColor][6],
   },
 
-  iconList:{
+  iconList: {
     color: theme.white,
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`
-  }
-
- 
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+  },
 }));
 
 const social = [IconBrandTwitter, IconBrandYoutube, IconBrandInstagram];
@@ -115,7 +112,7 @@ export function ContactUs() {
         spacing={50}
         breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
       >
-        <Box align= "left" className={classes.iconList} >
+        <Box align="left" className={classes.iconList}>
           <Title align="left" className={classes.title}>
             Contact us
           </Title>
@@ -125,17 +122,18 @@ export function ContactUs() {
 
           {/* <ContactIconsList variant="white" /> */}
           <div className="email_contactUS">
-          <IconAt color= "#fff" /> Email : Sampark@gmail.com
+            <IconAt color="#fff" /> Email : Sampark@gmail.com
           </div>
-          <Space h="md"/>
+          <Space h="md" />
           <div className="phone_contactUs">
-          <IconPhone color= "#fff"/> Phone : +91 2569751165
-            </div>  
-            <Space h="md"/>
-          <div className="map_contactUs">
-          <IconMapPins color="#fff"/> Address : IET LUCKNOW Sitapur Road Lucknow
+            <IconPhone color="#fff" /> Phone : +91 2569751165
           </div>
-            
+          <Space h="md" />
+          <div className="map_contactUs">
+            <IconMapPins color="#fff" /> Address : IET LUCKNOW Sitapur Road
+            Lucknow
+          </div>
+
           <Group mt="xl">{icons}</Group>
         </Box>
         <div className={classes.form}>
