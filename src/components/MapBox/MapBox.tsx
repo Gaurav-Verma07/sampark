@@ -9,7 +9,6 @@ import {
   Title,
 } from '@mantine/core';
 import React, { useMemo, useState } from 'react';
-// import './Values.css';
 import Map, {
   FullscreenControl,
   GeolocateControl,
@@ -19,8 +18,6 @@ import Map, {
   Popup,
   ScaleControl,
 } from 'react-map-gl';
-
-// import * as React from 'react';
 
 const cityData = [
   {
@@ -61,11 +58,8 @@ function Pin() {
   );
 }
 
-// export default React.memo(Pin);
 
 const MapBox = () => {
-  //   const [lat, setLat] = useState<number>(26.914522184608856);
-  //   const [lng, setLng] = useState<number>(80.94196744173564);
   const [popupInfo, setPopupInfo]: any = useState(null);
 
   const pins = useMemo(
@@ -77,8 +71,6 @@ const MapBox = () => {
           latitude={city.latitude}
           anchor="bottom"
           onClick={(e) => {
-            // If we let the click event propagates to the map, it will immediately close the popup
-            // with `closeOnClick: true`
             e.originalEvent.stopPropagation();
             setPopupInfo(city);
           }}
@@ -91,7 +83,6 @@ const MapBox = () => {
 
   return (
     <Paper
-      //   align="right"
       m={25}
       sx={{
         height: '80vh',
@@ -123,10 +114,6 @@ const MapBox = () => {
             src="https://docs.google.com/forms/d/e/1FAIpQLScgCOCZWTQmA-EWHNlW55S35v3UcT3ExMQs-TDKnP6eL6VVVQ/viewform?embedded=true"
             width="640"
             height="1225"
-            // style={{border:'0px'}}
-            // frameBorder="0"
-            // marginHeight="0"
-            // marginWidth="0"
           >
             Loading…
           </iframe>{' '}
@@ -170,7 +157,6 @@ const MapBox = () => {
         )}
       </Map>
 
-      {/*   <ControlPanel /> */}
     </Paper>
   );
 };

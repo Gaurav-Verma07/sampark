@@ -24,7 +24,6 @@ const ImageGallery = () => {
           { maxWidth: 'md', slideSize: '50%' },
           { maxWidth: 'sm', slideSize: '100%', slideGap: 0 },
         ]}
-        //   m= {20}
       >
         <Carousel.Slide>
           <Image
@@ -62,7 +61,6 @@ const ImageGallery = () => {
             src="https://drive.google.com/uc?export=download&id=1MTxwomYotps5z_-BHpHhXvwSr1ISw-de"
           />
         </Carousel.Slide>
-        {/* ...other slides */}
       </Carousel>
       <Box>
         <Text

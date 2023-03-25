@@ -7,7 +7,6 @@ import {
   createStyles,
 } from '@mantine/core';
 
-// const child = <Skeleton height={140} radius="md" animate={false} />;
 const useStyles = createStyles(() => ({
   grid: {
     backgroundColor: 'red',
@@ -43,8 +42,6 @@ export function OurValues() {
               even when no one is looking.
             </Text>
           </Grid.Col>
-          {/* <Grid.Col xs={8}>{child}</Grid.Col>
-        <Grid.Col xs={4}>{child}</Grid.Col> */}
           <Grid.Col className="grid-col" xs={3}>
             <Title order={3}>Heading 2</Title>
             <Text>

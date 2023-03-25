@@ -6,7 +6,6 @@ import ProviderCollegeTeam from '../../components/ProviderCollegeTeam/ProviderCo
 import ProviderMain from '../../components/ProviderMain/ProviderMain';
 
 const Provider = () => {
-  // console.log(process.env.REACT_APP_GOOGLE_API_KEY);
 
   return (
     <AppShell
@@ -23,15 +22,9 @@ const Provider = () => {
       })}
     >
       <Routes>
-        {/* <Route path="/" to= /> */}
         <Route path="home" element={<ProviderMain />} />
         <Route path="team" element={<ProviderCollegeTeam />} />
-        {/* <Route path="assignments" element={<Assignments />} /> */}
       </Routes>
-      {/* <ProviderMain /> */}
-
-      {/* <ProviderMain/> */}
-      {/* Your application here */}
     </AppShell>
   );
 };

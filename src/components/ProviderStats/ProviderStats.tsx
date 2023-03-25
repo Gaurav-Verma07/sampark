@@ -78,10 +78,6 @@ const ProviderStats = () => {
         <Text size="sm" py="sm" color="dimmed">
           Get 68 more points to reach Level 2
         </Text>
-        {/* 
-      <Group position="apart" mt="md">
-        <Badge size="sm">4 days left</Badge>
-      </Group> */}
       </Paper>
       <Paper radius="md" withBorder className={classes.card} mt={ICON_SIZE / 3}>
         <ThemeIcon className={classes.icon} size={ICON_SIZE} radius={ICON_SIZE}>
@@ -95,24 +91,11 @@ const ProviderStats = () => {
           20 books and many more
         </Text>
 
-        {/* <Group position="apart" mt="xs">
-        <Text size="sm" color="dimmed">
-          Progress
-        </Text>
-        <Text size="sm" color="dimmed">
-          32%
-        </Text>
-      </Group> */}
-
         <Progress value={32} mt={5} />
 
         <Text size="sm" py="sm" color="dimmed">
           Get 68 more points to reach Level 2
         </Text>
-        {/* 
-      <Group position="apart" mt="md">
-        <Badge size="sm">4 days left</Badge>
-      </Group> */}
       </Paper>
     </Paper>
   );

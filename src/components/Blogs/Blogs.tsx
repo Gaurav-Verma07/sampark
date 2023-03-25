@@ -38,9 +38,7 @@ const Blogs = () => {
       </Text>
       <Text className={classes.title} align="left" mt={5}>
         {article.title}
-        {/* <Text component='span'color= {theme.colors.red[5]} td= "underline" weight= "200" > Read more</Text> */}
       </Text>
-      {/* <Text color= {theme.colors.red[5]} td= "underline"  align= "left" weight= "200" > Read more</Text> */}
     </Card>
   ));
 
@@ -62,7 +60,6 @@ const Blogs = () => {
         {cards}
         <Card
           shadow="lg"
-          //   align= "center"
           p="md"
           radius="md"
           sx={{ backgroundColor: theme.colors.teal[0] }}
@@ -70,9 +67,7 @@ const Blogs = () => {
           href="#"
           className={classes.card}
         >
-          {/* <AspectRatio ratio={1920 / 1080} > */}
           <Image pl={56} src={Logo} width={250} height={250} />
-          {/* </AspectRatio> */}
           <Text
             color="dimmed"
             size="xs"
@@ -80,11 +75,8 @@ const Blogs = () => {
             weight={700}
             mt="md"
           >
-            {/* {article.date} */}
           </Text>
           <Text className={classes.title} align="left" mt={5}>
-            {/* {article.title}  */}
-            {/* <Text component='span'color= {theme.colors.red[5]} td= "underline" weight= "200" > Read more</Text> */}
           </Text>
           <Text color={theme.colors.red[5]} td="underline" weight="200">
             {' '}

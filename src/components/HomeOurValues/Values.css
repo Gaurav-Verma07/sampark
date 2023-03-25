@@ -2,7 +2,6 @@
   margin: 2rem 0 1rem 0;
   font-size: 3rem;
   font-family: 'Poppins', sans-serif;
-  /* font-family: ; */
 }
 
 .values-container {
@@ -10,7 +9,6 @@
   flex-direction: column;
   margin: 2rem;
   font-family: 'Golos Text', sans-serif;
-  /* flex-wrap: wrap; */
 }
 .values-box-1 {
   display: flex;

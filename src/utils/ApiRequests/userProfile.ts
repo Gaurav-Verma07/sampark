@@ -31,7 +31,3 @@ export const getUserData = (userID: any) => {
     });
   return userData;
 };
-
-// export const getAllUserData= ()=>{
-
-// }

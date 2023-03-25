@@ -21,11 +21,6 @@ const useStyles = createStyles((theme) => ({
   },
 
   link: {
-    // display: 'block',
-    // lineHeight: 1,
-    // padding: '8px 12px',
-    // borderRadius: theme.radius.sm,
-    // textDecoration: 'none',
     color:
       theme.colorScheme === 'dark'
         ? theme.colors.dark[0]

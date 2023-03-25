@@ -18,7 +18,6 @@ import { redirect, useNavigate } from 'react-router-dom';
 import GoogleLogo from '../../assets/googleLogo.svg';
 import {
   firebaseSignIn,
-  // registerHandler,
   registerUserHandler,
 } from '../../utils/ApiRequests/firebaseAuth';
 import { firebaseGoogleAuth } from '../../utils/ApiRequests/firebaseGoogleAuth';
@@ -81,17 +80,6 @@ const Auth = () => {
     }
   };
 
-  // const registerHandler= ()=> {
-  //   // e.preventDefault();
-  //   setIsRegistering(true);
-  //   // registerUserHandler(details.name, details.email, details.password)
-
-  // }
-
-  /// useEffect(()=>{
-  ///     registerHandler("sample2@gmail.com", "123456")
-  /// }, [])
-
   return (
     <div className={classes.wrapper}>
       <Paper className={classes.form} radius={0} p={30}>
@@ -101,14 +89,6 @@ const Auth = () => {
         <Text color="dimmed" ta="center" mt="md" mb={50}>
           Let&apos;s make a change.
         </Text>
-        {/* {isRegistering && <TextInput
-          label="Enter Your name"
-          onChange={(e) =>
-            setDetails((prev) => ({ ...prev, name: e.target.value }))
-          }
-          // placeholder=""
-          size="md"
-        />} */}
         <TextInput
           label="Email address"
           onChange={(e) =>
@@ -132,20 +112,12 @@ const Auth = () => {
           mt="xl"
           size="md"
           onClick={() => {
-            // if(isRegistering)
-            // // registerHandler()
-            // else
             submitHandler();
           }}
         >
           Login
         </Button>
 
-        {/* { isRegistering && <Text color= "red" sx= {{cursor:'pointer'}} onClick= {()=>{
-              setIsRegistering(false)
-            }} >
-              Login.
-            </Text>} */}
         <Text ta="center" mt="md">
           Don&apos;t have an account?{' '}
           <Anchor<'a'>
@@ -158,24 +130,6 @@ const Auth = () => {
             Register
           </Anchor>
         </Text>
-
-        {/* <Divider my={20} label="or" labelPosition="center" /> */}
-        {/* <Group
-          mx="auto"
-          py={10}
-          my={20}
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            borderRadius: '30px',
-            border: '1px solid  #CED4DA',
-            cursor: 'pointer',
-          }}
-          onClick={signWithGoogle}
-        >
-          <Image src={GoogleLogo} width={20} height={20} />
-          <Text>Continue with Google</Text>
-        </Group> */}
       </Paper>
     </div>
   );

@@ -20,7 +20,6 @@ import {
   IconPhone,
   IconMapPins,
 } from '@tabler/icons';
-// import { ContactIconsList } from '../ContactIcons/ContactIcons';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -120,7 +119,6 @@ export function ContactUs() {
             Leave your email and we will get back to you within 24 hours
           </Text>
 
-          {/* <ContactIconsList variant="white" /> */}
           <div className="email_contactUS">
             <IconAt color="#fff" /> Email : Sampark@gmail.com
           </div>

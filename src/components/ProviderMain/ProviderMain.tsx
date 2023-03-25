@@ -20,7 +20,6 @@ const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor: ' #F8F9FA',
 
-    //  theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
     width: '50%',
     margin: '0 auto',
   },
@@ -92,20 +91,7 @@ const ProviderMain = () => {
   return (
     <Card>
       <Card p="xl" radius="md" className={classes.card}>
-        {/* <Card.Section  /> */}
         <Avatar size={100} radius={100} mx="auto" className={classes.avatar} />
-        {/* <Text align="center" size="lg" weight={500} mt="sm">
-        {data.name}
-      </Text>
-      <Text align="center" size="sm" color="dimmed">
-        {data.job}
-      </Text>
-      <Group mt="md" position="center" spacing={30}>
-        {items}
-      </Group>
-      <Button fullWidth radius="md" mt="xl" size="md" color={theme.colorScheme === 'dark' ? undefined : 'dark'}>
-        Follow
-      </Button> */}
         <Table
           verticalSpacing="md"
           className={classes.tableRow}
@@ -131,7 +117,6 @@ const ProviderMain = () => {
                   >
                     {userData['Applying as?']}
                   </Badge>
-                  {/* <Text size="md" color= "red">Volunteer</Text> */}
                 </Group>
               </td>
             </tr>

@@ -5,9 +5,7 @@
 .hero-section {
   width: 99vw;
   height: 100vh;
-  /* background-color: black; */
   background-image: url('../../assets/Images/homeImg.jpg');
-  /* clip-path: polygon(0 0, 90% 0%, 100% 100%, 0% 100%); */
   display: flex;
   align-items: center;
   justify-content: center;

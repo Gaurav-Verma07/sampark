@@ -67,5 +67,18 @@
       "eslint . --fix",
       "prettier --write ."
     ]
-  }
+  },
+  "description": "![Samplark Logo](https://github.com/Gaurav-Verma07/sampark/blob/main/public/sampark-logo-transparent.png?raw=true)",
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gaurav-Verma07/sampark.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gaurav-Verma07/sampark/issues"
+  },
+  "homepage": "https://github.com/Gaurav-Verma07/sampark#readme"
 }

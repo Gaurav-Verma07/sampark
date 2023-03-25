@@ -43,11 +43,6 @@ const HomeHeader = () => {
     </a>
   ));
 
-  // useEffect(()=>{
-  //   writeUserData(user, 'Ganga NGO', 'sample2@gmail.com', 'seeker')
-  //   console.log("Data posted")
-  // }, [])
-
   const isLoggedIn = user ? (
     <Avatar
       radius="xl"
@@ -69,7 +64,6 @@ const HomeHeader = () => {
     <Header height={HEADER_HEIGHT} className={classes.root} pt={30}>
       <Container className={classes.header}>
         <Image src={SamparkLogo} height={100} width={100} />
-        {/* <SamparkLogo  /> */}
         <Group spacing={5} className={classes.links}>
           {items}
           {isLoggedIn}

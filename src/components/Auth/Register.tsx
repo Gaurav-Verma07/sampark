@@ -13,9 +13,6 @@ import {
   Code,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-// import AuthContext from '../../store/auth-context';
-// import { registerUser } from '../../utils/apiRequests';
-// import { runSample } from '../../utils/ApiRequests/firebaseAuth';
 import { getDatabase, ref, child, get } from 'firebase/database';
 import { useNavigate } from 'react-router';
 import { registerUserHandler } from '../../utils/ApiRequests/firebaseAuth';
@@ -71,7 +68,6 @@ const Register = () => {
     getResponses();
   }, []);
 
-  // runSample();
 
   const nextStep = () =>
     setActive((current) => {
@@ -118,32 +114,16 @@ const Register = () => {
         </Stepper.Step>
 
         <Stepper.Step label="Second step" description="Personal information">
-          {/* <Select
-            mt="md"
-            label="Profession"
-            defaultValue="student"
-            {...form.getInputProps('profession')}
-            data={[
-              { value: 'student', label: 'Student' },
-              { value: 'professional', label: 'Professional' },
-            ]}
-          /> */}
+         
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLSchL2ptZ48MuMg_U6jq6WXQYqfNHo-Hmao9TI1GENpfLAeIuQ/viewform?embedded=true"
             width="640"
             height="1492"
-            // frameBorder="0"
-            // marginHeight="0"
-            // marginWidth="0"
           >
             Loading…
           </iframe>
         </Stepper.Step>
 
-        {/* <Stepper.Step label="Final step" description="Social media">
-          <TextInput label="College" placeholder="College Name" {...form.getInputProps('college')} />
-          <TextInput mt="md" label="LinkedIn" placeholder="LinkedIn profile" {...form.getInputProps('linkedin')} />
-        </Stepper.Step> */}
         <Stepper.Completed>
           Completed! Form values:
           <Code block mt="xl">
