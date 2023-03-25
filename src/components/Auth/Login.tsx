@@ -18,7 +18,8 @@ import { redirect, useNavigate } from 'react-router-dom';
 import GoogleLogo from '../../assets/googleLogo.svg';
 import {
   firebaseSignIn,
-  registerHandler,
+  // registerHandler,
+  registerUserHandler,
 } from '../../utils/ApiRequests/firebaseAuth';
 import { firebaseGoogleAuth } from '../../utils/ApiRequests/firebaseGoogleAuth';
 import { getUserData } from '../../utils/ApiRequests/userProfile';
@@ -53,13 +54,14 @@ const useStyles = createStyles((theme) => ({
 const Auth = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
-  const [details, setDetails] = useState({ email: '', password: '' });
+  const [isRegistering, setIsRegistering]= useState(false);
+  const [details, setDetails] = useState({name:'', email: '', password: '' });
   const user: any = localStorage.getItem('user_uid');
 
   const submitHandler = () => {
     const signInResult: any = firebaseSignIn(details.email, details.password);
-    console.log({ signInResult });
     if (auth.currentUser) {
+      localStorage.setItem('email', JSON.stringify(details.email))
       const dbRef = ref(getDatabase());
       get(child(dbRef, `users/${user}`))
         .then((snapshot) => {
@@ -79,6 +81,13 @@ const Auth = () => {
     }
   };
 
+// const registerHandler= ()=> {
+//   // e.preventDefault();
+//   setIsRegistering(true);
+//   // registerUserHandler(details.name, details.email, details.password)
+
+// }
+
   /// useEffect(()=>{
   ///     registerHandler("sample2@gmail.com", "123456")
   /// }, [])
@@ -87,12 +96,19 @@ const Auth = () => {
     <div className={classes.wrapper}>
       <Paper className={classes.form} radius={0} p={30}>
         <Title order={2} className={classes.title} ta="center" mt="md">
-          Welcome back to Sampark!
+          Welcome to Sampark!
         </Title>
         <Text color="dimmed" ta="center" mt="md" mb={50}>
           Let&apos;s make a change.
         </Text>
-
+       {/* {isRegistering && <TextInput
+          label="Enter Your name"
+          onChange={(e) =>
+            setDetails((prev) => ({ ...prev, name: e.target.value }))
+          }
+          // placeholder=""
+          size="md"
+        />} */}
         <TextInput
           label="Email address"
           onChange={(e) =>
@@ -111,22 +127,33 @@ const Auth = () => {
           size="md"
         />
         <Checkbox label="Keep me logged in" mt="xl" size="md" />
-        <Button fullWidth mt="xl" size="md" onClick={submitHandler}>
-          Login
+        <Button fullWidth mt="xl" size="md" onClick={()=>{
+          // if(isRegistering)
+          // // registerHandler()
+          // else
+          submitHandler()}}>
+           Login
         </Button>
 
+            {/* { isRegistering && <Text color= "red" sx= {{cursor:'pointer'}} onClick= {()=>{
+              setIsRegistering(false)
+            }} >
+              Login.
+            </Text>} */}
         <Text ta="center" mt="md">
           Don&apos;t have an account?{' '}
           <Anchor<'a'>
             href="#"
             weight={700}
-            onClick={(event) => event.preventDefault()}
+            onClick={()=>{
+              navigate('/register')
+            }}
           >
             Register
           </Anchor>
         </Text>
 
-        <Divider my={20} label="or" labelPosition="center" />
+        {/* <Divider my={20} label="or" labelPosition="center" /> */}
         {/* <Group
           mx="auto"
           py={10}

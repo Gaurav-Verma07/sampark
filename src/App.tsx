@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router';
 import './App.css';
 import Admin from './Pages/Admin';
-import AuthenticationForm from './Pages/Auth';
-
+import AuthenticationForm from './Pages/Login';
+import RegisterPage from './Pages/Register';
 import Home from './Pages/Home';
 import Provider from './Pages/Provider';
 import Seeker from './Pages/Seeker';
@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<AuthenticationForm />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/provider/*" element={<Provider />} />
         <Route path="/seeker" element={<Seeker />} />

@@ -10,7 +10,9 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { IconPencil, IconTrash } from '@tabler/icons';
-import userData from './data';
+import { getDatabase, ref, child, get } from 'firebase/database';
+import { useEffect, useState } from 'react';
+
 
 interface UsersTableProps {
   data: {
@@ -29,25 +31,45 @@ const jobColors: Record<string, string> = {
 };
 
 const ProviderCollegeTeam = () => {
-  const { data }: UsersTableProps = userData;
+  const [teamData, setTeamData]:any= useState([{'Name':'', 'Applying as?':''}]);
   const theme = useMantineTheme();
-  const rows = data.map((item: any) => (
-    <tr key={item.name}>
+
+  const getResponses = async () => {
+    console.log('Here we are');
+    const dbRef = ref(getDatabase());
+    const response = await get(child(dbRef, `/1MN-kjuUq3k-jp6g-2L1maBkUsB9AggqbYUcgoB1GoH4/Form responses 1`));
+    const responseData = Object.values(response.val());
+    console.log(responseData);
+    const userMail: any = JSON.parse(localStorage.getItem('email')||'');
+    console.log(userMail);
+    const user: any = responseData.filter((el: any) => el.Email === 'sample@gmail.com');
+    console.log(user)
+    const collegeName= user[0]['College Name'];
+    console.log(collegeName); 
+    const allTeamUsers= responseData.filter((el:any)=>(el['College Name']=== collegeName));
+    setTeamData(allTeamUsers);
+  };
+  console.log(teamData)
+
+  useEffect(() => {
+    getResponses();
+  }, []);
+
+  const rows = teamData.map((item: any) => (
+    <tr key={item.Name}>
       <td>
         <Group spacing="sm">
-          <Avatar size={30} src={item.avatar} radius={30} />
           <Text size="sm" weight={500}>
-            {item.name}
+            {item['Name']}
           </Text>
         </Group>
       </td>
 
       <td>
         <Badge
-          color={jobColors[item.job.toLowerCase()]}
           variant={theme.colorScheme === 'dark' ? 'light' : 'outline'}
         >
-          {item.job}
+          {item['Applying as?']}
         </Badge>
       </td>
       <td>
@@ -56,23 +78,13 @@ const ProviderCollegeTeam = () => {
           href="#"
           onClick={(event) => event.preventDefault()}
         >
-          {item.email}
+          {item['Email']}
         </Anchor>
       </td>
       <td>
         <Text size="sm" color="dimmed">
-          {item.phone}
+          {item['Whatsapp Number']}
         </Text>
-      </td>
-      <td>
-        <Group spacing={0} position="right">
-          <ActionIcon>
-            <IconPencil size={16} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon color="red">
-            <IconTrash size={16} stroke={1.5} />
-          </ActionIcon>
-        </Group>
       </td>
     </tr>
   ));
@@ -84,8 +96,8 @@ const ProviderCollegeTeam = () => {
           <tr>
             <th>Name</th>
             <th>Designation</th>
-            <th>Time Active</th>
-            <th>Phone</th>
+            <th>Email Address</th>
+            <th>Contact Number</th>
             <th />
           </tr>
         </thead>

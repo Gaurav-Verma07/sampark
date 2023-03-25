@@ -52,7 +52,7 @@ const HomeHeader = () => {
     <Avatar
       radius="xl"
       onClick={() => {
-        navigate('/provider');
+        navigate('/provider/home');
       }}
     />
   ) : (
