@@ -4,15 +4,10 @@ import {
   Avatar,
   Text,
   Group,
-  Button,
   Table,
   Badge,
 } from '@mantine/core';
-import { useParams } from 'react-router';
-import { useSearchParams } from 'react-router-dom';
-import { URLSearchParams } from 'url';
 import ProviderStats from '../ProviderStats/ProviderStats';
-import { data } from './data';
 import { getDatabase, ref, child, get } from 'firebase/database';
 import { useEffect, useState } from 'react';
 
@@ -34,17 +29,8 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface UserCardImageProps {
-  image: string;
-  avatar: string;
-  name: string;
-  job: string;
-  stats: { label: string; value: string }[];
-}
-
 const ProviderMain = () => {
-  const { classes, theme } = useStyles();
-  const [searchParams] = useSearchParams();
+  const { classes } = useStyles();
   const [userData, setuserData] = useState({
     Name: '',
     'Applying as?': '',
@@ -53,16 +39,6 @@ const ProviderMain = () => {
     Email: '',
     'Whatsapp Number': '',
   });
-  const items = data.stats.map((stat: any) => (
-    <div key={stat.label}>
-      <Text align="center" size="lg" weight={500}>
-        {stat.value}
-      </Text>
-      <Text align="center" size="sm" color="dimmed">
-        {stat.label}
-      </Text>
-    </div>
-  ));
 
   const getResponses = async () => {
     console.log('Here we are');

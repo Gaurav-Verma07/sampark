@@ -1,18 +1,8 @@
-import {
-  AspectRatio,
-  Button,
-  Card,
-  Col,
-  Grid,
-  Paper,
-  Text,
-  Title,
-} from '@mantine/core';
-import React, { useMemo, useState } from 'react';
+import { AspectRatio, Button, Card, Paper, Text, Title } from '@mantine/core';
+import { useMemo, useState } from 'react';
 import Map, {
   FullscreenControl,
   GeolocateControl,
-  LngLat,
   Marker,
   NavigationControl,
   Popup,
@@ -57,7 +47,6 @@ function Pin() {
     </svg>
   );
 }
-
 
 const MapBox = () => {
   const [popupInfo, setPopupInfo]: any = useState(null);
@@ -156,7 +145,6 @@ const MapBox = () => {
           </Popup>
         )}
       </Map>
-
     </Paper>
   );
 };

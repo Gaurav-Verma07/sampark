@@ -7,19 +7,10 @@ import {
   Textarea,
   Button,
   Group,
-  ActionIcon,
-  Paper,
   Box,
   Space,
 } from '@mantine/core';
-import {
-  IconBrandTwitter,
-  IconBrandYoutube,
-  IconBrandInstagram,
-  IconAt,
-  IconPhone,
-  IconMapPins,
-} from '@tabler/icons';
+import { IconAt, IconPhone, IconMapPins } from '@tabler/icons';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -85,28 +76,15 @@ const useStyles = createStyles((theme) => ({
   iconList: {
     color: theme.white,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    display:'flex',
-    flexDirection:'column',
-    alignItems:'flex-start',
-    justifyContent:'flex-start'
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
   },
 }));
 
-const social = [IconBrandTwitter, IconBrandYoutube, IconBrandInstagram];
-
 export function ContactUs() {
   const { classes } = useStyles();
-
-  const icons = social.map((Icon, index) => (
-    <ActionIcon
-      key={index}
-      size={28}
-      className={classes.social}
-      variant="transparent"
-    >
-      <Icon size={22} stroke={1.5} />
-    </ActionIcon>
-  ));
 
   return (
     <div className={classes.wrapper} id="contact">
@@ -115,7 +93,7 @@ export function ContactUs() {
         spacing={50}
         breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
       >
-        <Box  className={classes.iconList}>
+        <Box className={classes.iconList}>
           <Title align="left" className={classes.title}>
             Contact us
           </Title>
@@ -135,7 +113,6 @@ export function ContactUs() {
             <IconMapPins color="#fff" /> Address : IET LUCKNOW Sitapur Road
             Lucknow
           </div>
-
         </Box>
         <div className={classes.form}>
           <TextInput

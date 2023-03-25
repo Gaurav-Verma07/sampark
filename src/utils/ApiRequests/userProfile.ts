@@ -1,4 +1,4 @@
-import { child, get, getDatabase, onValue, ref, set } from 'firebase/database';
+import { child, get, getDatabase, ref, set } from 'firebase/database';
 
 export const writeUserData = (
   userId: any,

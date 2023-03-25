@@ -6,7 +6,6 @@ import ProviderCollegeTeam from '../../components/ProviderCollegeTeam/ProviderCo
 import ProviderMain from '../../components/ProviderMain/ProviderMain';
 
 const Provider = () => {
-
   return (
     <AppShell
       padding="md"

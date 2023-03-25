@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Stepper,
   Button,
@@ -7,9 +7,7 @@ import {
   PasswordInput,
   createStyles,
   Paper,
-  PaperProps,
   Text,
-  Select,
   Code,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
@@ -68,7 +66,6 @@ const Register = () => {
     getResponses();
   }, []);
 
-
   const nextStep = () =>
     setActive((current) => {
       if (form.validate().hasErrors) {
@@ -114,7 +111,6 @@ const Register = () => {
         </Stepper.Step>
 
         <Stepper.Step label="Second step" description="Personal information">
-         
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLSchL2ptZ48MuMg_U6jq6WXQYqfNHo-Hmao9TI1GENpfLAeIuQ/viewform?embedded=true"
             width="640"

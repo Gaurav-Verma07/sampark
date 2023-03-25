@@ -9,19 +9,9 @@ import {
   Title,
   Text,
   Anchor,
-  Image,
-  Group,
-  Divider,
 } from '@mantine/core';
-import { useEffect, useState } from 'react';
-import { redirect, useNavigate } from 'react-router-dom';
-import GoogleLogo from '../../assets/googleLogo.svg';
-import {
-  firebaseSignIn,
-  registerUserHandler,
-} from '../../utils/ApiRequests/firebaseAuth';
-import { firebaseGoogleAuth } from '../../utils/ApiRequests/firebaseGoogleAuth';
-import { getUserData } from '../../utils/ApiRequests/userProfile';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../../utils/firebase';
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -53,17 +43,15 @@ const useStyles = createStyles((theme) => ({
 const Auth = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
-  const [isRegistering, setIsRegistering] = useState(false);
   const [details, setDetails] = useState({ name: '', email: '', password: '' });
-  const user: string = localStorage.getItem('user_uid')||'';
+  const user: string = localStorage.getItem('user_uid') || '';
 
   const submitHandler = () => {
-    // const signInResult: any = firebaseSignIn(details.email, details.password);
     if (auth.currentUser) {
       localStorage.setItem('email', JSON.stringify(details.email));
       const dbRef = ref(getDatabase());
       get(child(dbRef, `users/${user}`))
-        .then((snapshot:any) => {
+        .then((snapshot: any) => {
           if (snapshot.exists()) {
             const userData = snapshot.val();
             navigate(`/${userData?.role}/home`);
@@ -75,10 +63,6 @@ const Auth = () => {
           console.error(error);
         });
     }
-    //  else {
-    //   console.log(signInResult);
-    //   console.error(signInResult.errorMessage);
-    // }
   };
 
   return (

@@ -60,7 +60,6 @@ const useStyles = createStyles((theme) => ({
       color: theme.black,
     },
   },
-
 }));
 
 export default useStyles;

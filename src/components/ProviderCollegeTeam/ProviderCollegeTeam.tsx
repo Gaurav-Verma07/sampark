@@ -1,33 +1,14 @@
 import {
-  Avatar,
   Badge,
   Table,
   Group,
   Text,
-  ActionIcon,
   Anchor,
   ScrollArea,
   useMantineTheme,
 } from '@mantine/core';
-import { IconPencil, IconTrash } from '@tabler/icons';
 import { getDatabase, ref, child, get } from 'firebase/database';
 import { useEffect, useState } from 'react';
-
-interface UsersTableProps {
-  data: {
-    avatar: string;
-    name: string;
-    job: string;
-    email: string;
-    phone: string;
-  }[];
-}
-
-const jobColors: Record<string, string> = {
-  engineer: 'blue',
-  manager: 'cyan',
-  designer: 'pink',
-};
 
 const ProviderCollegeTeam = () => {
   const [teamData, setTeamData]: any = useState([

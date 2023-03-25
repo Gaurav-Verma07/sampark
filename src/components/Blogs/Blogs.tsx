@@ -74,10 +74,8 @@ const Blogs = () => {
             transform="uppercase"
             weight={700}
             mt="md"
-          >
-          </Text>
-          <Text className={classes.title} align="left" mt={5}>
-          </Text>
+          ></Text>
+          <Text className={classes.title} align="left" mt={5}></Text>
           <Text color={theme.colors.red[5]} td="underline" weight="200">
             {' '}
             Read more articles...

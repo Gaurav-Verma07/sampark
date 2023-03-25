@@ -42,7 +42,6 @@ function OurValues1() {
             </p>
           </div>
         </div>
-
       </div>
     </div>
   );

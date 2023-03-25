@@ -1,7 +1,6 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile,
 } from 'firebase/auth';
 import { auth } from '../firebase';
 
@@ -9,9 +8,9 @@ export const registerUserHandler = (email: any, password: any) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
+      console.log(user);
     })
     .catch((error) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
       alert(errorMessage);
     });
@@ -26,9 +25,7 @@ export const firebaseSignIn = (email: any, password: any) => {
       return 1;
     })
     .catch((error) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
       alert(errorMessage);
     });
 };
-

@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import {
-  createStyles,
   Header,
   Container,
   Group,
@@ -15,14 +13,8 @@ import { useDisclosure } from '@mantine/hooks';
 import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import useStyles from './styles';
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../../utils/firebase';
-import { writeUserData } from '../../utils/ApiRequests/userProfile';
 
 const HEADER_HEIGHT = '5rem';
-
-interface HeaderResponsiveProps {
-  links: { link: string; label: string }[];
-}
 
 const links: any = [
   { link: '#gallery', label: 'Gallery' },
@@ -33,7 +25,7 @@ const links: any = [
 
 const HomeHeader = () => {
   const user: any = localStorage.getItem('user_uid');
-  const [opened, { toggle, close }] = useDisclosure(false);
+  const [opened, { toggle }] = useDisclosure(false);
   const { classes, cx } = useStyles();
   const navigate = useNavigate();
 
