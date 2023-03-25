@@ -18,6 +18,7 @@
   "rules": {
     // React scope no longer necessary with new JSX transform
     "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     // Allow .js files to use JSX syntax
     "react/jsx-filename-extension": [
       "error",

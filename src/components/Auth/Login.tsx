@@ -55,15 +55,15 @@ const Auth = () => {
   const navigate = useNavigate();
   const [isRegistering, setIsRegistering] = useState(false);
   const [details, setDetails] = useState({ name: '', email: '', password: '' });
-  const user: any = localStorage.getItem('user_uid');
+  const user: string = localStorage.getItem('user_uid')||'';
 
   const submitHandler = () => {
-    const signInResult: any = firebaseSignIn(details.email, details.password);
+    // const signInResult: any = firebaseSignIn(details.email, details.password);
     if (auth.currentUser) {
       localStorage.setItem('email', JSON.stringify(details.email));
       const dbRef = ref(getDatabase());
       get(child(dbRef, `users/${user}`))
-        .then((snapshot) => {
+        .then((snapshot:any) => {
           if (snapshot.exists()) {
             const userData = snapshot.val();
             navigate(`/${userData?.role}/home`);
@@ -74,10 +74,11 @@ const Auth = () => {
         .catch((error) => {
           console.error(error);
         });
-    } else {
-      console.log(signInResult);
-      console.error(signInResult.errorMessage);
     }
+    //  else {
+    //   console.log(signInResult);
+    //   console.error(signInResult.errorMessage);
+    // }
   };
 
   return (

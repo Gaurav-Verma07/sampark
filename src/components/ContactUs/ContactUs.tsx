@@ -85,6 +85,10 @@ const useStyles = createStyles((theme) => ({
   iconList: {
     color: theme.white,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'flex-start',
+    justifyContent:'flex-start'
   },
 }));
 
@@ -111,7 +115,7 @@ export function ContactUs() {
         spacing={50}
         breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
       >
-        <Box align="left" className={classes.iconList}>
+        <Box  className={classes.iconList}>
           <Title align="left" className={classes.title}>
             Contact us
           </Title>
@@ -132,7 +136,6 @@ export function ContactUs() {
             Lucknow
           </div>
 
-          <Group mt="xl">{icons}</Group>
         </Box>
         <div className={classes.form}>
           <TextInput
