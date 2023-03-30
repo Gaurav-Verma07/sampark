@@ -102,15 +102,15 @@ export function ContactUs() {
           </Text>
 
           <div className="email_contactUS">
-            <IconAt color="#fff" /> Email : Sampark@gmail.com
+            <IconAt color="#fff" /> Sampark@gmail.com
           </div>
           <Space h="md" />
           <div className="phone_contactUs">
-            <IconPhone color="#fff" /> Phone : +91 2569751165
+            <IconPhone color="#fff" /> +91 2569751165
           </div>
           <Space h="md" />
           <div className="map_contactUs">
-            <IconMapPins color="#fff" /> Address : IET LUCKNOW Sitapur Road
+            <IconMapPins color="#fff" /> IET LUCKNOW Sitapur Road
             Lucknow
           </div>
         </Box>
