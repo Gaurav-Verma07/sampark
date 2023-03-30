@@ -1,88 +1,80 @@
 import {
-  createStyles,
-  SimpleGrid,
-  Card,
-  Image,
-  Text,
-  Container,
   AspectRatio,
-  Box,
+  Button,
+  Card,
+  Container,
+  createStyles,
+  Header,
+  Image,
   Paper,
+  Text,
   Title,
-  useMantineTheme,
 } from '@mantine/core';
-import { mockdata } from './sampleData';
-import useStyles from './styles';
-import Logo from '../../assets/Images/samparklogotransparent.png';
+import { IconArrowLeft } from '@tabler/icons';
+import { useNavigate, useParams } from 'react-router-dom';
+import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
+import { data } from './blogContent';
+import './blogs.css';
+
+const useStyles = createStyles((theme) => ({
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '100%',
+  },
+  blog: {
+    textAlign: 'left',
+    width: '50%',
+  },
+  back: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  image: {
+    border: '1px solid #a3a3a2',
+    borderRadius: '10px',
+    margin: ' 20px 0',
+  },
+}));
 
 const Blogs = () => {
+  const { id }: any = useParams();
   const { classes } = useStyles();
-  const theme = useMantineTheme();
-
-  const cards = mockdata.map((article) => (
-    <Card
-      shadow="sm"
-      key={article.title}
-      p="md"
-      radius="md"
-      component="a"
-      href="#"
-      className={classes.card}
-      id="blogs"
-    >
-      <AspectRatio ratio={1920 / 1080}>
-        <Image src={article.image} />
-      </AspectRatio>
-      <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
-        {article.date}
-      </Text>
-      <Text className={classes.title} align="left" mt={5}>
-        {article.title}
-      </Text>
-    </Card>
-  ));
+  const navigate = useNavigate();
+  const blogData = data[id];
 
   return (
-    <Paper m={20} px={70} mb={70}>
-      <Box>
-        <Title
-          order={3}
-          py={20}
-          tt="capitalize"
-          weight="400"
-          color="teal"
-          align="left"
+    <>
+      <Header height={80} mb={50}>
+        <Container className={classes.header}>
+          <Image src={SamparkLogo} height={100} width={100} />
+        </Container>
+      </Header>
+
+      <Card className={classes.blog} mx="auto">
+        <Button
+          my={20}
+          className={classes.back}
+          onClick={() => {
+            navigate('/');
+          }}
         >
-          Read more about our work through our blogs...
-        </Title>
-      </Box>
-      <SimpleGrid cols={3} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
-        {cards}
-        <Card
-          shadow="lg"
-          p="md"
-          radius="md"
-          sx={{ backgroundColor: theme.colors.teal[0] }}
-          component="a"
-          href="#"
-          className={classes.card}
-        >
-          <Image pl={56} src={Logo} width={250} height={250} />
-          <Text
-            color="dimmed"
-            size="xs"
-            transform="uppercase"
-            weight={700}
-            mt="md"
-          ></Text>
-          <Text className={classes.title} align="left" mt={5}></Text>
-          <Text color={theme.colors.red[5]} td="underline" weight="200">
-            {' '}
-            Read more articles...
-          </Text>
-        </Card>
-      </SimpleGrid>
-    </Paper>
+          {' '}
+          <IconArrowLeft /> Go Back
+        </Button>
+        <Paper shadow={'md'} my={20}>
+          <AspectRatio
+            ratio={16 / 9}
+            // maw={300}
+            mx="auto"
+          >
+            <Image src={blogData.image} />
+          </AspectRatio>
+        </Paper>
+        <div dangerouslySetInnerHTML={{ __html: blogData.blogData }}></div>
+      </Card>
+    </>
   );
 };
 

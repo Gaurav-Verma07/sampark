@@ -20,11 +20,6 @@ import useStyles from './styles';
 const data = [
   { link: 'home', label: 'Home', icon: IconHome2 },
   { link: 'team', label: 'College Team', icon: IconUserCheck },
-  { link: 'schedule', label: 'Schedule', icon: IconCalendarStats },
-  { link: 'fees', label: 'Fee Submission', icon: IconReceipt },
-  { link: 'admissions', label: 'Admissions', icon: IconUserPlus },
-  { link: 'admitCards', label: 'Admit Cards', icon: IconIdBadge2 },
-  { link: 'assignments', label: 'Assignments', icon: IconNotebook },
   { link: 'settings', label: 'Settings', icon: IconSettings },
 ];
 
