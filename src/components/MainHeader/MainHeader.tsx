@@ -3,13 +3,10 @@ import { useDisclosure } from '@mantine/hooks';
 import { NavLink } from 'react-router-dom';
 import useStyles from './styles';
 
-interface HeaderSimpleProps {
-  links: { link: string; label: string }[];
-}
 
 const MainHeader = () => {
   const [opened, { toggle }] = useDisclosure(false);
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
 
   return (
     <Header height={60} mb={120}>
