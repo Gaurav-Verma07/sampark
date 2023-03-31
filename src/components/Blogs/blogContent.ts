@@ -28,7 +28,7 @@ export const data = [
     `,
   },
   {
-    image: "https://drive.google.com/uc?export=download&id=1LvVkueNKCOxWMZhmENlciL98fFnO1Iyl",
+    image: "https://drive.google.com/uc?export=download&id=1Lrgi5PCH0MKgY6LYyaa3oGkXGiCRyYiK",
     blogData: `<div class="blog__main"><h1>Past Event: Cloth Distribution</h1>
 
     <p class= "blog__text">We recently organized a cloth distribution event to help underprivileged individuals in the local community. The event was aimed at providing warm clothes to people who were unable to afford them, especially during the winter season. The initiative was a success, and it brought smiles to the faces of many individuals who were struggling to make ends meet. </p>

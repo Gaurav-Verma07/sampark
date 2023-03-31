@@ -8,7 +8,7 @@ export const mockdata = [
   },
   {
     title: 'Past Event: Cloth Distribution organised at IET Lucknow',
-    image:"https://drive.google.com/uc?export=download&id=1LvVkueNKCOxWMZhmENlciL98fFnO1Iyl",
+    image:"https://drive.google.com/uc?export=download&id=1Lrgi5PCH0MKgY6LYyaa3oGkXGiCRyYiK",
       
     date: 'August 27, 2022',
   },
