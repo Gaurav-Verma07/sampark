@@ -89,7 +89,7 @@ const SeekerStats = () => {
         </ThemeIcon>
 
         <Text align="center" weight={700} className={classes.title}>
-          Supplies Provided
+          Supplies Received
         </Text>
         <Text color="dimmed" align="center" size="sm">
           20 books and many more

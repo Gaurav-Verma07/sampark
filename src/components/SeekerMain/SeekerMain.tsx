@@ -78,8 +78,16 @@ const SeekerMain = () => {
             <tr>
               <td className={classes.tableRow}>
                 <Group spacing="sm" position="apart">
-                  <Text size="md">Name</Text>
-                  <Text size="md">Raju Rastogi</Text>
+                  <Text size="md">Name of NGO/slum</Text>
+                  <Text size="md">The Smile Foundation</Text>
+                </Group>
+              </td>
+            </tr>
+            <tr>
+              <td className={classes.tableRow}>
+                <Group spacing="sm" position="apart">
+                  <Text size="md">Name of representative</Text>
+                  <Text size="md">Rishabh Jain</Text>
                 </Group>
               </td>
             </tr>
@@ -98,14 +106,7 @@ const SeekerMain = () => {
                 </Group>
               </td>
             </tr>
-            <tr>
-              <td>
-                <Group spacing="sm" position="apart">
-                  <Text size="md">College</Text>
-                  <Text size="md">Imperial College of Engineering</Text>
-                </Group>
-              </td>
-            </tr>
+           
             <tr>
               <td>
                 <Group spacing="sm" position="apart">
@@ -118,7 +119,7 @@ const SeekerMain = () => {
               <td>
                 <Group spacing="sm" position="apart">
                   <Text size="md">Email Address:</Text>
-                  <Text size="md">raju@gmail.com</Text>
+                  <Text size="md">rishabh@gmail.com</Text>
                 </Group>
               </td>
             </tr>
