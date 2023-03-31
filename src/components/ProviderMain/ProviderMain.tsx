@@ -52,11 +52,9 @@ const ProviderMain = () => {
     const responseData = Object.values(response.val());
     console.log(responseData);
     const userMail: any = JSON.parse(localStorage.getItem('email') || '');
-    console.log(userMail);
     const user: any = responseData.filter(
-      (el: any) => el.Email === 'sample@gmail.com',
+      (el: any) => el.Email === userMail,
     );
-    console.log(user);
     setuserData(user[0]);
   };
 
