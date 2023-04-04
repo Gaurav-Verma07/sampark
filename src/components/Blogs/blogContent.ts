@@ -17,7 +17,7 @@ export const data = [
     
     <h3 class= "blog__subHead">Task 1:</h3>
     <p class= "blog__text">Health,sanitation and other requirements for the needy
-    The first step is data collection.This will be done by NGOs/social welfare organisations.Their agents will be visiting slum areas and collecting data about the requirements like general healthcare,hygiene,stationary items etc. with the required number of each item.This will be stored in the form of google spreadsheet which will be updated in firebase database then.
+    The first step is data collection to be done by our volunteers visiting slum areas and collecting data about the requirements like general healthcare,hygiene,stationary items etc. with the required number of each item.This will be stored in the form of google spreadsheet which will be updated in firebase database then.
     In the second step, the NGOs/social welfare organisations will be getting the required items through the funds which will be collected by the Sampark website.
     The final step is distributing the items to the needy(may take help of nearest college team with item distribution).</p>
     
