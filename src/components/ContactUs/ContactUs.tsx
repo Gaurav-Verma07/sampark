@@ -110,8 +110,7 @@ export function ContactUs() {
           </div>
           <Space h="md" />
           <div className="map_contactUs">
-            <IconMapPins color="#fff" /> IET LUCKNOW Sitapur Road
-            Lucknow
+            <IconMapPins color="#fff" /> IET LUCKNOW Sitapur Road Lucknow
           </div>
         </Box>
         <div className={classes.form}>

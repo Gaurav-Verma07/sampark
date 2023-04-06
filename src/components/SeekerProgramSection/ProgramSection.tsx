@@ -1,4 +1,4 @@
-import { createStyles, Image, Card, Text, Group, Button} from '@mantine/core';
+import { createStyles, Image, Card, Text, Group, Button } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import { IconStar } from '@tabler/icons';
 
@@ -79,8 +79,9 @@ export default function ProgramSection() {
       </Group>
 
       <Text fz="sm" c="dimmed" mt="sm">
-        Relax, rejuvenate and unplug in this unique contemporary Birdbox. Feel close to nature in
-        ultimate comfort. Enjoy the view of the epic mountain range of Blegja and the Førdefjord.
+        Relax, rejuvenate and unplug in this unique contemporary Birdbox. Feel
+        close to nature in ultimate comfort. Enjoy the view of the epic mountain
+        range of Blegja and the Førdefjord.
       </Text>
 
       <Group position="apart" mt="md">

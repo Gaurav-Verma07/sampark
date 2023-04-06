@@ -106,7 +106,7 @@ const SeekerMain = () => {
                 </Group>
               </td>
             </tr>
-           
+
             <tr>
               <td>
                 <Group spacing="sm" position="apart">

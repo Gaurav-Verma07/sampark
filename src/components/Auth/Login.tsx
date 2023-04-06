@@ -54,7 +54,7 @@ const Auth = () => {
         .then((snapshot: any) => {
           if (snapshot.exists()) {
             const userData = snapshot.val();
-            navigate(`/${userData?.role}/home`);
+            navigate("provider/home");
           } else {
             console.log('No data available');
           }

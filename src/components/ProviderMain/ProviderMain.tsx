@@ -52,9 +52,7 @@ const ProviderMain = () => {
     const responseData = Object.values(response.val());
     console.log(responseData);
     const userMail: any = JSON.parse(localStorage.getItem('email') || '');
-    const user: any = responseData.filter(
-      (el: any) => el.Email === userMail,
-    );
+    const user: any = responseData.filter((el: any) => el.Email === userMail);
     setuserData(user[0]);
   };
 

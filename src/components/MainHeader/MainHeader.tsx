@@ -3,7 +3,6 @@ import { useDisclosure } from '@mantine/hooks';
 import { NavLink } from 'react-router-dom';
 import useStyles from './styles';
 
-
 const MainHeader = () => {
   const [opened, { toggle }] = useDisclosure(false);
   const { classes } = useStyles();

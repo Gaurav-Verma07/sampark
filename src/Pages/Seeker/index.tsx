@@ -12,7 +12,7 @@ const Seeker = () => {
   return (
     <AppShell
       padding="md"
-      navbar={<HomeNavbar/>}
+      navbar={<HomeNavbar />}
       header={<MainHeader />}
       styles={(theme) => ({
         main: {
@@ -26,7 +26,7 @@ const Seeker = () => {
       <Routes>
         {/* <Route path="/*" element={<ProviderMain />} /> */}
         <Route path="home" element={<SeekerMain />} />
-        <Route path="program" element={<ProgramSection/>} />
+        <Route path="program" element={<ProgramSection />} />
         {/* <Route path="team" element={<ProviderCollegeTeam />} /> */}
         {/* <Route path="assignments" element={<Assignments />} /> */}
       </Routes>
