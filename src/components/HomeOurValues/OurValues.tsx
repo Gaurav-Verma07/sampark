@@ -24,22 +24,15 @@ export function OurValues() {
       <Container my="md">
         <Grid>
           <Grid.Col xs={4} className={cx('grid-col', classes.grid)}>
-            <Title order={2}>INTERCONNECTION</Title>
+            <Title order={2}>Empowerment</Title>
             <Text fz="xs" color="teal">
-              Our liberty is bound together. No person, community, or ecosystem
-              exists in isolation, which means we need each other, and we need
-              to learn from each other. It also means the safety and wellbeing
-              of people are inextricably linked to the safety and wellbeing of
-              our natural world.
+            We prioritize empowering individuals and communities to take control of their own lives and work towards positive change.
             </Text>
           </Grid.Col>
           <Grid.Col className="grid-col" xs={8}>
-            <Title order={2}>INTEGRITY</Title>
+            <Title order={2}>Collaboration</Title>
             <Text>
-              We hold ourselves to a high standard. We are committed to being
-              fair, objective, and proactively transparent in our decisions and
-              behaviors. We honor our commitments and doing the right thing,
-              even when no one is looking.
+            Value of collaboration with other organizations and stakeholders to achieve shared goals and maximize impact is very important to us.
             </Text>
           </Grid.Col>
           <Grid.Col className="grid-col" xs={3}>
@@ -51,12 +44,9 @@ export function OurValues() {
             </Text>
           </Grid.Col>
           <Grid.Col className="grid-col" xs={3}>
-            <Title order={2}>Heading</Title>
+            <Title order={2}>Community development</Title>
             <Text>
-              Everyone deserves the safety and opportunity to reach their full
-              potential. In service to our mission, we call out and address
-              structural violence and oppression within and outside of our
-              organization.
+            Supporting the development of needy communities through education, training, and other initiatives is our utmost goal.
             </Text>
           </Grid.Col>
           <Grid.Col className="grid-col" xs={6}>

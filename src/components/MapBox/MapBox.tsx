@@ -12,7 +12,7 @@ import Map, {
 const cityData = [
   {
     type: 'Seeker',
-    image: '',
+    image: 'https://drive.google.com/uc?export=download&id=1LxlU3X8-1WH4TLDM4YSP9x21g4HVjggU',
     description: 'Mohibullapur slum area',
     latitude: 26.911654994184758,
     longitude: 80.93917480506053,
