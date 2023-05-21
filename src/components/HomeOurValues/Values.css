@@ -9,11 +9,18 @@
   flex-direction: column;
   margin: 2rem;
   font-family: 'Golos Text', sans-serif;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 .values-box-1 {
   display: flex;
   flex-direction: row;
-  margin: 3rem 7rem 3rem 7rem;
+  margin: 5rem 7rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+.values-box-1:hover{
+  transform: scale(1.05);
 }
 .values-box-2 {
   display: flex;
@@ -26,11 +33,26 @@
 .values-content {
   padding: 1rem 2rem 2rem 2rem;
   margin: 0 1rem;
-  background-color: rgb(64 70 76);
   border-radius: 1rem;
-  color: aliceblue;
+  color: white;
+  text-shadow: 0 0 1px black;
 }
 
+.empowerment-block{
+  background: #004369;
+}
+.values-content p{
+  padding-top: 4px;
+  font-weight: 500;
+}
+
+.collaboration-block{
+  background: #F08A5D;
+}
+
+.growth-block{
+  background: #01949A;
+}
 @media only screen and (max-width: 1350px) {
   .values-box-2 {
     margin: 0 12rem 0 12rem;

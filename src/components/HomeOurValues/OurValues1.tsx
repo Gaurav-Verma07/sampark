@@ -7,14 +7,14 @@ function OurValues1() {
         <h1 className="values-heading">OUR VALUES</h1>
         <hr />
         <div className="values-box-1">
-          <div className="values-content">
+          <div className="values-content empowerment-block">
             <h1>Empowerment</h1>
             <hr />
             <p>
             We prioritize empowering individuals and communities to take control of their own lives and work towards positive change.
             </p>
           </div>
-          <div className="values-content">
+          <div className="values-content collaboration-block">
             <h1>Collaboration</h1>
             <hr />
             <p>
@@ -22,7 +22,7 @@ function OurValues1() {
             </p>
           </div>
 
-          <div className="values-content">
+          <div className="values-content growth-block">
             <h1>Growth</h1>
             <hr />
             <p>
