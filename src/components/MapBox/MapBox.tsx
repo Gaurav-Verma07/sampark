@@ -74,15 +74,18 @@ const MapBox = () => {
     <Paper
       m={25}
       sx={{
-        height: '80vh',
+        height: '90vh',
         display: 'flex',
-        justifyContent: 'space-around',
-        alignItems: 'left',
+        direction:'row',
+        flexWrap:'wrap',
+        justifyContent: 'centre',
+        alignItems: 'center',
       }}
     >
       <Card
-        sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column' }}
-        w="50%"
+        sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column',minWidth:"360px",maxWidth:"50%" }}
+       
+        
       >
         <Title order={1} weight={300}>
           We provide assistanace. Register your NGO/orphanage at Sampark.
@@ -119,7 +122,7 @@ const MapBox = () => {
         }}
         style={{
           width: '500px',
-          height: '100%',
+          height: '60%',
           borderRight: '10px',
         }}
         mapStyle="mapbox://styles/mapbox/dark-v9"
