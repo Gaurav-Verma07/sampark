@@ -1,0 +1,39 @@
+name: Vite Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  NODE_VERSION: 18.16.0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Vite project
+        run: npm run build
+
+      # Add more steps as needed (e.g., running tests, deploying, etc.)
+
+      - name: Deploy to production
+        # Use the repository variables here
+        run: |
+          echo "VITE_FIREBASE_API_KEY=$VITE_FIREBASE_API_KEY"
+          # Your deployment commands using the repository variables
