@@ -13,7 +13,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
@@ -28,12 +28,8 @@ jobs:
         run: npm ci
 
       - name: Build Vite project
-        run: npm run build
-
-      # Add more steps as needed (e.g., running tests, deploying, etc.)
-
-      - name: Deploy to production
-        # Use the repository variables here
+        env:
+          VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
         run: |
-          echo "VITE_FIREBASE_API_KEY=$VITE_FIREBASE_API_KEY"
-          # Your deployment commands using the repository variables
+          npm run build
+          # You can access the repository variables in your Vite project as process.env.API_KEY and process.env.API_SECRET
