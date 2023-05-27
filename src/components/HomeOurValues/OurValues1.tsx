@@ -7,24 +7,24 @@ function OurValues1() {
         <h1 className="values-heading">OUR VALUES</h1>
         <hr />
         <div className="values-box-1">
-          <div className="values-content fade-in-image">
+          <div className="values-content empowerment-section">
             <h1>Empowerment</h1>
-            <hr />
+            {/* <hr /> */}
             <p>
             We prioritize empowering individuals and communities to take control of their own lives and work towards positive change.
             </p>
           </div>
-          <div className="values-content fade-in-image">
+          <div className="values-content collab-section">
             <h1>Collaboration</h1>
-            <hr />
+            {/* <hr /> */}
             <p>
             Value of collaboration with other organizations and stakeholders to achieve shared goals and maximize impact is very important to us.
             </p>
           </div>
 
-          <div className="values-content fade-in-image">
+          <div className="values-content growth-section">
             <h1>Growth</h1>
-            <hr />
+            {/* <hr /> */}
             <p>
             The most effective solutions to violence and exploitation will be
               crafted by a diverse and collaborative community, with those most
