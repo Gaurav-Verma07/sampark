@@ -1,0 +1,17 @@
+
+version: "3.3"
+
+services:
+  emulator:
+    image: spine3/firebase-emulator
+    build: .
+    environment:
+      ENABLE_UI: true
+      GCP_PROJECT: demo-sampark
+    ports:
+      - 5001:5001
+      - 9000:9000
+      - 8080:8080
+      - 8085:8085
+      - 5000:5000
+      - 4000:4000
