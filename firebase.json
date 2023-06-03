@@ -1,22 +1,4 @@
 {
-    "database": {
-      "rules": "database.rules.json"
-    },
-    "hosting": {
-      "target": "staging",
-      "public": "dist/web-ui",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
-      ]
-    },
     "emulators": {
       "database": {
         "port": "5000",
@@ -34,12 +16,8 @@
         "port": "9099",
         "host": "0.0.0.0"
       },
-      "hosting": {
-        "port": "50033",
-        "host": "0.0.0.0"
-      },
       "storage": {
-        "port": "9199",
+        "port": "9000",
         "host": "0.0.0.0"
       }
     }
