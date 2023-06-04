@@ -48,7 +48,7 @@ const MainBlogs = () => {
   ));
 
   return (
-    <Paper m={20} px={70} mb={70}>
+    <Paper m={20} px={70} mb={70}  pt={20}>
       <Box>
         <Title
           order={3}
