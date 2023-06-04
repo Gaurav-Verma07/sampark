@@ -5,7 +5,7 @@ function OurValues1() {
     <div id="values">
       <div className="values-container">
         <h1 className="values-heading">OUR VALUES</h1>
-        <hr />
+        
         <div className="values-box-1">
           <div className="values-content empowerment-section">
             <h1>Empowerment</h1>

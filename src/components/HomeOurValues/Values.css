@@ -10,7 +10,6 @@
   flex-direction: column;
   margin: 2rem;
   font-family: 'Golos Text', sans-serif;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 .values-box-1 {
   display: flex;
