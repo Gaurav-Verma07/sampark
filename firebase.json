@@ -1,0 +1,24 @@
+{
+    "emulators": {
+      "database": {
+        "port": "5000",
+        "host": "0.0.0.0"
+      },
+      "ui": {
+        "port": "4000",
+        "host": "0.0.0.0"
+      },
+      "firestore": {
+        "port": "8080",
+        "host": "0.0.0.0"
+      },
+      "auth": {
+        "port": "9099",
+        "host": "0.0.0.0"
+      },
+      "storage": {
+        "port": "9000",
+        "host": "0.0.0.0"
+      }
+    }
+  }

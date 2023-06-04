@@ -21,9 +21,26 @@
 
 A social platform to connect NGOs and orphanage to potential social suppliers including schools and colleges.
 
+## Installation
+### Using Docker-Compose
+Simply run
+```
+docker-compose up
+```
 
-## Installation 
-To run the project locally:
+this will set up firebase emulator along with the application in development environment.
+
+---
+
+### Local Setup
+**Firebase Emulator Setup**
+To setup the firebase emulator, run:
+```
+make emulator
+```
+
+**Application Setup**
+Then run the project locally by:
 
 1. Install all the required dependencies using `npm install`.
 2. Run the program locally using `npm run dev`.
