@@ -1,13 +1,6 @@
 import { AspectRatio, Button, Card, Paper, Text, Title } from '@mantine/core';
 import { useMemo, useState } from 'react';
-import Map, {
-  FullscreenControl,
-  GeolocateControl,
-  Marker,
-  NavigationControl,
-  Popup,
-  ScaleControl,
-} from 'react-map-gl';
+import Map, { FullscreenControl, GeolocateControl, Marker, NavigationControl, Popup, ScaleControl } from 'react-map-gl';
 
 const cityData = [
   {
@@ -80,10 +73,7 @@ const MapBox = () => {
         alignItems: 'left',
       }}
     >
-      <Card
-        sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column' }}
-        w="50%"
-      >
+      <Card sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column' }} w="50%">
         <Title order={1} weight={300}>
           We provide assistanace. Register your NGO/orphanage at Sampark.
         </Title>
@@ -121,6 +111,7 @@ const MapBox = () => {
           width: '500px',
           height: '100%',
           borderRight: '10px',
+          boxShadow: '0px 4px 24px 0px #0909091A',
         }}
         mapStyle="mapbox://styles/mapbox/dark-v9"
         mapboxAccessToken={import.meta.env.VITE_MAPBOX_ACCESS_TOKEN || ''}
