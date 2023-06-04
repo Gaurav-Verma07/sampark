@@ -1,6 +1,7 @@
 .values-heading {
   margin: 2rem 0 1rem 0;
-  font-size: 3rem;
+  font-size: 3.2rem;
+  font-weight: bold;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -13,7 +14,7 @@
 .values-box-1 {
   display: flex;
   flex-direction: row;
-  margin: 3rem 7rem 3rem 7rem;
+  margin: 3rem 7rem;
 }
 .values-box-2 {
   display: flex;
@@ -22,13 +23,51 @@
 }
 .values-content p {
   margin-top: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 450;
 }
 .values-content {
-  padding: 1rem 2rem 2rem 2rem;
-  margin: 0 1rem;
-  background-color: rgb(64 70 76);
+  padding: 1rem 2rem 1.5rem 2rem;
+  margin: 0 1.5rem;
+  /* background-color: rgb(64 70 76); */
   border-radius: 1rem;
-  color: aliceblue;
+  color: white;
+}
+
+.empowerment-section{
+  background: #FF69B4;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+  margin-right: 25px;
+}
+.empowerment-section:hover{
+  animation:  scaleAnimation 2s ease-in-out forwards;
+}
+
+.collab-section{
+  background: #FFB52E;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+  margin: 0 10px;
+}
+.collab-section:hover{
+  animation:  scaleAnimation 2s ease-in-out forwards;
+}
+.growth-section{
+  background: #6ECB5A;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+.growth-section:hover{
+  animation:  scaleAnimation 2s ease-in-out forwards;
+}
+@keyframes scaleAnimation {
+  0% {
+    transform: scale(1); 
+  }
+  50% {
+    transform: scale(1.05); 
+  }
+  100% {
+    transform: scale(1); 
+  }
 }
 
 @media only screen and (max-width: 1350px) {
