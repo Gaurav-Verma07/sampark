@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import { Navbar, Group, Code } from '@mantine/core';
 import {
   IconSettings,
