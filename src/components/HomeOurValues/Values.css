@@ -29,7 +29,8 @@
 .values-content {
   padding: 1rem 2rem 1.5rem 2rem;
   margin: 0 1.5rem;
-  /* background-color: rgb(64 70 76); */
+  width: 350px;
+  height: 180px;
   border-radius: 1rem;
   color: white;
 }
@@ -74,22 +75,36 @@
   .values-box-2 {
     margin: 0 12rem 0 12rem;
   }
-}
-@media only screen and (max-width: 1100px) {
-  .values-box-2 {
-    margin: 0 7rem 0 7rem;
+  .values-content {
+    min-width: 240px;
+    height: 200px;
   }
   .values-box-1 {
-    margin: 3rem 5rem 3rem 5rem;
+    margin: 3rem 3rem;
+  }
+}
+@media only screen and (max-width: 1181px) {
+  .values-box-2 {
+    margin: 0 5rem 0 5rem;
+  }
+  .values-box-1 {
+    margin: 3rem 0rem 3rem 0rem;
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1040px) {
   .values-box-1 {
-    margin: 3rem 1rem 3rem 1rem;
+    margin: 3rem 0rem 3rem 0rem;
+  }
+  .values-box-2 {
+    margin: 0 2rem 0 2rem;
+  }
+  .values-content {
+    min-width: 220px;
+    height: 220px;
   }
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 920px) {
   .values-box-1 {
     flex-direction: column;
     margin: 3rem 0 0 0;
@@ -98,20 +113,26 @@
     margin: 2rem;
   }
   .values-content {
-    margin: 0 0 2rem 0;
+    margin: 0 3rem 2rem 2rem;
+    width: auto;
+    height: 100px;
   }
   .values-content-2 {
     margin-left: 2rem;
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 700px) {
   .values-box-2 {
     flex-direction: column;
     margin: 0;
   }
   .values-content-2 {
     margin-left: 0rem;
+  }
+  .values-content {
+    width: auto;
+    height: auto;
   }
 }
 

@@ -1,0 +1,33 @@
+.title{
+    margin-bottom: 40px;
+    font-size: 50px;
+    margin-left: 30px;
+}
+.carousell{
+    margin-left: 30px;
+}
+
+@media only screen and (max-width: 920px) {
+    .carousell{
+        margin-left: 0px;
+    }
+    .imgc{
+        width: 200px;
+    }
+  }
+  
+@media only screen and (max-width: 540px) {
+    .carousell{
+        margin-left: 0px;
+    }
+    .imgc{
+        width: 350px;
+    }
+    .title{
+        margin-bottom: 40px;
+        font-size: 30px;
+        margin-left: 0px;
+        size: 80px;
+    }
+  }
+  
