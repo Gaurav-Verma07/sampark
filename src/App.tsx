@@ -7,12 +7,14 @@ import Home from './Pages/Home';
 import Provider from './Pages/Provider';
 import Seeker from './Pages/Seeker';
 import Blogs from './components/Blogs/Blogs';
+import AllBlogs from './components/Blogs/AllBlogs';
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/blogs" element={<AllBlogs />} />
         <Route path="/blogs/:id" element={<Blogs />} />
         <Route path="/login" element={<AuthenticationForm />} />
         <Route path="/register" element={<RegisterPage />} />

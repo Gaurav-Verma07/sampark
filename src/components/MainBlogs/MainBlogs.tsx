@@ -48,7 +48,7 @@ const MainBlogs = () => {
   ));
 
   return (
-    <Paper m={20} px={70} mb={70}  pt={20}>
+    <Paper m={20} px={70} mb={70} pt={20}>
       <Box>
         <Title
           order={3}
@@ -56,7 +56,11 @@ const MainBlogs = () => {
           tt="capitalize"
           weight="400"
           color="teal"
-          align="left"
+          align="center"
+          style={{ cursor: 'pointer', marginBottom: '2%' }}
+          // component="a"
+          // href="/blogs"
+          onClick={() => navigate('/blogs')}
         >
           Read more about our work through our blogs...
         </Title>
