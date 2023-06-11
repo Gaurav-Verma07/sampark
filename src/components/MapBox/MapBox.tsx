@@ -78,8 +78,8 @@ const MapBox = () => {
       <Card 
         sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column',minWidth:"360px",maxWidth:"50%" }} 
       >
-        <Title order={1} weight={300} >
-          We provide assistanace. Register your NGO/orphanage at Sampark.
+        <Title order={1} weight={300}>
+          We provide assistance. Register your NGO/orphanage at Sampark.
         </Title>
         <Text weight={500} mb={20}>
           Fill out the given google form, Our team will soon connect with you
