@@ -8,7 +8,7 @@ import HomeHeader from '../../components/HomeHeader/HomeHeader';
 import useStyles from './styles';
 import MapBox from '../../components/MapBox/MapBox';
 import ImageGallery from '../../components/ImageGallery/ImageGallery';
-
+import Faq from "../../components/Faq/Faq";
 function Home() {
   const { classes } = useStyles();
   return (
@@ -22,6 +22,7 @@ function Home() {
       <MapBox />
       <Divider m={20} mx={70} size="xs" />
       <MainBlogs />
+      <Faq/>
       <ContactUs />
     </div>
   );

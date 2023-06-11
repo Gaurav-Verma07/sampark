@@ -20,7 +20,7 @@ const useStyles = createStyles((theme) => ({
     borderTopLeftRadius: 0,
     borderTopWidth: 0,
     overflow: 'hidden',
-
+    marginRight:'-500px',
     [theme.fn.largerThan('sm')]: {
       display: 'none',
     },
@@ -36,12 +36,15 @@ const useStyles = createStyles((theme) => ({
   links: {
     [theme.fn.smallerThan('sm')]: {
       display: 'none',
+     
     },
   },
 
   burger: {
     [theme.fn.largerThan('sm')]: {
       display: 'none',
+      color:'white',
+      fontWeight:'bolder',
     },
   },
 

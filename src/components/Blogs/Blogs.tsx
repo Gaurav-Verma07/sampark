@@ -17,6 +17,7 @@ import { data } from './blogContent';
 import './blogs.css';
 
 const useStyles = createStyles((theme) => ({
+
   header: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -46,9 +47,9 @@ const Blogs = () => {
 
   return (
     <>
-      <Header height={80} mb={50}>
+      <Header height={200} mb={50}>
         <Container className={classes.header}>
-          <Image src={SamparkLogo} height={100} width={100} />
+          <Image src={SamparkLogo} height={80} width={100} />
         </Container>
       </Header>
 

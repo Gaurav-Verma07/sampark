@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import { Navbar, Group, Code } from '@mantine/core';
 import {
   IconSettings,
@@ -57,7 +56,7 @@ const HomeNavbar = () => {
   };
 
   return (
-    <Navbar height={700} width={{ sm: 300 }} p="md">
+    <Navbar height={7000} width={{ sm: 300 }} p="md">
       <Navbar.Section grow>
         <Group className={classes.header}></Group>
         {links}
