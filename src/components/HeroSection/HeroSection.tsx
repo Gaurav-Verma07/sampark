@@ -8,7 +8,7 @@ function HeroSection() {
         <div className="container">
           <h1>SAMPARK</h1>
           <p>
-            We connect slum and orphange kids with local colleges and NGOs to
+            We connect slum and orphanage kids with local colleges and NGOs to
             end poverty.
           </p>
           <button>Donate</button>

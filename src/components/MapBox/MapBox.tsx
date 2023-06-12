@@ -1,14 +1,7 @@
 import { AspectRatio, Button, Card, Paper, Text, Title } from '@mantine/core';
 import { useMemo, useState } from 'react';
-import Map, {
-  FullscreenControl,
-  GeolocateControl,
-  Marker,
-  NavigationControl,
-  Popup,
-  ScaleControl,
-} from 'react-map-gl';
-
+import Map, { FullscreenControl, GeolocateControl, Marker, NavigationControl, Popup, ScaleControl } from 'react-map-gl';
+import './map.css';
 const cityData = [
   {
     type: 'Seeker',
@@ -71,21 +64,22 @@ const MapBox = () => {
   );
 
   return (
-    <Paper
+    <Paper className='cardss'
       m={25}
       sx={{
-        height: '80vh',
+        height: '90vh',
         display: 'flex',
+        flexDirection:'row',
+        flexWrap:'wrap',
         justifyContent: 'space-around',
-        alignItems: 'left',
+        alignItems: 'center',
       }}
     >
-      <Card
-        sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column' }}
-        w="50%"
+      <Card 
+        sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column',minWidth:"360px",maxWidth:"50%" }} 
       >
         <Title order={1} weight={300}>
-          We provide assistanace. Register your NGO/orphanage at Sampark.
+          We provide assistance. Register your NGO/orphanage at Sampark.
         </Title>
         <Text weight={500} mb={20}>
           Fill out the given google form, Our team will soon connect with you
@@ -119,8 +113,9 @@ const MapBox = () => {
         }}
         style={{
           width: '500px',
-          height: '100%',
+          height: '60%',
           borderRight: '10px',
+          boxShadow: '0px 4px 24px 0px #0909091A',
         }}
         mapStyle="mapbox://styles/mapbox/dark-v9"
         mapboxAccessToken={import.meta.env.VITE_MAPBOX_ACCESS_TOKEN || ''}

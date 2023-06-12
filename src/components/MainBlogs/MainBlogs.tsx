@@ -13,6 +13,7 @@ import {
 } from '@mantine/core';
 import { mockdata } from './blogData';
 import useStyles from './styles';
+import './blog.css';
 import Logo from '../../assets/Images/samparklogotransparent.png';
 import { useNavigate } from 'react-router-dom';
 
@@ -48,9 +49,10 @@ const MainBlogs = () => {
   ));
 
   return (
-    <Paper m={20} px={70} mb={70}>
+    <Paper m={20} px={70} mb={70}  pt={20}>
       <Box>
         <Title
+         className='blogtitle'
           order={3}
           py={20}
           tt="capitalize"
