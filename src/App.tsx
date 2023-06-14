@@ -7,11 +7,13 @@ import Home from './Pages/Home';
 import Provider from './Pages/Provider';
 import Seeker from './Pages/Seeker';
 import Blogs from './components/Blogs/Blogs';
+import GoToTop from './components/GoToTopButton/GoToTop';
+
 
 function App() {
   return (
     <div className="App">
-      <Routes>
+      <Routes> 
         <Route path="/" element={<Home />} />
         <Route path="/blogs/:id" element={<Blogs />} />
         <Route path="/login" element={<AuthenticationForm />} />
@@ -20,6 +22,7 @@ function App() {
         <Route path="/provider/*" element={<Provider />} />
         <Route path="/seeker/*" element={<Seeker />} />
       </Routes>
+      <GoToTop />
     </div>
   );
 }
