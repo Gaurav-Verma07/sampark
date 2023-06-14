@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router';
 import { registerUserHandler } from '../../utils/ApiRequests/firebaseAuth';
 
 const useStyles = createStyles(() => {
-  return { main: { margin: '5% auto', width: '100%' } };
+  return { main: { margin: '5% auto', width: '100%',} };
 });
 
 const Register = () => {

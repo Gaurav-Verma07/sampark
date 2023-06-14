@@ -10,6 +10,7 @@ import {
   Text,
   Anchor,
 } from '@mantine/core';
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../utils/firebase';
@@ -18,17 +19,22 @@ const useStyles = createStyles((theme) => ({
     height: '100vh',
     width: '100vw',
     backgroundSize: 'cover',
-    backgroundImage: 'url("../../assets/Images/homeImg.jpg")',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // background: 'rgb(2,0,36)',
+  
+    background: 'linear-gradient(81deg, rgba(2,0,36,1) 0%, rgba(53,158,34,1) 31%, rgba(0,212,255,1) 100%)',
   },
 
   form: {
     borderRight: `1px solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[3]
     }`,
-    height: '100vh',
+    height: '90vh',
     maxWidth: '28rem',
     paddingTop: '5rem',
-
+    
     [theme.fn.smallerThan('sm')]: {
       maxWidth: '100%',
     },
@@ -66,8 +72,11 @@ const Auth = () => {
   };
 
   return (
+    
     <div className={classes.wrapper}>
-      <Paper className={classes.form} radius={0} p={30}>
+  
+      <Paper className={classes.form} radius={0} p={32}>
+      
         <Title order={2} className={classes.title} ta="center" mt="md">
           Welcome to Sampark!
         </Title>
@@ -115,8 +124,11 @@ const Auth = () => {
             Register
           </Anchor>
         </Text>
+        
       </Paper>
+     
     </div>
+    
   );
 };
 

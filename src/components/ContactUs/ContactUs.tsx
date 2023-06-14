@@ -23,7 +23,7 @@ const useStyles = createStyles((theme) => ({
       padding: theme.spacing.xl * 1.5,
     },
   },
-
+ 
   title: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     color: theme.white,
@@ -102,7 +102,7 @@ export function ContactUs() {
           </Text>
 
           <div className="email_contactUS">
-            <IconAt color="#fff" /> Sampark@gmail.com
+            <IconAt color="#fff" /> <a href='mailto:sampark@gmail.com' style={{textDecoration:'none', lineHeight: '1'}}>sampark</a>
           </div>
           <Space h="md" />
           <div className="phone_contactUs">
