@@ -20,6 +20,7 @@ const links: any = [
   { link: '#gallery', label: 'Gallery' },
   { link: '/blogs', label: 'Blogs' },
   { link: '#values', label: 'Values' },
+  {link:'#faq',label:'FAQ'},
   { link: '#contact', label: 'Contact' },
 ];
 
@@ -55,7 +56,7 @@ const HomeHeader = () => {
   return (
     <Header height={HEADER_HEIGHT} className={classes.root} pt={30}>
       <Container className={classes.header}>
-        <Image src={SamparkLogo} height={100} width={100} />
+        <Image  src={SamparkLogo} height={80} width={100} />
         <Group spacing={5} className={classes.links}>
           {items}
           {isLoggedIn}

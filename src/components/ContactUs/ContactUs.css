@@ -1,0 +1,16 @@
+.email_contactUS{
+    display: flex;
+}
+.phone_contactUs{
+    display: flex;
+}
+.map_contactUs{
+    display: flex;
+}
+.icons{
+    margin-right: 7px;
+    transition: transform 0.3s ease-in-out;
+}
+.icons:hover{
+    transform: scale(1.2); 
+}
