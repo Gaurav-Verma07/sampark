@@ -56,13 +56,22 @@ const useStyles = createStyles((theme) => ({
     textDecoration: 'none',
     fontSize: theme.fontSizes.lg,
     fontWeight: 300,
-
+    '&:hover':{
+      border:'2px solid white',
+      borderColor:'transparent',
+      borderBottomColor:'white',
+      transition:'.2s',
+      borderLeft:'none',
+      borderRight:'none',
+      borderTop:'none',
+  
     [theme.fn.smallerThan('sm')]: {
       borderRadius: 0,
       padding: theme.spacing.md,
       color: theme.black,
     },
   },
+},
 }));
 
 export default useStyles;
