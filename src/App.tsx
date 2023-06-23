@@ -7,6 +7,7 @@ import Home from './Pages/Home';
 import Provider from './Pages/Provider';
 import Seeker from './Pages/Seeker';
 import Blogs from './components/Blogs/Blogs';
+import Error from './Pages/Error';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/provider/*" element={<Provider />} />
         <Route path="/seeker/*" element={<Seeker />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );
