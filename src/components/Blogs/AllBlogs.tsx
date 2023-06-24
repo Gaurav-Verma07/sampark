@@ -11,6 +11,7 @@ import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import { data } from './blogContent';
 import './blogs.css';
 import { BlogCard } from './BlogCard';
+import { useState, useEffect } from 'react';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -35,9 +36,39 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+interface bookmarkType {
+  id: number;
+  data: string;
+}
+
 function AllBlogs() {
   const navigate = useNavigate();
   const { classes } = useStyles();
+  const [bookmarks, setBookmarks] = useState<bookmarkType[]>([]);
+
+  const handleAddBookMark = (data: bookmarkType) => {
+    bookmarks.push(data);
+    localStorage.setItem('sampark-bookmarks', JSON.stringify(bookmarks));
+    setBookmarks([...bookmarks]);
+
+  };
+
+  const handleDeleteBookMark = (id: number) => {
+    const savedBookmarks = localStorage.getItem('sampark-bookmarks');
+
+    if (savedBookmarks) {
+      const parsedBookmarks = JSON.parse(savedBookmarks);
+      const updatedBookmarks = parsedBookmarks.filter(
+        (item: { id: number }) => item.id !== id,
+      );
+      console.log(updatedBookmarks);
+      localStorage.setItem(
+        'sampark-bookmarks',
+        JSON.stringify(updatedBookmarks),
+      );
+    }
+
+  };
   return (
     <div>
       <Header height={80} mb={50}>
@@ -72,6 +103,8 @@ function AllBlogs() {
             image={item.image}
             key={index}
             index={index}
+            handleAddBookMark={handleAddBookMark}
+            handleDeleteBookMark={handleDeleteBookMark}
           />
         ))}
       </SimpleGrid>

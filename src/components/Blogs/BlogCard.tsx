@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react';
-import { IconBookmark, IconHeart, IconShare } from '@tabler/icons-react';
+import {
+  IconBookmark,
+  IconHeart,
+  IconShare,
+  IconCheck,
+} from '@tabler/icons-react';
 import {
   Card,
   Image,
@@ -59,10 +64,16 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+interface bookmarkType {
+  id: number;
+  data: string;
+}
 interface ArticleCardProps {
   image: string;
   index: number;
   data: string;
+  handleAddBookMark: (data: bookmarkType) => void;
+  handleDeleteBookMark: (id: number) => void;
 }
 
 export function BlogCard({
@@ -70,6 +81,8 @@ export function BlogCard({
   image,
   index,
   data,
+  handleAddBookMark,
+  handleDeleteBookMark,
   ...others
 }: ArticleCardProps &
   Omit<React.ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
@@ -80,6 +93,38 @@ export function BlogCard({
     rel: 'noopener noreferrer',
   };
   const [blogTitle, setBlogTitle] = useState<string>('');
+  const [isSaved, setIsSaved] = useState<boolean>(false);
+
+  useEffect(() => {
+    const getSavedData = localStorage.getItem('sampark-bookmarks');
+    let bookmarkedData;
+    if (getSavedData) {
+      bookmarkedData = JSON.parse(getSavedData);
+    }
+    console.log(bookmarkedData);
+
+    if (bookmarkedData !== undefined)
+      for (let idx = 0; idx < bookmarkedData.length; idx++) {
+        if (bookmarkedData[idx].id === index) {
+          setIsSaved(true);
+        }
+      }
+  }, []);
+
+  const handleSave = () => {
+    console.log('save clicked: ', index);
+    if (isSaved === true) {
+      console.log('for delete');
+      //to delete a certain bookmark
+      handleDeleteBookMark(index);
+      setIsSaved(false);
+    } else {
+      //to add a certain bookmark
+      const finalData: bookmarkType = { id: index, data: data };
+      handleAddBookMark(finalData);
+      setIsSaved(true);
+    }
+  };
 
   useEffect(() => {
     const element = document.createElement('div');
@@ -98,9 +143,6 @@ export function BlogCard({
       className={classes.card}
       id="blogs"
       {...others}
-      onClick={() => {
-        navigate(`/blogs/${index}`);
-      }}
     >
       <Card.Section className={cx(classes.innerCard)}>
         <a {...linkProps}>
@@ -118,7 +160,15 @@ export function BlogCard({
         4
       </Badge>
 
-      <Text className={classes.title} fw={500} component="a" {...linkProps}>
+      <Text
+        className={classes.title}
+        fw={500}
+        component="a"
+        {...linkProps}
+        onClick={() => {
+          navigate(`/blogs/${index}`);
+        }}
+      >
         {blogTitle}
       </Text>
 
@@ -133,8 +183,12 @@ export function BlogCard({
           <ActionIcon className={classes.action}>
             <IconHeart size="1rem" color={theme.colors.red[6]} />
           </ActionIcon>
-          <ActionIcon className={classes.action}>
-            <IconBookmark size="1rem" color={theme.colors.yellow[7]} />
+          <ActionIcon className={classes.action} onClick={() => handleSave()}>
+            {isSaved ? (
+              <IconCheck size="1rem" color={theme.colors.yellow[7]} />
+            ) : (
+              <IconBookmark size="1rem" color={theme.colors.yellow[7]} />
+            )}
           </ActionIcon>
           <ActionIcon className={classes.action}>
             <IconShare size="1rem" />
