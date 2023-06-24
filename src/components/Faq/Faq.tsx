@@ -29,7 +29,7 @@ export default function Faq() {
   return (
     <Container size="sm" className="wrapper" id="faq">
       <Title align="center" className="title">
-        Frequently Asked Questions
+        FAQs
       </Title>
 
       {placeholder.map((item, index) => (
