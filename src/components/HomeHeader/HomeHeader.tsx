@@ -18,7 +18,7 @@ const HEADER_HEIGHT = '5rem';
 
 const links: any = [
   { link: '#gallery', label: 'Gallery' },
-  { link: '#blogs', label: 'Blogs' },
+  { link: '/blogs', label: 'Blogs' },
   { link: '#values', label: 'Values' },
   {link:'#faq',label:'FAQ'},
   { link: '#contact', label: 'Contact' },
