@@ -1,4 +1,5 @@
 import { getDatabase, ref, child, get } from 'firebase/database';
+import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import {
   Paper,
   createStyles,
@@ -8,6 +9,7 @@ import {
   Button,
   Title,
   Text,
+  Image,
   Anchor,
 } from '@mantine/core';
 import { useState } from 'react';
@@ -38,6 +40,10 @@ const useStyles = createStyles((theme) => ({
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
   },
+  series:{
+    display: 'flex',
+    justifyContent: 'space-around'
+  }
 }));
 
 const Auth = () => {
@@ -68,9 +74,10 @@ const Auth = () => {
   return (
     <div className={classes.wrapper}>
       <Paper className={classes.form} radius={0} p={30}>
-        <Title order={2} className={classes.title} ta="center" mt="md">
-          Welcome to Sampark!
-        </Title>
+        <div className={classes.series}>
+          <Image  src={SamparkLogo} height={55} width={65} />
+          <h1>Welcome to Sampark!</h1>
+        </div>
         <Text color="dimmed" ta="center" mt="md" mb={50}>
           Let&apos;s make a change.
         </Text>
