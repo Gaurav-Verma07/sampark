@@ -65,23 +65,23 @@ const Auth = () => {
     }
   };
 
-  const handleForgotPassword = () => {
-    if (forgotPasswordEmail) {
-      auth
-        .sendPasswordResetEmail(forgotPasswordEmail)
-        .then(() => {
-          console.log('Password reset email sent successfully');
-          // Provide feedback to the user (e.g., show a success message)
-        })
-        .catch((error) => {
-          console.error('Error sending password reset email:', error);
-          // Provide feedback to the user (e.g., show an error message)
-        });
-    } else {
-      // Handle case when the user did not enter an email address
-      // Provide feedback to the user (e.g., show an error message)
-    }
-  };
+  // const handleForgotPassword = () => {
+  //   if (forgotPasswordEmail) {
+  //     auth
+  //       .sendPasswordResetEmail(forgotPasswordEmail)
+  //       .then(() => {
+  //         console.log('Password reset email sent successfully');
+  //         // Provide feedback to the user (e.g., show a success message)
+  //       })
+  //       .catch((error:any) => {
+  //         console.error('Error sending password reset email:', error);
+  //         // Provide feedback to the user (e.g., show an error message)
+  //       });
+  //   } else {
+  //     // Handle case when the user did not enter an email address
+  //     // Provide feedback to the user (e.g., show an error message)
+  //   }
+  // };
 
   return (
     <div className={classes.wrapper}>
@@ -109,10 +109,12 @@ const Auth = () => {
           mt="md"
           size="md"
         />
-        <Text ta="center" mt="md">
+        <Text ta="right" mt="md" color='#777' size='sm'>
           <Anchor<'a'>
             href="#"
-            weight={700}
+            sx={()=>({
+              color:'#777'
+            })}
             onClick={() => {
               // Add your own logic for handling the Forgot Password link click
               console.log('Forgot Password clicked');
