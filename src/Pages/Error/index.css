@@ -53,9 +53,9 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px 30px;
-    border-color: #089665;
+    border:none;
     color: #1ead14;
-    border-radius: 0px;
+    border-radius: 30px;
     font-weight: bold;
     letter-spacing: 1px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -63,8 +63,8 @@ body {
 
 .btn-outline-primary:hover {
     background-color: #089665;
-    border-color: #089665;
-    color: #141829;
+    color: #fff;
+    cursor: pointer;
 }
 
 @media screen and (max-width:500px) {
