@@ -1,4 +1,4 @@
-import {
+ import {
   Header,
   Container,
   Group,
@@ -15,7 +15,6 @@ import useStyles from './styles';
 import { useNavigate } from 'react-router-dom';
 
 const HEADER_HEIGHT = '5rem';
-
 const links: any = [
   { link: '#gallery', label: 'Gallery' },
   { link: '/blogs', label: 'Blogs' },
