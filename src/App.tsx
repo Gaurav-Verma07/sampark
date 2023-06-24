@@ -1,25 +1,38 @@
 import { Route, Routes } from 'react-router';
 import './App.css';
-import Admin from './Pages/Admin';
-import AuthenticationForm from './Pages/Login';
-import RegisterPage from './Pages/Register';
-import Home from './Pages/Home';
-import Provider from './Pages/Provider';
-import Seeker from './Pages/Seeker';
-import Blogs from './components/Blogs/Blogs';
+import { Suspense, lazy } from 'react';
+import { Oval } from 'react-loader-spinner';
+
+const Admin=lazy(()=>(import('./Pages/Admin')))
+const AuthenticationForm=lazy(()=>(import('./Pages/Login')))
+const RegisterPage=lazy(()=>(import('./Pages/Register')))
+const Home=lazy(()=>(import('./Pages/Home')))
+const Provider=lazy(()=>(import('./Pages/Provider')))
+const Seeker=lazy(()=>(import('./Pages/Seeker')))
+const Blogs=lazy(()=>(import('./components/Blogs/Blogs')))
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/blogs/:id" element={<Blogs />} />
-        <Route path="/login" element={<AuthenticationForm />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/provider/*" element={<Provider />} />
-        <Route path="/seeker/*" element={<Seeker />} />
-      </Routes>
+      <Suspense fallback={<div className='loader'>
+          <Oval
+            height='50'
+            width='50'
+            color='#36d7b7'
+            secondaryColor='grey'
+            ariaLabel='loading'
+          />
+      </div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/blogs/:id" element={<Blogs />} />
+          <Route path="/login" element={<AuthenticationForm />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/provider/*" element={<Provider />} />
+          <Route path="/seeker/*" element={<Seeker />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }
