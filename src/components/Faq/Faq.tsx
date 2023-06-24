@@ -29,13 +29,13 @@ export default function Faq() {
   return (
     <Container size="sm" className="wrapper" id="faq">
       <Title align="center" className="title">
-        Frequently Asked Questions
+        FAQs
       </Title>
 
       {placeholder.map((item, index) => (
         <Accordion variant="separated" key={index}>
           <Accordion.Item className="item" value="reset-password">
-            <Accordion.Control>{item.problem}</Accordion.Control>
+            <Accordion.Control className="item_question">{item.problem}</Accordion.Control>
             <Accordion.Panel className='faq_content' >{item.solution}</Accordion.Panel>
           </Accordion.Item>
         </Accordion>
