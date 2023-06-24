@@ -48,6 +48,7 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+
   link: {
     color: theme.white,
     display: 'block',
@@ -56,21 +57,29 @@ const useStyles = createStyles((theme) => ({
     textDecoration: 'none',
     fontSize: theme.fontSizes.lg,
     fontWeight: 300,
-    '&:hover':{
-      border:'2px solid white',
-      borderColor:'transparent',
-      borderBottomColor:'white',
-      transition:'.2s',
-      borderLeft:'none',
-      borderRight:'none',
-      borderTop:'none',
-  
-    [theme.fn.smallerThan('sm')]: {
-      borderRadius: 0,
-      padding: theme.spacing.md,
-      color: theme.black,
-    },
-  },
+    position:'relative',
+    
+    '&::after':{
+      content:'""',
+     width:'0%',
+     height:'2.1px',
+     backgroundColor:'white',
+     position:'absolute',
+    bottom:'0',
+     left:'0',
+     transition:'.4s',
+    transformOriginl:'left'},
+    
+'&:hover::after': {
+width:'100%'
+
+},
+
+[theme.fn.smallerThan('sm')]: {
+  borderRadius: 0,
+  padding: theme.spacing.md,
+  color: theme.black,
+},
 },
 }));
 

@@ -13,9 +13,12 @@ import { useDisclosure } from '@mantine/hooks';
 import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import useStyles from './styles';
 import { useNavigate } from 'react-router-dom';
+import './HomeHeader.css'
 
 const HEADER_HEIGHT = '5rem';
+ const after  = {
 
+ }
 const links: any = [
   { link: '#gallery', label: 'Gallery' },
   { link: '#blogs', label: 'Blogs' },
