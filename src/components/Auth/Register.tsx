@@ -58,7 +58,6 @@ const Register = () => {
   });
 
   const getResponses = async () => {
-    console.log('Here we are');
     const dbRef = ref(getDatabase());
     const response = await get(
       child(
@@ -67,7 +66,7 @@ const Register = () => {
       ),
     );
     const responseData = response.val();
-    console.log({ responseData });
+
   };
 
   useEffect(() => {
