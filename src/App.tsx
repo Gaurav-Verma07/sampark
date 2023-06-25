@@ -11,7 +11,7 @@ const Provider=lazy(()=>(import('./Pages/Provider')))
 const Seeker=lazy(()=>(import('./Pages/Seeker')))
 const Blogs=lazy(()=>(import('./components/Blogs/Blogs')))
 const AllBlogs=lazy(()=>(import('./components/Blogs/AllBlogs')))
-const Error=lazy(()=>(import('./pages/Error')))
+const Error=lazy(()=>(import('./Pages/Error')))
 
 function App() {
   return (
