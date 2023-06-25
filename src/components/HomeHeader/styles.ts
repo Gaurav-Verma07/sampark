@@ -20,7 +20,7 @@ const useStyles = createStyles((theme) => ({
     borderTopLeftRadius: 0,
     borderTopWidth: 0,
     overflow: 'hidden',
-    marginRight:'-500px',
+    marginRight: '-500px',
     [theme.fn.largerThan('sm')]: {
       display: 'none',
     },
@@ -36,15 +36,14 @@ const useStyles = createStyles((theme) => ({
   links: {
     [theme.fn.smallerThan('sm')]: {
       display: 'none',
-     
     },
   },
 
   burger: {
     [theme.fn.largerThan('sm')]: {
       display: 'none',
-      color:'white',
-      fontWeight:'bolder',
+      color: 'white',
+      fontWeight: 'bolder',
     },
   },
 
@@ -56,6 +55,24 @@ const useStyles = createStyles((theme) => ({
     textDecoration: 'none',
     fontSize: theme.fontSizes.lg,
     fontWeight: 300,
+    position: 'relative',
+
+    '&::after': {
+      content: '""',
+      width: '0%',
+      height: '1px',
+      backgroundColor: 'white',
+      position: 'absolute',
+      bottom: '0',
+      left: '0',
+      marginTop: '2px',
+      transition: '.4s',
+      transformOriginal: 'left',
+    },
+
+    '&:hover::after': {
+      width: '80%',
+    },
 
     [theme.fn.smallerThan('sm')]: {
       borderRadius: 0,

@@ -1,38 +1,37 @@
-import React,{useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './GoToTop.css';
-import {FaArrowUp} from "react-icons/fa"
+import { IconArrowUp } from '@tabler/icons';
+
 const GoToTop = () => {
-  const [isVisible,setIsVisible]=useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
   const goToBtn = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   const listenToScroll = () => {
-
     const heightToHidden = 250;
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
 
-    if(winScroll > heightToHidden){
+    if (winScroll > heightToHidden) {
       setIsVisible(true);
-    }else{
+    } else {
       setIsVisible(false);
     }
-  }
-   
+  };
+
   useEffect(() => {
-    window.addEventListener("scroll",listenToScroll);
-    return () => window.removeEventListener("scroll",listenToScroll);
-  },[]);
-  
+    window.addEventListener('scroll', listenToScroll);
+    return () => window.removeEventListener('scroll', listenToScroll);
+  }, []);
+
   return (
-    
-    <div className='wrapper_btn'>
+    <div className="wrapper_btn">
       {isVisible && (
-        <div className='top-btn' onClick={goToBtn}>
-        <FaArrowUp className='top-btn--icon' />
-      </div>
+        <div className="top-btn" onClick={goToBtn}>
+          <IconArrowUp className="top-btn--icon" />
+        </div>
       )}
-      
     </div>
   );
 };
