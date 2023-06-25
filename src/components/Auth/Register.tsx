@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
 import {
-  Stepper,
   Button,
-  Group,
-  TextInput,
-  PasswordInput,
-  createStyles,
-  Paper,
-  Text,
   Code,
+  Group,
+  Paper,
+  PasswordInput,
+  Stepper,
+  Text,
+  TextInput,
+  createStyles,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { getDatabase, ref, child, get } from 'firebase/database';
+import { child, get, getDatabase, ref } from 'firebase/database';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { registerUserHandler } from '../../utils/ApiRequests/firebaseAuth';
 
@@ -23,7 +23,11 @@ const useStyles = createStyles(() => {
       display: '-ms-flexbox',
       alignItems: 'center',
       justifyContent: 'center',
+      [`@media (max-width: 800px)`]: {
+        width: '90%'
+      },
     },
+  
   };
 });
 

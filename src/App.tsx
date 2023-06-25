@@ -10,6 +10,8 @@ const Home=lazy(()=>(import('./Pages/Home')))
 const Provider=lazy(()=>(import('./Pages/Provider')))
 const Seeker=lazy(()=>(import('./Pages/Seeker')))
 const Blogs=lazy(()=>(import('./components/Blogs/Blogs')))
+const AllBlogs=lazy(()=>(import('./components/Blogs/AllBlogs')))
+const Error=lazy(()=>(import('./pages/Error')))
 
 function App() {
   return (
@@ -25,12 +27,14 @@ function App() {
       </div>}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/blogs" element={<AllBlogs />} />
           <Route path="/blogs/:id" element={<Blogs />} />
           <Route path="/login" element={<AuthenticationForm />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/provider/*" element={<Provider />} />
           <Route path="/seeker/*" element={<Seeker />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </Suspense>
     </div>
