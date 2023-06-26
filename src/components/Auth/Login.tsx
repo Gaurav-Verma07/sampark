@@ -68,6 +68,24 @@ const Auth = () => {
         });
     }
   };
+  // const handleForgotPassword = () => {
+  //   if (forgotPasswordEmail) {
+  //     auth
+  //       .sendPasswordResetEmail(forgotPasswordEmail)
+  //       .then(() => {
+  //         console.log('Password reset email sent successfully');
+  //         // Provide feedback to the user (e.g., show a success message)
+  //       })
+  //       .catch((error:any) => {
+  //         console.error('Error sending password reset email:', error);
+  //         // Provide feedback to the user (e.g., show an error message)
+  //       });
+  //   } else {
+  //     // Handle case when the user did not enter an email address
+  //     // Provide feedback to the user (e.g., show an error message)
+  //   }
+  // };
+
   return (
     <div className={classes.wrapper}>
       <Paper className={classes.form} radius={0} p={75}>
