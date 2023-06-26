@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../../utils/firebase';
 const useStyles = createStyles((theme) => ({
   wrapper: {
+    display: 'flex',
     height: '100vh',
     width: '100vw',
     backgroundSize: 'cover',
@@ -30,6 +31,7 @@ const useStyles = createStyles((theme) => ({
     height: '100vh',
     maxWidth: '28rem',
     paddingTop: '5rem',
+    marginTop: '2em',
 
     [theme.fn.smallerThan('sm')]: {
       maxWidth: '100%',
@@ -39,10 +41,6 @@ const useStyles = createStyles((theme) => ({
   title: {
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-  },
-  series:{
-    display: 'flex',
-    justifyContent: 'space-around'
   }
 }));
 
@@ -70,14 +68,12 @@ const Auth = () => {
         });
     }
   };
-
   return (
     <div className={classes.wrapper}>
-      <Paper className={classes.form} radius={0} p={30}>
-        <div className={classes.series}>
-          <Image  src={SamparkLogo} height={55} width={65} />
-          <h1>Welcome to Sampark!</h1>
-        </div>
+      <Paper className={classes.form} radius={0} p={75}>
+        <Title order={2} className={classes.title} ta="center" mt="md">
+          Welcome to Sampark!
+        </Title>
         <Text color="dimmed" ta="center" mt="md" mb={50}>
           Let&apos;s make a change.
         </Text>
@@ -109,7 +105,6 @@ const Auth = () => {
         >
           Login
         </Button>
-
         <Text ta="center" mt="md">
           Don&apos;t have an account?{' '}
           <Anchor<'a'>
@@ -119,10 +114,13 @@ const Auth = () => {
               navigate('/register');
             }}
           >
-            Register
+           Register
           </Anchor>
         </Text>
       </Paper>
+      <div>
+        <Image src={SamparkLogo} style={{height: '300px', width: '400px',margin: '155px 0 0 175px'}}  />
+      </div>
     </div>
   );
 };
