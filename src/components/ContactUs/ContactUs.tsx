@@ -115,31 +115,42 @@ import {
       const {  email, name,  message } = userData;
   
       if (email && name && message) {
-        
-        const res = await fetch(
-          "https://demo-sampark.asia-southeast1.firebasedatabase.app",
-          {
-            method: "POST",
-           body: JSON.stringify({
-              email,
-              name,
-              message,
-            }),
-          }
-        );
-        if (res) {
-            setUserData({
-              email: "",
-              name: "",
-              message: "",
-            });
-            alert("Data Stored");
-          } else {
-            alert("Error occurred while storing data");
+        let submitable = true;
+        Object.values(error).forEach((err)=>{
+            if(err !== false){
+              submitable = false;
+              return;
+            }
+        })
+        if(submitable){
+          const res = await fetch(
+            "https://demo-sampark.asia-southeast1.firebasedatabase.app",
+            {
+              method: "POST",
+             body: JSON.stringify({
+                email,
+                name,
+                message,
+              }),
+            }
+          );
+          if (res) {
+              setUserData({
+                email: "",
+                name: "",
+                message: "",
+              });
+              alert("Data Stored");
+            } else {
+              alert("Error occurred while storing data");
+            }
+          }else{
+            alert("Please fill valid fields.")
           }
         }else {
-        alert("please fill the datails");
-      }
+          alert("please fill the datails");
+        }
+       
     };
   
     
