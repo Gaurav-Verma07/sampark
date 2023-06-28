@@ -1,0 +1,12 @@
+
+@media only screen and (max-width: 1537px) {
+    .cardss{
+        margin-top: -200px;
+    }
+  }
+  @media only screen and (max-width: 1062px) {
+    .cardss{
+        margin-top: 0px;
+    }
+  }
+  

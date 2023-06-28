@@ -11,7 +11,7 @@ import {
   Space,
 } from '@mantine/core';
 import { IconAt, IconPhone, IconMapPins } from '@tabler/icons';
-
+import './ContactUs.css'
 const useStyles = createStyles((theme) => ({
   wrapper: {
     minHeight: 400,
@@ -27,7 +27,7 @@ const useStyles = createStyles((theme) => ({
   title: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     color: theme.white,
-    lineHeight: 1,
+    lineHeight: 2,
   },
 
   description: {
@@ -79,7 +79,7 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
   },
 }));
 
@@ -102,15 +102,15 @@ export function ContactUs() {
           </Text>
 
           <div className="email_contactUS">
-            <IconAt color="#fff" /> Sampark@gmail.com
+            <IconAt color="#fff" className='icons' /> Sampark@gmail.com
           </div>
           <Space h="md" />
           <div className="phone_contactUs">
-            <IconPhone color="#fff" /> +91 2569751165
+            <IconPhone color="#fff" className='icons' /> +91 2569751165
           </div>
           <Space h="md" />
           <div className="map_contactUs">
-            <IconMapPins color="#fff" /> IET LUCKNOW Sitapur Road Lucknow
+            <IconMapPins color="#fff" className='icons' /> IET LUCKNOW Sitapur Road Lucknow
           </div>
         </Box>
         <div className={classes.form}>
