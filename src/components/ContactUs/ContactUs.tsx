@@ -13,6 +13,7 @@ import {
   import { IconAt, IconPhone, IconMapPins } from '@tabler/icons';
   import './ContactUs.css'
   import { ChangeEvent, useState } from 'react';
+  import validation, {ErrorState} from '../../utils/validation';
   
   const useStyles = createStyles((theme) => ({
     wrapper: {
@@ -83,6 +84,10 @@ import {
       alignItems: 'flex-start',
       justifyContent: 'center',
     },
+    error: {
+      color: "red",
+      fontSize: "16px"
+    }
   }));
   
   export function ContactUs() {
@@ -92,12 +97,15 @@ import {
       name: "",
      message: "",
     });
+    const [error, setError] = useState<ErrorState>({});
   
-    let name, value;
     const postUserData = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
         const { name, value } = event.target;
-
       setUserData({ ...userData, [name]: value });
+      const errorObj = validation[name](value);
+      setError((previous)=>{
+        return {...previous, ...errorObj}
+      })
     };
   
     // connect with firebase
@@ -107,31 +115,42 @@ import {
       const {  email, name,  message } = userData;
   
       if (email && name && message) {
-        
-        const res = await fetch(
-          "https://demo-sampark.asia-southeast1.firebasedatabase.app",
-          {
-            method: "POST",
-           body: JSON.stringify({
-              email,
-              name,
-              message,
-            }),
-          }
-        );
-        if (res) {
-            setUserData({
-              email: "",
-              name: "",
-              message: "",
-            });
-            alert("Data Stored");
-          } else {
-            alert("Error occurred while storing data");
+        let submitable = true;
+        Object.values(error).forEach((err)=>{
+            if(err !== false){
+              submitable = false;
+              return;
+            }
+        })
+        if(submitable){
+          const res = await fetch(
+            "https://demo-sampark.asia-southeast1.firebasedatabase.app",
+            {
+              method: "POST",
+             body: JSON.stringify({
+                email,
+                name,
+                message,
+              }),
+            }
+          );
+          if (res) {
+              setUserData({
+                email: "",
+                name: "",
+                message: "",
+              });
+              alert("Data Stored");
+            } else {
+              alert("Error occurred while storing data");
+            }
+          }else{
+            alert("Please fill valid fields.")
           }
         }else {
-        alert("please fill the datails");
-      }
+          alert("please fill the datails");
+        }
+       
     };
   
     
@@ -175,6 +194,7 @@ import {
              
               classNames={{ input: classes.input, label: classes.inputLabel }}
             />
+         {error.email && <p className={classes.error}>Enter Valid Email.</p>}
             <TextInput
               label="Name"
               placeholder="John Doe"
@@ -184,6 +204,8 @@ import {
               mt="md"
               classNames={{ input: classes.input, label: classes.inputLabel }}
             />
+         {error.name && <p className={classes.error}>Name must be atleast 6 characters long.</p>}
+            
             <Textarea
               required
               label="Your message"
@@ -195,6 +217,7 @@ import {
               onChange={ postUserData}
               classNames={{ input: classes.input, label: classes.inputLabel }}
             />
+         {error.message && <p className={classes.error}>Enter your message within 10 to 100 words</p>}
   
             <Group position="right" mt="md">
               <Button   type="submit" onClick={submitData} className={classes.control} >
