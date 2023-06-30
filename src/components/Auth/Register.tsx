@@ -40,9 +40,11 @@ const Register = () => {
     initialValues: {
       name: '',
       password: '',
+      confirmPassword: '',
       email: '',
     },
-
+     
+    
     validate: (values) => {
       if (active === 0) {
         return {
@@ -54,6 +56,8 @@ const Register = () => {
             values.password.length < 6
               ? 'Password must include at least 6 characters'
               : null,
+              confirmPassword:
+              values.password !== values.confirmPassword ? 'Passwords do not match' : null,      
           email: /^\S+@\S+$/.test(values.email) ? null : 'Invalid email',
         };
       }
@@ -90,6 +94,7 @@ const Register = () => {
     setActive((current) => (current > 0 ? current - 1 : current));
 
   const registerHandler = () => {
+
     registerUserHandler(form.values.email, form.values.password);
     console.log(form.values);
     localStorage.setItem('email', JSON.stringify(form.values.email));
@@ -113,6 +118,12 @@ const Register = () => {
             
             placeholder="Password"
             {...form.getInputProps('password')}
+          />
+          <PasswordInput
+            mt={30}
+            mb={30}
+            placeholder="Confirm Password"
+            {...form.getInputProps('confirmPassword')}
           />
           <TextInput
             mt={30}  mb={30}
