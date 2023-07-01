@@ -1,17 +1,11 @@
 import { useState } from 'react';
-import { Navbar, Group, Code } from '@mantine/core';
+import { Navbar, Group, Container } from '@mantine/core';
 import {
   IconSettings,
-  IconDatabaseImport,
   IconUserCheck,
-  IconNotebook,
+  IconHome2,
   IconSwitchHorizontal,
   IconLogout,
-  IconCalendarStats,
-  IconReceipt,
-  IconIdBadge2,
-  IconHome2,
-  IconUserPlus,
 } from '@tabler/icons';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useStyles from './styles';
@@ -25,7 +19,8 @@ const data = [
 const HomeNavbar = () => {
   const navigate = useNavigate();
   const { classes, cx } = useStyles();
-  const [active, setActive] = useState('Billing');
+  const [active, setActive] = useState('Home');
+  const [expanded, setExpanded] = useState(false);
 
   const links = data.map((item) => {
     return (
@@ -39,16 +34,17 @@ const HomeNavbar = () => {
           event.preventDefault();
           setActive(item.label);
           navigate(`/provider/${item.link}`);
+          setExpanded(false); // Close the mobile menu after clicking a link
         }}
       >
-        <item.icon className={classes.linkIcon} stroke={1.5} />
+        <item.icon className={classes.linkIcon} size={20} strokeWidth={1.5} />
         <span>{item.label}</span>
       </NavLink>
     );
   });
 
   const logOutHandler = () => {
-    const response = confirm('Are you sure you want to LogOut?');
+    const response = window.confirm('Are you sure you want to Log Out?');
     if (response) {
       localStorage.clear();
       navigate('/login');
@@ -56,28 +52,69 @@ const HomeNavbar = () => {
   };
 
   return (
-    <Navbar height={7000} width={{ sm: 300 }} p="md">
-      <Navbar.Section grow>
+    <Navbar
+      shadow="xs"
+      padding={{ xs: 'sm', md: 'md' }}
+      style={{ zIndex: 100 }}
+      mobileMenu={
+        <Container size="xs">
+          <div className={classes.mobileMenuContent}>{links}</div>
+        </Container>
+      }
+    >
+      <Navbar.Section>
         <Group className={classes.header}></Group>
-        {links}
       </Navbar.Section>
 
-      <Navbar.Section className={classes.footer}>
-        <a
-          href="#"
-          className={classes.link}
-          onClick={(event) => event.preventDefault()}
+      <Navbar.Section position="right">
+        <div className={classes.mobileMenuTrigger}>
+          <IconMenu
+            onClick={() => setExpanded(!expanded)}
+            aria-label="Toggle Menu"
+          />
+        </div>
+        <Group
+          position="right"
+          spacing="xs"
+          className={classes.desktopMenu}
+          hidden={expanded}
         >
-          <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
-          <span>Change account</span>
-        </a>
+          {links}
+        </Group>
 
-        <a href="#" className={classes.link} onClick={logOutHandler}>
-          <IconLogout className={classes.linkIcon} stroke={1.5} />
-          <span>Log Out</span>
-        </a>
+        <Group
+          position="right"
+          className={classes.desktopMenu}
+          hidden={!expanded}
+        >
+          <a
+            href="#"
+            className={classes.link}
+            onClick={(event) => {
+              event.preventDefault();
+              setExpanded(false);
+            }}
+          >
+            <IconSwitchHorizontal
+              className={classes.linkIcon}
+              size={20}
+              strokeWidth={1.5}
+            />
+            <span>Change account</span>
+          </a>
+
+          <a href="#" className={classes.link} onClick={logOutHandler}>
+            <IconLogout
+              className={classes.linkIcon}
+              size={20}
+              strokeWidth={1.5}
+            />
+            <span>Log Out</span>
+          </a>
+        </Group>
       </Navbar.Section>
     </Navbar>
   );
 };
+
 export default HomeNavbar;
