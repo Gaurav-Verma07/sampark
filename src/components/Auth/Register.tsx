@@ -1,22 +1,34 @@
-import { useEffect, useState } from 'react';
 import {
-  Stepper,
   Button,
-  Group,
-  TextInput,
-  PasswordInput,
-  createStyles,
-  Paper,
-  Text,
   Code,
+  Group,
+  Paper,
+  PasswordInput,
+  Stepper,
+  Text,
+  TextInput,
+  createStyles,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { getDatabase, ref, child, get } from 'firebase/database';
+import { child, get, getDatabase, ref } from 'firebase/database';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { registerUserHandler } from '../../utils/ApiRequests/firebaseAuth';
 
 const useStyles = createStyles(() => {
-  return { main: { margin: '5% auto', width: '100%' } };
+  return {
+    main: {
+      margin: '8% auto',
+      width: '50%',
+      display: '-ms-flexbox',
+      alignItems: 'center',
+      justifyContent: 'center',
+      [`@media (max-width: 800px)`]: {
+        width: '90%'
+      },
+    },
+  
+  };
 });
 
 const Register = () => {
@@ -83,28 +95,27 @@ const Register = () => {
     localStorage.setItem('email', JSON.stringify(form.values.email));
     navigate(`/provider/home`);
   };
+  const box1 = {
+   
+    boxShadow:
+      ' rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px',
 
+  };
   return (
-    <Paper className={classes.main} radius="md" p="xl" withBorder>
-      <Text color="teal" align="center" pb={20} fz={20} fw={600}>
+    <Paper style={box1} className={classes.main} radius="md" p="xl" withBorder>
+      <Text color="teal" align="center" pb={30} fz={38} fw={600}>
         Register Here:
       </Text>
-      <Stepper active={active} breakpoint="sm">
-        <Stepper.Step label="First step" description="Profile settings">
-          <TextInput
-            label="Name"
-            placeholder="Name"
-            {...form.getInputProps('name')}
-          />
-          <PasswordInput
-            mt="md"
-            label="Password"
+      <Stepper  active={active} breakpoint="sm">
+        <Stepper.Step  mt={20} label="First step" description="Profile settings">
+          <TextInput  mt={30}  mb={30} placeholder="Name" {...form.getInputProps('name')}  />
+          <PasswordInput mt={30}  mb={30}
+            
             placeholder="Password"
             {...form.getInputProps('password')}
           />
           <TextInput
-            mt="md"
-            label="Email"
+            mt={30}  mb={30}
             placeholder="Email"
             {...form.getInputProps('email')}
           />

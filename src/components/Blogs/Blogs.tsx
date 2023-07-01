@@ -7,8 +7,6 @@ import {
   Header,
   Image,
   Paper,
-  Text,
-  Title,
 } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -47,7 +45,7 @@ const Blogs = () => {
 
   return (
     <>
-      <Header height={200} mb={50}>
+      <Header height={100} mb={50}>
         <Container className={classes.header}>
           <Image src={SamparkLogo} height={80} width={100} />
         </Container>

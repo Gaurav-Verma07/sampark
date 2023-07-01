@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getDatabase, ref, child, get } from 'firebase/database';
 import {
   Paper,
@@ -10,9 +12,8 @@ import {
   Text,
   Anchor,
 } from '@mantine/core';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { auth } from '../../utils/firebase';
+
 const useStyles = createStyles((theme) => ({
   wrapper: {
     height: '100vh',
@@ -20,7 +21,6 @@ const useStyles = createStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundImage: 'url("../../assets/Images/homeImg.jpg")',
   },
-
   form: {
     borderRight: `1px solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[3]
@@ -33,7 +33,6 @@ const useStyles = createStyles((theme) => ({
       maxWidth: '100%',
     },
   },
-
   title: {
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
@@ -44,17 +43,18 @@ const Auth = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
   const [details, setDetails] = useState({ name: '', email: '', password: '' });
-  const user: string = localStorage.getItem('user_uid') || '';
+  const [forgotPasswordEmail, setForgotPasswordEmail] = useState('');
+  const user = localStorage.getItem('user_uid') || '';
 
   const submitHandler = () => {
     if (auth.currentUser) {
       localStorage.setItem('email', JSON.stringify(details.email));
       const dbRef = ref(getDatabase());
       get(child(dbRef, `users/${user}`))
-        .then((snapshot: any) => {
+        .then((snapshot) => {
           if (snapshot.exists()) {
             const userData = snapshot.val();
-            navigate("provider/home");
+            navigate('provider/home');
           } else {
             console.log('No data available');
           }
@@ -64,6 +64,24 @@ const Auth = () => {
         });
     }
   };
+
+  // const handleForgotPassword = () => {
+  //   if (forgotPasswordEmail) {
+  //     auth
+  //       .sendPasswordResetEmail(forgotPasswordEmail)
+  //       .then(() => {
+  //         console.log('Password reset email sent successfully');
+  //         // Provide feedback to the user (e.g., show a success message)
+  //       })
+  //       .catch((error:any) => {
+  //         console.error('Error sending password reset email:', error);
+  //         // Provide feedback to the user (e.g., show an error message)
+  //       });
+  //   } else {
+  //     // Handle case when the user did not enter an email address
+  //     // Provide feedback to the user (e.g., show an error message)
+  //   }
+  // };
 
   return (
     <div className={classes.wrapper}>
@@ -91,6 +109,20 @@ const Auth = () => {
           mt="md"
           size="md"
         />
+        <Text ta="right" mt="md" color='#777' size='sm'>
+          <Anchor<'a'>
+            href="#"
+            sx={()=>({
+              color:'#777'
+            })}
+            onClick={() => {
+              // Add your own logic for handling the Forgot Password link click
+              console.log('Forgot Password clicked');
+            }}
+          >
+            Forgot Password?
+          </Anchor>
+        </Text>
         <Checkbox label="Keep me logged in" mt="xl" size="md" />
         <Button
           fullWidth
