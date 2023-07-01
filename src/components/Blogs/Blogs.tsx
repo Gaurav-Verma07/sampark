@@ -45,7 +45,7 @@ const Blogs = () => {
 
   return (
     <>
-      <Header height={200} mb={50}>
+      <Header height={100} mb={50}>
         <Container className={classes.header}>
           <Image src={SamparkLogo} height={80} width={100} />
         </Container>

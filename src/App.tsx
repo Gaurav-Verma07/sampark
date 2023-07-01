@@ -9,6 +9,7 @@ import Seeker from './Pages/Seeker';
 import Blogs from './components/Blogs/Blogs';
 
 import AllBlogs from './components/Blogs/AllBlogs';
+import Error from './Pages/Error';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/provider/*" element={<Provider />} />
         <Route path="/seeker/*" element={<Seeker />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );
