@@ -31,7 +31,6 @@ const useStyles = createStyles((theme, _params, getRef) => {
       padding: `${theme.spacing.xs}px ${theme.spacing.sm}px`,
       borderRadius: theme.radius.sm,
       fontWeight: 500,
-
       '&:hover': {
         backgroundColor:
           theme.colorScheme === 'dark'

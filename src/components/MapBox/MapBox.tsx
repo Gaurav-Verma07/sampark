@@ -1,7 +1,7 @@
 import { AspectRatio, Button, Card, Paper, Text, Title } from '@mantine/core';
 import { useMemo, useState } from 'react';
 import Map, { FullscreenControl, GeolocateControl, Marker, NavigationControl, Popup, ScaleControl } from 'react-map-gl';
-
+import './map.css';
 const cityData = [
   {
     type: 'Seeker',
@@ -64,7 +64,7 @@ const MapBox = () => {
   );
 
   return (
-    <Paper
+    <Paper className='cardss'
       m={25}
       sx={{
         height: '90vh',
@@ -75,13 +75,11 @@ const MapBox = () => {
         alignItems: 'center',
       }}
     >
-      <Card
-        sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column',minWidth:"360px",maxWidth:"50%" }}
-       
-        
+      <Card 
+        sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column',minWidth:"360px",maxWidth:"50%" }} 
       >
         <Title order={1} weight={300}>
-          We provide assistanace. Register your NGO/orphanage at Sampark.
+          We provide assistance. Register your NGO/orphanage at Sampark.
         </Title>
         <Text weight={500} mb={20}>
           Fill out the given google form, Our team will soon connect with you

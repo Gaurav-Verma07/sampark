@@ -6,6 +6,7 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     height: '100%',
+    width:'100%'
   },
 
   links: {
@@ -27,7 +28,6 @@ const useStyles = createStyles((theme) => ({
         : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
-
     '&:hover': {
       cursor: 'pointer',
       backgroundColor:
