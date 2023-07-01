@@ -7,8 +7,6 @@ import {
   Header,
   Image,
   Paper,
-  Text,
-  Title,
 } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons';
 import { useNavigate, useParams } from 'react-router-dom';

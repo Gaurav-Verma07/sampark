@@ -7,6 +7,7 @@ import Home from './Pages/Home';
 import Provider from './Pages/Provider';
 import Seeker from './Pages/Seeker';
 import Blogs from './components/Blogs/Blogs';
+
 import AllBlogs from './components/Blogs/AllBlogs';
 
 function App() {

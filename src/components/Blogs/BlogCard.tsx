@@ -22,7 +22,6 @@ const useStyles = createStyles((theme) => ({
   card: {
     position: 'relative',
     width: '80%',
-    // margin: '1%',
     cursor: 'pointer',
     ...theme.fn.hover({
       transition: 'transform 150ms ease, box-shadow 150ms ease',
@@ -64,25 +63,25 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface bookmarkType {
+interface savedBlogType {
   id: number;
   data: string;
+  image: string;
 }
 interface ArticleCardProps {
   image: string;
   index: number;
   data: string;
-  handleAddBookMark: (data: bookmarkType) => void;
-  handleDeleteBookMark: (id: number) => void;
+  handleAddSaveBlog?: (data: savedBlogType) => void;
+  handleDeleteSavedBlog: (id: number) => void;
 }
 
 export function BlogCard({
-  className,
   image,
   index,
   data,
-  handleAddBookMark,
-  handleDeleteBookMark,
+  handleAddSaveBlog,
+  handleDeleteSavedBlog,
   ...others
 }: ArticleCardProps &
   Omit<React.ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
@@ -93,36 +92,35 @@ export function BlogCard({
     rel: 'noopener noreferrer',
   };
   const [blogTitle, setBlogTitle] = useState<string>('');
-  const [isSaved, setIsSaved] = useState<boolean>(false);
+  const [isSavedBlog, setIsSavedBlog] = useState<boolean>(false);
 
   useEffect(() => {
-    const getSavedData = localStorage.getItem('sampark-bookmarks');
-    let bookmarkedData;
+    const getSavedData = localStorage.getItem('sampark-saved-items');
+    let saveBlogData;
     if (getSavedData) {
-      bookmarkedData = JSON.parse(getSavedData);
+      saveBlogData = JSON.parse(getSavedData);
     }
-    console.log(bookmarkedData);
 
-    if (bookmarkedData !== undefined)
-      for (let idx = 0; idx < bookmarkedData.length; idx++) {
-        if (bookmarkedData[idx].id === index) {
-          setIsSaved(true);
+    if (saveBlogData !== undefined)
+      for (let idx = 0; idx < saveBlogData.length; idx++) {
+        if (saveBlogData[idx].id === index) {
+          setIsSavedBlog(true);
         }
       }
-  }, []);
+  }, [isSavedBlog]);
 
   const handleSave = () => {
-    console.log('save clicked: ', index);
-    if (isSaved === true) {
-      console.log('for delete');
-      //to delete a certain bookmark
-      handleDeleteBookMark(index);
-      setIsSaved(false);
+    if (isSavedBlog === true) {
+      //to delete a certain blog
+      handleDeleteSavedBlog(index);
+      setIsSavedBlog(false);
     } else {
-      //to add a certain bookmark
-      const finalData: bookmarkType = { id: index, data: data };
-      handleAddBookMark(finalData);
-      setIsSaved(true);
+      //to add a certain blog
+      const finalData: savedBlogType = { id: index, data: data, image: image };
+      if (handleAddSaveBlog) {
+        handleAddSaveBlog(finalData);
+        setIsSavedBlog(true);
+      }
     }
   };
 
@@ -184,7 +182,7 @@ export function BlogCard({
             <IconHeart size="1rem" color={theme.colors.red[6]} />
           </ActionIcon>
           <ActionIcon className={classes.action} onClick={() => handleSave()}>
-            {isSaved ? (
+            {isSavedBlog ? (
               <IconCheck size="1rem" color={theme.colors.yellow[7]} />
             ) : (
               <IconBookmark size="1rem" color={theme.colors.yellow[7]} />

@@ -11,7 +11,7 @@ import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import { data } from './blogContent';
 import './blogs.css';
 import { BlogCard } from './BlogCard';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -36,38 +36,37 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface bookmarkType {
+interface SavedBlogType {
   id: number;
   data: string;
+  image: string;
 }
 
 function AllBlogs() {
   const navigate = useNavigate();
   const { classes } = useStyles();
-  const [bookmarks, setBookmarks] = useState<bookmarkType[]>([]);
+  const [savedBlogs, setSavedBlogs] = useState<SavedBlogType[]>([]);
 
-  const handleAddBookMark = (data: bookmarkType) => {
-    bookmarks.push(data);
-    localStorage.setItem('sampark-bookmarks', JSON.stringify(bookmarks));
-    setBookmarks([...bookmarks]);
-
+  const handleAddSaveBlog = (data: SavedBlogType) => {
+    savedBlogs.push(data);
+    localStorage.setItem('sampark-saved-items', JSON.stringify(savedBlogs));
+    setSavedBlogs([...savedBlogs]);
   };
 
-  const handleDeleteBookMark = (id: number) => {
-    const savedBookmarks = localStorage.getItem('sampark-bookmarks');
+  const handleDeleteSavedBlog = (id: number) => {
+    const savedBlogList = localStorage.getItem('sampark-saved-items');
 
-    if (savedBookmarks) {
-      const parsedBookmarks = JSON.parse(savedBookmarks);
-      const updatedBookmarks = parsedBookmarks.filter(
+    if (savedBlogList) {
+      const parsedBlogsData = JSON.parse(savedBlogList);
+      const updatedBlogsData = parsedBlogsData.filter(
         (item: { id: number }) => item.id !== id,
       );
-      console.log(updatedBookmarks);
       localStorage.setItem(
-        'sampark-bookmarks',
-        JSON.stringify(updatedBookmarks),
+        'sampark-saved-items',
+        JSON.stringify(updatedBlogsData),
       );
+      setSavedBlogs(updatedBlogsData);
     }
-
   };
   return (
     <div>
@@ -103,8 +102,8 @@ function AllBlogs() {
             image={item.image}
             key={index}
             index={index}
-            handleAddBookMark={handleAddBookMark}
-            handleDeleteBookMark={handleDeleteBookMark}
+            handleAddSaveBlog={handleAddSaveBlog}
+            handleDeleteSavedBlog={handleDeleteSavedBlog}
           />
         ))}
       </SimpleGrid>
