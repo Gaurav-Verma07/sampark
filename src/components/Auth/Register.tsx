@@ -24,10 +24,9 @@ const useStyles = createStyles(() => {
       alignItems: 'center',
       justifyContent: 'center',
       [`@media (max-width: 800px)`]: {
-        width: '90%'
+        width: '90%',
       },
     },
-  
   };
 });
 
@@ -96,26 +95,31 @@ const Register = () => {
     navigate(`/provider/home`);
   };
   const box1 = {
-   
     boxShadow:
       ' rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px',
-
   };
   return (
     <Paper style={box1} className={classes.main} radius="md" p="xl" withBorder>
       <Text color="teal" align="center" pb={30} fz={38} fw={600}>
         Register Here:
       </Text>
-      <Stepper  active={active} breakpoint="sm">
-        <Stepper.Step  mt={20} label="First step" description="Profile settings">
-          <TextInput  mt={30}  mb={30} placeholder="Name" {...form.getInputProps('name')}  />
-          <PasswordInput mt={30}  mb={30}
-            
+      <Stepper active={active} breakpoint="sm">
+        <Stepper.Step mt={20} label="First step" description="Profile settings">
+          <TextInput
+            mt={30}
+            mb={30}
+            placeholder="Name"
+            {...form.getInputProps('name')}
+          />
+          <PasswordInput
+            mt={30}
+            mb={30}
             placeholder="Password"
             {...form.getInputProps('password')}
           />
           <TextInput
-            mt={30}  mb={30}
+            mt={30}
+            mb={30}
             placeholder="Email"
             {...form.getInputProps('email')}
           />
