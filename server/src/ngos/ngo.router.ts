@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { NgoService } from './ngo.service';
 import { NgoType } from './ngo.interface';
+import { authenticateToken } from '../middleware/auth.middleware';
 
 export const ngoRouter = express.Router();
 interface RequestParams {
@@ -51,7 +52,7 @@ ngoRouter.get(
   },
 );
 
-ngoRouter.post('/create', async (req: Request<RequestBody>, res: Response) => {
+ngoRouter.post('/create',authenticateToken, async (req: Request, res: Response) => {
   try {
     const { ngoInfo } = req.body;
     const ngo = await NgoService.createNgo(ngoInfo);
@@ -63,7 +64,8 @@ ngoRouter.post('/create', async (req: Request<RequestBody>, res: Response) => {
 
 ngoRouter.post(
   '/update/:id',
-  async (req: Request<RequestParams, RequestBody>, res: Response) => {
+  authenticateToken,
+  async (req: Request, res: Response) => {
     try {
       const { ngoInfo } = req.body;
       const { id } = req.params;
@@ -77,12 +79,18 @@ ngoRouter.post(
   },
 );
 
-ngoRouter.post('/delete', async (req: Request<RequestBody>, res: Response) => {
-  try {
-    const { id } = req.body;
-    const ngo = await NgoService.deleteNgo(id);
-    res.status(200).send({ success: true, ngo: ngo });
-  } catch (error) {
-    res.status(500).json({ success: false, message: 'Internal server error' });
-  }
-});
+ngoRouter.post(
+  '/delete',
+  authenticateToken,
+  async (req: Request, res: Response) => {
+    try {
+      const { id } = req.body;
+      const ngo = await NgoService.deleteNgo(id);
+      res.status(200).send({ success: true, ngo: ngo });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ success: false, message: 'Internal server error' });
+    }
+  },
+);

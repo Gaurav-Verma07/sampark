@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { OrphanageService } from './orphanage.service';
 import { OrphanageType } from './orphanage.interface';
+import { authenticateToken } from '../middleware/auth.middleware';
 
 export const orphanageRouter = express.Router();
 
@@ -10,9 +11,10 @@ interface RequestParams {
 }
 
 interface RequestBody {
-  id: string;
+  // id: string;
   orphanageInfo: OrphanageType;
 }
+
 
 orphanageRouter.get('/', async (_, res: Response) => {
   try {
@@ -55,7 +57,8 @@ orphanageRouter.get(
 
 orphanageRouter.post(
   '/create',
-  async (req: Request<RequestBody>, res: Response) => {
+  authenticateToken,
+  async (req: Request, res: Response) => {
     try {
       const { orphangeInfo } = req.body;
       const orphanage = await OrphanageService.createOrphanage(orphangeInfo);
@@ -70,7 +73,8 @@ orphanageRouter.post(
 
 orphanageRouter.post(
   '/update/:id',
-  async (req: Request<RequestParams, RequestBody>, res: Response) => {
+  authenticateToken,
+  async (req: Request, res: Response) => {
     try {
       const { orphanageInfo } = req.body;
       const { id } = req.params;
@@ -89,7 +93,8 @@ orphanageRouter.post(
 
 orphanageRouter.post(
   '/delete',
-  async (req: Request<RequestBody>, res: Response) => {
+  authenticateToken,
+  async (req: Request, res: Response) => {
     try {
       const { id } = req.body;
       const orphanage = await OrphanageService.deleteOrphanage(id);

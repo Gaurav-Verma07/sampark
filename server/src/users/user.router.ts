@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import { UserService } from './user.service';
 import { UserType } from './user.interface';
-
+import { authenticateToken } from '../middleware/auth.middleware';
 export const userRouter = express.Router();
 
 interface RequestParams {
@@ -9,7 +9,7 @@ interface RequestParams {
 }
 
 interface RequestBody {
-  id: string
+  id: string;
   userInfo: UserType;
 }
 
@@ -51,7 +51,7 @@ userRouter.post(
 userRouter.post('/login', async (req: Request<RequestBody>, res: Response) => {
   try {
     const { userInfo } = req.body;
-     await UserService.login(userInfo);
+    await UserService.login(userInfo);
     // if (user === 404) {
     //   res.status(404).json({ message: 'User not found' });
     // }
@@ -68,7 +68,8 @@ userRouter.post('/login', async (req: Request<RequestBody>, res: Response) => {
 
 userRouter.post(
   '/update/:id',
-  async (req: Request<RequestParams, RequestBody>, res: Response) => {
+  authenticateToken,
+  async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
       const { userInfo } = req.body;

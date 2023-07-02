@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { EventService } from './event.service';
 import { EventType } from './event.interface';
+import { authenticateToken } from '../middleware/auth.middleware';
 
 export const eventRouter = express.Router();
 
@@ -53,8 +54,8 @@ eventRouter.get(
 );
 
 eventRouter.post(
-  '/create',
-  async (req: Request<RequestBody>, res: Response) => {
+  '/create',authenticateToken,
+  async (req: Request, res: Response) => {
     try {
       const { eventInfo } = req.body;
       const event = await EventService.createEvent(eventInfo);
@@ -68,8 +69,8 @@ eventRouter.post(
 );
 
 eventRouter.post(
-  '/update/:id',
-  async (req: Request<RequestParams, RequestBody>, res: Response) => {
+  '/update/:id',authenticateToken,
+  async (req: Request, res: Response) => {
     try {
       const { eventInfo } = req.body;
       const { id } = req.params;
@@ -84,8 +85,8 @@ eventRouter.post(
 );
 
 eventRouter.post(
-  '/delete',
-  async (req: Request<RequestBody>, res: Response) => {
+  '/delete',authenticateToken,
+  async (req: Request, res: Response) => {
     try {
       const { id } = req.body;
       const event = await EventService.deleteEvent(id);
