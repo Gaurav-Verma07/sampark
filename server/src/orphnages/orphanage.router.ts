@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
 import { OrphanageService } from './orphanage.service';
 import { OrphanageType } from './orphanage.interface';
+import { validationResult, checkSchema } from 'express-validator';
+import { orphanageValidationSchema } from '../../validationSchema/orphanageValidationSchema';
 
 export const orphanageRouter = express.Router();
 
@@ -55,9 +57,17 @@ orphanageRouter.get(
 
 orphanageRouter.post(
   '/create',
+  checkSchema(orphanageValidationSchema.createOrphanageSchema),
   async (req: Request<RequestBody>, res: Response) => {
     try {
-      const { orphangeInfo } = req.body;
+      const errors = validationResult(req);
+      console.log(errors)
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
+      const orphangeInfo = req.body;
       const orphanage = await OrphanageService.createOrphanage(orphangeInfo);
       res.status(200).send({ success: true, orphanage: orphanage });
     } catch (error) {
@@ -70,8 +80,16 @@ orphanageRouter.post(
 
 orphanageRouter.post(
   '/update/:id',
+  checkSchema(orphanageValidationSchema.createOrphanageSchema),
   async (req: Request<RequestParams, RequestBody>, res: Response) => {
     try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
       const { orphanageInfo } = req.body;
       const { id } = req.params;
       const orphanage = await OrphanageService.updateOrphanage(
@@ -89,8 +107,16 @@ orphanageRouter.post(
 
 orphanageRouter.post(
   '/delete',
+  checkSchema(orphanageValidationSchema.deleteSchema),
   async (req: Request<RequestBody>, res: Response) => {
     try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
       const { id } = req.body;
       const orphanage = await OrphanageService.deleteOrphanage(id);
       res.status(200).send({ success: true, orphanage: orphanage });

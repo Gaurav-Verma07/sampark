@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
 import { EventService } from './event.service';
 import { EventType } from './event.interface';
+import { validationResult, checkSchema } from 'express-validator';
+import { eventValidationSchema } from '../../validationSchema/eventValidationSchema';
 
 export const eventRouter = express.Router();
 
@@ -54,9 +56,17 @@ eventRouter.get(
 
 eventRouter.post(
   '/create',
+  checkSchema(eventValidationSchema.createEventSchema),
   async (req: Request<RequestBody>, res: Response) => {
     try {
-      const { eventInfo } = req.body;
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
+      const eventInfo = req.body;
       const event = await EventService.createEvent(eventInfo);
       res.status(200).send({ success: true, event: event });
     } catch (error) {
@@ -69,9 +79,17 @@ eventRouter.post(
 
 eventRouter.post(
   '/update/:id',
+  checkSchema(eventValidationSchema.createEventSchema),
   async (req: Request<RequestParams, RequestBody>, res: Response) => {
     try {
-      const { eventInfo } = req.body;
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
+      const eventInfo = req.body;
       const { id } = req.params;
       const event = await EventService.updateEvent(id, eventInfo);
       res.status(200).send({ success: true, event: event });
@@ -85,8 +103,16 @@ eventRouter.post(
 
 eventRouter.post(
   '/delete',
+  checkSchema(eventValidationSchema.deleteSchema),
   async (req: Request<RequestBody>, res: Response) => {
     try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
       const { id } = req.body;
       const event = await EventService.deleteEvent(id);
       res.status(200).send({ success: true, event: event });
