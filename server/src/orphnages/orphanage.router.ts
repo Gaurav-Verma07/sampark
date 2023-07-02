@@ -1,19 +1,14 @@
 import express, { Request, Response } from 'express';
 import { OrphanageService } from './orphanage.service';
-import { OrphanageType } from './orphanage.interface';
 import { validationResult, checkSchema } from 'express-validator';
 import { orphanageValidationSchema } from '../../validationSchema/orphanageValidationSchema';
+import { checkAuth } from '../middleware/auth.middleware';
 
 export const orphanageRouter = express.Router();
 
 interface RequestParams {
   id: string;
   slug: string;
-}
-
-interface RequestBody {
-  id: string;
-  orphanageInfo: OrphanageType;
 }
 
 orphanageRouter.get('/', async (_, res: Response) => {
@@ -57,11 +52,12 @@ orphanageRouter.get(
 
 orphanageRouter.post(
   '/create',
+  checkAuth,
   checkSchema(orphanageValidationSchema.createOrphanageSchema),
-  async (req: Request<RequestBody>, res: Response) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
-      console.log(errors)
+      console.log(errors);
       if (!errors.isEmpty()) {
         return res.status(422).json({
           errors: errors.array(),
@@ -80,8 +76,9 @@ orphanageRouter.post(
 
 orphanageRouter.post(
   '/update/:id',
+  checkAuth,
   checkSchema(orphanageValidationSchema.createOrphanageSchema),
-  async (req: Request<RequestParams, RequestBody>, res: Response) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
 
@@ -107,8 +104,9 @@ orphanageRouter.post(
 
 orphanageRouter.post(
   '/delete',
+  checkAuth,
   checkSchema(orphanageValidationSchema.deleteSchema),
-  async (req: Request<RequestBody>, res: Response) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
 

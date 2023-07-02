@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
 import { BlogService } from './blog.service';
-import { BlogType } from './blog.interface';
 import { validationResult, checkSchema } from 'express-validator';
 import { blogValidationSchema } from '../../validationSchema/blogValidationSchema';
+import { checkAuth } from '../middleware/auth.middleware';
 
 export const blogRouter = express.Router();
 
@@ -11,10 +11,6 @@ interface RequestParams {
   slug: string;
 }
 
-interface RequestBody {
-  id: string;
-  blogInfo: BlogType;
-}
 
 blogRouter.get('/', async (_, res: Response) => {
   try {
@@ -57,8 +53,9 @@ blogRouter.get(
 
 blogRouter.post(
   '/create',
+  checkAuth,
   checkSchema(blogValidationSchema.createBlogSchema),
-  async (req: Request<RequestBody>, res: Response) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
 
@@ -80,8 +77,9 @@ blogRouter.post(
 
 blogRouter.post(
   '/update/:id',
+  checkAuth,
   checkSchema(blogValidationSchema.createBlogSchema),
-  async (req: Request<RequestParams, RequestBody>, res: Response) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
 
@@ -104,8 +102,9 @@ blogRouter.post(
 
 blogRouter.post(
   '/delete',
+  checkAuth,
   checkSchema(blogValidationSchema.deleteSchema),
-  async (req: Request<RequestBody>, res: Response) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
 

@@ -3,6 +3,7 @@ import { UserService } from './user.service';
 import { UserType } from './user.interface';
 import { validationResult, checkSchema } from 'express-validator';
 import { userValidationSchema } from '../../validationSchema/userValidationSchema';
+import { checkAuth } from '../middleware/auth.middleware';
 
 export const userRouter = express.Router();
 
@@ -91,8 +92,9 @@ userRouter.post(
 
 userRouter.post(
   '/update/:id',
+  checkAuth,
   checkSchema(userValidationSchema.createUserSchema),
-  async (req: Request<RequestParams, RequestBody>, res: Response) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
 
