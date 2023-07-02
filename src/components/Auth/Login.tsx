@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getDatabase, ref, child, get } from 'firebase/database';
+import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import {
   Paper,
   createStyles,
@@ -10,12 +11,14 @@ import {
   Button,
   Title,
   Text,
+  Image,
   Anchor,
 } from '@mantine/core';
 import { auth } from '../../utils/firebase';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
+    display: 'flex',
     height: '100vh',
     width: '100vw',
     backgroundSize: 'cover',
@@ -28,6 +31,7 @@ const useStyles = createStyles((theme) => ({
     height: '100vh',
     maxWidth: '28rem',
     paddingTop: '5rem',
+    marginTop: '2em',
 
     [theme.fn.smallerThan('sm')]: {
       maxWidth: '100%',
@@ -36,7 +40,7 @@ const useStyles = createStyles((theme) => ({
   title: {
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-  },
+  }
 }));
 
 const Auth = () => {
@@ -64,6 +68,23 @@ const Auth = () => {
         });
     }
   };
+  // const handleForgotPassword = () => {
+  //   if (forgotPasswordEmail) {
+  //     auth
+  //       .sendPasswordResetEmail(forgotPasswordEmail)
+  //       .then(() => {
+  //         console.log('Password reset email sent successfully');
+  //         // Provide feedback to the user (e.g., show a success message)
+  //       })
+  //       .catch((error:any) => {
+  //         console.error('Error sending password reset email:', error);
+  //         // Provide feedback to the user (e.g., show an error message)
+  //       });
+  //   } else {
+  //     // Handle case when the user did not enter an email address
+  //     // Provide feedback to the user (e.g., show an error message)
+  //   }
+  // };
 
   // const handleForgotPassword = () => {
   //   if (forgotPasswordEmail) {
@@ -85,7 +106,7 @@ const Auth = () => {
 
   return (
     <div className={classes.wrapper}>
-      <Paper className={classes.form} radius={0} p={30}>
+      <Paper className={classes.form} radius={0} p={75}>
         <Title order={2} className={classes.title} ta="center" mt="md">
           Welcome to Sampark!
         </Title>
@@ -134,7 +155,6 @@ const Auth = () => {
         >
           Login
         </Button>
-
         <Text ta="center" mt="md">
           Don&apos;t have an account?{' '}
           <Anchor<'a'>
@@ -144,10 +164,13 @@ const Auth = () => {
               navigate('/register');
             }}
           >
-            Register
+           Register
           </Anchor>
         </Text>
       </Paper>
+      <div>
+        <Image src={SamparkLogo} style={{height: '300px', width: '400px',margin: '155px 0 0 175px'}}  />
+      </div>
     </div>
   );
 };

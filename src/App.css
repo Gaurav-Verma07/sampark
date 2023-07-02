@@ -2,7 +2,19 @@
   margin: 0 auto;
   text-align: center;
 }
-html
-{
+html {
   scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(black, #7027f9);
+  border-radius: 10px;
 }
