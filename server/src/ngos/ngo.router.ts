@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
 import { NgoService } from './ngo.service';
 import { NgoType } from './ngo.interface';
+import { validationResult, checkSchema } from 'express-validator';
+import { ngoValidationSchema } from '../../validationSchema/ngoValidationSchema';
 
 export const ngoRouter = express.Router();
 interface RequestParams {
@@ -51,21 +53,42 @@ ngoRouter.get(
   },
 );
 
-ngoRouter.post('/create', async (req: Request<RequestBody>, res: Response) => {
-  try {
-    const { ngoInfo } = req.body;
-    const ngo = await NgoService.createNgo(ngoInfo);
-    res.status(200).send({ success: true, ngo: ngo });
-  } catch (error) {
-    res.status(500).json({ success: false, message: 'Internal server error' });
-  }
-});
+ngoRouter.post(
+  '/create',
+  checkSchema(ngoValidationSchema.createNgoSchema),
+  async (req: Request<RequestBody>, res: Response) => {
+    try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
+      const ngoInfo = req.body;
+      const ngo = await NgoService.createNgo(ngoInfo);
+      res.status(200).send({ success: true, ngo: ngo });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ success: false, message: 'Internal server error' });
+    }
+  },
+);
 
 ngoRouter.post(
   '/update/:id',
+  checkSchema(ngoValidationSchema.createNgoSchema),
   async (req: Request<RequestParams, RequestBody>, res: Response) => {
     try {
-      const { ngoInfo } = req.body;
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
+      const ngoInfo = req.body;
       const { id } = req.params;
       const ngo = await NgoService.updateNgo(id, ngoInfo);
       res.status(200).send({ success: true, ngo: ngo });
@@ -77,12 +100,25 @@ ngoRouter.post(
   },
 );
 
-ngoRouter.post('/delete', async (req: Request<RequestBody>, res: Response) => {
-  try {
-    const { id } = req.body;
-    const ngo = await NgoService.deleteNgo(id);
-    res.status(200).send({ success: true, ngo: ngo });
-  } catch (error) {
-    res.status(500).json({ success: false, message: 'Internal server error' });
-  }
-});
+ngoRouter.post(
+  '/delete',
+  checkSchema(ngoValidationSchema.deleteSchema),
+  async (req: Request<RequestBody>, res: Response) => {
+    try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
+      const { id } = req.body;
+      const ngo = await NgoService.deleteNgo(id);
+      res.status(200).send({ success: true, ngo: ngo });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ success: false, message: 'Internal server error' });
+    }
+  },
+);

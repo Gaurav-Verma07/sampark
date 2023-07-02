@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
 import { UserService } from './user.service';
 import { UserType } from './user.interface';
+import { validationResult, checkSchema } from 'express-validator';
+import { userValidationSchema } from '../../validationSchema/userValidationSchema';
 
 export const userRouter = express.Router();
 
@@ -9,7 +11,7 @@ interface RequestParams {
 }
 
 interface RequestBody {
-  id: string
+  id: string;
   userInfo: UserType;
 }
 
@@ -29,9 +31,17 @@ userRouter.get('/:id', async (req: Request<RequestParams>, res: Response) => {
 
 userRouter.post(
   '/register',
+  checkSchema(userValidationSchema.createUserSchema),
   async (req: Request<RequestBody>, res: Response) => {
     try {
-      const { userInfo } = req.body;
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
+      const userInfo = req.body;
 
       await UserService.register(userInfo);
       // if (user === 'user exists') {
@@ -48,28 +58,49 @@ userRouter.post(
 
 //login user
 
-userRouter.post('/login', async (req: Request<RequestBody>, res: Response) => {
-  try {
-    const { userInfo } = req.body;
-     await UserService.login(userInfo);
-    // if (user === 404) {
-    //   res.status(404).json({ message: 'User not found' });
-    // }
-    // if (user === 401) {
-    //   res.status(401).json({ message: 'Invalid Credentials' });
-    // }
-    res.status(200).send({ success: true, user: 'login successful' });
-  } catch (error) {
-    res.status(500).json({ success: false, message: 'Internal server error' });
-  }
-});
+userRouter.post(
+  '/login',
+  checkSchema(userValidationSchema.loginUserSchema),
+  async (req: Request<RequestBody>, res: Response) => {
+    try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
+      const { userInfo } = req.body;
+      await UserService.login(userInfo);
+      // if (user === 404) {
+      //   res.status(404).json({ message: 'User not found' });
+      // }
+      // if (user === 401) {
+      //   res.status(401).json({ message: 'Invalid Credentials' });
+      // }
+      res.status(200).send({ success: true, user: 'login successful' });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ success: false, message: 'Internal server error' });
+    }
+  },
+);
 
 //update user
 
 userRouter.post(
   '/update/:id',
+  checkSchema(userValidationSchema.createUserSchema),
   async (req: Request<RequestParams, RequestBody>, res: Response) => {
     try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
       const { id } = req.params;
       const { userInfo } = req.body;
 
