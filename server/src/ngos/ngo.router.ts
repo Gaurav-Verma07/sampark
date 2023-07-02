@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
 import { NgoService } from './ngo.service';
-import { NgoType } from './ngo.interface';
 import { validationResult, checkSchema } from 'express-validator';
 import { ngoValidationSchema } from '../../validationSchema/ngoValidationSchema';
+import { checkAuth } from '../middleware/auth.middleware';
 
 export const ngoRouter = express.Router();
 interface RequestParams {
@@ -10,9 +10,6 @@ interface RequestParams {
   slug: string;
 }
 
-interface RequestBody {
-  ngoInfo: NgoType;
-}
 
 ngoRouter.get('/', async (_, res: Response) => {
   try {
@@ -25,7 +22,7 @@ ngoRouter.get('/', async (_, res: Response) => {
 
 ngoRouter.get(
   '/id/:id',
-  async (req: Request<RequestParams, RequestBody>, res: Response) => {
+  async (req: Request<RequestParams>, res: Response) => {
     try {
       const { id } = req.params;
       const ngo = await NgoService.getNgoById(id);
@@ -55,8 +52,9 @@ ngoRouter.get(
 
 ngoRouter.post(
   '/create',
+  checkAuth,
   checkSchema(ngoValidationSchema.createNgoSchema),
-  async (req: Request<RequestBody>, res: Response) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
 
@@ -78,8 +76,9 @@ ngoRouter.post(
 
 ngoRouter.post(
   '/update/:id',
+  checkAuth,
   checkSchema(ngoValidationSchema.createNgoSchema),
-  async (req: Request<RequestParams, RequestBody>, res: Response) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
 
@@ -102,8 +101,9 @@ ngoRouter.post(
 
 ngoRouter.post(
   '/delete',
+  checkAuth,
   checkSchema(ngoValidationSchema.deleteSchema),
-  async (req: Request<RequestBody>, res: Response) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
 

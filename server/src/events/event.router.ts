@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
 import { EventService } from './event.service';
-import { EventType } from './event.interface';
 import { validationResult, checkSchema } from 'express-validator';
 import { eventValidationSchema } from '../../validationSchema/eventValidationSchema';
+import { checkAuth } from '../middleware/auth.middleware';
 
 export const eventRouter = express.Router();
 
@@ -11,10 +11,6 @@ interface RequestParams {
   slug: string;
 }
 
-interface RequestBody {
-  id: string;
-  eventInfo: EventType;
-}
 eventRouter.get('/', async (_, res: Response) => {
   try {
     const event = await EventService.getAllEvents();
@@ -56,8 +52,9 @@ eventRouter.get(
 
 eventRouter.post(
   '/create',
+  checkAuth,
   checkSchema(eventValidationSchema.createEventSchema),
-  async (req: Request<RequestBody>, res: Response) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
 
@@ -79,8 +76,9 @@ eventRouter.post(
 
 eventRouter.post(
   '/update/:id',
+  checkAuth,
   checkSchema(eventValidationSchema.createEventSchema),
-  async (req: Request<RequestParams, RequestBody>, res: Response) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
 
@@ -103,8 +101,9 @@ eventRouter.post(
 
 eventRouter.post(
   '/delete',
+  checkAuth,
   checkSchema(eventValidationSchema.deleteSchema),
-  async (req: Request<RequestBody>, res: Response) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
 
