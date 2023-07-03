@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   createStyles,
   Text,
@@ -11,7 +12,8 @@ import {
   Space,
 } from '@mantine/core';
 import { IconAt, IconPhone, IconMapPins } from '@tabler/icons';
-import './ContactUs.css'
+import './ContactUs.css';
+
 const useStyles = createStyles((theme) => ({
   wrapper: {
     minHeight: 400,
@@ -81,10 +83,40 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
+
+  emailContact: {
+    display: 'flex',
+    alignItems: 'center',
+    color: theme.white,
+    cursor: 'pointer',
+
+    '& .icons': {
+      marginRight: theme.spacing.xs,
+    },
+  },
+
+  phoneContact: {
+    display: 'flex',
+    alignItems: 'center',
+    color: theme.white,
+    cursor: 'pointer',
+
+    '& .icons': {
+      marginRight: theme.spacing.xs,
+    },
+  },
 }));
 
 export function ContactUs() {
   const { classes } = useStyles();
+
+  const handleEmailClick = () => {
+    window.location.href = 'mailto:Sampark@gmail.com';
+  };
+
+  const handlePhoneClick = () => {
+    window.location.href = 'tel:+912569751165';
+  };
 
   return (
     <div className={classes.wrapper} id="contact">
@@ -101,16 +133,16 @@ export function ContactUs() {
             Leave your email and we will get back to you within 24 hours
           </Text>
 
-          <div className="email_contactUS">
-            <IconAt color="#fff" className='icons' /> Sampark@gmail.com
+          <div className={classes.emailContact} onClick={handleEmailClick}>
+            <IconAt color="#fff" className="icons" /> Sampark@gmail.com
           </div>
           <Space h="md" />
-          <div className="phone_contactUs">
-            <IconPhone color="#fff" className='icons' /> +91 2569751165
+          <div className={classes.phoneContact} onClick={handlePhoneClick}>
+            <IconPhone color="#fff" className="icons" /> +91 2569751165
           </div>
           <Space h="md" />
           <div className="map_contactUs">
-            <IconMapPins color="#fff" className='icons' /> IET LUCKNOW Sitapur Road Lucknow
+            <IconMapPins color="#fff" className="icons" /> IET LUCKNOW Sitapur Road Lucknow
           </div>
         </Box>
         <div className={classes.form}>
