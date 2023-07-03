@@ -171,13 +171,13 @@ import {
               Leave your email and we will get back to you within 24 hours
             </Text>
   
-            <div className="email_contactUS">
-              <IconAt color="#fff" className='icons' /> Sampark@gmail.com
-            </div>
-            <Space h="md" />
-            <div className="phone_contactUs">
-              <IconPhone color="#fff" className='icons' /> +91 2569751165
-            </div>
+            <a href="mailto:Sampark@gmail.com" className="email_contactUS">
+            <IconAt color="#fff" className="icons" /> Sampark@gmail.com
+          </a>
+          <Space h="md" />
+          <a href="tel:+912569751165" className="phone_contactUs">
+            <IconPhone color="#fff" className="icons" /> +91 2569751165
+          </a>
             <Space h="md" />
             <div className="map_contactUs">
               <IconMapPins color="#fff" className='icons' /> IET LUCKNOW Sitapur Road Lucknow
