@@ -10,9 +10,10 @@ import Provider from './Pages/Provider';
 import RegisterPage from './Pages/Register';
 import Seeker from './Pages/Seeker';
 import AllBlogs from './components/Blogs/AllBlogs';
-import Error from './Pages/Error';
+import AllImpacts from './components/Impact/AllImpacts';
 import GoToTop from './components/GoToTopButton/GoToTop';
 import Blogs from './components/Blogs/Blogs';
+import Impact from './components/Impact/Impact';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -31,7 +32,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/blogs" element={<AllBlogs />} />
+          <Route path="/impact" element={<AllImpacts />} />
           <Route path="/blogs/:id" element={<Blogs />} />
+          <Route path="/impact/:id" element={<Impact />} />
           <Route path="/login" element={<AuthenticationForm />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/admin" element={<Admin />} />
