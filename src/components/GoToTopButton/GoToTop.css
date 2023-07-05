@@ -1,0 +1,39 @@
+.wrapper_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .wrapper_btn .top-btn {
+    font-size: 1.2rem;
+    width: 3rem;
+    height: 3rem;
+    color: #fff;
+    background-color: black;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 3rem;
+    right: 2rem;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .wrapper_btn .top-btn--icon {
+    animation: gototop 1.2s linear infinite alternate-reverse;
+  }
+  
+  @keyframes gototop {
+    0% {
+      transform: translateY(-0.10rem);
+    }
+    100% {
+      transform: translateY(0.4rem);
+    }
+  }
+  
+ 
+  

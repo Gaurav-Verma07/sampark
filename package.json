@@ -40,8 +40,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^5.3.4",
+    "react-icons": "^4.9.0",
     "react-map-gl": "^7.0.21",
-    "react-router-dom": "^6.8.2"
+    "react-router-dom": "^6.8.2",
+    "tabler-icons-react": "^1.56.0"
   },
   "devDependencies": {
     "@types/google.maps": "^3.52.0",

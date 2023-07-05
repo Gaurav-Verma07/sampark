@@ -19,7 +19,6 @@ const useStyles = createStyles((theme, _params, getRef) => {
     },
 
     link: {
-      ...theme.fn.focusStyles(),
       display: 'flex',
       alignItems: 'center',
       textDecoration: 'none',
@@ -36,10 +35,20 @@ const useStyles = createStyles((theme, _params, getRef) => {
           theme.colorScheme === 'dark'
             ? theme.colors.dark[6]
             : theme.colors.gray[0],
-        color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+        color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[8],
 
         [`& .${icon}`]: {
-          color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+          color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[8],
+        },
+      },
+      '&:focus': {
+        outline: 'none',
+        boxShadow: `0 0 0 2px ${theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 6 : 0]}`,
+        backgroundColor: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 6 : 0],
+        color: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 0 : 8],
+
+        [`& .${icon}`]: {
+          color: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 0 : 8],
         },
       },
     },
@@ -55,18 +64,28 @@ const useStyles = createStyles((theme, _params, getRef) => {
 
     linkActive: {
       '&, &:hover': {
-        backgroundColor: theme.fn.variant({
-          variant: 'light',
-          color: theme.primaryColor,
-        }).background,
-        color: theme.fn.variant({ variant: 'light', color: theme.primaryColor })
-          .color,
+        backgroundColor: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 6 : 0],
+        color: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 0 : 8],
         [`& .${icon}`]: {
-          color: theme.fn.variant({
-            variant: 'light',
-            color: theme.primaryColor,
-          }).color,
+          color: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 0 : 8],
         },
+      },
+    },
+
+    mobileMenuTrigger: {
+      display: 'flex',
+      alignItems: 'center',
+      cursor: 'pointer',
+    },
+
+    mobileMenuContent: {
+      paddingTop: theme.spacing.md,
+      marginTop: theme.spacing.md,
+    },
+
+    desktopMenu: {
+      '@media (max-width: 767px)': {
+        display: 'none',
       },
     },
   };
