@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { Navbar, Group, Container } from '@mantine/core';
+import { Container, Group, Navbar } from '@mantine/core';
 import {
-  IconSettings,
-  IconUserCheck,
   IconHome2,
-  IconSwitchHorizontal,
   IconLogout,
+  IconSettings,
+  IconSwitchHorizontal,
+  IconUserCheck,
 } from '@tabler/icons';
+import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useStyles from './styles';
 
