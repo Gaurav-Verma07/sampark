@@ -9,8 +9,6 @@ import Provider from './Pages/Provider';
 import RegisterPage from './Pages/Register';
 import Seeker from './Pages/Seeker';
 import AllBlogs from './components/Blogs/AllBlogs';
-import Error from './Pages/Error';
-import GoToTop from './components/GoToTopButton/GoToTop';
 import Blogs from './components/Blogs/Blogs';
 
 function App() {

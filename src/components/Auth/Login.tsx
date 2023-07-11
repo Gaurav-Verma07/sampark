@@ -1,19 +1,22 @@
+import {
+  Anchor,
+  Button,
+  Checkbox,
+  Container,
+  Header,
+  Image,
+  Paper,
+  PasswordInput,
+  Text,
+  TextInput,
+  Title,
+  createStyles,
+} from '@mantine/core';
+import { IconArrowLeft } from '@tabler/icons';
+import { child, get, getDatabase, ref } from 'firebase/database';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getDatabase, ref, child, get } from 'firebase/database';
 import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
-import {
-  Paper,
-  createStyles,
-  TextInput,
-  PasswordInput,
-  Checkbox,
-  Button,
-  Title,
-  Text,
-  Image,
-  Anchor,
-} from '@mantine/core';
 import { auth } from '../../utils/firebase';
 
 const useStyles = createStyles((theme) => ({
@@ -40,7 +43,7 @@ const useStyles = createStyles((theme) => ({
   title: {
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-  }
+  },
 }));
 
 const Auth = () => {
@@ -105,73 +108,97 @@ const Auth = () => {
   // };
 
   return (
-    <div className={classes.wrapper}>
-      <Paper className={classes.form} radius={0} p={75}>
-        <Title order={2} className={classes.title} ta="center" mt="md">
-          Welcome to Sampark!
-        </Title>
-        <Text color="dimmed" ta="center" mt="md" mb={50}>
-          Let&apos;s make a change.
-        </Text>
-        <TextInput
-          label="Email address"
-          onChange={(e) =>
-            setDetails((prev) => ({ ...prev, email: e.target.value }))
-          }
-          placeholder="hello@gmail.com"
-          size="md"
-        />
-        <PasswordInput
-          label="Password"
-          onChange={(e) =>
-            setDetails((prev) => ({ ...prev, password: e.target.value }))
-          }
-          placeholder="Your password"
-          mt="md"
-          size="md"
-        />
-        <Text ta="right" mt="md" color='#777' size='sm'>
-          <Anchor<'a'>
-            href="#"
-            sx={()=>({
-              color:'#777'
-            })}
+    <>
+      <Header height={100}>
+        <Container>
+          <Button
+            my={20}
+            className={classes.back}
             onClick={() => {
-              // Add your own logic for handling the Forgot Password link click
-              console.log('Forgot Password clicked');
+              navigate('/');
             }}
           >
-            Forgot Password?
-          </Anchor>
-        </Text>
-        <Checkbox label="Keep me logged in" mt="xl" size="md" />
-        <Button
-          fullWidth
-          mt="xl"
-          size="md"
-          onClick={() => {
-            submitHandler();
-          }}
-        >
-          Login
-        </Button>
-        <Text ta="center" mt="md">
-          Don&apos;t have an account?{' '}
-          <Anchor<'a'>
-            href="#"
-            weight={700}
+            {' '}
+            <IconArrowLeft /> Go Back
+          </Button>
+        </Container>
+      </Header>
+
+      <div className={classes.wrapper}>
+        <Paper className={classes.form} radius={0} p={75}>
+          <Title order={2} className={classes.title} ta="center" mt="md">
+            Welcome to Sampark!
+          </Title>
+          <Text color="dimmed" ta="center" mt="md" mb={50}>
+            Let&apos;s make a change.
+          </Text>
+          <TextInput
+            label="Email address"
+            onChange={(e) =>
+              setDetails((prev) => ({ ...prev, email: e.target.value }))
+            }
+            placeholder="hello@gmail.com"
+            size="md"
+          />
+          <PasswordInput
+            label="Password"
+            onChange={(e) =>
+              setDetails((prev) => ({ ...prev, password: e.target.value }))
+            }
+            placeholder="Your password"
+            mt="md"
+            size="md"
+          />
+          <Text ta="right" mt="md" color="#777" size="sm">
+            <Anchor<'a'>
+              href="#"
+              sx={() => ({
+                color: '#777',
+              })}
+              onClick={() => {
+                // Add your own logic for handling the Forgot Password link click
+                console.log('Forgot Password clicked');
+              }}
+            >
+              Forgot Password?
+            </Anchor>
+          </Text>
+          <Checkbox label="Keep me logged in" mt="xl" size="md" />
+          <Button
+            fullWidth
+            mt="xl"
+            size="md"
             onClick={() => {
-              navigate('/register');
+              submitHandler();
             }}
           >
-           Register
-          </Anchor>
-        </Text>
-      </Paper>
-      <div>
-        <Image src={SamparkLogo} style={{height: '300px', width: '400px',margin: '155px 0 0 175px'}}  />
+            Login
+          </Button>
+          <Text ta="center" mt="md">
+            Don&apos;t have an account?{' '}
+            <Anchor<'a'>
+              href="#"
+              weight={700}
+              onClick={() => {
+                navigate('/register');
+              }}
+            >
+              Register
+            </Anchor>
+          </Text>
+        </Paper>
+        <div>
+          <Image
+            src={SamparkLogo}
+            style={{
+              height: '300px',
+              width: '400px',
+              margin: '155px 0 0 175px',
+            }}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
