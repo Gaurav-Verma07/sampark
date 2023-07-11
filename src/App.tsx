@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Route, Routes } from 'react-router';
 import './App.css';
 import Admin from './Pages/Admin';
-import Error from './Pages/Error';
 import Gallery from './Pages/Gallery/Gallery';
 import Home from './Pages/Home';
 import AuthenticationForm from './Pages/Login';
