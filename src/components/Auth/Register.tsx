@@ -1,7 +1,9 @@
 import {
   Button,
   Code,
+  Container,
   Group,
+  Header,
   Paper,
   PasswordInput,
   Stepper,
@@ -10,6 +12,7 @@ import {
   createStyles,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { IconArrowLeft } from '@tabler/icons';
 import { child, get, getDatabase, ref } from 'firebase/database';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
@@ -42,8 +45,7 @@ const Register = () => {
       confirmPassword: '',
       email: '',
     },
-     
-    
+
     validate: (values) => {
       if (active === 0) {
         return {
@@ -55,8 +57,10 @@ const Register = () => {
             values.password.length < 6
               ? 'Password must include at least 6 characters'
               : null,
-              confirmPassword:
-              values.password !== values.confirmPassword ? 'Passwords do not match' : null,      
+          confirmPassword:
+            values.password !== values.confirmPassword
+              ? 'Passwords do not match'
+              : null,
           email: /^\S+@\S+$/.test(values.email) ? null : 'Invalid email',
         };
       }
@@ -73,7 +77,6 @@ const Register = () => {
       ),
     );
     const responseData = response.val();
-
   };
 
   useEffect(() => {
@@ -92,7 +95,6 @@ const Register = () => {
     setActive((current) => (current > 0 ? current - 1 : current));
 
   const registerHandler = () => {
-
     registerUserHandler(form.values.email, form.values.password);
     console.log(form.values);
     localStorage.setItem('email', JSON.stringify(form.values.email));
@@ -103,66 +105,93 @@ const Register = () => {
       ' rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px',
   };
   return (
-    <Paper style={box1} className={classes.main} radius="md" p="xl" withBorder>
-      <Text color="teal" align="center" pb={30} fz={38} fw={600}>
-        Register Here:
-      </Text>
-      <Stepper active={active} breakpoint="sm">
-        <Stepper.Step mt={20} label="First step" description="Profile settings">
-          <TextInput
-            mt={30}
-            mb={30}
-            placeholder="Name"
-            {...form.getInputProps('name')}
-          />
-          <PasswordInput
-            mt={30}
-            mb={30}
-            placeholder="Password"
-            {...form.getInputProps('password')}
-          />
-          <PasswordInput
-            mt={30}
-            mb={30}
-            placeholder="Confirm Password"
-            {...form.getInputProps('confirmPassword')}
-          />
-          <TextInput
-            mt={30}
-            mb={30}
-            placeholder="Email"
-            {...form.getInputProps('email')}
-          />
-        </Stepper.Step>
-
-        <Stepper.Step label="Second step" description="Personal information">
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSchL2ptZ48MuMg_U6jq6WXQYqfNHo-Hmao9TI1GENpfLAeIuQ/viewform?embedded=true"
-            width="640"
-            height="1492"
+    <>
+      <Header height={100}>
+        <Container>
+          <Button
+            my={20}
+            className={classes.back}
+            onClick={() => {
+              navigate('/');
+            }}
           >
-            Loading…
-          </iframe>
-        </Stepper.Step>
-
-        <Stepper.Completed>
-          Completed! Form values:
-          <Code block mt="xl">
-            {JSON.stringify(form.values, null, 2)}
-          </Code>
-        </Stepper.Completed>
-      </Stepper>
-
-      <Group position="right" mt="xl">
-        {active !== 0 && active !== 3 && (
-          <Button variant="default" onClick={prevStep}>
-            Back
+            {' '}
+            <IconArrowLeft /> Go Back
           </Button>
-        )}
-        {active !== 1 && <Button onClick={nextStep}>Next step</Button>}
-        {active == 1 && <Button onClick={registerHandler}>Submit</Button>}
-      </Group>
-    </Paper>
+        </Container>
+      </Header>
+
+      <Paper
+        style={box1}
+        className={classes.main}
+        radius="md"
+        p="xl"
+        withBorder
+      >
+        <Text color="teal" align="center" pb={30} fz={38} fw={600}>
+          Register Here:
+        </Text>
+        <Stepper active={active} breakpoint="sm">
+          <Stepper.Step
+            mt={20}
+            label="First step"
+            description="Profile settings"
+          >
+            <TextInput
+              mt={30}
+              mb={30}
+              placeholder="Name"
+              {...form.getInputProps('name')}
+            />
+            <PasswordInput
+              mt={30}
+              mb={30}
+              placeholder="Password"
+              {...form.getInputProps('password')}
+            />
+            <PasswordInput
+              mt={30}
+              mb={30}
+              placeholder="Confirm Password"
+              {...form.getInputProps('confirmPassword')}
+            />
+            <TextInput
+              mt={30}
+              mb={30}
+              placeholder="Email"
+              {...form.getInputProps('email')}
+            />
+          </Stepper.Step>
+
+          <Stepper.Step label="Second step" description="Personal information">
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSchL2ptZ48MuMg_U6jq6WXQYqfNHo-Hmao9TI1GENpfLAeIuQ/viewform?embedded=true"
+              width="640"
+              height="1492"
+            >
+              Loading…
+            </iframe>
+          </Stepper.Step>
+
+          <Stepper.Completed>
+            Completed! Form values:
+            <Code block mt="xl">
+              {JSON.stringify(form.values, null, 2)}
+            </Code>
+          </Stepper.Completed>
+        </Stepper>
+
+        <Group position="right" mt="xl">
+          {active !== 0 && active !== 3 && (
+            <Button variant="default" onClick={prevStep}>
+              Back
+            </Button>
+          )}
+          {active !== 1 && <Button onClick={nextStep}>Next step</Button>}
+          {active == 1 && <Button onClick={registerHandler}>Submit</Button>}
+        </Group>
+      </Paper>
+    </>
   );
 };
 export default Register;
