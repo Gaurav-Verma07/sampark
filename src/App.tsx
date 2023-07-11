@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router';
 import './App.css';
-import Admin from './Pages/Admin';
-import Gallery from './Pages/Gallery/Gallery';
-import Home from './Pages/Home';
-import AuthenticationForm from './Pages/Login';
-import Provider from './Pages/Provider';
-import RegisterPage from './Pages/Register';
-import Seeker from './Pages/Seeker';
-import AllBlogs from './components/Blogs/AllBlogs';
-import AllImpacts from './components/Impact/AllImpacts';
+import { Suspense, lazy } from 'react';
+import { Oval } from 'react-loader-spinner';
 import GoToTop from './components/GoToTopButton/GoToTop';
-import Blogs from './components/Blogs/Blogs';
-import Impact from './components/Impact/Impact';
+
+const Admin=lazy(()=>(import('./Pages/Admin')))
+const AuthenticationForm=lazy(()=>(import('./Pages/Login')))
+const RegisterPage=lazy(()=>(import('./Pages/Register')))
+const Home=lazy(()=>(import('./Pages/Home')))
+const Provider=lazy(()=>(import('./Pages/Provider')))
+const Seeker=lazy(()=>(import('./Pages/Seeker')))
+const Blogs=lazy(()=>(import('./components/Blogs/Blogs')))
+const AllBlogs=lazy(()=>(import('./components/Blogs/AllBlogs')))
+const Error=lazy(()=>(import('./Pages/Error')))
+const Gallery=lazy(()=>(import('./Pages/Gallery/Gallery')))
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -25,8 +27,16 @@ function App() {
   }
 
   return (
-    !loading && (
-      <div className="App">
+    <div className="App">
+      <Suspense fallback={<div className='loader'>
+          <Oval
+            height='50'
+            width='50'
+            color='#36d7b7'
+            secondaryColor='grey'
+            ariaLabel='loading'
+          />
+      </div>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
@@ -41,8 +51,8 @@ function App() {
           <Route path="/seeker/*" element={<Seeker />} />
           <Route path="*" element={<Error />} />
         </Routes>
-      </div>
-    )
+      </Suspense>
+    </div>
   );
 }
 

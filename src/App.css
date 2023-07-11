@@ -6,6 +6,13 @@ html {
   scroll-behavior: smooth;
 }
 
+.loader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
