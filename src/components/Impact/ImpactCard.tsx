@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { IconBookmark, IconHeart, IconShare } from '@tabler/icons-react';
 import {
   Card,
-  Image,
+  // Image,
   Text,
   ActionIcon,
   Badge,
@@ -11,7 +11,7 @@ import {
   createStyles,
   AspectRatio,
 } from '@mantine/core';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -73,7 +73,7 @@ export function ImpactCard({
   ...others
 }: ArticleCardProps &
   Omit<React.ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { classes, cx, theme } = useStyles();
   const linkProps = {
     target: '_blank',
@@ -98,14 +98,14 @@ export function ImpactCard({
       className={classes.card}
       id="impact"
       {...others}
-      onClick={() => {
-        navigate(`/impact/${index}`);
-      }}
+      // onClick={() => {
+      //   navigate(`/impact/${index}`);
+      // }}
     >
       <Card.Section className={cx(classes.innerCard)}>
         <a {...linkProps}>
           <AspectRatio ratio={4 / 3} mx="auto">
-            <Image src={image} />
+            {/* <Image src={image} /> */}
           </AspectRatio>
         </a>
       </Card.Section>

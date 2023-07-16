@@ -4,7 +4,7 @@ import {
   Checkbox,
   Container,
   Header,
-  Image,
+  // Image,
   Paper,
   PasswordInput,
   Text,
@@ -15,8 +15,8 @@ import {
 import { IconArrowLeft } from '@tabler/icons';
 import { child, get, getDatabase, ref } from 'firebase/database';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
+// import { useNavigate } from 'react-router-dom';
+// import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import { auth } from '../../utils/firebase';
 
 const useStyles = createStyles((theme) => ({
@@ -25,7 +25,7 @@ const useStyles = createStyles((theme) => ({
     height: '100vh',
     width: '100vw',
     backgroundSize: 'cover',
-    backgroundImage: 'url("../../assets/Images/homeImg.jpg")',
+    // backgroundImage: 'url("../../assets/Images/homeImg.jpg")',
   },
   form: {
     borderRight: `1px solid ${
@@ -48,7 +48,7 @@ const useStyles = createStyles((theme) => ({
 
 const Auth = () => {
   const { classes } = useStyles();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [details, setDetails] = useState({ name: '', email: '', password: '' });
   const [forgotPasswordEmail, setForgotPasswordEmail] = useState('');
   const user = localStorage.getItem('user_uid') || '';
@@ -61,7 +61,7 @@ const Auth = () => {
         .then((snapshot) => {
           if (snapshot.exists()) {
             const userData = snapshot.val();
-            navigate('provider/home');
+            // navigate('provider/home');
           } else {
             console.log('No data available');
           }
@@ -113,10 +113,10 @@ const Auth = () => {
         <Container>
           <Button
             my={20}
-            className={classes.back}
-            onClick={() => {
-              navigate('/');
-            }}
+            // className={classes.back}
+            // onClick={() => {
+            //   navigate('/');
+            // }}
           >
             {' '}
             <IconArrowLeft /> Go Back
@@ -179,23 +179,23 @@ const Auth = () => {
             <Anchor<'a'>
               href="#"
               weight={700}
-              onClick={() => {
-                navigate('/register');
-              }}
+              // onClick={() => {
+              //   navigate('/register');
+              // }}
             >
               Register
             </Anchor>
           </Text>
         </Paper>
         <div>
-          <Image
+          {/* <Image
             src={SamparkLogo}
             style={{
               height: '300px',
               width: '400px',
               margin: '155px 0 0 175px',
             }}
-          />
+          /> */}
         </div>
       </div>
     </>

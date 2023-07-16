@@ -5,14 +5,14 @@
   Burger,
   Paper,
   Transition,
-  Image,
+  // Image,
   Button,
   Avatar,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
+// import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import useStyles from './styles';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const HEADER_HEIGHT = '5rem';
 const links: any = [
@@ -28,7 +28,7 @@ const HomeHeader = () => {
   const user: any = localStorage.getItem('user_uid');
   const [opened, { toggle }] = useDisclosure(false);
   const { classes, cx } = useStyles();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const items = links.map((link: any) => (
     <a key={link.label} href={link.link} className={cx(classes.link)}>
@@ -40,13 +40,13 @@ const HomeHeader = () => {
     <Avatar
       radius="xl"
       onClick={() => {
-        navigate('/provider/home');
+        // navigate('/provider/home');
       }}
     />
   ) : (
     <Button
       onClick={() => {
-        navigate('/login');
+        // navigate('/login');
       }}
     >
       Sign In
@@ -56,7 +56,7 @@ const HomeHeader = () => {
   return (
     <Header height={HEADER_HEIGHT} className={classes.root} pt={30}>
       <Container className={classes.header}>
-        <Image  src={SamparkLogo} height={80} width={100} />
+        {/* <Image  src={SamparkLogo} height={80} width={100} /> */}
         <Group spacing={5} className={classes.links}>
           {items}
           {isLoggedIn}
