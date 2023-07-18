@@ -1,9 +1,9 @@
-import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
+// import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 export const mockdata = [
   {
     title: 'How does Sampark work? See our in-depth values and principles',
-    image:
-      SamparkLogo,
+    // image:
+    //   SamparkLogo,
     date: 'August 18, 2022',
   },
   {

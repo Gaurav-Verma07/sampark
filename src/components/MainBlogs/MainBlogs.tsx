@@ -2,7 +2,7 @@ import {
   createStyles,
   SimpleGrid,
   Card,
-  Image,
+  // Image,
   Text,
   Container,
   AspectRatio,
@@ -14,13 +14,13 @@ import {
 import { mockdata } from './blogData';
 import useStyles from './styles';
 import './blog.css';
-import Logo from '../../assets/Images/samparklogotransparent.png';
-import { useNavigate } from 'react-router-dom';
+// import Logo from '../../assets/Images/samparklogotransparent.png';
+// import { useNavigate } from 'react-router-dom';
 
 const MainBlogs = () => {
   const { classes } = useStyles();
   const theme = useMantineTheme();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const cards = mockdata.map((article, index) => (
     <Card
@@ -32,12 +32,12 @@ const MainBlogs = () => {
       href="#"
       className={classes.card}
       id="blogs"
-      onClick={() => {
-        navigate(`/blogs/${index}`);
-      }}
+      // onClick={() => {
+      //   navigate(`/blogs/${index}`);
+      // }}
     >
       <AspectRatio ratio={1920 / 1080}>
-        <Image src={article.image} />
+        {/* <Image src={article.image} /> */}
       </AspectRatio>
       <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
         {article.date}
@@ -62,7 +62,7 @@ const MainBlogs = () => {
           style={{ cursor: 'pointer', marginBottom: '2%' }}
           // component="a"
           // href="/blogs"
-          onClick={() => navigate('/blogs')}
+          // onClick={() => navigate('/blogs')}
         >
           Read more about our work through our blogs...
         </Title>
