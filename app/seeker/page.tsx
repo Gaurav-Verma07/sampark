@@ -1,10 +1,12 @@
+'use client';
 import { AppShell } from '@mantine/core';
 import { Route, Routes } from 'react-router';
-import MainHeader from '../../components/MainHeader/MainHeader';
-import HomeNavbar from '../../components/SeekerNavbar/Navbar';
+import MainHeader from '../../src/components/MainHeader/MainHeader';
+import HomeNavbar from '../../src/components/SeekerNavbar/Navbar';
 // import ProviderCollegeTeam from '../../components/ProviderCollegeTeam/ProviderCollegeTeam';
-import SeekerMain from '../../components/SeekerMain/SeekerMain';
-import ProgramSection from '../../components/SeekerProgramSection/ProgramSection';
+import SeekerMain from '../../src/components/SeekerMain/SeekerMain';
+import ProgramSection from '../../src/components/SeekerProgramSection/ProgramSection';
+import React from 'react';
 
 const Seeker = () => {
   // console.log(process.env.REACT_APP_GOOGLE_API_KEY);

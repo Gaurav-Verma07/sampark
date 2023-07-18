@@ -20,7 +20,8 @@ const useStyles = createStyles((theme) => ({
     borderTopLeftRadius: 0,
     borderTopWidth: 0,
     overflow: 'hidden',
-    marginRight: '-500px',
+    paddingBottom: '1rem',
+    // marginRight: '-500px',
     [theme.fn.largerThan('sm')]: {
       display: 'none',
     },

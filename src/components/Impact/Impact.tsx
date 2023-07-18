@@ -5,14 +5,16 @@ import {
   Container,
   createStyles,
   Header,
-  Image,
+  // Image,
   Paper,
+  Text,
+  Title,
 } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons';
 // import { useNavigate, useParams } from 'react-router-dom';
 // import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
-import { data } from './blogContent';
-import './blogs.css';
+import { data } from './impactContent';
+import './impact.css';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -36,11 +38,11 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const Blogs = () => {
+const Impact = () => {
   // const { id }: any = useParams();
   const { classes } = useStyles();
   // const navigate = useNavigate();
-  // const blogData = data[id];
+  const impactData = data['1'];
 
   return (
     <>
@@ -67,13 +69,13 @@ const Blogs = () => {
             // maw={300}
             mx="auto"
           >
-            {/* <Image src={blogData.image} /> */}
+            {/* <Image src={impactData.image} /> */}
           </AspectRatio>
         </Paper>
-        {/* <div dangerouslySetInnerHTML={{ __html: blogData.blogData }}></div> */}
+        <div dangerouslySetInnerHTML={{ __html: impactData.impactData }}></div>
       </Card>
     </>
   );
 };
 
-export default Blogs;
+export default Impact;

@@ -3,11 +3,11 @@ import {
   Container,
   createStyles,
   Header,
-  Image,
+  // Image,
   SimpleGrid,
 } from '@mantine/core';
-import { useNavigate } from 'react-router-dom';
-import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
+// import { useNavigate } from 'react-router-dom';
+// import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import { data } from './blogContent';
 import './blogs.css';
 import { BlogCard } from './BlogCard';
@@ -43,7 +43,7 @@ interface SavedBlogType {
 }
 
 function AllBlogs() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { classes } = useStyles();
   const [savedBlogs, setSavedBlogs] = useState<SavedBlogType[]>([]);
 
@@ -71,18 +71,18 @@ function AllBlogs() {
   return (
     <div>
       <Header height={80} mb={50}>
-        <Container className={classes.header}>
-          <Image src={SamparkLogo} height={100} width={100} />
-        </Container>
+        {/* <Container className={classes.header}>
+           <Image src={SamparkLogo} height={100} width={100} /> 
+        </Container> */}
       </Header>
       <Button
         my={20}
         variant="outline"
         color="teal"
-        className={classes.back}
-        onClick={() => {
-          navigate('/');
-        }}
+        //className={classes.back}
+        // onClick={() => {
+        //   navigate('/');
+        // }}
       >
         {' '}
         Go Back
@@ -99,7 +99,7 @@ function AllBlogs() {
         {data.map((item, index) => (
           <BlogCard
             data={item.blogData}
-            image={item.image}
+            image={item.image as string}
             key={index}
             index={index}
             handleAddSaveBlog={handleAddSaveBlog}

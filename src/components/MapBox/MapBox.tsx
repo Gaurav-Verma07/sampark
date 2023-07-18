@@ -118,7 +118,8 @@ const MapBox = () => {
           boxShadow: '0px 4px 24px 0px #0909091A',
         }}
         mapStyle="mapbox://styles/mapbox/dark-v9"
-        mapboxAccessToken={import.meta.env.VITE_MAPBOX_ACCESS_TOKEN || ''}
+        mapboxAccessToken={''}
+        // mapboxAccessToken={import.meta.env.VITE_MAPBOX_ACCESS_TOKEN || ''}
       >
         <GeolocateControl position="top-left" />
         <FullscreenControl position="top-left" />
@@ -135,7 +136,7 @@ const MapBox = () => {
             onClose={() => setPopupInfo(null)}
           >
             <div>{popupInfo.type}</div>
-            <img width="100%" src={popupInfo.image} />
+            {/* <img width="100%" src={popupInfo.image} /> */}
             <p>{popupInfo.description}</p>
           </Popup>
         )}
