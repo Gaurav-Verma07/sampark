@@ -1,4 +1,4 @@
- import {
+import {
   Header,
   Container,
   Group,
@@ -10,6 +10,7 @@
   Avatar,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import Image from 'next/image';
 // import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import useStyles from './styles';
 // import { useNavigate } from 'react-router-dom';
@@ -20,7 +21,7 @@ const links: any = [
   { link: '/blogs', label: 'Blogs' },
   { link: '/impact', label: 'Impact' },
   { link: '#values', label: 'Values' },
-  {link:'#faq',label:'FAQ'},
+  { link: '#faq', label: 'FAQ' },
   { link: '#contact', label: 'Contact' },
 ];
 
@@ -56,7 +57,12 @@ const HomeHeader = () => {
   return (
     <Header height={HEADER_HEIGHT} className={classes.root} pt={30}>
       <Container className={classes.header}>
-        {/* <Image  src={SamparkLogo} height={80} width={100} /> */}
+        <Image
+          src="/assets/Images/samparklogotransparent.png"
+          alt="Sampark Logo"
+          height={80}
+          width={100}
+        />
         <Group spacing={5} className={classes.links}>
           {items}
           {isLoggedIn}
