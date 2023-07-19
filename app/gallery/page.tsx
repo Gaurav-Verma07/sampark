@@ -1,10 +1,11 @@
 import { Container, Header, Image } from '@mantine/core';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 // import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import './gallery.css';
 import React from 'react';
 
 export default function Home() {
+  const router = useRouter();
   return (
     <>
       <Header height={100} mb={50}>
@@ -14,7 +15,7 @@ export default function Home() {
             src={SamparkLogo}
             height={80}
             width={100}
-            // onClick={() => navigate('/')}
+            // onClick={() => router.push('/')}
           /> */}
         </Container>
       </Header>

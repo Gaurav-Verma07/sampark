@@ -15,7 +15,7 @@ import {
 import { IconArrowLeft } from '@tabler/icons';
 import { child, get, getDatabase, ref } from 'firebase/database';
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 // import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import { auth } from '../../utils/firebase';
 
@@ -48,7 +48,7 @@ const useStyles = createStyles((theme) => ({
 
 const Auth = () => {
   const { classes } = useStyles();
-  // const navigate = useNavigate();
+  const router = useRouter();
   const [details, setDetails] = useState({ name: '', email: '', password: '' });
   const [forgotPasswordEmail, setForgotPasswordEmail] = useState('');
   const user = localStorage.getItem('user_uid') || '';
@@ -61,7 +61,7 @@ const Auth = () => {
         .then((snapshot) => {
           if (snapshot.exists()) {
             const userData = snapshot.val();
-            // navigate('provider/home');
+            router.push('provider/home');
           } else {
             console.log('No data available');
           }
@@ -114,9 +114,9 @@ const Auth = () => {
           <Button
             my={20}
             // className={classes.back}
-            // onClick={() => {
-            //   navigate('/');
-            // }}
+            onClick={() => {
+              router.push('/');
+            }}
           >
             {' '}
             <IconArrowLeft /> Go Back
@@ -179,9 +179,9 @@ const Auth = () => {
             <Anchor<'a'>
               href="#"
               weight={700}
-              // onClick={() => {
-              //   navigate('/register');
-              // }}
+              onClick={() => {
+                router.push('/register');
+              }}
             >
               Register
             </Anchor>

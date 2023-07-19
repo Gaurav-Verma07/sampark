@@ -16,7 +16,7 @@ import {
   createStyles,
   AspectRatio,
 } from '@mantine/core';
-// import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -85,117 +85,121 @@ export function BlogCard({
   ...others
 }: ArticleCardProps &
   Omit<React.ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
-  // const navigate = useNavigate();
-  const { classes, cx, theme } = useStyles();
-  const linkProps = {
-    target: '_blank',
-    rel: 'noopener noreferrer',
-  };
-  const [blogTitle, setBlogTitle] = useState<string>('');
-  const [isSavedBlog, setIsSavedBlog] = useState<boolean>(false);
+    const router = useRouter();
+    const { classes, cx, theme } = useStyles();
+    const linkProps = {
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    };
+    const [blogTitle, setBlogTitle] = useState<string>('');
+    const [isSavedBlog, setIsSavedBlog] = useState<boolean>(false);
 
-  useEffect(() => {
-    const getSavedData = localStorage.getItem('sampark-saved-items');
-    let saveBlogData;
-    if (getSavedData) {
-      saveBlogData = JSON.parse(getSavedData);
-    }
+    useEffect(() => {
+      const getSavedData = localStorage.getItem('sampark-saved-items');
+      let saveBlogData;
+      if (getSavedData) {
+        saveBlogData = JSON.parse(getSavedData);
+      }
 
-    if (saveBlogData !== undefined)
-      for (let idx = 0; idx < saveBlogData.length; idx++) {
-        if (saveBlogData[idx].id === index) {
+      if (saveBlogData !== undefined)
+        for (let idx = 0; idx < saveBlogData.length; idx++) {
+          if (saveBlogData[idx].id === index) {
+            setIsSavedBlog(true);
+          }
+        }
+    }, [isSavedBlog]);
+
+    const handleSave = () => {
+      if (isSavedBlog === true) {
+        //to delete a certain blog
+        handleDeleteSavedBlog(index);
+        setIsSavedBlog(false);
+      } else {
+        //to add a certain blog
+        const finalData: savedBlogType = {
+          id: index,
+          data: data,
+          image: image,
+        };
+        if (handleAddSaveBlog) {
+          handleAddSaveBlog(finalData);
           setIsSavedBlog(true);
         }
       }
-  }, [isSavedBlog]);
+    };
 
-  const handleSave = () => {
-    if (isSavedBlog === true) {
-      //to delete a certain blog
-      handleDeleteSavedBlog(index);
-      setIsSavedBlog(false);
-    } else {
-      //to add a certain blog
-      const finalData: savedBlogType = { id: index, data: data, image: image };
-      if (handleAddSaveBlog) {
-        handleAddSaveBlog(finalData);
-        setIsSavedBlog(true);
-      }
-    }
-  };
+    useEffect(() => {
+      const element = document.createElement('div');
+      element.innerHTML = data;
 
-  useEffect(() => {
-    const element = document.createElement('div');
-    element.innerHTML = data;
+      const h1Tag = element.querySelector('div.blog__main h1') as HTMLElement;
+      const extractedTitle = h1Tag?.innerText ?? '';
+      setBlogTitle(extractedTitle);
+    }, []);
 
-    const h1Tag = element.querySelector('div.blog__main h1') as HTMLElement;
-    const extractedTitle = h1Tag?.innerText ?? '';
-    setBlogTitle(extractedTitle);
-  }, []);
-
-  return (
-    <Card
-      shadow="sm"
-      p="md"
-      radius="md"
-      className={classes.card}
-      id="blogs"
-      {...others}
-      // onClick={() => {
-      //   navigate(`/blogs/${index}`);
-      // }}
-    >
-      <Card.Section className={cx(classes.innerCard)}>
-        <a {...linkProps}>
-          <AspectRatio ratio={4 / 3} mx="auto">
-            {/* <Image src={image} /> */}
-          </AspectRatio>
-        </a>
-      </Card.Section>
-
-      <Badge
-        className={classes.rating}
-        variant="gradient"
-        gradient={{ from: 'yellow', to: 'red' }}
+    return (
+      <Card
+        shadow="sm"
+        p="md"
+        radius="md"
+        className={classes.card}
+        id="blogs"
+        {...others}
+        onClick={() => {
+          router.push(`/blogs/${index}`);
+        }}
       >
-        4
-      </Badge>
+        <Card.Section className={cx(classes.innerCard)}>
+          <a {...linkProps}>
+            <AspectRatio ratio={4 / 3} mx="auto">
+              {/* <Image src={image} /> */}
+            </AspectRatio>
+          </a>
+        </Card.Section>
 
-      <Text
-        className={classes.title}
-        fw={500}
-        component="a"
-        {...linkProps}
-        // onClick={() => {
-        //   navigate(`/blogs/${index}`);
-        // }}
-      >
-        {blogTitle}
-      </Text>
+        <Badge
+          className={classes.rating}
+          variant="gradient"
+          gradient={{ from: 'yellow', to: 'red' }}
+        >
+          4
+        </Badge>
 
-      <Group position="apart" className={classes.footer}>
-        <Center>
-          <Text fz="sm" inline>
-            Gaurav
-          </Text>
-        </Center>
+        <Text
+          className={classes.title}
+          fw={500}
+          component="a"
+          {...linkProps}
+          onClick={() => {
+            router.push(`/blogs/${index}`);
+          }}
+        >
+          {blogTitle}
+        </Text>
 
-        <Group spacing={8} mr={0}>
-          <ActionIcon className={classes.action}>
-            <IconHeart size="1rem" color={theme.colors.red[6]} />
-          </ActionIcon>
-          <ActionIcon className={classes.action} onClick={() => handleSave()}>
-            {isSavedBlog ? (
-              <IconCheck size="1rem" color={theme.colors.yellow[7]} />
-            ) : (
-              <IconBookmark size="1rem" color={theme.colors.yellow[7]} />
-            )}
-          </ActionIcon>
-          <ActionIcon className={classes.action}>
-            <IconShare size="1rem" />
-          </ActionIcon>
+        <Group position="apart" className={classes.footer}>
+          <Center>
+            <Text fz="sm" inline>
+              Gaurav
+            </Text>
+          </Center>
+
+          <Group spacing={8} mr={0}>
+            <ActionIcon className={classes.action}>
+              <IconHeart size="1rem" color={theme.colors.red[6]} />
+            </ActionIcon>
+            <ActionIcon className={classes.action} onClick={() => handleSave()}>
+              {isSavedBlog ? (
+                <IconCheck size="1rem" color={theme.colors.yellow[7]} />
+              ) : (
+                <IconBookmark size="1rem" color={theme.colors.yellow[7]} />
+              )}
+            </ActionIcon>
+            <ActionIcon className={classes.action}>
+              <IconShare size="1rem" />
+            </ActionIcon>
+          </Group>
         </Group>
-      </Group>
-    </Card>
-  );
-}
+      </Card>
+    );
+  }

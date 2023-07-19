@@ -9,6 +9,7 @@ import {
   Paper,
 } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons';
+import { useRouter, useParams } from 'next/navigation';
 // import { useNavigate, useParams } from 'react-router-dom';
 // import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import { data } from './blogContent';
@@ -37,10 +38,10 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Blogs = () => {
-  // const { id }: any = useParams();
+  const { id }: any = useParams();
   const { classes } = useStyles();
-  // const navigate = useNavigate();
-  // const blogData = data[id];
+  const router = useRouter();
+  const blogData = data[id];
 
   return (
     <>
@@ -54,9 +55,9 @@ const Blogs = () => {
         <Button
           my={20}
           className={classes.back}
-          // onClick={() => {
-          //   navigate('/');
-          // }}
+          onClick={() => {
+            router.push('/');
+          }}
         >
           {' '}
           <IconArrowLeft /> Go Back
@@ -70,7 +71,7 @@ const Blogs = () => {
             {/* <Image src={blogData.image} /> */}
           </AspectRatio>
         </Paper>
-        {/* <div dangerouslySetInnerHTML={{ __html: blogData.blogData }}></div> */}
+        <div dangerouslySetInnerHTML={{ __html: blogData.blogData }}></div>
       </Card>
     </>
   );

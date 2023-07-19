@@ -11,7 +11,7 @@ import {
   Title,
 } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons';
-// import { useNavigate, useParams } from 'react-router-dom';
+import { useRouter, useParams } from 'next/navigation';
 // import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import { data } from './impactContent';
 import './impact.css';
@@ -39,10 +39,10 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Impact = () => {
-  // const { id }: any = useParams();
+  const { id }: any = useParams();
   const { classes } = useStyles();
-  // const navigate = useNavigate();
-  const impactData = data['1'];
+  const router = useRouter();
+  const impactData = data[id];
 
   return (
     <>
@@ -56,9 +56,9 @@ const Impact = () => {
         <Button
           my={20}
           className={classes.back}
-          // onClick={() => {
-          //   navigate('/');
-          // }}
+          onClick={() => {
+            router.push('/');
+          }}
         >
           {' '}
           <IconArrowLeft /> Go Back

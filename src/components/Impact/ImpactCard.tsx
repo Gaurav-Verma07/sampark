@@ -11,7 +11,7 @@ import {
   createStyles,
   AspectRatio,
 } from '@mantine/core';
-// import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -73,7 +73,7 @@ export function ImpactCard({
   ...others
 }: ArticleCardProps &
   Omit<React.ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
-  // const navigate = useNavigate();
+  const router = useRouter();
   const { classes, cx, theme } = useStyles();
   const linkProps = {
     target: '_blank',
@@ -98,9 +98,9 @@ export function ImpactCard({
       className={classes.card}
       id="impact"
       {...others}
-      // onClick={() => {
-      //   navigate(`/impact/${index}`);
-      // }}
+      onClick={() => {
+        router.push(`/impact/${index}`);
+      }}
     >
       <Card.Section className={cx(classes.innerCard)}>
         <a {...linkProps}>
@@ -123,9 +123,7 @@ export function ImpactCard({
       </Text>
 
       <Group position="apart" className={classes.footer}>
-        
-
-        <Group spacing={8} mr={0}> 
+        <Group spacing={8} mr={0}>
           <ActionIcon className={classes.action}>
             <IconHeart size="1rem" color={theme.colors.red[6]} />
           </ActionIcon>

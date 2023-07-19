@@ -7,6 +7,7 @@ import {
   IconUserCheck,
 } from '@tabler/icons';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 // import { NavLink, useNavigate } from 'react-router-dom';
 import useStyles from './styles';
 
@@ -17,7 +18,7 @@ const data = [
 ];
 
 const HomeNavbar = () => {
-  // const navigate = useNavigate();
+  const router = useRouter();
   const { classes, cx } = useStyles();
   const [active, setActive] = useState('Home');
   const [expanded, setExpanded] = useState(false);
@@ -34,7 +35,7 @@ const HomeNavbar = () => {
       //   onClick={(event) => {
       //     event.preventDefault();
       //     setActive(item.label);
-      //     // navigate(`/provider/${item.link}`);
+      //     router.push(`/provider/${item.link}`);
       //     setExpanded(false); // Close the mobile menu after clicking a link
       //   }}
       // >
@@ -48,7 +49,7 @@ const HomeNavbar = () => {
     const response = window.confirm('Are you sure you want to Log Out?');
     if (response) {
       localStorage.clear();
-      // navigate('/login');
+      router.push('/login');
     }
   };
 

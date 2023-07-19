@@ -14,6 +14,7 @@ import {
   IconHome2,
   IconUserPlus,
 } from '@tabler/icons';
+import { useRouter } from 'next/navigation';
 // import { NavLink, useNavigate } from 'react-router-dom';
 import useStyles from './styles';
 
@@ -25,7 +26,7 @@ const data = [
 ];
 
 const HomeNavbar = () => {
-  // const navigate = useNavigate();
+  const router = useRouter();
   const { classes, cx } = useStyles();
   const [active, setActive] = useState('Billing');
 
@@ -41,7 +42,7 @@ const HomeNavbar = () => {
       //   onClick={(event) => {
       //     event.preventDefault();
       //     setActive(item.label);
-      //     navigate(`/seeker/${item.link}`);
+      //     router.push(`/seeker/${item.link}`);
       //   }}
       // >
       //   <item.icon className={classes.linkIcon} stroke={1.5} />
@@ -54,7 +55,7 @@ const HomeNavbar = () => {
     const response = confirm('Are you sure you want to LogOut?');
     if (response) {
       localStorage.clear();
-      // navigate('/login');
+      router.push('/login');
     }
   };
 
