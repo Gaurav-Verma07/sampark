@@ -1,4 +1,5 @@
-import { Container, Header, Image } from '@mantine/core';
+import { Container, Header } from '@mantine/core';
+import Image from 'next/image';
 import { useNavigate } from 'react-router-dom';
 // import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import './gallery.css';
@@ -9,13 +10,14 @@ export default function Home() {
     <>
       <Header height={100} mb={50}>
         <Container>
-          {/* <Image
+          <Image
             style={{ cursor: 'pointer' }}
-            src={SamparkLogo}
+            src="/assets/Images/samparklogotransparent.png"
+            alt="sampark-logo"
             height={80}
             width={100}
             // onClick={() => navigate('/')}
-          /> */}
+          />
         </Container>
       </Header>
       <div className="gPadding">

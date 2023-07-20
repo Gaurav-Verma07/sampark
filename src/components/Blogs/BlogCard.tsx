@@ -17,6 +17,7 @@ import {
   AspectRatio,
 } from '@mantine/core';
 // import { useNavigate } from 'react-router-dom';
+import Image from 'next/image';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -148,7 +149,7 @@ export function BlogCard({
       <Card.Section className={cx(classes.innerCard)}>
         <a {...linkProps}>
           <AspectRatio ratio={4 / 3} mx="auto">
-            {/* <Image src={image} /> */}
+            <Image src={image} alt="image" height={100} width={200} />
           </AspectRatio>
         </a>
       </Card.Section>

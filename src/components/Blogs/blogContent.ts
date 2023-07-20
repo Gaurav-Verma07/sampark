@@ -1,7 +1,7 @@
 // import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 export const data = [
   {
-    // image: SamparkLogo,
+    image: '/assets/Images/samparklogotransparent.png',
     blogData: ` <div class="blog__main"><h1>How does Sampark work?</h1>
 
     <p class= "blog__text">To put Sampark in a nutshell,

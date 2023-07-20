@@ -5,9 +5,10 @@ import {
   Container,
   createStyles,
   Header,
-  Image,
+  // Image,
   Paper,
 } from '@mantine/core';
+import Image from 'next/image';
 import { IconArrowLeft } from '@tabler/icons';
 // import { useNavigate, useParams } from 'react-router-dom';
 // import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
@@ -41,12 +42,18 @@ const Blogs = () => {
   const { classes } = useStyles();
   // const navigate = useNavigate();
   // const blogData = data[id];
+  const blogData = data['1'];
 
   return (
     <>
       <Header height={100} mb={50}>
         <Container className={classes.header}>
-          {/* <Image src={SamparkLogo} height={80} width={100} /> */}
+          {/* <Image
+            src="/assets/Images/samparklogotransparent.png"
+            alt="Sampark-logo"
+            height={10}
+            width={20}
+          /> */}
         </Container>
       </Header>
 
@@ -67,7 +74,7 @@ const Blogs = () => {
             // maw={300}
             mx="auto"
           >
-            {/* <Image src={blogData.image} /> */}
+            {/* <Image src={blogData.image} alt="image" height={100} width={200} /> */}
           </AspectRatio>
         </Paper>
         {/* <div dangerouslySetInnerHTML={{ __html: blogData.blogData }}></div> */}

@@ -12,6 +12,7 @@ import {
   Title,
   createStyles,
 } from '@mantine/core';
+import Image from 'next/image';
 import { IconArrowLeft } from '@tabler/icons';
 import { child, get, getDatabase, ref } from 'firebase/database';
 import { useState } from 'react';
@@ -25,7 +26,7 @@ const useStyles = createStyles((theme) => ({
     height: '100vh',
     width: '100vw',
     backgroundSize: 'cover',
-    // backgroundImage: 'url("../../assets/Images/homeImg.jpg")',
+    backgroundImage: 'url("/assets/Images/homeImg.jpg")',
   },
   form: {
     borderRight: `1px solid ${
@@ -188,14 +189,17 @@ const Auth = () => {
           </Text>
         </Paper>
         <div>
-          {/* <Image
-            src={SamparkLogo}
+          <Image
+            src="/assets/Images/samparklogotransparent.png"
+            alt="Sampark-logo"
+            height={300}
+            width={400}
             style={{
-              height: '300px',
-              width: '400px',
+              // height: '300px',
+              // width: '400px',
               margin: '155px 0 0 175px',
             }}
-          /> */}
+          />
         </div>
       </div>
     </>

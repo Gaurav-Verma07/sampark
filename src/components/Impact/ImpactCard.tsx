@@ -11,6 +11,7 @@ import {
   createStyles,
   AspectRatio,
 } from '@mantine/core';
+import Image from 'next/image';
 // import { useNavigate } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
@@ -105,7 +106,7 @@ export function ImpactCard({
       <Card.Section className={cx(classes.innerCard)}>
         <a {...linkProps}>
           <AspectRatio ratio={4 / 3} mx="auto">
-            {/* <Image src={image} /> */}
+            <Image src={image} alt="image" width={100} height={100} />
           </AspectRatio>
         </a>
       </Card.Section>
@@ -123,9 +124,7 @@ export function ImpactCard({
       </Text>
 
       <Group position="apart" className={classes.footer}>
-        
-
-        <Group spacing={8} mr={0}> 
+        <Group spacing={8} mr={0}>
           <ActionIcon className={classes.action}>
             <IconHeart size="1rem" color={theme.colors.red[6]} />
           </ActionIcon>

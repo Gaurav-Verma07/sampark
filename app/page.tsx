@@ -1,4 +1,3 @@
-"use client"
 import HeroSection from '../src/components/HeroSection/HeroSection';
 import { ContactUs } from '../src/components/ContactUs/ContactUs';
 import OurValues1 from '../src/components/HomeOurValues/OurValues1';
