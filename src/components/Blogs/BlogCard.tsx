@@ -17,6 +17,7 @@ import {
   AspectRatio,
 } from '@mantine/core';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const useStyles = createStyles((theme) => ({
   card: {

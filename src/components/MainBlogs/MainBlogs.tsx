@@ -11,6 +11,7 @@ import {
   Title,
   useMantineTheme,
 } from '@mantine/core';
+import Image from 'next/image';
 import { mockdata } from './blogData';
 import useStyles from './styles';
 import './blog.css';
@@ -37,7 +38,7 @@ const MainBlogs = () => {
       }}
     >
       <AspectRatio ratio={1920 / 1080}>
-        {/* <Image src={article.image} /> */}
+        <Image src={article.image} alt="image"  width={250} height={300}/>
       </AspectRatio>
       <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
         {article.date}

@@ -3,12 +3,11 @@ import {
   Container,
   createStyles,
   Header,
-  Image,
   SimpleGrid,
   Text,
 } from '@mantine/core';
+import Image from 'next/image';
 import { useNavigate } from 'react-router-dom';
-// import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import { data } from '../../src/components/Impact/impactContent';
 import './impact.css';
 import { ImpactCard } from '../../src/components/Impact/ImpactCard';
@@ -44,7 +43,12 @@ function AllImpacts() {
     <div>
       <Header height={80} mb={50}>
         <Container className={classes.header}>
-          {/* <Image src={SamparkLogo} height={100} width={100} /> */}
+          <Image
+            src="/assets/Images/samparklogotransparent.png"
+            alt="Sampark-logo"
+            height={100}
+            width={100}
+          />
           <Text
             style={{ fontWeight: 'bold', fontSize: 34, fontFamily: 'cursive' }}
           >

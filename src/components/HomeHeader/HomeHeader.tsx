@@ -10,6 +10,7 @@ import {
   Avatar,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import Image from 'next/image';
 // import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import useStyles from './styles';
 import { useRouter } from 'next/navigation';
@@ -56,7 +57,12 @@ const HomeHeader = () => {
   return (
     <Header height={HEADER_HEIGHT} className={classes.root} pt={30}>
       <Container className={classes.header}>
-        {/* <Image  src={SamparkLogo} height={80} width={100} /> */}
+        <Image
+          src="/assets/Images/samparklogotransparent.png"
+          alt="Sampark Logo"
+          height={80}
+          width={100}
+        />
         <Group spacing={5} className={classes.links}>
           {items}
           {isLoggedIn}

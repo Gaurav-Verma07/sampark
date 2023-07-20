@@ -4,8 +4,7 @@
 //../../assets/Images/impact1_riya.jpeg
 export const data = [
   {
-    // image: riya,
-    image: '',
+    image: '/assets/Images/impact1_riya.jpeg',
     impactData: ` <div class="blog__main"><h1>How Sampark Transformed My Life!</h1>
 
     <p class= "blog__text">My name is Riya, and I am a living testament to the incredible impact of Sampark. Growing up in a slum, I faced countless obstacles that seemed insurmountable. But thanks to this remarkable initiative, my life has taken a complete turn for the better. Sampark connected me with local colleges and NGOs, opening doors to opportunities that I never dreamed possible. Allow me to share my personal journey and how Sampark has transformed my life.</p>
@@ -25,8 +24,7 @@ export const data = [
     `,
   },
   {
-    // image: ngo,
-    image: '',
+    image: '/assets/Images/NGO testimonial.jpeg',
     impactData: `<div class="blog__main"><h1>Sampark: A Catalyst for Expansion and Reaching Those in Need</h1>
 
     <p class= "blog__text">As an NGO dedicated to serving underprivileged communities, our mission was always clear: to uplift the lives of those in need. However, our resources and reach were limited, hindering our ability to extend our support to every deserving child and family. That's when Sampark entered our journey, igniting a new era of growth and empowerment. In this testimonial, we would like to express our gratitude to Sampark for helping us expand our reach and find those who needed us the most. </p>
@@ -42,8 +40,7 @@ export const data = [
     </div>`,
   },
   {
-    // image: rahul,
-    image: '',
+    image: '/assets/Images/impact3_rahul.jpeg',
     impactData: ` <div class="blog__main"><h1>A Journey from Struggle to Stability</h1>
 
     <p class= "blog__text">To put Sampark in a nutshell,

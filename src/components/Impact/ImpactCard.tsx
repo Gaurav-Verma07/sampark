@@ -12,6 +12,7 @@ import {
   AspectRatio,
 } from '@mantine/core';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -105,7 +106,7 @@ export function ImpactCard({
       <Card.Section className={cx(classes.innerCard)}>
         <a {...linkProps}>
           <AspectRatio ratio={4 / 3} mx="auto">
-            {/* <Image src={image} /> */}
+            <Image src={image} alt="image" width={100} height={100} />
           </AspectRatio>
         </a>
       </Card.Section>

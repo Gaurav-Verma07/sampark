@@ -1,12 +1,7 @@
 import { Carousel } from '@mantine/carousel';
-import {
-  Box,
-  // Image,
-  Paper,
-  Text,
-  Title,
-  useMantineTheme,
-} from '@mantine/core';
+import { Box, 
+  Image, 
+  Paper, Text, Title, useMantineTheme } from '@mantine/core';
 import { IconArrowNarrowRight } from '@tabler/icons';
 import { useRouter } from 'next/navigation';
 import './imagegallery.css';
@@ -46,64 +41,64 @@ const ImageGallery = () => {
         ]}
       >
         <Carousel.Slide>
-          {/* <Image
-            // onClick={() => router.push('/gallery')}
+          <Image
+            onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
             radius={20}
             height={300}
             src="https://drive.google.com/uc?export=download&id=1LvVkueNKCOxWMZhmENlciL98fFnO1Iyl"
-          /> */}
+          />
         </Carousel.Slide>
         <Carousel.Slide>
-          {/* <Image
-            // onClick={() => router.push('/gallery')}
+          <Image
+            onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
             radius={20}
             height={300}
             src="https://drive.google.com/uc?export=download&id=1Lrgi5PCH0MKgY6LYyaa3oGkXGiCRyYiK"
-          /> */}
+          />
         </Carousel.Slide>
         <Carousel.Slide>
-          {/* <Image
-            // onClick={() => router.push('/gallery')}
+          <Image
+            onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
             radius={20}
             height={300}
             src="https://drive.google.com/uc?export=download&id=1LxlU3X8-1WH4TLDM4YSP9x21g4HVjggU"
-          /> */}
+          />
         </Carousel.Slide>
         <Carousel.Slide>
-          {/* <Image
-            // onClick={() => router.push('/gallery')}
+        <Image
+            onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
             radius={20}
             height={300}
             src="https://drive.google.com/uc?export=download&id=1LtNaPzQYG_3AgRI__hB1BGKBWFh6Ulvo"
-          /> */}
+          />
         </Carousel.Slide>
         <Carousel.Slide>
-          {/* <Image
-            // onClick={() => router.push('/gallery')}
+         <Image
+            onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
             radius={20}
             height={300}
             src="https://drive.google.com/uc?export=download&id=1Lr0fIwip2Fa5VyrThq4wx00vIUYkOxTO"
-          /> */}
+          />
         </Carousel.Slide>
         <Carousel.Slide>
-          {/* <Image
-            // onClick={() => router.push('/gallery')}
+        <Image
+            onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
             radius={20}
             height={300}
             src="https://drive.google.com/uc?export=download&id=1MTxwomYotps5z_-BHpHhXvwSr1ISw-de"
-          /> */}
+          />
         </Carousel.Slide>
       </Carousel>
       <Box>

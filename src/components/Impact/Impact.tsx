@@ -10,6 +10,7 @@ import {
   Text,
   Title,
 } from '@mantine/core';
+import Image from 'next/image';
 import { IconArrowLeft } from '@tabler/icons';
 import { useRouter, useParams } from 'next/navigation';
 // import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
@@ -48,7 +49,12 @@ const Impact = () => {
     <>
       <Header height={100} mb={50}>
         <Container className={classes.header}>
-          {/* <Image src={SamparkLogo} height={80} width={100} /> */}
+          <Image
+            src="/assets/Images/samparklogotransparent.png"
+            alt="Sampark Logo"
+            height={80}
+            width={100}
+          />
         </Container>
       </Header>
 
@@ -69,7 +75,12 @@ const Impact = () => {
             // maw={300}
             mx="auto"
           >
-            {/* <Image src={impactData.image} /> */}
+            <Image
+              src={impactData.image}
+              alt="image"
+              width={100}
+              height={100}
+            />
           </AspectRatio>
         </Paper>
         <div dangerouslySetInnerHTML={{ __html: impactData.impactData }}></div>
