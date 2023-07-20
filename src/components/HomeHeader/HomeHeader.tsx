@@ -13,7 +13,7 @@ import { useDisclosure } from '@mantine/hooks';
 import Image from 'next/image';
 // import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import useStyles from './styles';
-// import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 const HEADER_HEIGHT = '5rem';
 const links: any = [
@@ -29,7 +29,7 @@ const HomeHeader = () => {
   const user: any = localStorage.getItem('user_uid');
   const [opened, { toggle }] = useDisclosure(false);
   const { classes, cx } = useStyles();
-  // const navigate = useNavigate();
+  const router = useRouter();
 
   const items = links.map((link: any) => (
     <a key={link.label} href={link.link} className={cx(classes.link)}>
@@ -41,13 +41,13 @@ const HomeHeader = () => {
     <Avatar
       radius="xl"
       onClick={() => {
-        // navigate('/provider/home');
+        router.push('/provider/home');
       }}
     />
   ) : (
     <Button
       onClick={() => {
-        // navigate('/login');
+        router.push('/login');
       }}
     >
       Sign In

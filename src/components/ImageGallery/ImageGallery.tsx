@@ -3,11 +3,11 @@ import { Box,
   Image, 
   Paper, Text, Title, useMantineTheme } from '@mantine/core';
 import { IconArrowNarrowRight } from '@tabler/icons';
-// import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import './imagegallery.css';
 
 const ImageGallery = () => {
-  // const navigate = useNavigate();
+  const router = useRouter();
   const theme = useMantineTheme();
 
   return (
@@ -42,7 +42,7 @@ const ImageGallery = () => {
       >
         <Carousel.Slide>
           <Image
-            // onClick={() => navigate('/gallery')}
+            onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
             radius={20}
@@ -52,7 +52,7 @@ const ImageGallery = () => {
         </Carousel.Slide>
         <Carousel.Slide>
           <Image
-            // onClick={() => navigate('/gallery')}
+            onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
             radius={20}
@@ -62,7 +62,7 @@ const ImageGallery = () => {
         </Carousel.Slide>
         <Carousel.Slide>
           <Image
-            // onClick={() => navigate('/gallery')}
+            onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
             radius={20}
@@ -71,8 +71,8 @@ const ImageGallery = () => {
           />
         </Carousel.Slide>
         <Carousel.Slide>
-          <Image
-            // onClick={() => navigate('/gallery')}
+        <Image
+            onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
             radius={20}
@@ -81,8 +81,8 @@ const ImageGallery = () => {
           />
         </Carousel.Slide>
         <Carousel.Slide>
-          <Image
-            // onClick={() => navigate('/gallery')}
+         <Image
+            onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
             radius={20}
@@ -91,8 +91,8 @@ const ImageGallery = () => {
           />
         </Carousel.Slide>
         <Carousel.Slide>
-          <Image
-            // onClick={() => navigate('/gallery')}
+        <Image
+            onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
             radius={20}

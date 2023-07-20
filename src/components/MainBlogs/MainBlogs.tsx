@@ -16,12 +16,12 @@ import { mockdata } from './blogData';
 import useStyles from './styles';
 import './blog.css';
 // import Logo from '../../assets/Images/samparklogotransparent.png';
-// import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 const MainBlogs = () => {
   const { classes } = useStyles();
   const theme = useMantineTheme();
-  // const navigate = useNavigate();
+  const router = useRouter();
 
   const cards = mockdata.map((article, index) => (
     <Card
@@ -33,9 +33,9 @@ const MainBlogs = () => {
       href="#"
       className={classes.card}
       id="blogs"
-      // onClick={() => {
-      //   navigate(`/blogs/${index}`);
-      // }}
+      onClick={() => {
+        router.push(`/blogs/${index}`);
+      }}
     >
       <AspectRatio ratio={1920 / 1080}>
         <Image src={article.image} alt="image"  width={250} height={300}/>
@@ -53,7 +53,7 @@ const MainBlogs = () => {
     <Paper m={20} px={70} mb={70} pt={20}>
       <Box>
         <Title
-         className='blogtitle'
+          className="blogtitle"
           order={3}
           py={20}
           tt="capitalize"
@@ -63,7 +63,7 @@ const MainBlogs = () => {
           style={{ cursor: 'pointer', marginBottom: '2%' }}
           // component="a"
           // href="/blogs"
-          // onClick={() => navigate('/blogs')}
+          onClick={() => router.push('/blogs')}
         >
           Read more about our work through our blogs...
         </Title>

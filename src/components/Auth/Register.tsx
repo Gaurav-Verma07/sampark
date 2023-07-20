@@ -15,7 +15,7 @@ import { useForm } from '@mantine/form';
 import { IconArrowLeft } from '@tabler/icons';
 import { child, get, getDatabase, ref } from 'firebase/database';
 import { useEffect, useState } from 'react';
-// import { useNavigate } from 'react-router';
+import { useRouter } from 'next/navigation';
 import { registerUserHandler } from '../../utils/ApiRequests/firebaseAuth';
 
 const useStyles = createStyles(() => {
@@ -34,7 +34,7 @@ const useStyles = createStyles(() => {
 });
 
 const Register = () => {
-  // const navigate = useNavigate();
+  const router = useRouter();
   const [active, setActive] = useState(0);
   const { classes } = useStyles();
 
@@ -98,7 +98,7 @@ const Register = () => {
     registerUserHandler(form.values.email, form.values.password);
     console.log(form.values);
     localStorage.setItem('email', JSON.stringify(form.values.email));
-    // navigate(`/provider/home`);
+    router.push(`/provider/home`);
   };
   const box1 = {
     boxShadow:
@@ -111,9 +111,9 @@ const Register = () => {
           <Button
             my={20}
             // className={classes.back}
-            // onClick={() => {
-            //   navigate('/');
-            // }}
+            onClick={() => {
+              router.push('/');
+            }}
           >
             {' '}
             <IconArrowLeft /> Go Back

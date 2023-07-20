@@ -1,11 +1,12 @@
-import { Container, Header } from '@mantine/core';
+import { Container, Header, Image } from '@mantine/core';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { useNavigate } from 'react-router-dom';
 // import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import './gallery.css';
 import React from 'react';
 
 export default function Home() {
+  const router = useRouter();
   return (
     <>
       <Header height={100} mb={50}>
@@ -16,8 +17,8 @@ export default function Home() {
             alt="sampark-logo"
             height={80}
             width={100}
-            // onClick={() => navigate('/')}
-          />
+            onClick={() => router.push('/')}
+          /> 
         </Container>
       </Header>
       <div className="gPadding">
