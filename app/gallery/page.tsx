@@ -1,12 +1,18 @@
-"use client"
+
+'use client';
+
 import { Container, Header } from '@mantine/core';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-// import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import './gallery.css';
 import React from 'react';
+import { NextPage } from 'next';
+import {galleryData} from './galleryData'
 
-export default function Home() {
+interface GalleryType{
+  image: string;
+}
+const GalleryPage: NextPage =()=>{
   const router = useRouter();
   return (
     <>
@@ -19,62 +25,28 @@ export default function Home() {
             height={80}
             width={100}
             onClick={() => router.push('/')}
-          /> 
+          />
         </Container>
       </Header>
       <div className="gPadding">
         <h1 style={{ fontSize: '3rem', color: 'white' }}>Gallery</h1>
         <div className="grid-container">
-          <div className="grid-item">
-            {/* <img
+          {galleryData.map((data:GalleryType, index:number)=>
+          <div key={index} className="grid-item">
+            <img
               className="imgc"
               style={{ cursor: 'pointer' }}
               height={300}
-              src="https://drive.google.com/uc?export=download&id=1LvVkueNKCOxWMZhmENlciL98fFnO1Iyl"
-            /> */}
+              src={data.image as string}
+            />
           </div>
-          <div className="grid-item">
-            {/* <img
-              className="imgc"
-              style={{ cursor: 'pointer' }}
-              height={300}
-              src="https://drive.google.com/uc?export=download&id=1Lrgi5PCH0MKgY6LYyaa3oGkXGiCRyYiK"
-            /> */}
-          </div>
-          <div className="grid-item">
-            {/* <img
-              className="imgc"
-              style={{ cursor: 'pointer' }}
-              height={300}
-              src="https://drive.google.com/uc?export=download&id=1LxlU3X8-1WH4TLDM4YSP9x21g4HVjggU"
-            /> */}
-          </div>
-          <div className="grid-item">
-            {/* <img
-              className="imgc"
-              style={{ cursor: 'pointer' }}
-              height={300}
-              src="https://drive.google.com/uc?export=download&id=1LtNaPzQYG_3AgRI__hB1BGKBWFh6Ulvo"
-            /> */}
-          </div>
-          <div className="grid-item">
-            {/* <img
-              className="imgc"
-              style={{ cursor: 'pointer' }}
-              height={300}
-              src="https://drive.google.com/uc?export=download&id=1Lr0fIwip2Fa5VyrThq4wx00vIUYkOxTO"
-            /> */}
-          </div>
-          <div className="grid-item">
-            {/* <img
-              className="imgc"
-              style={{ cursor: 'pointer' }}
-              height={300}
-              src="https://drive.google.com/uc?export=download&id=1MTxwomYotps5z_-BHpHhXvwSr1ISw-de"
-            /> */}
-          </div>
+          )}
+          
+        
         </div>
       </div>
     </>
   );
 }
+
+export default GalleryPage;

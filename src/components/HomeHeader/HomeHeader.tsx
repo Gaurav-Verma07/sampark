@@ -11,13 +11,13 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Image from 'next/image';
-// import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import useStyles from './styles';
 import { useRouter } from 'next/navigation';
+import React from 'react';
 
 const HEADER_HEIGHT = '5rem';
 const links: any = [
-  { link: '#gallery', label: 'Gallery' },
+  { link: '/gallery', label: 'Gallery' },
   { link: '/blogs', label: 'Blogs' },
   { link: '/impact', label: 'Impact' },
   { link: '#values', label: 'Values' },

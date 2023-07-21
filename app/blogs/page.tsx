@@ -4,18 +4,22 @@ import {
   Container,
   createStyles,
   Header,
-  // Image,
   SimpleGrid,
+  Space,
 } from '@mantine/core';
 import { useRouter } from 'next/navigation';
-// import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
+import HomeHeader from '../../src/components/HomeHeader/HomeHeader';
 import { data } from '../../src/components/Blogs/blogContent';
 import './blogs.css';
 import { BlogCard } from '../../src/components/Blogs/BlogCard';
 import { useState } from 'react';
 import React from 'react';
+import { NextPage } from 'next';
 
 const useStyles = createStyles((theme) => ({
+  body:{
+    background:'white',
+  },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -44,7 +48,16 @@ interface SavedBlogType {
   image: string;
 }
 
-function AllBlogs() {
+interface BlogType{
+  id: number;
+  name: string;
+  content:string;
+  author: string;
+  image: string;
+
+}
+
+const BlogsPage:NextPage<BlogType>=()=>{
   const router = useRouter();
   const { classes } = useStyles();
   const [savedBlogs, setSavedBlogs] = useState<SavedBlogType[]>([]);
@@ -72,45 +85,44 @@ function AllBlogs() {
   };
   return (
     <div>
-      <Header height={80} mb={50}>
-        {/* <Container className={classes.header}>
-           <Image src={SamparkLogo} height={100} width={100} /> 
-        </Container> */}
-      </Header>
-      <Button
-        my={20}
-        variant="outline"
-        color="teal"
-        //className={classes.back}
-        onClick={() => {
-          router.push('/');
-        }}
-      >
-        {' '}
-        Go Back
-      </Button>
-      <SimpleGrid
-        className={classes.blog}
-        cols={3}
-        breakpoints={[
-          { maxWidth: 'sm', cols: 1 },
-          { maxWidth: 'md', cols: 2 },
-        ]}
-      >
-        {' '}
-        {data.map((item, index) => (
-          <BlogCard
-            data={item.blogData}
-            image={item.image as string}
-            key={index}
-            index={index}
-            handleAddSaveBlog={handleAddSaveBlog}
-            handleDeleteSavedBlog={handleDeleteSavedBlog}
-          />
-        ))}
-      </SimpleGrid>
+      <Container className={classes.header}>
+        <HomeHeader />
+      </Container>
+      <div style={{ marginTop: '10%' }}>
+          <Button
+            variant="outline"
+            color="teal"
+            mt={10}
+            className={classes.back}
+            onClick={() => {
+              router.push('/');
+            }}
+          >
+            Go Back
+          </Button>
+        <SimpleGrid
+          className={classes.blog}
+          cols={3}
+          breakpoints={[
+            { maxWidth: 'sm', cols: 1 },
+            { maxWidth: 'md', cols: 2 },
+          ]}
+        >
+          {' '}
+          {data.map((item, index) => (
+            <BlogCard
+              data={item.blogData}
+              image={item.image as string}
+              key={index}
+              index={index}
+              handleAddSaveBlog={handleAddSaveBlog}
+              handleDeleteSavedBlog={handleDeleteSavedBlog}
+            />
+          ))}
+        </SimpleGrid>
+      </div>
     </div>
   );
 }
 
-export default AllBlogs;
+export default BlogsPage;

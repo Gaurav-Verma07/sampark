@@ -3,16 +3,19 @@ import {
   Button,
   Container,
   createStyles,
-  Header,
   SimpleGrid,
   Text,
 } from '@mantine/core';
+
 import Image from 'next/image';
+
 import { useRouter } from 'next/navigation';
 import { data } from '../../src/components/Impact/impactContent';
 import './impact.css';
 import { ImpactCard } from '../../src/components/Impact/ImpactCard';
 import React from 'react';
+import { NextPage } from 'next';
+import HomeHeader from '../../src/components/HomeHeader/HomeHeader';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -36,50 +39,45 @@ const useStyles = createStyles((theme) => ({
     }),
   },
 }));
+interface ImapctsType {
+  id: number;
+  image: string;
+  impactData: string;
+}
+const ImapctsPage: NextPage<ImapctsType> = ()=>{
 
 function AllImpacts() {
   const router = useRouter();
   const { classes } = useStyles();
+
+
   return (
-    <div>
-      <Header height={80} mb={50}>
-        <Container className={classes.header}>
-          <Image
-            src="/assets/Images/samparklogotransparent.png"
-            alt="Sampark-logo"
-            height={100}
-            width={100}
-          />
-          <Text
-            style={{ fontWeight: 'bold', fontSize: 34, fontFamily: 'cursive' }}
-          >
-            Impact We Created!
-          </Text>
+        <div>
+      <Container className={classes.header}>
+        <HomeHeader />
+      </Container>
+      <div style={{ marginTop: '10%' }}>
           <Button
-            my={20}
             variant="outline"
             color="teal"
+            mt={10}
             className={classes.back}
             onClick={() => {
               router.push('/');
             }}
           >
-            {' '}
             Go Back
           </Button>
-        </Container>
-      </Header>
-
-      <SimpleGrid
-        className={classes.blog}
-        cols={3}
-        breakpoints={[
-          { maxWidth: 'sm', cols: 1 },
-          { maxWidth: 'md', cols: 2 },
-        ]}
-      >
-        {' '}
-        {data.map((item, index) => (
+        <SimpleGrid
+          className={classes.blog}
+          cols={3}
+          breakpoints={[
+            { maxWidth: 'sm', cols: 1 },
+            { maxWidth: 'md', cols: 2 },
+          ]}
+        >
+          {' '}
+       {data.map((item:ImapctsType, index: number) => (
           <ImpactCard
             data={item.impactData}
             image={item.image as string}
@@ -87,9 +85,10 @@ function AllImpacts() {
             index={index}
           />
         ))}
-      </SimpleGrid>
+        </SimpleGrid>
+      </div>
     </div>
   );
 }
 
-export default AllImpacts;
+export default ImapctsPage;
