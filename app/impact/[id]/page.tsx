@@ -1,3 +1,4 @@
+"use client"
 import {
   AspectRatio,
   Button,
@@ -5,16 +6,14 @@ import {
   Container,
   createStyles,
   Header,
-  // Image,
   Paper,
-  Text,
-  Title,
 } from '@mantine/core';
 import Image from 'next/image';
 import { IconArrowLeft } from '@tabler/icons';
 import { useRouter, useParams } from 'next/navigation';
-import { data } from './impactContent';
-import './impact.css';
+import { data } from '../../../src/components/Impact/impactContent';
+import '../impact.css';
+import React from 'react';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -75,7 +74,7 @@ const Impact = () => {
             mx="auto"
           >
             <Image
-              src={impactData.image}
+              src={impactData.image as string}
               alt="image"
               width={100}
               height={100}

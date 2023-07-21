@@ -1,7 +1,5 @@
 import { Carousel } from '@mantine/carousel';
-import { Box, 
-  Image, 
-  Paper, Text, Title, useMantineTheme } from '@mantine/core';
+import { Box, Image, Paper, Text, Title, useMantineTheme } from '@mantine/core';
 import { IconArrowNarrowRight } from '@tabler/icons';
 import { useRouter } from 'next/navigation';
 import './imagegallery.css';
@@ -71,7 +69,7 @@ const ImageGallery = () => {
           />
         </Carousel.Slide>
         <Carousel.Slide>
-        <Image
+          <Image
             onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
@@ -81,7 +79,7 @@ const ImageGallery = () => {
           />
         </Carousel.Slide>
         <Carousel.Slide>
-         <Image
+          <Image
             onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
@@ -91,7 +89,7 @@ const ImageGallery = () => {
           />
         </Carousel.Slide>
         <Carousel.Slide>
-        <Image
+          <Image
             onClick={() => router.push('/gallery')}
             className="imgc"
             style={{ cursor: 'pointer' }}
@@ -101,7 +99,10 @@ const ImageGallery = () => {
           />
         </Carousel.Slide>
       </Carousel>
-      <Box>
+      <Box
+        style={{ cursor: 'pointer' }}
+        onClick={() => router.push('/gallery')}
+      >
         <Text
           sx={{ display: 'flex', alignItems: 'center', justifyContent: 'end' }}
           color={theme.colors.red[5]}
