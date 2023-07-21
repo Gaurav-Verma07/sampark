@@ -6,6 +6,9 @@ import {
   SimpleGrid,
   Text,
 } from '@mantine/core';
+
+import Image from 'next/image';
+
 import { useRouter } from 'next/navigation';
 import { data } from '../../src/components/Impact/impactContent';
 import './impact.css';
@@ -43,6 +46,7 @@ interface ImapctsType {
 }
 const ImapctsPage: NextPage<ImapctsType> = ()=>{
 
+function AllImpacts() {
   const router = useRouter();
   const { classes } = useStyles();
 

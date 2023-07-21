@@ -1,3 +1,4 @@
+'use client';
 import {
   AspectRatio,
   Button,
@@ -7,14 +8,15 @@ import {
   Header,
   // Image,
   Paper,
-  Text,
-  Title,
 } from '@mantine/core';
 import Image from 'next/image';
 import { IconArrowLeft } from '@tabler/icons';
 import { useRouter, useParams } from 'next/navigation';
-import { data } from './impactContent';
-import './impact.css';
+// import { useNavigate, useParams } from 'react-router-dom';
+// import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
+import { data } from '../../../src/components/Blogs/blogContent';
+import '../blogs.css';
+import React from 'react';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -38,11 +40,16 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const Impact = () => {
-  const { id }: any = useParams();
+interface SingleBlogType {
+  image: string;
+  blogData: string;
+}
+const Blogs = () => {
+  const {id}: any = useParams();
   const { classes } = useStyles();
   const router = useRouter();
-  const impactData = data[id];
+  const blogData = data[id];
+
 
   return (
     <>
@@ -50,9 +57,9 @@ const Impact = () => {
         <Container className={classes.header}>
           <Image
             src="/assets/Images/samparklogotransparent.png"
-            alt="Sampark Logo"
-            height={80}
-            width={100}
+            alt="Sampark-logo"
+            height={10}
+            width={20}
           />
         </Container>
       </Header>
@@ -75,17 +82,17 @@ const Impact = () => {
             mx="auto"
           >
             <Image
-              src={impactData.image}
+              src={blogData.image as string}
               alt="image"
-              width={100}
               height={100}
+              width={200}
             />
           </AspectRatio>
         </Paper>
-        <div dangerouslySetInnerHTML={{ __html: impactData.impactData }}></div>
+        <div dangerouslySetInnerHTML={{ __html: blogData.blogData }}></div>
       </Card>
     </>
   );
 };
 
-export default Impact;
+export default Blogs;

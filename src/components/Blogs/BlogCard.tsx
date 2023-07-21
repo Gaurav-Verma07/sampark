@@ -153,7 +153,7 @@ export function BlogCard({
         <Card.Section className={cx(classes.innerCard)}>
           <a {...linkProps}>
             <AspectRatio ratio={4 / 3} mx="auto">
-              {/* <Image src={image} /> */}
+              <Image src={image} alt="image" width={250} height={300} />
             </AspectRatio>
           </a>
         </Card.Section>
