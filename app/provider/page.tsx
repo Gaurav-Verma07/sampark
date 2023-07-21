@@ -1,3 +1,4 @@
+'use client';
 import { AppShell } from '@mantine/core';
 import { Route, Routes } from 'react-router';
 import MainHeader from '../../src/components/MainHeader/MainHeader';
@@ -5,8 +6,9 @@ import HomeNavbar from '../../src/components/Navbar/Navbar';
 import ProviderCollegeTeam from '../../src/components/ProviderCollegeTeam/ProviderCollegeTeam';
 import ProviderMain from '../../src/components/ProviderMain/ProviderMain';
 import React from 'react';
+import { NextPage } from 'next';
 
-const Provider = () => {
+const Provider: NextPage = () => {
   return (
     <AppShell
       padding="md"

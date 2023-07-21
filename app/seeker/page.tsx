@@ -1,3 +1,4 @@
+'use client';
 import { AppShell } from '@mantine/core';
 import { Route, Routes } from 'react-router';
 import MainHeader from '../../src/components/MainHeader/MainHeader';
@@ -6,8 +7,9 @@ import HomeNavbar from '../../src/components/SeekerNavbar/Navbar';
 import SeekerMain from '../../src/components/SeekerMain/SeekerMain';
 import ProgramSection from '../../src/components/SeekerProgramSection/ProgramSection';
 import React from 'react';
+import { NextPage } from 'next';
 
-const Seeker = () => {
+const Seeker: NextPage = () => {
   // console.log(process.env.REACT_APP_GOOGLE_API_KEY);
 
   return (

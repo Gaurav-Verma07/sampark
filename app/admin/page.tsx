@@ -1,4 +1,6 @@
+"use client"
 import { Box, Text } from '@mantine/core';
+import { NextPage } from 'next';
 import React from 'react';
 const location = {
   address: '1600 Amphitheatre Parkway, Mountain View, california.',
@@ -6,7 +8,7 @@ const location = {
   lng: -122.08427,
 };
 
-const Admin = () => {
+const AdminPage: NextPage = () => {
   return (
     <Box>
       <Text color="teal" align="center">
@@ -16,4 +18,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default AdminPage;
