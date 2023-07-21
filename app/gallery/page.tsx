@@ -1,4 +1,5 @@
-import { Container, Header, Image } from '@mantine/core';
+"use client"
+import { Container, Header } from '@mantine/core';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 // import SamparkLogo from '../../assets/Images/samparklogotransparent.png';

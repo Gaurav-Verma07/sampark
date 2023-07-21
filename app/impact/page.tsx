@@ -1,3 +1,4 @@
+'use client';
 import {
   Button,
   Container,
@@ -7,7 +8,7 @@ import {
   Text,
 } from '@mantine/core';
 import Image from 'next/image';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { data } from '../../src/components/Impact/impactContent';
 import './impact.css';
 import { ImpactCard } from '../../src/components/Impact/ImpactCard';
@@ -37,7 +38,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 function AllImpacts() {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { classes } = useStyles();
   return (
     <div>
@@ -60,7 +61,7 @@ function AllImpacts() {
             color="teal"
             className={classes.back}
             onClick={() => {
-              navigate('/');
+              router.push('/');
             }}
           >
             {' '}

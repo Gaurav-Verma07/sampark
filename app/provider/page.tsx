@@ -1,3 +1,4 @@
+'use client';
 import { AppShell } from '@mantine/core';
 import { Route, Routes } from 'react-router';
 import MainHeader from '../../src/components/MainHeader/MainHeader';

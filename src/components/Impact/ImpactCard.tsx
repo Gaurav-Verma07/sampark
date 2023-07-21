@@ -1,16 +1,5 @@
 import { useState, useEffect } from 'react';
-import { IconBookmark, IconHeart, IconShare } from '@tabler/icons-react';
-import {
-  Card,
-  // Image,
-  Text,
-  ActionIcon,
-  Badge,
-  Group,
-  Center,
-  createStyles,
-  AspectRatio,
-} from '@mantine/core';
+import { Card, Text, createStyles, AspectRatio } from '@mantine/core';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
@@ -60,22 +49,15 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface ArticleCardProps {
+interface ImpactType {
   image: string;
   index: number;
   data: string;
 }
 
-export function ImpactCard({
-  className,
-  image,
-  index,
-  data,
-  ...others
-}: ArticleCardProps &
-  Omit<React.ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
+export function ImpactCard({ image, index, data }: ImpactType) {
   const router = useRouter();
-  const { classes, cx, theme } = useStyles();
+  const { classes, cx } = useStyles();
   const linkProps = {
     target: '_blank',
     rel: 'noopener noreferrer',
@@ -98,7 +80,6 @@ export function ImpactCard({
       radius="md"
       className={classes.card}
       id="impact"
-      {...others}
       onClick={() => {
         router.push(`/impact/${index}`);
       }}
@@ -110,32 +91,9 @@ export function ImpactCard({
           </AspectRatio>
         </a>
       </Card.Section>
-
-      <Badge
-        className={classes.rating}
-        variant="gradient"
-        gradient={{ from: 'yellow', to: 'red' }}
-      >
-        4
-      </Badge>
-
       <Text className={classes.title} fw={500} component="a" {...linkProps}>
         {impactTitle}
       </Text>
-
-      <Group position="apart" className={classes.footer}>
-        <Group spacing={8} mr={0}>
-          <ActionIcon className={classes.action}>
-            <IconHeart size="1rem" color={theme.colors.red[6]} />
-          </ActionIcon>
-          <ActionIcon className={classes.action}>
-            <IconBookmark size="1rem" color={theme.colors.yellow[7]} />
-          </ActionIcon>
-          <ActionIcon className={classes.action}>
-            <IconShare size="1rem" />
-          </ActionIcon>
-        </Group>
-      </Group>
     </Card>
   );
 }
