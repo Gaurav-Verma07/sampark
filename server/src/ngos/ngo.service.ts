@@ -1,6 +1,15 @@
 import { NgoModel } from '../../schema/ngos/NgosSchema';
 import { NgoType } from './ngo.interface';
 
+const getFirstNgo = async () => {
+  try {
+    const ngoData = await NgoModel.findOne();
+    return ngoData;
+  } catch (error) {
+    throw new Error(error as string);
+  }
+};
+
 const getAllNgos = async () => {
   try {
     const ngoData = await NgoModel.find({});
@@ -76,6 +85,7 @@ const deleteNgo = async (_id: string) => {
 };
 
 export const NgoService = {
+  getFirstNgo,
   getAllNgos,
   getNgoById,
   getNgoBySlug,

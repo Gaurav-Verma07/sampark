@@ -1,6 +1,15 @@
 import { OrphanageModel } from '../../schema/orphanage/OrphanagesSchema';
 import { OrphanageType } from './orphanage.interface';
 
+const getFirstOrphanage = async () => {
+  try {
+    const orphanage = await OrphanageModel.findOne();
+    return orphanage;
+  } catch (error) {
+    throw new Error(error as string);
+  }
+};
+
 const getAllOrphanages = async () => {
   try {
     const orphanage = await OrphanageModel.find({});
@@ -76,6 +85,7 @@ const deleteOrphanage = async (_id: string) => {
 };
 
 export const OrphanageService = {
+  getFirstOrphanage,
   getAllOrphanages,
   getOrphanageById,
   getOrphanageBySlug,
