@@ -10,6 +10,14 @@ interface RequestParams {
   slug: string;
 }
 
+ngoRouter.get('/', async (_, res: Response) => {
+  try {
+    const ngo = await NgoService.getFirstNgo();
+    res.status(200).send({ success: true, ngo: ngo });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+});
 
 ngoRouter.get('/', async (_, res: Response) => {
   try {

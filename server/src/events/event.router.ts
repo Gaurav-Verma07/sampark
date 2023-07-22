@@ -13,6 +13,15 @@ interface RequestParams {
 
 eventRouter.get('/', async (_, res: Response) => {
   try {
+    const event = await EventService.getFirstEvent();
+    res.status(200).send({ success: true, event: event });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+});
+
+eventRouter.get('/', async (_, res: Response) => {
+  try {
     const event = await EventService.getAllEvents();
     res.status(200).send({ success: true, event: event });
   } catch (error) {
