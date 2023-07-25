@@ -6,19 +6,16 @@ import {
   Container,
   createStyles,
   Header,
-  // Image,
   Paper,
 } from '@mantine/core';
 import Image from 'next/image';
 import { IconArrowLeft } from '@tabler/icons';
 import { useRouter, useParams } from 'next/navigation';
-// import { useNavigate, useParams } from 'react-router-dom';
-// import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 import { data } from '../../../src/components/Blogs/blogContent';
 import '../blogs.css';
 import React from 'react';
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(() => ({
   header: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -40,16 +37,11 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface SingleBlogType {
-  image: string;
-  blogData: string;
-}
 const Blogs = () => {
-  const {id}: any = useParams();
+  const { id }: any = useParams();
   const { classes } = useStyles();
   const router = useRouter();
   const blogData = data[id];
-
 
   return (
     <>

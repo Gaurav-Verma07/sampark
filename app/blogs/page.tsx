@@ -3,9 +3,7 @@ import {
   Button,
   Container,
   createStyles,
-  Header,
   SimpleGrid,
-  Space,
 } from '@mantine/core';
 import { useRouter } from 'next/navigation';
 import HomeHeader from '../../src/components/HomeHeader/HomeHeader';
