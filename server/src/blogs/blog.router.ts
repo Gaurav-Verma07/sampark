@@ -11,6 +11,14 @@ interface RequestParams {
   slug: string;
 }
 
+blogRouter.get('/first-blog', async (_, res: Response) => {
+  try {
+    const blog = await BlogService.getFirstBlog();
+    res.status(200).send({ success: true, blog: blog });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+});
 
 blogRouter.get('/', async (_, res: Response) => {
   try {

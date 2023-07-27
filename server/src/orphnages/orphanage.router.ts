@@ -13,6 +13,15 @@ interface RequestParams {
 
 orphanageRouter.get('/', async (_, res: Response) => {
   try {
+    const orphanage = await OrphanageService.getFirstOrphanage();
+    res.status(200).send({ success: true, orphanage: orphanage });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+});
+
+orphanageRouter.get('/', async (_, res: Response) => {
+  try {
     const orphanage = await OrphanageService.getAllOrphanages();
     res.status(200).send({ success: true, orphanage: orphanage });
   } catch (error) {

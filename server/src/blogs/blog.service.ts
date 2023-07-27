@@ -1,6 +1,15 @@
 import { BlogModel } from '../../schema/blogs/BlogsSchema';
 import { BlogType } from './blog.interface';
 
+const getFirstBlog = async () => {
+  try {
+    const blogData = await BlogModel.findOne();
+    return blogData;
+  } catch (error) {
+    throw new Error(error as string);
+  }
+};
+
 const getAllBlogs = async () => {
   try {
     const blogData = await BlogModel.find({});
@@ -75,6 +84,7 @@ const deleteBlog = async (_id: string) => {
   }
 };
 export const BlogService = {
+  getFirstBlog,
   getAllBlogs,
   getBlogById,
   getBlogBySlug,
