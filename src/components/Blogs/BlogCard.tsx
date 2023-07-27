@@ -7,7 +7,6 @@ import {
 } from '@tabler/icons-react';
 import {
   Card,
-  // Image,
   Text,
   ActionIcon,
   Badge,
@@ -18,6 +17,7 @@ import {
 } from '@mantine/core';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import React from 'react';
 
 const useStyles = createStyles((theme) => ({
   card: {

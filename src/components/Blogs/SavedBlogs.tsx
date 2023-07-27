@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Box, Paper, SimpleGrid, Title } from '@mantine/core';
 import { BlogCard } from './BlogCard';
+import React from 'react';
 
 interface savedBlogType {
   id: number;
