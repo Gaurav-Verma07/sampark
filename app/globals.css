@@ -6,6 +6,7 @@
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 }
 
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -17,3 +18,4 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
 }
+
