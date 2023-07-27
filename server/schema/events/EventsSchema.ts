@@ -23,11 +23,11 @@ const EventSchema = new Schema(
       require: true,
     },
     date: {
-      type: Date,
+      type: String,
       require: true,
     },
     image: {
-      type: Buffer,
+      type: String,
       require: false,
     },
     duration: {
