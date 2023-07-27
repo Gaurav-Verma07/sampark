@@ -1,0 +1,20 @@
+.blog__main {
+  font-family: 'Lato', sans-serif;
+}
+
+.blog__subHead {
+  font-size: 22px;
+}
+
+.list {
+  margin-left: 30px;
+}
+
+.blog__text {
+  color: #40403f;
+  font-size: 20px;
+  padding: 10px 0;
+}
+.underline {
+  margin: 10px 0;
+}
