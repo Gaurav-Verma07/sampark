@@ -20,14 +20,6 @@ const useStyles = createStyles((theme) => ({
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
   },
 
-  footer: {
-    padding: `${theme.spacing.xs} ${theme.spacing.lg}`,
-    marginTop: theme.spacing.md,
-    borderTop:'1rem solid black',
-    // borderTop: `${rem(1)} solid ${
-    //   theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
-    // }`,
-  },
 }));
 
 interface EventCardType {
@@ -39,7 +31,7 @@ interface EventCardType {
 export function EventCard({ data, image, index }: EventCardType) {
   const router = useRouter();
   const { classes, theme } = useStyles();
-  const [blogTitle, setBlogTitle] = useState<string>('');
+  const [eventTitle, setEventTitle] = useState<string>('');
   const [eventDescription, setEventDescription] = useState<string>('')
 
       useEffect(() => {
@@ -51,19 +43,19 @@ export function EventCard({ data, image, index }: EventCardType) {
         const text = element.querySelector('div.blog__main p') as HTMLElement
         const description = text?.innerText?? ''
         setEventDescription(description)
-        setBlogTitle(extractedTitle);
+        setEventTitle(extractedTitle);
       }, []);
 
   return (
     <Card withBorder radius="md" className={classes.card}  onClick={() => {
-          router.push(`/blogs/${index}`);
+          router.push(`/events/${index}`);
         }}>
       <Card.Section mb="sm">
         <Image src={image} alt="image" height={180} />
       </Card.Section>
 
       <Text fw={700} className={classes.title} mt="xs">
-        {blogTitle}
+        {eventTitle}
       </Text>
 
       <Group mt="lg">

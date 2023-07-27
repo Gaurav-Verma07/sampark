@@ -3,9 +3,8 @@ import { Button, Container, createStyles, SimpleGrid } from '@mantine/core';
 import { useRouter } from 'next/navigation';
 import HomeHeader from '../../src/components/HomeHeader/HomeHeader';
 import { data } from '../../src/components/Events/eventContent';
-import './blogs.css';
+import './events.css';
 import { EventCard } from '../../src/components/Events/EventsCard';
-import { useState } from 'react';
 import React from 'react';
 import { NextPage } from 'next';
 
