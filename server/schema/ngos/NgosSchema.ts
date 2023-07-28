@@ -20,7 +20,7 @@ const NgoSchema = new Schema(
       require: false,
     },
     image: {
-      type: Buffer,
+      type: String,
       require: false,
     },
   },
