@@ -36,12 +36,28 @@ const useStyles = createStyles(() => ({
     margin: ' 20px 0',
   },
 }));
+interface SingleBlogType {
+  name: string;
+  slug: string;
+  content: string;
+  author: string;
+  date: Date;
+  image: string;
+}
 
-const Blogs = () => {
-  const { id }: any = useParams();
+const getBlogData = async (slug: string) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ENDPOINT as string}/api/blog/slug/${slug}`,
+    { next: { revalidate: 30 } },
+  );
+  const response = await res.json();
+  return response.blog;
+};
+
+const Blogs = async ({ params }) => {
   const { classes } = useStyles();
   const router = useRouter();
-  const blogData = data[id];
+  const blogData: SingleBlogType = await getBlogData(params.slug);
 
   return (
     <>
@@ -81,7 +97,7 @@ const Blogs = () => {
             />
           </AspectRatio>
         </Paper>
-        <div dangerouslySetInnerHTML={{ __html: blogData.blogData }}></div>
+        <div>{blogData.content}</div>
       </Card>
     </>
   );
