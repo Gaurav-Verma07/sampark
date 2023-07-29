@@ -61,8 +61,8 @@ orphanageRouter.get(
 
 orphanageRouter.post(
   '/create',
-  checkAuth,
-  checkSchema(orphanageValidationSchema.createOrphanageSchema),
+  // checkAuth,
+  // checkSchema(orphanageValidationSchema.createOrphanageSchema),
   async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
