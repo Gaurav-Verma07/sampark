@@ -42,6 +42,39 @@ const createUserSchema: Schema = {
       errorMessage: 'password cannot be empty',
     },
   },
+  currentCity: {
+    in: ['body'],
+    isString: true,
+    notEmpty: {
+      errorMessage: 'Current city cannot be empty',
+    },
+  },
+  address: {
+    in: ['body'],
+    isString: true,
+    notEmpty: {
+      errorMessage: 'Address cannot be empty',
+    },
+  },
+  whatsappNumber: {
+    in: ['body'],
+    isMobilePhone: true,
+    notEmpty: {
+      errorMessage: 'Whatsapp number cannot be empty',
+    },
+  },
+  collegeName: {
+    in: ['body'],
+    isString: true,
+    notEmpty: {
+      errorMessage: 'College name cannot be empty',
+    },
+  },
+  inspiration: {
+    in: ['body'],
+    isString: true,
+    optional: true,
+  },
   image: {
     in: ['body'],
     custom: {
