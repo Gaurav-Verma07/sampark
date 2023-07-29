@@ -61,17 +61,17 @@ blogRouter.get(
 
 blogRouter.post(
   '/create',
-  checkAuth,
-  checkSchema(blogValidationSchema.createBlogSchema),
+  // checkAuth,
+  // checkSchema(blogValidationSchema.createBlogSchema),
   async (req: Request, res: Response) => {
     try {
-      const errors = validationResult(req);
+      // const errors = validationResult(req);
 
-      if (!errors.isEmpty()) {
-        return res.status(422).json({
-          errors: errors.array(),
-        });
-      }
+      // if (!errors.isEmpty()) {
+      //   return res.status(422).json({
+      //     errors: errors.array(),
+      //   });
+      // }
       const blogInfo = req.body;
       const blog = await BlogService.createBlog(blogInfo);
       res.status(200).send({ success: true, blog: blog });
