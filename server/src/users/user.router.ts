@@ -42,13 +42,17 @@ userRouter.post(
           errors: errors.array(),
         });
       }
+      console.log('body:', req.body);
       const userInfo = req.body;
 
-      await UserService.register(userInfo);
-      // if (user === 'user exists') {
-      //   res.status(200).json({ message: 'User already exists' });
-      // }
-      res.status(200).send({ success: true, user: 'registration successful' });
+      const user = await UserService.register(userInfo);
+      if (user.status === 409) {
+        res.status(200).json({ message: 'User already exists' });
+      }
+      if (user.status === 200) {
+        res.cookie('token', user.id, { signed: true, httpOnly: true });
+        res.status(200).send({ success: true, message: user.message });
+      }
     } catch (error) {
       res
         .status(500)
@@ -71,16 +75,22 @@ userRouter.post(
           errors: errors.array(),
         });
       }
-      const { userInfo } = req.body;
-      await UserService.login(userInfo);
-      // if (user === 404) {
-      //   res.status(404).json({ message: 'User not found' });
-      // }
-      // if (user === 401) {
-      //   res.status(401).json({ message: 'Invalid Credentials' });
-      // }
-      res.status(200).send({ success: true, user: 'login successful' });
+      const userInfo = req.body;
+      console.log('userInfo: ', userInfo);
+      const user = await UserService.login(userInfo);
+
+      if (user.status === 404) {
+        res.status(404).json({ success: false, message: user.message });
+      }
+      if (user.status === 401) {
+        res.status(401).json({ success: false, message: user.message });
+      }
+      if (user.status === 200) {
+        res.cookie('token', user.id, { signed: true, httpOnly: true });
+        res.status(200).send({ success: true, message: user.message });
+      }
     } catch (error) {
+      // console.log(error);
       res
         .status(500)
         .json({ success: false, message: 'Internal server error' });

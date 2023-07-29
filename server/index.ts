@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import { connectToMongo } from './schema/mongo.connect';
 import { orphanageRouter } from './src/orphnages/orphanage.router';
 import { ngoRouter } from './src/ngos/ngo.router';
@@ -11,7 +12,7 @@ import { userRouter } from './src/users/user.router';
 dotenv.config();
 const app = express();
 const port = process.env.PORT;
-const allowedOrigins = [`${process.env.UI_ENDPOINT}`];
+const allowedOrigins = [process.env.UI_ENDPOINT as string];
 // const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [];
 
 const options = {
@@ -21,6 +22,7 @@ const options = {
 
 app.use(cors(options));
 app.use(express.json());
+app.use(cookieParser('mySecretKey'));
 
 app.get('/', (req: Request, res: Response) => {
   throw new Error('');
