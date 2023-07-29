@@ -10,7 +10,7 @@ interface RequestParams {
   slug: string;
 }
 
-ngoRouter.get('/', async (_, res: Response) => {
+ngoRouter.get('/first', async (_, res: Response) => {
   try {
     const ngo = await NgoService.getFirstNgo();
     res.status(200).send({ success: true, ngo: ngo });
@@ -28,20 +28,15 @@ ngoRouter.get('/', async (_, res: Response) => {
   }
 });
 
-ngoRouter.get(
-  '/id/:id',
-  async (req: Request<RequestParams>, res: Response) => {
-    try {
-      const { id } = req.params;
-      const ngo = await NgoService.getNgoById(id);
-      res.status(200).send({ success: true, ngo: ngo });
-    } catch (error) {
-      res
-        .status(500)
-        .json({ success: false, message: 'Internal server error' });
-    }
-  },
-);
+ngoRouter.get('/id/:id', async (req: Request<RequestParams>, res: Response) => {
+  try {
+    const { id } = req.params;
+    const ngo = await NgoService.getNgoById(id);
+    res.status(200).send({ success: true, ngo: ngo });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+});
 
 ngoRouter.get(
   '/slug/:slug',
@@ -60,17 +55,17 @@ ngoRouter.get(
 
 ngoRouter.post(
   '/create',
-  checkAuth,
-  checkSchema(ngoValidationSchema.createNgoSchema),
+  // checkAuth,
+  // checkSchema(ngoValidationSchema.createNgoSchema),
   async (req: Request, res: Response) => {
     try {
-      const errors = validationResult(req);
+      // const errors = validationResult(req);
 
-      if (!errors.isEmpty()) {
-        return res.status(422).json({
-          errors: errors.array(),
-        });
-      }
+      // if (!errors.isEmpty()) {
+      //   return res.status(422).json({
+      //     errors: errors.array(),
+      //   });
+      // }
       const ngoInfo = req.body;
       const ngo = await NgoService.createNgo(ngoInfo);
       res.status(200).send({ success: true, ngo: ngo });
