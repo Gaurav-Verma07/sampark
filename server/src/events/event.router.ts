@@ -11,7 +11,7 @@ interface RequestParams {
   slug: string;
 }
 
-eventRouter.get('/', async (_, res: Response) => {
+eventRouter.get('/first', async (_, res: Response) => {
   try {
     const event = await EventService.getFirstEvent();
     res.status(200).send({ success: true, event: event });
@@ -61,7 +61,7 @@ eventRouter.get(
 
 eventRouter.post(
   '/create',
-  checkAuth,
+  // checkAuth,
   checkSchema(eventValidationSchema.createEventSchema),
   async (req: Request, res: Response) => {
     try {
@@ -72,10 +72,12 @@ eventRouter.post(
           errors: errors.array(),
         });
       }
+
       const eventInfo = req.body;
       const event = await EventService.createEvent(eventInfo);
       res.status(200).send({ success: true, event: event });
     } catch (error) {
+      console.log('error: ', error);
       res
         .status(500)
         .json({ success: false, message: 'Internal server error' });

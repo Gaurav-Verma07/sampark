@@ -66,7 +66,7 @@ const createEventSchema: Schema = {
   },
   date: {
     in: ['body'],
-    isDate: {
+    isString: {
       errorMessage: 'Invalid date value',
     },
     notEmpty: {
