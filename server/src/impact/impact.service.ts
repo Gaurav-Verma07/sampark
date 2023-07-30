@@ -1,5 +1,5 @@
 
-import { ImpactModel } from '../../schema/impacts/ImpactsSchema';
+import { ImpactModel } from '../../schema/impacts/ImpactSchema';
 import { ImpactType } from './impact.interface';
 
 const getFirstImpact = async () => {
