@@ -13,10 +13,10 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconArrowLeft } from '@tabler/icons';
-import { child, get, getDatabase, ref } from 'firebase/database';
-import { useEffect, useState } from 'react';
+// import { child, get, getDatabase, ref } from 'firebase/database';
+import {  useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { registerUserHandler } from '../../utils/ApiRequests/firebaseAuth';
+// import { registerUserHandler } from '../../utils/ApiRequests/firebaseAuth';
 import React from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -127,14 +127,17 @@ const Register = () => {
   const registerHandler = async () => {
     console.log('data: ', form.values);
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/user/register`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/user/register`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify(form.values),
         },
-        credentials: 'include',
-        body: JSON.stringify(form.values),
-      }).then((res) => res.json());
+      ).then((res) => res.json());
 
       if (response.success) {
         toast.success(response.message, {

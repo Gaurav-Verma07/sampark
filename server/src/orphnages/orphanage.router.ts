@@ -1,4 +1,5 @@
-import express, { Request, Response } from 'express';
+import * as express from 'express';
+import { Request, Response } from 'express';
 import { OrphanageService } from './orphanage.service';
 import { validationResult, checkSchema } from 'express-validator';
 import { orphanageValidationSchema } from '../../validationSchema/orphanageValidationSchema';

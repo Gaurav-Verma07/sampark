@@ -34,7 +34,6 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-
 interface EventsType {
   id: number;
   name: string;
@@ -43,12 +42,12 @@ interface EventsType {
   image: string;
 }
 
-const EventsPage: NextPage<EventsType> = () => {
+const EventsPage = () => {
   const router = useRouter();
   const { classes } = useStyles();
 
   return (
-    <div style={{margin:'0 3%'}}>
+    <div style={{ margin: '0 3%' }}>
       <Container className={classes.header}>
         <HomeHeader />
       </Container>

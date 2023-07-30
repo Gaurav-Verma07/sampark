@@ -1,7 +1,11 @@
-import express, { Request, Response } from 'express';
-import dotenv from 'dotenv';
+// import * as express from 'express';
+import { Express, Request, Response } from 'express';
+import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import * as dotenv from 'dotenv';
+// import * as cors from 'cors';
+// import * as cookieParser from 'cookie-parser';
 import { connectToMongo } from './schema/mongo.connect';
 import { orphanageRouter } from './src/orphnages/orphanage.router';
 import { ngoRouter } from './src/ngos/ngo.router';
@@ -10,8 +14,8 @@ import { blogRouter } from './src/blogs/blog.router';
 import { userRouter } from './src/users/user.router';
 import { impactRouter } from './src/impact/impact.router';
 
-dotenv.config();
-const app = express();
+dotenv.config({ path: '.env' });
+const app: Express = express();
 const port = process.env.PORT;
 const allowedOrigins = [process.env.UI_ENDPOINT as string];
 // const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [];

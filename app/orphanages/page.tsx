@@ -42,7 +42,7 @@ interface OrphanagesType {
   image: string;
 }
 
-const OrphanagesPage: NextPage<OrphanagesType> = () => {
+const OrphanagesPage = () => {
   const router = useRouter();
   const { classes } = useStyles();
 
