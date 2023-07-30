@@ -52,7 +52,7 @@ impactRouter.get(
 
 impactRouter.post(
   '/create',
-  checkAuth,
+  // checkAuth,
   checkSchema(impactValidationSchema.createImpactSchema),
   async (req: Request, res: Response) => {
     try {
@@ -67,6 +67,7 @@ impactRouter.post(
       const impact = await ImpactService.createImpact(impactInfo);
       res.status(200).send({ success: true, impact: impact });
     } catch (error) {
+      console.log(error)
       res
         .status(500)
         .json({ success: false, message: 'Internal server error' });

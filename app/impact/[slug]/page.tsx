@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import {
   AspectRatio,
   Button,
@@ -10,12 +10,10 @@ import {
 } from '@mantine/core';
 import Image from 'next/image';
 import { IconArrowLeft } from '@tabler/icons';
-import { useRouter, useParams } from 'next/navigation';
-import { data } from '../../../src/components/Impact/impactContent';
-import '../impact.css';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(() => ({
   header: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -37,11 +35,31 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const Impact = () => {
-  const { id }: any = useParams();
+interface SingleImpactType {
+  name: string;
+  slug: string;
+  address: Date;
+  description: string;
+  image: string;
+}
+
+const getImpactData = async (slug: string) => {
+  const res = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_API_ENDPOINT as string
+    }/api/impact/slug/${slug}`,
+    { next: { revalidate: 10 } },
+  );
+  const response = await res.json();
+  return response.impact;
+};
+
+const SingleImpact = async ({ params }) => {
   const { classes } = useStyles();
   const router = useRouter();
-  const impactData = data[id];
+  const impactData: SingleImpactType = await getImpactData(
+    params.slug,
+  );
 
   return (
     <>
@@ -49,9 +67,9 @@ const Impact = () => {
         <Container className={classes.header}>
           <Image
             src="/assets/Images/samparklogotransparent.png"
-            alt="Sampark Logo"
-            height={80}
-            width={100}
+            alt="Sampark-logo"
+            height={10}
+            width={20}
           />
         </Container>
       </Header>
@@ -76,15 +94,16 @@ const Impact = () => {
             <Image
               src={impactData.image as string}
               alt="image"
-              width={100}
               height={100}
+              width={200}
+              // style={{ borderRadius: '50%', border: '1px solid grey' }}
             />
           </AspectRatio>
         </Paper>
-        <div dangerouslySetInnerHTML={{ __html: impactData.impactData }}></div>
+        <div>{impactData.description as string}</div>
       </Card>
     </>
   );
 };
 
-export default Impact;
+export default SingleImpact;

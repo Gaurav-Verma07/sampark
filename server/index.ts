@@ -8,6 +8,7 @@ import { ngoRouter } from './src/ngos/ngo.router';
 import { eventRouter } from './src/events/event.router';
 import { blogRouter } from './src/blogs/blog.router';
 import { userRouter } from './src/users/user.router';
+import { impactRouter } from './src/impact/impact.router';
 
 dotenv.config();
 const app = express();
@@ -29,6 +30,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.use('/api/orphanage', orphanageRouter);
+app.use('/api/impact', impactRouter);
 app.use('/api/ngo', ngoRouter);
 app.use('/api/event', eventRouter);
 app.use('/api/blog', blogRouter);

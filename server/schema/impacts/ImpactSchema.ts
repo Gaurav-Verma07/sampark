@@ -18,6 +18,10 @@ const ImpactSchema = new Schema(
       type: String,
       require: true,
     },
+    address: {
+      type: String,
+      required: true,
+    },
     testimonial: {
       type: String,
       require: true,
@@ -32,4 +36,4 @@ const ImpactSchema = new Schema(
   },
 );
 
-export const EventModel = model('impacts', ImpactSchema);
+export const ImpactModel = model('impacts', ImpactSchema);
