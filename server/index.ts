@@ -27,7 +27,7 @@ const options = {
 
 app.use(cors(options));
 app.use(express.json());
-app.use(cookieParser('mySecretKey'));
+app.use(cookieParser(process.env.COOKIE_SECRET as string));
 
 app.get('/', (req: Request, res: Response) => {
   throw new Error('');
