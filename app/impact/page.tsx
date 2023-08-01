@@ -7,7 +7,7 @@ import {
   Text,
 } from '@mantine/core';
 
-import Image from 'next/image';
+// import Image from 'next/image';
 
 import { useRouter } from 'next/navigation';
 import { data } from '../../src/components/Impact/impactContent';
@@ -40,34 +40,30 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 interface ImapctsType {
-  id: number;
   image: string;
   impactData: string;
 }
-const ImapctsPage: NextPage<ImapctsType> = ()=>{
-
-function AllImpacts() {
+const ImapctsPage = () => {
   const router = useRouter();
   const { classes } = useStyles();
 
-
   return (
-        <div>
+    <div>
       <Container className={classes.header}>
         <HomeHeader />
       </Container>
       <div style={{ marginTop: '10%' }}>
-          <Button
-            variant="outline"
-            color="teal"
-            mt={10}
-            className={classes.back}
-            onClick={() => {
-              router.push('/');
-            }}
-          >
-            Go Back
-          </Button>
+        <Button
+          variant="outline"
+          color="teal"
+          mt={10}
+          className={classes.back}
+          onClick={() => {
+            router.push('/');
+          }}
+        >
+          Go Back
+        </Button>
         <SimpleGrid
           className={classes.blog}
           cols={3}
@@ -77,18 +73,18 @@ function AllImpacts() {
           ]}
         >
           {' '}
-       {data.map((item:ImapctsType, index: number) => (
-          <ImpactCard
-            data={item.impactData}
-            image={item.image as string}
-            key={index}
-            index={index}
-          />
-        ))}
+          {data.map((item: ImapctsType, index: number) => (
+            <ImpactCard
+              data={item.impactData}
+              image={item.image as string}
+              key={index}
+              index={index}
+            />
+          ))}
         </SimpleGrid>
       </div>
     </div>
   );
-}
+};
 
 export default ImapctsPage;

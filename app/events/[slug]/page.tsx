@@ -45,6 +45,10 @@ interface SingleEventsType {
   image: string;
 }
 
+interface ParamsType {
+  slug: string;
+}
+
 const getEventData = async (slug: string) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_ENDPOINT as string}/api/event/slug/${slug}`,
@@ -54,7 +58,7 @@ const getEventData = async (slug: string) => {
   return response.event;
 };
 
-const SingleEvents = async ({ params }) => {
+const SingleEvents = async ({ params }: { params: ParamsType }) => {
   const { classes } = useStyles();
   const router = useRouter();
   const eventsdata: SingleEventsType = await getEventData(params.slug);

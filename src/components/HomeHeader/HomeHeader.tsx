@@ -26,7 +26,7 @@ const links: any = [
 ];
 
 const HomeHeader = () => {
-  const user: any = localStorage.getItem('user_uid');
+  // const user: any = localStorage.getItem('user_uid');
   const [opened, { toggle }] = useDisclosure(false);
   const { classes, cx } = useStyles();
   const router = useRouter();
@@ -37,22 +37,22 @@ const HomeHeader = () => {
     </a>
   ));
 
-  const isLoggedIn = user ? (
-    <Avatar
-      radius="xl"
-      onClick={() => {
-        router.push('/provider/home');
-      }}
-    />
-  ) : (
-    <Button
-      onClick={() => {
-        router.push('/login');
-      }}
-    >
-      Sign In
-    </Button>
-  );
+  // const isLoggedIn = user ? (
+  //   <Avatar
+  //     radius="xl"
+  //     onClick={() => {
+  //       router.push('/provider/home');
+  //     }}
+  //   />
+  // ) : (
+  //   <Button
+  //     onClick={() => {
+  //       router.push('/login');
+  //     }}
+  //   >
+  //     Sign In
+  //   </Button>
+  // );
 
   return (
     <Header height={HEADER_HEIGHT} className={classes.root} pt={30}>
@@ -65,7 +65,7 @@ const HomeHeader = () => {
         />
         <Group spacing={5} className={classes.links}>
           {items}
-          {isLoggedIn}
+          {/* {isLoggedIn} */}
         </Group>
 
         <Burger

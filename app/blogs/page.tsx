@@ -1,10 +1,5 @@
-"use client"
-import {
-  Button,
-  Container,
-  createStyles,
-  SimpleGrid,
-} from '@mantine/core';
+'use client';
+import { Button, Container, createStyles, SimpleGrid } from '@mantine/core';
 import { useRouter } from 'next/navigation';
 import HomeHeader from '../../src/components/HomeHeader/HomeHeader';
 import { data } from '../../src/components/Blogs/blogContent';
@@ -15,8 +10,8 @@ import React from 'react';
 import { NextPage } from 'next';
 
 const useStyles = createStyles((theme) => ({
-  body:{
-    background:'white',
+  body: {
+    background: 'white',
   },
   header: {
     display: 'flex',
@@ -46,16 +41,15 @@ interface SavedBlogType {
   image: string;
 }
 
-interface BlogType{
+interface BlogType {
   id: number;
   name: string;
-  content:string;
+  content: string;
   author: string;
   image: string;
-
 }
 
-const BlogsPage:NextPage<BlogType>=()=>{
+const BlogsPage = () => {
   const router = useRouter();
   const { classes } = useStyles();
   const [savedBlogs, setSavedBlogs] = useState<SavedBlogType[]>([]);
@@ -87,17 +81,17 @@ const BlogsPage:NextPage<BlogType>=()=>{
         <HomeHeader />
       </Container>
       <div style={{ marginTop: '10%' }}>
-          <Button
-            variant="outline"
-            color="teal"
-            mt={10}
-            className={classes.back}
-            onClick={() => {
-              router.push('/');
-            }}
-          >
-            Go Back
-          </Button>
+        <Button
+          variant="outline"
+          color="teal"
+          mt={10}
+          className={classes.back}
+          onClick={() => {
+            router.push('/');
+          }}
+        >
+          Go Back
+        </Button>
         <SimpleGrid
           className={classes.blog}
           cols={3}
@@ -121,6 +115,6 @@ const BlogsPage:NextPage<BlogType>=()=>{
       </div>
     </div>
   );
-}
+};
 
 export default BlogsPage;

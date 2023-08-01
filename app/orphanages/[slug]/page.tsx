@@ -43,6 +43,10 @@ interface SingleOrphanageType {
   image: string;
 }
 
+interface ParamsType {
+  slug: string;
+}
+
 const getOrphanageData = async (slug: string) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_ENDPOINT as string}/api/orphanage/slug/${slug}`,
@@ -52,11 +56,12 @@ const getOrphanageData = async (slug: string) => {
   return response.orphanage;
 };
 
-const SingleOrphanage = async ({ params }) => {
+const SingleOrphanage = async ({ params }: { params: ParamsType }) => {
   const { classes } = useStyles();
   const router = useRouter();
-  const orphanageData: SingleOrphanageType = await getOrphanageData(params.slug);
-
+  const orphanageData: SingleOrphanageType = await getOrphanageData(
+    params.slug,
+  );
 
   return (
     <>

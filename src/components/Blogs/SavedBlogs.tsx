@@ -54,7 +54,7 @@ const Blogs = () => {
           {savedBlogData.map((blog: savedBlogType, index: number) => (
             <BlogCard
               data={blog.data}
-              image={blog.image}
+              image={blog.image as string}
               key={index}
               index={blog.id}
               handleDeleteSavedBlog={handleDeleteSavedBlog}

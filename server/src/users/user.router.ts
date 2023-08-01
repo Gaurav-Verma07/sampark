@@ -1,4 +1,5 @@
-import express, { Request, Response } from 'express';
+import * as express from 'express';
+import { Request, Response } from 'express';
 import { UserService } from './user.service';
 import { UserType } from './user.interface';
 import { validationResult, checkSchema } from 'express-validator';

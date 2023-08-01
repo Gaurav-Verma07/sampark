@@ -1,4 +1,5 @@
-import express, { Request, Response } from 'express';
+import * as express from 'express';
+import { Request, Response } from 'express';
 import { NgoService } from './ngo.service';
 import { validationResult, checkSchema } from 'express-validator';
 import { ngoValidationSchema } from '../../validationSchema/ngoValidationSchema';

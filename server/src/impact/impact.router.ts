@@ -1,4 +1,5 @@
-import express, { Request, Response } from 'express';
+import * as express from 'express';
+import { Request, Response } from 'express';
 import { ImpactService } from './impact.service';
 import { validationResult, checkSchema } from 'express-validator';
 import { impactValidationSchema } from '../../validationSchema/impactValidationSchema';
@@ -67,7 +68,7 @@ impactRouter.post(
       const impact = await ImpactService.createImpact(impactInfo);
       res.status(200).send({ success: true, impact: impact });
     } catch (error) {
-      console.log(error)
+      console.log(error);
       res
         .status(500)
         .json({ success: false, message: 'Internal server error' });

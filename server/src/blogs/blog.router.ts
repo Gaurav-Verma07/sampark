@@ -1,4 +1,5 @@
-import express, { Request, Response } from 'express';
+import * as express from 'express';
+import { Request, Response } from 'express';
 import { BlogService } from './blog.service';
 import { validationResult, checkSchema } from 'express-validator';
 import { blogValidationSchema } from '../../validationSchema/blogValidationSchema';

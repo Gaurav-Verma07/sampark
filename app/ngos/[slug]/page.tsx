@@ -43,6 +43,9 @@ interface SingleNgoType {
   image: string;
 }
 
+interface ParamsType {
+  slug: string;
+}
 const getNgoData = async (slug: string) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_ENDPOINT as string}/api/ngo/slug/${slug}`,
@@ -52,11 +55,10 @@ const getNgoData = async (slug: string) => {
   return response.ngo;
 };
 
-const SingleNgo = async ({ params }) => {
+const SingleNgo = async ({ params }: { params: ParamsType }) => {
   const { classes } = useStyles();
   const router = useRouter();
   const ngoData: SingleNgoType = await getNgoData(params.slug);
-
 
   return (
     <>

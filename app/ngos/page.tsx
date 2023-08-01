@@ -42,7 +42,7 @@ interface NgosType {
   image: string;
 }
 
-const NgosPage: NextPage<NgosType> = () => {
+const NgosPage = () => {
   const router = useRouter();
   const { classes } = useStyles();
 

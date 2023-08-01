@@ -43,6 +43,10 @@ interface SingleImpactType {
   image: string;
 }
 
+interface ParamsType {
+  slug: string;
+}
+
 const getImpactData = async (slug: string) => {
   const res = await fetch(
     `${
@@ -54,12 +58,10 @@ const getImpactData = async (slug: string) => {
   return response.impact;
 };
 
-const SingleImpact = async ({ params }) => {
+const SingleImpact = async ({ params }: { params: ParamsType }) => {
   const { classes } = useStyles();
   const router = useRouter();
-  const impactData: SingleImpactType = await getImpactData(
-    params.slug,
-  );
+  const impactData: SingleImpactType = await getImpactData(params.slug);
 
   return (
     <>

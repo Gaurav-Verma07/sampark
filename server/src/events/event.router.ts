@@ -1,4 +1,5 @@
-import express, { Request, Response } from 'express';
+import * as express from 'express';
+import { Request, Response } from 'express';
 import { EventService } from './event.service';
 import { validationResult, checkSchema } from 'express-validator';
 import { eventValidationSchema } from '../../validationSchema/eventValidationSchema';

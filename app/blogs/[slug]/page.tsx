@@ -44,7 +44,9 @@ interface SingleBlogType {
   date: Date;
   image: string;
 }
-
+interface ParamsType {
+  slug: string;
+}
 const getBlogData = async (slug: string) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_ENDPOINT as string}/api/blog/slug/${slug}`,
@@ -54,7 +56,7 @@ const getBlogData = async (slug: string) => {
   return response.blog;
 };
 
-const Blogs = async ({ params }) => {
+const Blogs = async ({ params }: { params: ParamsType }) => {
   const { classes } = useStyles();
   const router = useRouter();
   const blogData: SingleBlogType = await getBlogData(params.slug);
