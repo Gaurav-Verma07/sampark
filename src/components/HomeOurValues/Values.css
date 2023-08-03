@@ -1,183 +1,243 @@
 .values-heading {
-  margin: 2rem 0 1rem 0;
-  font-size: 3.2rem;
-  font-weight: bold;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: white;
-}
-
-.values-container {
-  display: flex;
-  flex-direction: column;
-  margin: 2rem;
-  font-family: 'Golos Text', sans-serif;
-}
-.values-box-1 {
-  display: flex;
-  flex-direction: row;
-  margin: 3rem 7rem;
-}
-.values-box-2 {
-  display: flex;
-  flex-direction: row;
-  margin: 0 20rem 0 20rem;
-}
-.values-content p {
-  margin-top: 0.5rem;
-  font-size: 1.2rem;
-  font-weight: 450;
-}
-.values-content {
-  padding: 1rem 2rem 1.5rem 2rem;
-  margin: 0 1.5rem;
-  width: 350px;
-  height: 240px;
-  border-radius: 20px;
-  color: white;
-}
-
-.empowerment-section {
-  background: #fff;
-  box-shadow: 0 0.5rem 1.5rem rgba(197, 136, 31, 0.2);
-  margin-right: 10px;
-  transition-property: width;
-}
-.empowerment-section:hover {
-  animation: scaleAnimation 1s ease-in;
-}
-
-.empowerment-section {
-  align-content: space-between;
-  color: rgb(0, 14, 0);
-  left: 0%;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  transition: box-shadow 0.3s ease;
-}
-
-.collab-section {
-  background: #fff;
-  box-shadow: 0 0.5rem 1.5rem rgba(39, 230, 61, 0.2);
-  margin: 0 10px;
-}
-.collab-section:hover {
-  animation: scaleAnimation 1s ease-in;
-}
-
-.collab-section {
-  align-content: space-between;
-  color: rgb(0, 14, 0);
-  left: 0%;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.growth-section {
-  background: #fff;
-  box-shadow: 0 0.5rem 1.5rem rgba(132, 97, 235, 0.2);
-  border-radius: 20px;
-  transition-property: width;
-  margin: 0 10px;
-}
-.growth-section:hover {
-  animation: scaleAnimation 1s ease-in;
-}
-
-.growth-section {
-  align-content: space-between;
-  left: 0%;
-  color: rgb(0, 14, 0);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-@keyframes scaleAnimation {
-  0% {
-    transform: scale(1);
+    margin: 2rem 0 1rem 0;
+    font-size: 3.2rem;
+    font-weight: bold;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@media only screen and (max-width: 1350px) {
-  .values-box-2 {
-    margin: 0 12rem 0 12rem;
-  }
-  .values-content {
-    min-width: 240px;
-    height: 200px;
-  }
-  .values-box-1 {
-    margin: 3rem 3rem;
-  }
-}
-@media only screen and (max-width: 1181px) {
-  .values-box-2 {
-    margin: 0 5rem 0 5rem;
-  }
-  .values-box-1 {
-    margin: 3rem 0rem 3rem 0rem;
-  }
-}
-
-@media only screen and (max-width: 1040px) {
-  .values-box-1 {
-    margin: 3rem 0rem 3rem 0rem;
-  }
-  .values-box-2 {
-    margin: 0 2rem 0 2rem;
-  }
-  .values-content {
-    min-width: 220px;
-    height: 220px;
-  }
-}
-@media only screen and (max-width: 920px) {
-  .values-box-1 {
-    flex-direction: column;
-    margin: 3rem 0 0 0;
-  }
+  
   .values-container {
-    margin: 2rem;
-  }
-  .values-content {
-    margin: 0 3rem 2rem 2rem;
-    width: auto;
-    height: 100px;
-  }
-  .values-content-2 {
-    margin-left: 2rem;
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  .values-box-2 {
+    display: flex;
     flex-direction: column;
-    margin: 0;
+    margin: 2rem;
+    font-family: "Golos Text", sans-serif;
   }
-  .values-content-2 {
-    margin-left: 0rem;
+  .values-box-1 {
+    display: flex;
+    flex-direction: row;
+    margin: 3rem 7rem;
+  }
+  .values-box-2 {
+    display: flex;
+    flex-direction: row;
+    margin: 0 20rem 0 20rem;
+  }
+  .values-content p {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 450;
   }
   .values-content {
-    width: auto;
-    height: auto;
+    padding: 1rem 2rem 1.5rem 2rem;
+    margin: 0 1.5rem;
+    width: 350px;
+    height: 240px;
+    border-radius: 20px;
+    color: white;
   }
-}
+  
+  .empowerment-section {
+    background: #fff;
+    box-shadow: 0 0.5rem 1.5rem rgba(197, 136, 31, 0.2);
+    margin-right: 10px;
+    transition-property: width;
+  }
+  .empowerment-section:hover {
+    animation: scaleAnimation 1s ease-in;
+  }
+  
+  .empowerment-section {
+    align-content: space-between;
+    color: rgb(0, 14, 0);
+    left: 0%;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .collab-section {
+    background: #fff;
+    box-shadow: 0 0.5rem 1.5rem rgba(39, 230, 61, 0.2);
+    margin: 0 10px;
+  }
+  .collab-section:hover {
+    animation: scaleAnimation 1s ease-in;
+  }
+  
+  .collab-section {
+    align-content: space-between;
+    color: rgb(0, 14, 0);
+    left: 0%;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+  
+  .growth-section {
+    background: #fff;
+    box-shadow: 0 0.5rem 1.5rem rgba(132, 97, 235, 0.2);
+    border-radius: 20px;
+    transition-property: width;
+    margin: 0 10px;
+  }
+  .growth-section:hover {
+    animation: scaleAnimation 1s ease-in;
+  }
+  
+  .growth-section {
+    align-content: space-between;
+    left: 0%;
+    color: rgb(0, 14, 0);
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+  
+  @keyframes scaleAnimation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @media only screen and (max-width: 1350px) {
+    .values-box-2 {
+      margin: 0 12rem 0 12rem;
+    }
+    .values-content {
+      min-width: 240px;
+      height: 200px;
+    }
+    .values-box-1 {
+      margin: 3rem 3rem;
+    }
+  }
+  @media only screen and (max-width: 1181px) {
+    .values-box-2 {
+      margin: 0 5rem 0 5rem;
+    }
+    .values-box-1 {
+      margin: 3rem 0rem 3rem 0rem;
+    }
+  }
+  
+  @media only screen and (max-width: 1040px) {
+    .values-box-1 {
+      margin: 3rem 0rem 3rem 0rem;
+    }
+    .values-box-2 {
+      margin: 0 2rem 0 2rem;
+    }
+    .values-content {
+      min-width: 220px;
+      height: 220px;
+    }
+  }
+  @media only screen and (max-width: 920px) {
+    .values-box-1 {
+      flex-direction: column;
+      margin: 3rem 0 0 0;
+    }
+    .values-container {
+      margin: 2rem;
+    }
+    .values-content {
+      margin: 0 3rem 2rem 2rem;
+      width: auto;
+      height: 100px;
+    }
+    .values-content-2 {
+      margin-left: 2rem;
+    }
+  }
+  
+  @media only screen and (max-width: 700px) {
+    .values-box-2 {
+      flex-direction: column;
+      margin: 0;
+    }
+    .values-content-2 {
+      margin-left: 0rem;
+    }
+    .values-content {
+      width: auto;
+      height: auto;
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .fade-in-image {
+    animation: fadeIn 2s;
+  }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
+  .growth-span::before {
+    content: "";
+    width: 5rem;
+    height: 5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='102' height='102' fill='none' fill-rule='evenodd' xmlns:v='https://vecta.io/nano'%3E%3Ccircle cx='51' cy='51' r='50' stroke='%231e7b85' stroke-width='2'/%3E%3Cpath d='M74.283 58.397c-.139-.127-2.521-2.294-6.301-3.534 5.26-5.992 5.332-13.349 5.332-13.678l-.002-.964-.981-.057s-.187-.011-.528-.011c-1.849 0-7.83.319-13.181 4.063-1.047-7.5-6.166-12.332-6.405-12.553L51.501 31l-.715.663c-.237.219-5.358 5.053-6.405 12.553-5.349-3.744-11.33-4.063-13.181-4.063-.341 0-.528.011-.528.011l-.983.057v.962c0 .329.071 7.686 5.33 13.676-3.778 1.24-6.16 3.409-6.3 3.536l-.719.661.634.739c.179.212 4.495 5.165 11.458 5.745.391.032.786.049 1.178.049 1.635 0 3.14-.28 4.476-.699a4.21 4.21 0 0 0-.096.701c-.204 3.812 5.21 6.134 5.441 6.232l.411.176.411-.172c.231-.098 5.646-2.421 5.441-6.232a4.18 4.18 0 0 0-.096-.701c1.336.418 2.839.699 4.476.699.391 0 .788-.017 1.176-.049 6.96-.578 11.278-5.533 11.458-5.745l.634-.739-.717-.664zm-19.01 7.304c.094 1.786-2.398 3.386-3.772 4.059-1.374-.673-3.869-2.273-3.772-4.059.04-.748.457-1.457 1.024-2.084.767-.848 1.804-1.544 2.575-1.971l.173.142.173-.142c.771.427 1.81 1.121 2.575 1.971.567.627.983 1.336 1.024 2.084h0zM44.198 46.664c.173.142.349.278.52.429.189.166.362.34.54.512a15.02 15.02 0 0 1 1.162 1.253c2.4 2.914 3.375 6.247 3.77 8.577l.054.321c.093.597.145 1.111.173 1.529l-.175-.163.179.198c.002.032.006.068.008.098-.37-.002-.833-.017-1.351-.053l-.152-.011c-2.425-.189-6.158-.898-9.507-3.271-.395-.28-.785-.588-1.168-.917-.235-.204-.47-.41-.7-.635-.087-.083-.162-.17-.245-.255-4.241-4.307-5.235-9.821-5.465-12.072 2.338.089 7.774.729 12.356 4.458h0zm14.607 0c4.584-3.73 10.022-4.369 12.36-4.456-.224 2.249-1.211 7.751-5.467 12.072-.083.085-.158.17-.245.255-.229.223-.465.431-.702.635-.382.329-.771.635-1.166.915-3.354 2.377-7.093 3.084-9.516 3.271l-.143.011a20.19 20.19 0 0 1-1.353.053l.008-.096.181-.2-.179.164c.029-.414.081-.93.172-1.527.015-.104.037-.219.054-.329.391-2.328 1.365-5.656 3.774-8.576a15.72 15.72 0 0 1 1.164-1.253c.177-.172.351-.346.54-.512.17-.149.345-.285.519-.427h0zm-7.304 7.285c-.85-2.638-2.396-5.652-5.179-8.183.384-5.816 3.693-10.182 5.179-11.862 1.488 1.682 4.796 6.047 5.179 11.864-2.783 2.528-4.327 5.543-5.179 8.181h0zm-14.836 2.576c3.828 3.407 8.418 4.492 11.496 4.813-.229.191-.455.399-.673.62-1.623.839-3.759 1.591-6.219 1.591a11.77 11.77 0 0 1-1-.042c-4.543-.378-7.884-2.974-9.295-4.276 1.056-.773 3.073-2.028 5.69-2.706h0zm18.177 4.813c3.078-.321 7.666-1.408 11.494-4.813 2.614.68 4.634 1.937 5.694 2.706-1.405 1.306-4.732 3.895-9.295 4.275a11.77 11.77 0 0 1-1 .042c-2.46 0-4.605-.762-6.234-1.606-.214-.212-.436-.416-.659-.603h0z' fill='%2387064b' fill-rule='nonzero'/%3E%3C/svg%3E");
+    background-size: 100%;
+    display: block;
   }
-  100% {
-    opacity: 1;
+  
+  .empowerment-span::before {
+    content: "";
+    width: 5rem;
+    height: 5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='102' height='102' fill='none' fill-rule='evenodd' xmlns:v='https://vecta.io/nano'%3E%3Ccircle cx='51' cy='51' r='50' stroke='%231e7b85' stroke-width='2'/%3E%3Cpath d='M67.851 55.384l-5.191.095-2.124.024-2.392-2.511-6.665 6.357-9.746-9.104-5.608 6.158 15.354 15.244 14.009-13.894h3.383l-17.354 17.2-18.732-18.427 8.808-9.663 9.885 9.213 6.746-6.442 3.301 3.501 7.971-.142c2.18-4.42.828-9.752-3.201-12.629s-9.566-2.463-13.114.981l-1.703 1.658-1.684-1.667c-1.911-1.902-4.51-2.968-7.22-2.961a10.2 10.2 0 0 0-7.613 3.347c-1.937 2.143-2.855 5.004-2.521 7.86h-2.392c-.46-5.216 2.421-10.161 7.212-12.378s10.47-1.235 14.218 2.459a12.7 12.7 0 0 1 16.873-.862c5.015 4.041 6.128 11.183 2.576 16.532l-3.076.052z' fill='%2387064b' fill-rule='nonzero'/%3E%3C/svg%3E");
+    background-size: 100%;
+    display: block;
   }
-}
-
-.fade-in-image {
-  animation: fadeIn 2s;
-}
+  
+  .collab-span::before {
+    content: "";
+    width: 5rem;
+    height: 5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='102' height='102' fill='none' fill-rule='evenodd' xmlns:v='https://vecta.io/nano'%3E%3Ccircle cx='51' cy='51' r='50' stroke='%231e7b85' stroke-width='2'/%3E%3Cpath d='M51 33.813a3.91 3.91 0 0 0 3.906-3.906A3.91 3.91 0 0 0 51 26a3.91 3.91 0 0 0-3.906 3.906A3.91 3.91 0 0 0 51 33.813zm0-6.348c1.346 0 2.441 1.095 2.441 2.441S52.346 32.348 51 32.348s-2.441-1.095-2.441-2.441 1.095-2.441 2.441-2.441zm16.278 27.443c-.373-.372-.578-.867-.578-1.393v-5.03c0-.526.205-1.021.578-1.393l4.62-4.611c.441-.44.685-1.026.685-1.649a2.31 2.31 0 0 0-.685-1.649 2.34 2.34 0 0 0-3.301 0l-1.716 1.713c-.286.286-.287.75-.001 1.036s.749.287 1.036.001l1.716-1.713c.34-.339.892-.339 1.231 0a.86.86 0 0 1 0 1.225l-4.62 4.611a3.41 3.41 0 0 0-1.008 2.43v5.03a3.41 3.41 0 0 0 1.008 2.43l4.62 4.611a.86.86 0 0 1 0 1.225c-.34.339-.892.339-1.231 0l-5.584-5.572a7.85 7.85 0 0 0-1.956-1.425 11.67 11.67 0 0 0 0-7.566 7.84 7.84 0 0 0 1.956-1.425l1.459-1.456c.286-.286.287-.75.001-1.036s-.749-.287-1.036-.001l-1.459 1.456a6.39 6.39 0 0 1-1.484 1.104 11.93 11.93 0 0 0-5.388-5.388 6.39 6.39 0 0 1 1.104-1.484l5.573-5.584a2.34 2.34 0 0 0 0-3.301c-.44-.441-1.026-.684-1.649-.684s-1.209.243-1.649.684l-4.611 4.62c-.372.373-.867.578-1.393.578h-5.03c-.526 0-1.021-.205-1.393-.578l-.77-.771a.73.73 0 0 0-1.036-.001c-.286.286-.287.75-.001 1.036l.77.771a3.41 3.41 0 0 0 2.43 1.008h5.03a3.41 3.41 0 0 0 2.43-1.008l4.611-4.62a.86.86 0 0 1 1.225 0c.339.34.339.892 0 1.231l-5.573 5.584c-.577.578-1.054 1.235-1.425 1.956-2.279-.803-5.159-.847-7.566 0-.371-.721-.848-1.378-1.425-1.956L40.22 32.37c-.339-.34-.339-.892 0-1.231a.86.86 0 0 1 1.225 0l1.447 1.45c.286.286.75.287 1.036.001s.287-.75.001-1.036l-1.447-1.45c-.44-.441-1.026-.684-1.649-.684s-1.209.243-1.649.684a2.34 2.34 0 0 0 0 3.301l5.573 5.584a6.39 6.39 0 0 1 1.105 1.484 11.8 11.8 0 0 0-5.368 5.346 6.39 6.39 0 0 1-1.407-1.062l-5.584-5.573a2.34 2.34 0 0 0-3.301 0c-.441.44-.684 1.026-.684 1.649s.243 1.209.684 1.649l4.62 4.611c.373.372.578.867.578 1.393v5.03c0 .526-.205 1.021-.578 1.393l-4.62 4.611c-.441.44-.684 1.026-.684 1.649s.243 1.209.684 1.649a2.33 2.33 0 0 0 3.301 0l5.584-5.573a6.39 6.39 0 0 1 1.407-1.062c1.149 2.319 3.043 4.206 5.367 5.346a6.39 6.39 0 0 1-1.104 1.484L43.68 64.09c-.286.286-.285.75.001 1.036a.73.73 0 0 0 1.036-.001l1.075-1.077a7.84 7.84 0 0 0 1.425-1.956 11.67 11.67 0 0 0 7.566 0 7.84 7.84 0 0 0 1.425 1.956l5.573 5.584c.339.34.339.892 0 1.231a.86.86 0 0 1-1.225 0l-4.611-4.62a3.41 3.41 0 0 0-2.43-1.008h-5.03a3.41 3.41 0 0 0-2.43 1.008l-4.611 4.62a.86.86 0 0 1-1.225 0c-.339-.34-.339-.892 0-1.231l2.105-2.109c.286-.286.285-.75-.001-1.036s-.75-.285-1.036.001l-2.105 2.109a2.34 2.34 0 0 0 0 3.301c.44.441 1.026.684 1.649.684s1.209-.243 1.649-.684l4.611-4.62c.372-.373.867-.578 1.393-.578h5.03c.526 0 1.021.205 1.393.578l4.611 4.62c.44.441 1.026.684 1.649.684s1.209-.243 1.649-.684a2.34 2.34 0 0 0 0-3.301l-5.573-5.584a6.39 6.39 0 0 1-1.104-1.484c2.339-1.147 4.242-3.05 5.388-5.388a6.39 6.39 0 0 1 1.484 1.104l5.584 5.573a2.33 2.33 0 0 0 3.301 0c.441-.44.684-1.026.684-1.649s-.243-1.209-.684-1.649l-4.62-4.611zm-7.569-8.761c.061-.077.13-.149.201-.218a10.36 10.36 0 0 1 1.342 5.222c-.629-.34-1.427-.952-1.804-1.973-.07-.189-.655-1.877.261-3.031h0zM38.05 56.208l-5.584 5.573c-.34.339-.892.339-1.231 0a.86.86 0 0 1 0-1.225l4.62-4.611a3.41 3.41 0 0 0 1.008-2.43v-5.03a3.41 3.41 0 0 0-1.008-2.43l-4.62-4.611a.86.86 0 0 1 0-1.225c.34-.339.892-.339 1.231 0l5.584 5.573c.556.555 1.184 1.017 1.873 1.382a11.67 11.67 0 0 0-.642 3.815V51a11.66 11.66 0 0 0 .642 3.826 7.84 7.84 0 0 0-1.873 1.382zm6.629 2.861c.002-.028.139-1.726 1.381-2.319.837-.399 1.722-.087 1.821-.05.629.236.893.652 1.227 1.179.362.57.814 1.28 1.796 1.6.818.266 1.499.095 1.997-.029.472-.118.654-.149.854-.033.298.173.511.616.616 1.269a10.21 10.21 0 0 1-3.372.57c-2.383 0-4.578-.817-6.321-2.185zm11.068 1.018c-.214-.928-.635-1.578-1.257-1.939-.732-.424-1.405-.256-1.945-.12-.43.108-.771.193-1.187.057-.459-.149-.673-.459-1.012-.993-.384-.604-.862-1.356-1.949-1.764-.362-.136-1.646-.531-2.967.1-1.2.573-1.75 1.658-2.002 2.479a10.22 10.22 0 0 1-2.627-5.845c.506.144.972.218 1.396.218.611 0 1.136-.15 1.571-.45 1.044-.72 1.135-1.951 1.215-3.037.075-1.019.153-1.661.598-1.988.352-.258.776-.172 1.558.017l.509.118a.73.73 0 0 0 .869-.563c.084-.396-.168-.785-.563-.869l-.471-.109c-.868-.21-1.852-.447-2.769.226-1.022.75-1.112 1.978-1.192 3.061-.074 1.006-.15 1.638-.585 1.938-.428.295-1.176.254-2.178-.114a10.27 10.27 0 0 1 9.702-9.749c.988.438 1.665 1.213 1.737 2.005.108 1.19-1.121 2.068-1.501 2.309a.73.73 0 1 0 .785 1.237c1.486-.943 2.299-2.318 2.175-3.679-.055-.601-.286-1.178-.658-1.691 2.457.487 4.601 1.854 6.088 3.758a3.74 3.74 0 0 0-.524.536c-1.384 1.744-.649 4.012-.487 4.449.659 1.784 2.155 2.651 3.038 3.021-.54 3.209-2.576 5.917-5.364 7.38h0zm19.032-12.993h-5.371a1.22 1.22 0 0 0-1.221 1.221v5.371a1.22 1.22 0 0 0 1.221 1.221h5.371A1.22 1.22 0 0 0 76 53.686v-5.371a1.22 1.22 0 0 0-1.221-1.221zm-.244 6.348h-4.883v-4.883h4.883v4.883zm-41.943 1.195a1.22 1.22 0 0 0 .66-.195c.35-.226.56-.609.56-1.026v-4.832c0-.417-.209-.8-.56-1.026s-.786-.258-1.166-.085l-5.391 2.447a1.19 1.19 0 0 0 0 2.162l5.391 2.447a1.22 1.22 0 0 0 .505.11zm-.245-5.675v4.074L27.859 51l4.488-2.037zm21.12 19.592a.73.73 0 0 0-.634-.366h-3.665a.73.73 0 0 0-.634.366l-1.832 3.174a.73.73 0 0 0 0 .732l1.832 3.174a.73.73 0 0 0 .634.366h3.665a.73.73 0 0 0 .634-.366l1.832-3.174a.73.73 0 0 0 0-.732l-1.832-3.174zm-1.057 5.981h-2.819l-1.41-2.441 1.41-2.441h2.819l1.41 2.441-1.41 2.441zm3.342-25.296c-.611-.492-1.306-.711-1.908-.603-.625.113-.936.525-1.186.857-.214.284-.417.553-.875.776-.233.114-.409.155-.594.2-.31.074-.696.166-1.055.572-.664.752-.753 1.999-.198 2.779.458.644 1.195.824 1.89.824.655 0 1.273-.16 1.583-.24.592-.153 3.542-1.024 3.466-3.129-.027-.73-.446-1.491-1.123-2.036h0zm-2.71 3.747c-1.45.375-1.82.115-1.912-.015-.162-.228-.11-.721.102-.961.045-.051.052-.059.297-.117a4 4 0 0 0 .896-.308c.774-.377 1.152-.879 1.403-1.211.162-.215.225-.288.276-.297.14-.025.428.059.73.302.34.274.567.646.578.948.027.754-1.438 1.417-2.369 1.658h0z' fill='%2387064b' fill-rule='nonzero'/%3E%3C/svg%3E");
+    background-size: 100%;
+    display: block;
+  }
+  
+  .values-container div div {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .values-container div h1 {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    color: #307880 !important;
+    margin: unset;
+    font-size: 1.65rem;
+  }
+  
+  .values-container div p {
+    color: #87064b !important;
+    font-size: 1rem;
+  }
+  
+  .values-content {
+    height: unset;
+    min-height: 200px;
+  }
+  
+  .values-heading {
+    color: #307880 !important;
+    text-align: center;
+  }
+  
+  .values-content span {
+    margin-bottom: 1rem;
+  }
