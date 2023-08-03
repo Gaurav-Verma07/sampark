@@ -2,12 +2,10 @@
 import { Button, Container, createStyles, SimpleGrid } from '@mantine/core';
 import { useRouter } from 'next/navigation';
 import HomeHeader from '../../src/components/HomeHeader/HomeHeader';
-import { data } from '../../src/components/Blogs/blogContent';
 import './blogs.css';
 import { BlogCard } from '../../src/components/Blogs/BlogCard';
 import { useState } from 'react';
 import React from 'react';
-import { NextPage } from 'next';
 
 const useStyles = createStyles((theme) => ({
   body: {
@@ -42,39 +40,48 @@ interface SavedBlogType {
 }
 
 interface BlogType {
-  id: number;
+  slug: number;
   name: string;
   content: string;
-  author: string;
   image: string;
+  author: string;
 }
 
-const BlogsPage = () => {
+const getBlogData = async () => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ENDPOINT as string}/api/blog`
+  );
+  const response = await res.json();
+  return response.blog;
+};
+
+const BlogsPage = async() => {
   const router = useRouter();
   const { classes } = useStyles();
-  const [savedBlogs, setSavedBlogs] = useState<SavedBlogType[]>([]);
+   const [savedBlogs, setSavedBlogs] = useState<SavedBlogType[]>([]);
+     const allBlogData: BlogType[] = await getBlogData();
 
-  const handleAddSaveBlog = (data: SavedBlogType) => {
-    savedBlogs.push(data);
-    localStorage.setItem('sampark-saved-items', JSON.stringify(savedBlogs));
-    setSavedBlogs([...savedBlogs]);
-  };
+   const handleAddSaveBlog = (data: SavedBlogType) => {
+     savedBlogs.push(data);
+     localStorage.setItem('sampark-saved-items', JSON.stringify(savedBlogs));
+     setSavedBlogs([...savedBlogs]);
+   };
 
-  const handleDeleteSavedBlog = (id: number) => {
-    const savedBlogList = localStorage.getItem('sampark-saved-items');
+   const handleDeleteSavedBlog = (id: number) => {
+     const savedBlogList = localStorage.getItem('sampark-saved-items');
 
-    if (savedBlogList) {
-      const parsedBlogsData = JSON.parse(savedBlogList);
-      const updatedBlogsData = parsedBlogsData.filter(
-        (item: { id: number }) => item.id !== id,
-      );
-      localStorage.setItem(
-        'sampark-saved-items',
-        JSON.stringify(updatedBlogsData),
-      );
-      setSavedBlogs(updatedBlogsData);
-    }
-  };
+     if (savedBlogList) {
+       const parsedBlogsData = JSON.parse(savedBlogList);
+       const updatedBlogsData = parsedBlogsData.filter(
+         (item: { id: number }) => item.id !== id,
+       );
+       localStorage.setItem(
+         'sampark-saved-items',
+         JSON.stringify(updatedBlogsData),
+       );
+       setSavedBlogs(updatedBlogsData);
+     }
+   };
   return (
     <div>
       <Container className={classes.header}>
@@ -101,15 +108,14 @@ const BlogsPage = () => {
           ]}
         >
           {' '}
-          {data.map((item, index) => (
+          {allBlogData.map((item:BlogType, index:number) => (
             <BlogCard
-              data={item.blogData}
-              image={item.image as string}
-              key={index}
-              index={index}
-              handleAddSaveBlog={handleAddSaveBlog}
-              handleDeleteSavedBlog={handleDeleteSavedBlog}
-            />
+            {...item}
+            image={item.image as string}
+            key={index}
+            index={index}
+            handleAddSaveBlog={handleAddSaveBlog}
+            handleDeleteSavedBlog={handleDeleteSavedBlog}            />
           ))}
         </SimpleGrid>
       </div>

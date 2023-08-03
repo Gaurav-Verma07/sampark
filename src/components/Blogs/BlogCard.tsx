@@ -71,17 +71,23 @@ interface savedBlogType {
   image: string;
 }
 interface BlogCardType {
+  slug: number;
+  name: string;
+  content: string;
   image: string;
-  index: number;
-  data: string;
+  author: string;
+  index:number;
   handleAddSaveBlog?: (data: savedBlogType) => void;
   handleDeleteSavedBlog: (id: number) => void;
 }
 
 export function BlogCard({
+  slug,
   image,
+  name,
   index,
-  data,
+  content,
+  author,
   handleAddSaveBlog,
   handleDeleteSavedBlog,
 }: BlogCardType) {
@@ -118,7 +124,7 @@ export function BlogCard({
       //to add a certain blog
       const finalData: savedBlogType = {
         id: index,
-        data: data,
+        data: content,
         image: image,
       };
       if (handleAddSaveBlog) {
@@ -130,7 +136,7 @@ export function BlogCard({
 
   useEffect(() => {
     const element = document.createElement('div');
-    element.innerHTML = data;
+    element.innerHTML = content;
 
     const h1Tag = element.querySelector('div.blog__main h1') as HTMLElement;
     const extractedTitle = h1Tag?.innerText ?? '';
@@ -171,10 +177,10 @@ export function BlogCard({
         component="a"
         {...linkProps}
         onClick={() => {
-          router.push(`/blogs/${index}`);
+          router.push(`/blogs/${slug}`);
         }}
       >
-        {blogTitle}
+        {name}
       </Text>
 
       <Group position="apart" className={classes.footer}>
