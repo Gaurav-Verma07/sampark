@@ -37,7 +37,7 @@ function AllOrphanages() {
       }
     } catch (error) {
       console.log(error);
-      toast.success('Something went wrong. Please Try Again', {
+      toast.error('Something went wrong. Please Try Again', {
         position: 'top-right',
         autoClose: 1000,
         hideProgressBar: false,
@@ -105,6 +105,18 @@ function AllOrphanages() {
           </div>
         </section>
       )}
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        closeButton={false}
+      />
     </div>
   );
 }

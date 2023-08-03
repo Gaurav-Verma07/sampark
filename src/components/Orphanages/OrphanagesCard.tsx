@@ -14,12 +14,12 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface OrphanageCardType {
+  slug: string;
   data: string;
   image: string;
-  index: number;
 }
 
-export function OrphanageCard({ data, image, index }: OrphanageCardType) {
+export function OrphanageCard({ slug, data, image }: OrphanageCardType) {
   const router = useRouter();
   const { classes, theme } = useStyles();
   const [orphanageTitle, setOrphanageTitle] = useState<string>('');
@@ -43,7 +43,7 @@ export function OrphanageCard({ data, image, index }: OrphanageCardType) {
       radius="md"
       className={classes.card}
       onClick={() => {
-        router.push(`/orphanages/${index}`);
+        router.push(`/orphanages/${slug}`);
       }}
     >
       <Card.Section mb="sm">

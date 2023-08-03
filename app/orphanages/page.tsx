@@ -6,7 +6,6 @@ import { data } from '../../src/components/Orphanages/orphanageContent';
 import './orphanage.css';
 import { OrphanageCard } from '../../src/components/Orphanages/OrphanagesCard';
 import React from 'react';
-import { NextPage } from 'next';
 
 const useStyles = createStyles((theme) => ({
   body: {
@@ -42,9 +41,19 @@ interface OrphanagesType {
   image: string;
 }
 
-const OrphanagesPage = () => {
+const getOrphanageData = async () => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ENDPOINT as string}/api/orphanage`,
+    { next: { revalidate: 10 } },
+  );
+  const response = await res.json();
+  return response.orphanage;
+};
+const OrphanagesPage = async () => {
   const router = useRouter();
   const { classes } = useStyles();
+
+  const allOrphanageData: OrphanagesType[] = await getOrphanageData();
 
   return (
     <div style={{ margin: '0 3%' }}>
@@ -72,13 +81,12 @@ const OrphanagesPage = () => {
           ]}
         >
           {' '}
-          {data.map((item, index) => (
+          {allOrphanageData.map((item: OrphanagesType, index: number) => (
             <OrphanageCard
-              data={item.blogData}
+              slug={''} data={''}
+              {...data}
               image={item.image as string}
-              key={index}
-              index={index}
-            />
+              key={index}            />
           ))}
         </SimpleGrid>
       </div>

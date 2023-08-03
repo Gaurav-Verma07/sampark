@@ -33,7 +33,7 @@ export default function OrphanageAdminCard({
       withBorder
       radius="md"
       className={classes.card}
-      style={{ width: '300px' }} // Adjust the width as per your layout
+      style={{ width: '300px' }} 
     >
       <Card.Section mb="sm">
         <div
