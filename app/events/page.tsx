@@ -6,7 +6,6 @@ import { data } from '../../src/components/Events/eventContent';
 import './events.css';
 import { EventCard } from '../../src/components/Events/EventsCard';
 import React from 'react';
-import { NextPage } from 'next';
 
 const useStyles = createStyles((theme) => ({
   body: {
@@ -35,16 +34,30 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface EventsType {
-  id: number;
+  slug: string;
   name: string;
-  content: string;
-  author: string;
+  organizer: string;
+  address: string;
+  description: string;
+  date: string;
   image: string;
+  duration: number;
+  index: number;
 }
 
-const EventsPage = () => {
+const getEventData = async () => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ENDPOINT as string}/api/event`,
+    { next: { revalidate: 10 } },
+  );
+  const response = await res.json();
+  return response.event;
+};
+const EventsPage = async () => {
   const router = useRouter();
   const { classes } = useStyles();
+
+  const allEventData: EventsType[] = await getEventData();
 
   return (
     <div style={{ margin: '0 3%' }}>
@@ -72,13 +85,12 @@ const EventsPage = () => {
           ]}
         >
           {' '}
-          {data.map((item, index) => (
+          {allEventData.map((item, index) => (
             <EventCard
-              data={item.blogData}
-              image={item.image as string}
-              key={index}
-              index={index}
-            />
+            slug={''} name={''} organizer={''} address={''} description={''} date={''} duration={0} {...data}
+            image={item.image as string}
+            key={index}
+            index={index}            />
           ))}
         </SimpleGrid>
       </div>
