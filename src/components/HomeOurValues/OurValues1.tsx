@@ -8,6 +8,7 @@ function OurValues1() {
         
         <div className="values-box-1">
           <div className="values-content empowerment-section">
+            <span className="empowerment-span"></span>
             <h1>Empowerment</h1>
             {/* <hr /> */}
             <p>
@@ -15,6 +16,7 @@ function OurValues1() {
             </p>
           </div>
           <div className="values-content collab-section">
+            <span className="collab-span"></span>
             <h1>Collaboration</h1>
             {/* <hr /> */}
             <p>
@@ -23,6 +25,7 @@ function OurValues1() {
           </div>
 
           <div className="values-content growth-section">
+             <span className="growth-span"></span>
             <h1>Growth</h1>
             {/* <hr /> */}
             <p>
