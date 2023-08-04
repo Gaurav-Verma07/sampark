@@ -1,7 +1,5 @@
 import { createStyles, Card, Image, Group, Text, Avatar } from '@mantine/core';
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -14,7 +12,6 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface EventCardType {
-  slug: string;
   name: string;
   organizer: string;
   address: string;
@@ -25,18 +22,13 @@ interface EventCardType {
   index: number;
 }
 
-export function EventCard({
-  slug,
+export default function EventAdminCard({
   name,
-  organizer,
   address,
   description,
-  date,
-  duration,
   image,
   index,
 }: EventCardType) {
-  const router = useRouter();
   const { classes } = useStyles();
 
   return (
@@ -44,27 +36,44 @@ export function EventCard({
       withBorder
       radius="md"
       className={classes.card}
-      onClick={() => {
-        router.push(`/events/${index}`);
-      }}
+      style={{ width: '300px' }}
     >
       <Card.Section mb="sm">
-        <Image src={image as string} alt="image" height={180} />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            margin: '5% 0',
+          }}
+        >
+          <Image
+            src={'/assets/Images/samparklogotransparent.png'}
+            alt={'name'}
+            height={150}
+            width={150}
+            style={{ borderRadius: '50%' }}
+          />
+        </div>
       </Card.Section>
 
-      <Text fw={700} className={classes.title} mt="xs">
+      <Text
+        fw={700}
+        className={classes.title}
+        mt="xs"
+        style={{ textAlign: 'center' }}
+      >
         {name}
       </Text>
 
-      <Group mt="lg">
+      <Group mt="lg" style={{ justifyContent: 'center' }}>
         <Avatar src={'author.image'} radius="sm" />
         <Text fw={500}>{'Gaurav'}</Text>
-        <div>
-          <Text fz="xs" c="dimmed">
-            {description}
-          </Text>
-        </div>
       </Group>
+      <div style={{ textAlign: 'center' }}>
+        <Text fz="xs" c="dimmed">
+          {description}
+        </Text>
+      </div>
     </Card>
   );
 }
