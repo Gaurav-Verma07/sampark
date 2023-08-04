@@ -9,7 +9,9 @@ import {
   Burger,
   useMantineTheme,
 } from '@mantine/core';
+
 import AllNgos from '../../src/components/Admin/Ngos/AllNgos';
+
 import Image from 'next/image';
 import React from 'react';
 
@@ -32,6 +34,7 @@ const AdminPage = () => {
       asideOffsetBreakpoint="sm"
       navbar={
 
+
         <Navbar height={600} p="xs" width={{ base: 250 }} style={{cursor:'pointer'}}>
           <Navbar.Section mt="md" style={{cursor:'pointer'}}>Orphanges</Navbar.Section>
           <Navbar.Section mt="md" style={{cursor:'pointer'}} onClick={() => setSelectedOption('ngos')}>
@@ -39,6 +42,7 @@ const AdminPage = () => {
           </Navbar.Section>
           <Navbar.Section mt="md" style={{cursor:'pointer'}}>Events</Navbar.Section>
           <Navbar.Section mt="md" style={{cursor:'pointer'}}>Blogs</Navbar.Section>
+
         </Navbar>
       }
       footer={
@@ -70,7 +74,9 @@ const AdminPage = () => {
         </Header>
       }
     >
+
       {selectedOption === 'ngos' && <AllNgos />}
+
     </AppShell>
   );
 };
