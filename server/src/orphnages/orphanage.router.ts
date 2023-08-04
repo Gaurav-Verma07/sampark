@@ -12,7 +12,7 @@ interface RequestParams {
   slug: string;
 }
 
-orphanageRouter.get('/', async (_, res: Response) => {
+orphanageRouter.get('/first', async (_, res: Response) => {
   try {
     const orphanage = await OrphanageService.getFirstOrphanage();
     res.status(200).send({ success: true, orphanage: orphanage });
