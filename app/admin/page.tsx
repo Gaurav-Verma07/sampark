@@ -26,12 +26,12 @@ const AdminPage = () => {
             theme.colorScheme === 'dark'
               ? theme.colors.dark[8]
               : theme.colors.gray[0],
-          
         },
       }}
       navbarOffsetBreakpoint="sm"
       asideOffsetBreakpoint="sm"
       navbar={
+
         <Navbar height={600} p="xs" width={{ base: 250 }} style={{cursor:'pointer'}}>
           <Navbar.Section mt="md" style={{cursor:'pointer'}}>Orphanges</Navbar.Section>
           <Navbar.Section mt="md" style={{cursor:'pointer'}} onClick={() => setSelectedOption('ngos')}>
