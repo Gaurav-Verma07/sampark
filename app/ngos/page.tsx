@@ -2,11 +2,9 @@
 import { Button, Container, createStyles, SimpleGrid } from '@mantine/core';
 import { useRouter } from 'next/navigation';
 import HomeHeader from '../../src/components/HomeHeader/HomeHeader';
-import { data } from '../../src/components/Ngos/ngoContent';
 import './ngo.css';
 import { NgoCard } from '../../src/components/Ngos/NgosCard';
 import React from 'react';
-import { NextPage } from 'next';
 
 const useStyles = createStyles((theme) => ({
   body: {
@@ -42,9 +40,19 @@ interface NgosType {
   image: string;
 }
 
-const NgosPage = () => {
+const getNgoData = async () => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ENDPOINT as string}/api/ngo`,
+    { next: { revalidate: 10 } },
+  );
+  const response = await res.json();
+  return response.ngo;
+};
+const NgosPage = async () => {
   const router = useRouter();
   const { classes } = useStyles();
+
+  const allNgoData: NgosType[] = await getNgoData();
 
   return (
     <div style={{ margin: '0 3%' }}>
@@ -72,12 +80,14 @@ const NgosPage = () => {
           ]}
         >
           {' '}
-          {data.map((item, index) => (
+          {allNgoData.map((data: NgosType, index: number) => (
             <NgoCard
-              data={item.blogData}
-              image={item.image as string}
-              key={index}
-              index={index}
+            slug={''}
+            address={''}
+                  description={''}
+                  index={index}
+                  {...data}
+                  key={index}
             />
           ))}
         </SimpleGrid>
@@ -87,3 +97,4 @@ const NgosPage = () => {
 };
 
 export default NgosPage;
+

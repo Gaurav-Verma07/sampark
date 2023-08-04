@@ -1,16 +1,15 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   AppShell,
   Navbar,
   Header,
   Footer,
-  Text,
   MediaQuery,
   Burger,
   useMantineTheme,
 } from '@mantine/core';
-import AllOrphanages from '../../src/components/Admin/Orphanages/AllOrphanages';
+import AllNgos from '../../src/components/Admin/Ngos/AllNgos';
 import Image from 'next/image';
 import React from 'react';
 
@@ -32,21 +31,18 @@ const AdminPage = () => {
       navbarOffsetBreakpoint="sm"
       asideOffsetBreakpoint="sm"
       navbar={
-        <Navbar height={600} p="xs" width={{ base: 250 }}>
-          <Navbar.Section
-            mt="md"
-            onClick={() => setSelectedOption('orphanages')}
-          >
-            Orphanges
+        <Navbar height={600} p="xs" width={{ base: 250 }} style={{cursor:'pointer'}}>
+          <Navbar.Section mt="md" style={{cursor:'pointer'}}>Orphanges</Navbar.Section>
+          <Navbar.Section mt="md" style={{cursor:'pointer'}} onClick={() => setSelectedOption('ngos')}>
+            NGOS
           </Navbar.Section>
-          <Navbar.Section mt="md">NGOS</Navbar.Section>
-          <Navbar.Section mt="md">Events</Navbar.Section>
-          <Navbar.Section mt="md">Blogs</Navbar.Section>
+          <Navbar.Section mt="md" style={{cursor:'pointer'}}>Events</Navbar.Section>
+          <Navbar.Section mt="md" style={{cursor:'pointer'}}>Blogs</Navbar.Section>
         </Navbar>
       }
       footer={
         <Footer height={60} p="md">
-          
+          Footer
         </Footer>
       }
       header={
@@ -73,7 +69,7 @@ const AdminPage = () => {
         </Header>
       }
     >
-      {selectedOption === 'orphanages' && <AllOrphanages />}
+      {selectedOption === 'ngos' && <AllNgos />}
     </AppShell>
   );
 };

@@ -1,6 +1,5 @@
 import { createStyles, Card, Image, Group, Text, Avatar } from '@mantine/core';
 import React from 'react';
-import { useRouter } from 'next/navigation';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -12,18 +11,23 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface NgosType {
-  slug: string;
+interface BlogCardType {
+ _id:string;
   name: string;
-  address: string;
-  description: string;
+  content: string;
   image: string;
+  author:string;
   index: number;
 }
 
-export function NgoCard({ slug, name, address, description, image, index }: NgosType) {
-  const router = useRouter();
-  const { classes, theme } = useStyles();
+export default function BlogAdminCard({
+  name,
+  content,
+  author,
+  image,
+  index,
+}: BlogCardType) {
+  const { classes } = useStyles();
 
   return (
     <Card
@@ -31,9 +35,6 @@ export function NgoCard({ slug, name, address, description, image, index }: Ngos
       radius="md"
       className={classes.card}
       style={{ width: '300px' }}
-      onClick={() => {
-        router.push(`/ngos/${slug}`);
-      }}
     >
       <Card.Section mb="sm">
         <div
@@ -68,7 +69,7 @@ export function NgoCard({ slug, name, address, description, image, index }: Ngos
       </Group>
       <div style={{ textAlign: 'center' }}>
         <Text fz="xs" c="dimmed">
-          {description}
+          {content}
         </Text>
       </div>
     </Card>
