@@ -1,27 +1,66 @@
-import { Schema, model } from 'mongoose'
-
+import { Schema, model } from 'mongoose';
 
 const OrphanageSchema = new Schema(
   {
     name: {
       type: String,
-      require: true,
+      required: true,
     },
-    slug: {
+    location: {
       type: String,
-      require: true,
+      required: true,
     },
-    address: {
+    contactInformation: {
       type: String,
-      require: true,
+      required: true,
+    },
+    vision: {
+      type: String,
+      required: true,
     },
     description: {
       type: String,
-      require: false,
+      required: true,
     },
-    image: {
-      type: Buffer,
-      require: false,
+    capacity: {
+      type: Number,
+      required: true,
+    },
+    servicesProvided: {
+      type: [String],
+      required: true,
+    },
+    startAge: {
+      type: Number,
+      required: true,
+    },
+    endAge: {
+      type: Number,
+      required: true,
+    },
+    logo: {
+      type: String,
+      required: true,
+    },
+    operatingHours: {
+      type: Number,
+      required: true,
+    },
+    license: {
+      type: String,
+      required: true,
+    },
+    staffInformation: {
+      type: [{ name: String, qualification: String }],
+      required: true,
+    },
+    donationInformation: {
+      type: { isDonations: Boolean, contact: String },
+      required: true,
+    },
+    testimonials: {
+      type: [{ name: String, testimony: String }],
+      required: false,
     },
   },
   {

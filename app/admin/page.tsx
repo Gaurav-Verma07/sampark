@@ -12,6 +12,9 @@ import {
 import AllNgos from '../../src/components/Admin/Ngos/AllNgos';
 import Image from 'next/image';
 import React from 'react';
+import AllEvents from '../../src/components/Admin/Events/AllEvents';
+import AllBlogs from '../../src/components/Admin/Blog/AllBlogs';
+import AllOrphanages from '../../src/components/Admin/Orphanages/AllOrphanages';
 
 const AdminPage = () => {
   const theme = useMantineTheme();
@@ -30,16 +33,31 @@ const AdminPage = () => {
       }}
       navbarOffsetBreakpoint="sm"
       asideOffsetBreakpoint="sm"
-      // navbar={
-      //   <Navbar height={600} p="xs" width={{ base: 250 }} style={{cursor:'pointer'}}>
-      //     <Navbar.Section mt="md" style={{cursor:'pointer'}}>Orphanges</Navbar.Section>
-      //     <Navbar.Section mt="md" style={{cursor:'pointer'}} onClick={() => setSelectedOption('ngos')}>
-      //       NGOS
-      //     </Navbar.Section>
-      //     <Navbar.Section mt="md" style={{cursor:'pointer'}}>Events</Navbar.Section>
-      //     <Navbar.Section mt="md" style={{cursor:'pointer'}}>Blogs</Navbar.Section>
-      //   </Navbar>
-      // }
+      navbar={
+        <Navbar
+          height={600}
+          p="xs"
+          width={{ base: 250 }}
+          style={{ cursor: 'pointer' }}
+        >
+          <Navbar.Section mt="md" style={{ cursor: 'pointer' }}>
+            Orphanges
+          </Navbar.Section>
+          <Navbar.Section
+            mt="md"
+            style={{ cursor: 'pointer' }}
+            onClick={() => setSelectedOption('ngos')}
+          >
+            NGOS
+          </Navbar.Section>
+          <Navbar.Section mt="md" style={{ cursor: 'pointer' }}>
+            Events
+          </Navbar.Section>
+          <Navbar.Section mt="md" style={{ cursor: 'pointer' }}>
+            Blogs
+          </Navbar.Section>
+        </Navbar>
+      }
       footer={
         <Footer height={60} p="md">
           Footer
@@ -69,7 +87,10 @@ const AdminPage = () => {
         </Header>
       }
     >
+      {selectedOption === 'events' && <AllEvents />}
+      {selectedOption === 'orphanages' && <AllOrphanages />}
       {selectedOption === 'ngos' && <AllNgos />}
+      {selectedOption === 'blogs' && <AllBlogs />}
     </AppShell>
   );
 };
