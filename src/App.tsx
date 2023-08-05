@@ -41,9 +41,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/blogs" element={<AllBlogs />} />
-          <Route path="/impact" element={<AllImpacts />} />
+          {/* <Route path="/impact" element={<AllImpacts />} /> */}
           <Route path="/blogs/:id" element={<Blogs />} />
-          <Route path="/impact/:id" element={<Impact />} />
+          {/* <Route path="/impact/:id" element={<Impact />} /> */}
           <Route path="/login" element={<AuthenticationForm />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/admin" element={<Admin />} />

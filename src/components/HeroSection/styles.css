@@ -3,7 +3,6 @@
 }
 
 .hero-section {
-  width: 99vw;
   height: 100vh;
   background-image: url('../../assets/Images/homeImg.jpg');
   display: flex;
@@ -53,4 +52,7 @@
   font-size: 3rem;
   text-align: center;
   font-family: 'futura-pt', sans-serif;
+}
+@media only screen and (max-width: 500px) {
+
 }

@@ -166,6 +166,11 @@
       width: auto;
       height: auto;
     }
+    .values-container div p {
+      max-width: 13rem;
+    }
+   
+   
   }
   
   @keyframes fadeIn {
@@ -218,13 +223,13 @@
   .values-container div h1 {
     text-transform: uppercase;
     letter-spacing: 0.2rem;
-    color: #307880 !important;
+    color: #00aa95 !important;
     margin: unset;
     font-size: 1.65rem;
   }
   
   .values-container div p {
-    color: #87064b !important;
+    color: #423f2b !important;
     font-size: 1rem;
   }
   
@@ -232,10 +237,13 @@
     height: unset;
     min-height: 200px;
   }
-  
+  .values-container div h1 {
+    letter-spacing: 0rem;
+  }
   .values-heading {
-    color: #307880 !important;
+    color: #00aa95 !important;
     text-align: center;
+    text-decoration: underline;
   }
   
   .values-content span {
