@@ -1,27 +1,60 @@
-import { Schema, model } from 'mongoose'
-
+import { Schema, model } from 'mongoose';
 
 const NgoSchema = new Schema(
   {
     name: {
       type: String,
-      require: true,
+      required: true,
     },
-    slug: {
+    location: {
       type: String,
-      require: true,
+      required: true,
     },
-    description: {
-      type: String,
-      require: true,
+    contactInformation: {
+      type: { phone: String, website: String, email: String },
+      required: true,
     },
-    address: {
+    vision: {
       type: String,
-      require: false,
+      required: true,
     },
-    image: {
+    focusAreas: {
+      type: [String],
+      required: true,
+    },
+    projects: {
+      type: [{ name: String, description: String }],
+      required: true,
+    },
+    teamMembers: {
+      type: [{ name: String, designation: String }],
+      required: true,
+    },
+    donations: {
+      type: { isDonations: Boolean, contact: String },
+      required: false,
+    },
+    volunteering: {
+      type: { isVolunteer: Boolean, contact: String },
+      required: false,
+    },
+    logo: {
       type: String,
-      require: false,
+      required: true,
+    },
+    testimonials: {
+      type: [{ name: String, testimony: String }],
+      required: false,
+    },
+    socialMediaLinks: {
+      type: { twitter: String, linkedIn: String },
+      required: false,
+    },
+    license: {
+      type: String,
+    },
+    funding: {
+      type: String,
     },
   },
   {
