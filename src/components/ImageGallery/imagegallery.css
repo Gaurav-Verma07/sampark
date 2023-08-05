@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
 .title{
-    margin-bottom: 40px;
     font-size: 50px;
     margin-left: 30px;
+    color: #06b38b;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: underline;
 }
 .carousell{
     margin-left: 30px;

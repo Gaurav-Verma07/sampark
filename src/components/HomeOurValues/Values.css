@@ -1,15 +1,10 @@
-.values-heading {
-    margin: 2rem 0 1rem 0;
-    font-size: 3.2rem;
-    font-weight: bold;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  }
-  
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+
   .values-container {
     display: flex;
     flex-direction: column;
-    margin: 2rem;
+    margin: 1rem;
     font-family: "Golos Text", sans-serif;
   }
   .values-box-1 {

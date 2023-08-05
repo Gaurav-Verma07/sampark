@@ -17,7 +17,6 @@ const ImageGallery = () => {
           weight="500"
           align="left"
           my={10}
-          color="blue"
           className="title"
         >
           Our Gallery

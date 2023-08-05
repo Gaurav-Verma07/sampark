@@ -1,10 +1,19 @@
 import './Values.css';
+import { Title } from '@mantine/core';
 
 function OurValues1() {
   return (
     <div id="values">
       <div className="values-container">
-        <h1 className="values-heading">OUR VALUES</h1>
+      <Title
+          order={1}
+          size={45}
+          weight="500"
+          my={10}
+          className="title value-heading"
+        >
+          Our Values
+        </Title>
         
         <div className="values-box-1">
           <div className="values-content empowerment-section">
