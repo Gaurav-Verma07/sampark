@@ -2,37 +2,61 @@ import { Schema, model } from 'mongoose';
 
 const EventSchema = new Schema(
   {
-    name: {
+    eventName: {
       type: String,
-      require: true,
+      required: true,
     },
-    slug: {
+    eventType: {
       type: String,
-      require: true,
+      required: true,
     },
-    organizer: {
+    eventDate: {
+      type: Date,
+      required: true,
+    },
+    eventLocation: {
       type: String,
-      require: true,
+      required: true,
     },
     description: {
       type: String,
-      require: true,
+      required: true,
     },
-    address: {
+    organizingOrganization: {
       type: String,
-      require: true,
+      required: true,
     },
-    date: {
+    targetAudience: {
       type: String,
-      require: true,
+      required: true,
     },
-    image: {
+    activities: {
+      type: [{ name: String, description: String }],
+      required: true,
+    },
+    volunteering: {
+      type: { isVolunteer: Boolean, contact: String },
+      required: false,
+    },
+    donations: {
+      type: { isDonations: Boolean, contact: String },
+      required: false,
+    },
+    logo: {
       type: String,
-      require: false,
+      required: true,
     },
-    duration: {
-      type: Number,
-      require: false,
+    contactInformation: {
+      type: [{ name: String, link: String }],
+      required: true,
+    },
+    socialMediaLinks: {
+      type: { twitter: String, linkedIn: String },
+      required: false,
+    },
+    registrationLink: {
+      type: { isregistration: Boolean, link: String },
+      required: true,
     },
   },
   {
