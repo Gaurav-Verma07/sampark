@@ -19,6 +19,8 @@ import { IconArrowLeft } from '@tabler/icons';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const useStyles = createStyles(() => {
   return {
@@ -71,6 +73,7 @@ const OrphanageRegister = () => {
     staffDetails.push({ name: '', qualification: '' });
     setStaffDetails([...staffDetails]);
   };
+
   const handleDonationDetails = (event) => {
     console.log(event.target.checked);
     setDonationDetails((prevValue) => ({
@@ -78,7 +81,6 @@ const OrphanageRegister = () => {
       isDonations: event.target.checked,
     }));
   };
-
   const handleAddTestimonial = () => {
     testimonialDetails.push({ name: '', testimony: '' });
     setTestimonialDetails([...testimonialDetails]);
@@ -103,9 +105,71 @@ const OrphanageRegister = () => {
   };
 
   const registerHandler = async () => {
+    console.log(staffDetails, testimonialDetails, donationDetails);
+    form.values.staffInformation = staffDetails;
+    form.values.testimonials = testimonialDetails;
+    form.values.donationInformation = donationDetails;
     console.log('data: ', form.values);
+    try {
+      const response = await fetch('/api/admin/orphanage/add', {
+        method: 'POST',
+        body: JSON.stringify({ data: form.values }),
+      }).then((res) => res.json());
+      console.log(response);
+      if (response.success) {
+        toast.success('Orpanage data added successfully', {
+          position: 'top-right',
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          closeButton: false,
+        });
+      } else {
+        if (response.errors && response.errors.length > 0) {
+          let errorMessage = '';
+          for (let i = 0; i < response.errors.length; i++) {
+            errorMessage += i + 1 + '. ' + response.errors[i].msg + '\n';
+          }
+          toast.error(errorMessage, {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        } else {
+          console.log('response false');
+          toast.error(response.message, {
+            position: 'top-right',
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            closeButton: false,
+          });
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error('Something went wrong. Please Try Again', {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        closeButton: false,
+      });
+    }
   };
-
   const box1 = {
     boxShadow:
       ' rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px',
@@ -148,24 +212,28 @@ const OrphanageRegister = () => {
               mb={30}
               placeholder="Name"
               label="Orphanage Name"
+              {...form.getInputProps('name')}
             />
             <TextInput
               mt={30}
               mb={30}
               placeholder="location"
               label="Orphanage Location"
+              {...form.getInputProps('location')}
             />
             <Textarea
               mt={30}
               mb={30}
               placeholder="Vision"
               label="Orphanage Vision"
+              {...form.getInputProps('vision')}
             />
             <Textarea
               mt={30}
               mb={30}
               placeholder="Description"
               label="Orphanage Description"
+              {...form.getInputProps('description')}
             />
             <TextInput
               mt={30}
@@ -173,12 +241,14 @@ const OrphanageRegister = () => {
               placeholder="Capacity"
               label="Orphanage Capacity"
               type="number"
+              {...form.getInputProps('capacity')}
             />
             <TextInput
               mt={30}
               mb={30}
               placeholder="logo"
               label="Orphanage Logo"
+              {...form.getInputProps('logo')}
             />
           </Stepper.Step>
 
@@ -188,14 +258,22 @@ const OrphanageRegister = () => {
               mb={30}
               placeholder="Contact Information"
               label="Contact Information"
+              {...form.getInputProps('contactInformation')}
             />
             <TextInput
               mt={30}
               mb={30}
               placeholder="Operating Hours"
               label="Operating Hours"
+              {...form.getInputProps('operatingHours')}
             />
-            <TextInput mt={30} mb={30} placeholder="License" label="License" />
+            <TextInput
+              mt={30}
+              mb={30}
+              placeholder="License"
+              label="License"
+              {...form.getInputProps('license')}
+            />
             <MultiSelect
               mt={30}
               mb={30}
@@ -203,6 +281,9 @@ const OrphanageRegister = () => {
               placeholder="Select services provided"
               data={servicesProvidedOptions}
               value={form.values.servicesProvided}
+              onChange={(value) =>
+                form.setFieldValue('servicesProvided', value)
+              }
             />
             <Button
               variant="outline"
@@ -217,10 +298,18 @@ const OrphanageRegister = () => {
                 <TextInput
                   label={`Staff ${index + 1} Name`}
                   value={staff.name}
+                  onChange={(e) => {
+                    staffDetails[index].name = e.target.value;
+                    setStaffDetails([...staffDetails]);
+                  }}
                 />
                 <TextInput
                   label={`Staff ${index + 1} Qualification`}
                   value={staff.qualification}
+                  onChange={(e) => {
+                    staffDetails[index].qualification = e.target.value;
+                    setStaffDetails([...staffDetails]);
+                  }}
                 />
                 <Button variant="subtle">Delete</Button>
               </Group>
@@ -232,6 +321,7 @@ const OrphanageRegister = () => {
                 placeholder="Start-Age"
                 label="Start-Age"
                 type="number"
+                {...form.getInputProps('startAge')}
               />
               <TextInput
                 mt={30}
@@ -239,6 +329,7 @@ const OrphanageRegister = () => {
                 placeholder="End-Age"
                 label="End-Age"
                 type="number"
+                {...form.getInputProps('endAge')}
               />
             </Group>
             <Group>
@@ -252,6 +343,10 @@ const OrphanageRegister = () => {
                 <TextInput
                   label="Donation Contact"
                   // value={staff.name}
+                  onChange={(e) => {
+                    donationDetails.donationContact = e.target.value;
+                    setDonationDetails({ ...donationDetails });
+                  }}
                 />
               )}
             </Group>
@@ -267,10 +362,18 @@ const OrphanageRegister = () => {
                 <TextInput
                   label={`Testimony ${index + 1} Name`}
                   // value={staff.name}
+                  onChange={(e) => {
+                    testimonialDetails[index].name = e.target.value;
+                    setTestimonialDetails([...testimonialDetails]);
+                  }}
                 />
                 <TextInput
                   label={`Testimony ${index + 1} Testimony`}
                   // value={staff.qualification}
+                  onChange={(e) => {
+                    testimonialDetails[index].testimony = e.target.value;
+                    setTestimonialDetails([...testimonialDetails]);
+                  }}
                 />
                 <Button variant="subtle">Delete</Button>
               </Group>
@@ -295,6 +398,18 @@ const OrphanageRegister = () => {
           {active == 1 && <Button onClick={registerHandler}>Submit</Button>}
         </Group>
       </Paper>
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        closeButton={false}
+      />
     </>
   );
 };
