@@ -59,6 +59,8 @@ const EventRegister = () => {
   });
   const [socialMedia, setSocialMedia] = useState({ twitter: '', linkedIn: '' });
 
+  const [registrationDetails, setRegistrationDetails]= useState({isRegistration: false, link: ''})
+
   const form = useForm({
     initialValues: {
       eventName: '',
@@ -102,6 +104,13 @@ const EventRegister = () => {
     });
   };
 
+    const handleRegistraitonDetails = (event) => {
+    setRegistrationDetails({
+      ...registrationDetails,
+      isRegistration: event.target.checked,
+    });
+  };
+
   const nextStep = () => {
     setActive((current) => {
       if (form.validate().hasErrors) {
@@ -116,7 +125,74 @@ const EventRegister = () => {
   };
 
   const registerHandler = async () => {
+    form.values.activities = JSON.stringify(activityDetails);
+    form.values.donations = JSON.stringify(donationDetails);
+    form.values.volunteering = JSON.stringify(volunteeringDetails);
+    form.values.socialMediaLinks = JSON.stringify(socialMedia);
+    form.values.contactInformation = JSON.stringify(contactInfomation);
+    form.values.registrationLink=JSON.stringify(registrationDetails)
+
     console.log('data: ', form.values);
+
+    try {
+      const response = await fetch('/api/admin/events/add', {
+        method: 'POST',
+        body: JSON.stringify({ data: form.values }),
+      }).then((res) => res.json());
+      console.log(response);
+      if (response.success) {
+        toast.success('Event data added successfully', {
+          position: 'top-right',
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          closeButton: false,
+        });
+      } else {
+        if (response.errors && response.errors.length > 0) {
+          let errorMessage = '';
+          for (let i = 0; i < response.errors.length; i++) {
+            errorMessage += response.errors[i].msg + ' ';
+          }
+          toast.error(errorMessage, {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        } else {
+          console.log('response false');
+          toast.error(response.message, {
+            position: 'top-right',
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            closeButton: false,
+          });
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error('Something went wrong. Please Try Again', {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        closeButton: false,
+      });
+    }
   };
 
   const box1 = {
@@ -157,6 +233,7 @@ const EventRegister = () => {
               mb={30}
               placeholder="Event Name"
               label="Event Name"
+              {...form.getInputProps('eventName')}
             />
             <MultiSelect
               mt={30}
@@ -165,7 +242,7 @@ const EventRegister = () => {
               placeholder="Select event type"
               data={eventTypeOptions}
               value={form.values.eventType}
-              onChange={(value) => form.setFieldValue('eventType', value)}
+              onChange={(value) => form.setFieldValue('eventType', JSON.stringify(value))}
             />
             <TextInput
               mt={30}
@@ -173,38 +250,62 @@ const EventRegister = () => {
               placeholder="Event Date"
               label="Event Date"
               type="date"
+              {...form.getInputProps('eventDate')}
             />
             <TextInput
               mt={30}
               mb={30}
               placeholder="Event Location"
               label="Event Location"
+              {...form.getInputProps('eventLocation')}
             />
             <Textarea
               mt={30}
               mb={30}
               placeholder="Event Description"
               label="Event Description"
+              {...form.getInputProps('description')}
             />
             <TextInput
               mt={30}
               mb={30}
               placeholder="Organizing Organization"
               label="Organizing Organization"
+              {...form.getInputProps('organizingOrganization')}
             />
             <TextInput
               mt={30}
               mb={30}
               placeholder="Target Audience"
               label="Target Audience"
+              {...form.getInputProps('targetAudience')}
             />
-            <TextInput mt={30} mb={30} placeholder="Logo" label="Event Logo" />
             <TextInput
               mt={30}
               mb={30}
-              placeholder="Registration Link"
-              label="Registration Link"
+              placeholder="Logo"
+              label="Event Logo"
+              {...form.getInputProps('logo')}
             />
+            <Checkbox
+              mt={30}
+              mb={30}
+              
+              label="Registration Details"
+              onChange={(event) => handleRegistraitonDetails(event)}
+            />
+            {registrationDetails.isRegistration && (
+              <TextInput
+                placeholder="Registration Link"
+                value={registrationDetails.link}
+                onChange={(e) =>
+                  setRegistrationDetails({
+                    ...registrationDetails,
+                    link: e.target.value,
+                  })
+                }
+              />
+            )}
 
             <Button
               variant="outline"
@@ -218,17 +319,25 @@ const EventRegister = () => {
                 <TextInput
                   label={`Activity ${index + 1} Name`}
                   value={activity.name}
+                  onChange={(e) => {
+                    activityDetails[index].name = e.target.value;
+                    setActivityDetails([...activityDetails]);
+                  }}
                 />
                 <TextInput
                   label={`Activity ${index + 1} Description`}
                   value={activity.description}
+                  onChange={(e) => {
+                    activityDetails[index].description = e.target.value;
+                    setActivityDetails([...activityDetails]);
+                  }}
                 />
                 <Button variant="subtle">Delete</Button>
               </Group>
             ))}
           </Stepper.Step>
 
-          <Stepper.Step label="Second step" description="Event Contacts">
+          <Stepper.Step label="Second step" description="NGO Details">
             <Checkbox
               mt={30}
               mb={30}
@@ -239,6 +348,12 @@ const EventRegister = () => {
               <TextInput
                 label="Donation Contact"
                 value={donationDetails.contact}
+                onChange={(e) =>
+                  setDonationDetails({
+                    ...donationDetails,
+                    contact: e.target.value,
+                  })
+                }
               />
             )}
 
@@ -252,14 +367,59 @@ const EventRegister = () => {
               <TextInput
                 label="Volunteering Contact"
                 value={volunteeringDetails.contact}
+                onChange={(e) =>
+                  setVolunteeringDetails({
+                    ...volunteeringDetails,
+                    contact: e.target.value,
+                  })
+                }
               />
             )}
 
-            <TextInput label="Phone" value={contactInfomation.phone} />
-            <TextInput label="Email" value={contactInfomation.email} />
-            <TextInput label="Website" value={contactInfomation.website} />
-            <TextInput label="Twitter" value={socialMedia.twitter} />
-            <TextInput label="LinkedIn" value={socialMedia.linkedIn} />
+            <TextInput
+              label="Phone"
+              value={contactInfomation.phone}
+              onChange={(e) =>
+                setContactInfomation({
+                  ...contactInfomation,
+                  phone: e.target.value,
+                })
+              }
+            />
+            <TextInput
+              label="Email"
+              value={contactInfomation.email}
+              onChange={(e) =>
+                setContactInfomation({
+                  ...contactInfomation,
+                  email: e.target.value,
+                })
+              }
+            />
+            <TextInput
+              label="Website"
+              value={contactInfomation.website}
+              onChange={(e) =>
+                setContactInfomation({
+                  ...contactInfomation,
+                  website: e.target.value,
+                })
+              }
+            />
+            <TextInput
+              label="Twitter"
+              value={socialMedia.twitter}
+              onChange={(e) =>
+                setSocialMedia({ ...socialMedia, twitter: e.target.value })
+              }
+            />
+            <TextInput
+              label="LinkedIn"
+              value={socialMedia.linkedIn}
+              onChange={(e) =>
+                setSocialMedia({ ...socialMedia, linkedIn: e.target.value })
+              }
+            />
           </Stepper.Step>
 
           <Stepper.Completed>
@@ -280,6 +440,18 @@ const EventRegister = () => {
           {active === 1 && <Button onClick={registerHandler}>Submit</Button>}
         </Group>
       </Paper>
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        closeButton={false}
+      />
     </>
   );
 };
