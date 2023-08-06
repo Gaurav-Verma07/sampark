@@ -2,25 +2,44 @@ import { Schema, model } from 'mongoose';
 
 const BlogSchema = new Schema(
   {
-    name: {
+    title: {
       type: String,
-      require: true,
-    },
-    slug: {
-      type: String,
-      require: true,
-    },
-    content: {
-      type: String,
-      require: true,
+      required: true,
     },
     author: {
       type: String,
-      require: false,
+      required: true,
     },
-    image: {
+    content: {
       type: String,
-      require: false,
+      required: true,
+    },
+    tags: {
+      type: [String],
+      required: true,
+    },
+    publishedDate: {
+      type: Date,
+      required: true,
+    },
+    featuredImage: {
+      type: String,
+      required: true,
+    },
+    comments: {
+      type: [
+        {
+          name: String,
+          email: String,
+          comment: String,
+          date: { type: Date, default: Date.now },
+        },
+      ],
+      required: false,
+    },
+    likes: {
+      type: Number,
+      default: 0,
     },
   },
   {
