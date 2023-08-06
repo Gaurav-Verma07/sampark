@@ -13,12 +13,21 @@ const useStyles = createStyles((theme) => ({
     [theme.fn.smallerThan('xs')]: {
       display: 'none',
     },
+    width: 92%,
+    padding: 2rem,
+    margin: 0 auto,
+    border-radius: .5rem,
+    top: 5.25rem
   },
 
   burger: {
     [theme.fn.largerThan('xs')]: {
       display: 'none',
     },
+    background: white,
+    padding: 1rem .7rem,
+    width: unset,
+    height: unset,
   },
 
   link: {
@@ -35,6 +44,7 @@ const useStyles = createStyles((theme) => ({
           ? theme.colors.dark[6]
           : theme.colors.gray[0],
     },
+    width: 100%
   },
 
   linkActive: {
