@@ -7,7 +7,6 @@ import SeekerMain from '../../components/SeekerMain/SeekerMain';
 import ProgramSection from '../../components/SeekerProgramSection/ProgramSection';
 
 const Seeker = () => {
-  // console.log(process.env.REACT_APP_GOOGLE_API_KEY);
 
   return (
     <AppShell

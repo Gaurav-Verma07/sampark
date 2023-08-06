@@ -41,7 +41,6 @@ const ProviderMain = () => {
   });
 
   const getResponses = async () => {
-    console.log('Here we are');
     const dbRef = ref(getDatabase());
     const response = await get(
       child(
@@ -50,7 +49,6 @@ const ProviderMain = () => {
       ),
     );
     const responseData = Object.values(response.val());
-    console.log(responseData);
     const userMail: any = JSON.parse(localStorage.getItem('email') || '');
     const user: any = responseData.filter((el: any) => el.Email === userMail);
     setuserData(user[0]);

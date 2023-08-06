@@ -157,7 +157,7 @@ const Auth = () => {
               })}
               onClick={() => {
                 // Add your own logic for handling the Forgot Password link click
-                console.log('Forgot Password clicked');
+                // console.log('Forgot Password clicked');
               }}
             >
               Forgot Password?

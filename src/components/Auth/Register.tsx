@@ -96,7 +96,6 @@ const Register = () => {
 
   const registerHandler = () => {
     registerUserHandler(form.values.email, form.values.password);
-    console.log(form.values);
     localStorage.setItem('email', JSON.stringify(form.values.email));
     navigate(`/provider/home`);
   };
