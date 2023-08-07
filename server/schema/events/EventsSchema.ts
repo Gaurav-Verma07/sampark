@@ -47,7 +47,9 @@ const EventSchema = new Schema(
       required: true,
     },
     contactInformation: {
-      type: [{ name: String, link: String }],
+      type: { phone: String,
+    website: String,
+    email: String },
       required: true,
     },
     socialMediaLinks: {
@@ -55,7 +57,7 @@ const EventSchema = new Schema(
       required: false,
     },
     registrationLink: {
-      type: { isregistration: Boolean, link: String },
+      type: { isRegistration: Boolean, link: String },
       required: true,
     },
   },

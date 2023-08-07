@@ -73,8 +73,25 @@ eventRouter.post(
           errors: errors.array(),
         });
       }
+      console.log(JSON.parse(req.body.eventType));
 
-      const eventInfo = req.body;
+      // const eventInfo = req.body;
+      const eventInfo = {
+        eventName: req.body.eventName,
+        eventType: req.body.eventType,
+        eventDate: new Date(req.body.eventDate),
+        eventLocation: req.body.eventLocation,
+        description: req.body.description,
+        organizingOrganization: req.body.organizingOrganization,
+        targetAudience: req.body.targetAudience,
+        activities: JSON.parse(req.body.activities), // name, description
+        volunteering: JSON.parse(req.body.volunteering), // isVolunteer: Boolean, contact: String
+        donations: JSON.parse(req.body.donations), // isDonations: Boolean, contact: String
+        logo: req.body.logo,
+        contactInformation: JSON.parse(req.body.contactInformation), // phone, website, email
+        socialMediaLinks: JSON.parse(req.body.socialMediaLinks), // twitter, linkedIn
+        registrationLink: JSON.parse(req.body.registrationLink), // isregistration: Boolean, link: String
+      };
       const event = await EventService.createEvent(eventInfo);
       res.status(200).send({ success: true, event: event });
     } catch (error) {
