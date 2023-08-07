@@ -4,6 +4,7 @@ import { OrphanageService } from './orphanage.service';
 import { validationResult, checkSchema } from 'express-validator';
 import { orphanageValidationSchema } from '../../validationSchema/orphanageValidationSchema';
 import { checkAuth } from '../middleware/auth.middleware';
+import { OrphanageType } from './orphanage.interface';
 
 export const orphanageRouter = express.Router();
 
@@ -63,7 +64,7 @@ orphanageRouter.get(
 orphanageRouter.post(
   '/create',
   // checkAuth,
-  // checkSchema(orphanageValidationSchema.createOrphanageSchema),
+  checkSchema(orphanageValidationSchema.createOrphanageSchema),
   async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
@@ -73,7 +74,24 @@ orphanageRouter.post(
           errors: errors.array(),
         });
       }
-      const orphangeInfo = req.body;
+      const orphangeInfo: OrphanageType = {
+        name: req.body.name,
+        location: req.body.location,
+        contactInformation: req.body.contactInformation,
+        vision: req.body.vision,
+        description: req.body.description,
+        capacity: parseInt(req.body.capacity),
+        servicesProvided: JSON.parse(req.body.servicesProvided),
+        startAge: parseInt(req.body.startAge),
+        endAge: parseInt(req.body.endAge),
+        logo: req.body.logo,
+        operatingHours: parseInt(req.body.operatingHours),
+        license: req.body.license,
+        staffInformation: JSON.parse(req.body.staffInformation),
+        donationInformation: req.body.donationInformation,
+        testimonials: JSON.parse(req.body.testimonials),
+      };
+      console.log('orphanageinfo: ', orphangeInfo);
       const orphanage = await OrphanageService.createOrphanage(orphangeInfo);
       res.status(200).send({ success: true, orphanage: orphanage });
     } catch (error) {
