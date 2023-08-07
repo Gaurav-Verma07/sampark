@@ -22,8 +22,6 @@ export const getUserData = (userID: any) => {
       if (snapshot.exists()) {
         userData = snapshot.val();
         return userData;
-      } else {
-        console.log('No data available');
       }
     })
     .catch((error) => {

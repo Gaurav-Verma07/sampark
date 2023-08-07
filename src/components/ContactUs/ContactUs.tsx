@@ -111,7 +111,6 @@ import {
   
     // connect with firebase
     const submitData = async (event: { preventDefault: () => void; }) => {
-      console.log('submitData called')
       event.preventDefault();
       const {  email, name,  message } = userData;
   

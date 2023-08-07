@@ -17,7 +17,6 @@ const ProviderCollegeTeam = () => {
   const theme = useMantineTheme();
 
   const getResponses = async () => {
-    console.log('Here we are');
     const dbRef = ref(getDatabase());
     const response = await get(
       child(
@@ -26,21 +25,16 @@ const ProviderCollegeTeam = () => {
       ),
     );
     const responseData = Object.values(response.val());
-    console.log(responseData);
     const userMail: any = JSON.parse(localStorage.getItem('email') || '');
-    console.log(userMail);
     const user: any = responseData.filter(
       (el: any) => el.Email === 'sample@gmail.com',
     );
-    console.log(user);
     const collegeName = user[0]['College Name'];
-    console.log(collegeName);
     const allTeamUsers = responseData.filter(
       (el: any) => el['College Name'] === collegeName,
     );
     setTeamData(allTeamUsers);
   };
-  console.log(teamData);
 
   useEffect(() => {
     getResponses();
