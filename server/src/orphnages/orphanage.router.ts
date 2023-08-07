@@ -115,7 +115,23 @@ orphanageRouter.post(
           errors: errors.array(),
         });
       }
-      const { orphanageInfo } = req.body;
+      const orphanageInfo: OrphanageType = {
+        name: req.body.name,
+        location: req.body.location,
+        contactInformation: req.body.contactInformation,
+        vision: req.body.vision,
+        description: req.body.description,
+        capacity: parseInt(req.body.capacity),
+        servicesProvided: JSON.parse(req.body.servicesProvided),
+        startAge: parseInt(req.body.startAge),
+        endAge: parseInt(req.body.endAge),
+        logo: req.body.logo,
+        operatingHours: parseInt(req.body.operatingHours),
+        license: req.body.license,
+        staffInformation: JSON.parse(req.body.staffInformation),
+        donationInformation: req.body.donationInformation,
+        testimonials: JSON.parse(req.body.testimonials),
+      };
       const { id } = req.params;
       const orphanage = await OrphanageService.updateOrphanage(
         id,
