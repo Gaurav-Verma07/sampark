@@ -1,7 +1,7 @@
 <!----------------------Introduction Section---------------------->
 <p align="center">
     <h1 align="center">Sampark 🙏</h2>
-    <p>Our initiative aims to improve the lives of underprivileged communities through addressing health, sanitation, education, and empowerment. Our volunteers        collect data on specific needs, which is stored in a Google spreadsheet and updated in our Firebase database. We collaborate with NGOs and raise funds            through our Sampark website to provide necessary items. College teams help distribute these items while also conducting classes for slum children. We              prioritize empowerment, collaboration, and community involvement to bring about positive change. Join us in making a lasting impact on the lives of those in       need.</p>
+    <p>Our initiative aims to improve the lives of underprivileged communities by addressing health, sanitation, education, and empowerment. Our volunteers        collect data on specific needs, which is stored in a Google spreadsheet and updated in our Firebase database. We collaborate with NGOs and raise funds            through our Sampark website to provide necessary items. College teams help distribute these items while also conducting classes for slum children. We              prioritize empowerment, collaboration, and community involvement to bring about positive change. Join us in making a lasting impact on the lives of those in       need.</p>
     <h2 align="center" >Checkout our Work at  <a href="https://sampark-nine.vercel.app/">Sampark LIVE </a></h2>
     <div align="center">
 <img src="https://forthebadge.com/images/badges/built-with-love.svg" />
@@ -22,7 +22,7 @@
 <br>
 
 <!-- ![Samplark Logo](https://github.com/Gaurav-Verma07/sampark/blob/main/public/sampark-logo-transparent.png?raw=true)-->
-<!-- A social platform to connect NGOs and orphanage to potential social suppliers including schools and colleges. -->
+<!-- A social platform to connect NGOs and orphanages to potential social suppliers including schools and colleges. -->
 
 
 <!----------------------Contribution Section---------------------->
@@ -34,13 +34,13 @@ Simply run
 docker-compose up
 ```
 
-this will set up firebase emulator along with the application in development environment.
+this will set up the Firebase emulator along with the application in a development environment.
 
 ---
 
 ### Local Setup
 **Firebase Emulator Setup**
-To setup the firebase emulator, run:
+To set up the firebase emulator, run:
 ```
 make emulator
 ```
@@ -93,7 +93,7 @@ git push -u origin <your_branch_name>
 We will review your pull request and provide feedback. Once your changes are approved, we will merge them into the main branch.
 At last after successfully merge of a pull request you can view your work live at <a href="https://sampark-nine.vercel.app/">Sampark LIVE </a>
 
-If you're interested in working on any of the issues, please let us know by submitting a issue or reaching out to us.
+If you're interested in working on any of the issues, please let us know by submitting an issue or reaching out to us.
 
 <br>
 <h2 align="center">Code of Conduct</h2>
