@@ -2,19 +2,21 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Button, Paper, Text } from '@mantine/core';
 import OrphanageAdminCard from './OrphangeAdminCard';
+import { Button, Text } from '@mantine/core';
 
 interface OrphanagesDataType {
-  id: number;
+  _id: string;
   name: string;
-  content: string;
-  author: string;
+  address: string;
+  description: string;
   image: string;
 }
 
 function AllOrphanages() {
   const [initialLoading, setInitialLoading] = useState<boolean>(false);
+
+  const [deleteId, setDeleteId] = useState('');
 
   const [allOrphanagesData, setAllOrphanagesData] = useState<
     OrphanagesDataType[]
@@ -23,6 +25,12 @@ function AllOrphanages() {
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    setAllOrphanagesData((prevData) =>
+      prevData.filter((data: OrphanagesDataType) => data._id !== deleteId),
+    );
+  }, [deleteId]);
 
   const getData = async () => {
     setInitialLoading(true);
@@ -81,12 +89,9 @@ function AllOrphanages() {
             {allOrphanagesData.length > 0 ? (
               allOrphanagesData.map((data, index) => (
                 <OrphanageAdminCard
-                address={''} description={''}
-                // address={''}
-                // description={''}
-                index={index}
-                {...data}
-                key={index}                 
+                  orphanage={data}
+                  setDeleteId={setDeleteId}
+                  key={index}
                 />
               ))
             ) : (
