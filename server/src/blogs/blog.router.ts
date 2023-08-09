@@ -4,6 +4,7 @@ import { BlogService } from './blog.service';
 import { validationResult, checkSchema } from 'express-validator';
 import { blogValidationSchema } from '../../validationSchema/blogValidationSchema';
 import { checkAuth } from '../middleware/auth.middleware';
+import { BlogType } from './blog.interface';
 
 export const blogRouter = express.Router();
 
@@ -66,14 +67,21 @@ blogRouter.post(
   // checkSchema(blogValidationSchema.createBlogSchema),
   async (req: Request, res: Response) => {
     try {
-      // const errors = validationResult(req);
+      const errors = validationResult(req);
 
-      // if (!errors.isEmpty()) {
-      //   return res.status(422).json({
-      //     errors: errors.array(),
-      //   });
-      // }
-      const blogInfo = req.body;
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
+      const blogInfo: BlogType = {
+        title: req.body.title,
+        author: req.body.author,
+        content: req.body.content,
+        tags: JSON.parse(req.body.tags),
+        publishedDate: new Date(req.body.publishedDate),
+        featuredImage: req.body.featuredImage,
+      };
       const blog = await BlogService.createBlog(blogInfo);
       res.status(200).send({ success: true, blog: blog });
     } catch (error) {
