@@ -145,7 +145,7 @@ eventRouter.post(
 
 eventRouter.post(
   '/delete',
-  checkAuth,
+  // checkAuth,
   checkSchema(eventValidationSchema.deleteSchema),
   async (req: Request, res: Response) => {
     try {
