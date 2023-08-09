@@ -57,16 +57,16 @@ ngoRouter.get(
 ngoRouter.post(
   '/create',
   // checkAuth,
-  // checkSchema(ngoValidationSchema.createNgoSchema),
+  checkSchema(ngoValidationSchema.createNgoSchema),
   async (req: Request, res: Response) => {
     try {
-      // const errors = validationResult(req);
+      const errors = validationResult(req);
 
-      // if (!errors.isEmpty()) {
-      //   return res.status(422).json({
-      //     errors: errors.array(),
-      //   });
-      // }
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
       const ngoInfo = req.body;
       const ngo = await NgoService.createNgo(ngoInfo);
       res.status(200).send({ success: true, ngo: ngo });
@@ -91,7 +91,22 @@ ngoRouter.post(
           errors: errors.array(),
         });
       }
-      const ngoInfo = req.body;
+      const ngoInfo: NgoType = {
+        name: req.body.name,
+        location: req.body.location,
+        contactInformation: req.body.contactInformation,
+        vision: req.body.vision,
+        focusAreas: req.body.focusAreas,
+        projects: req.body.projects,
+        teamMembers: req.body.teamMembers,
+        donations: req.body.donations,
+        volunteering: req.body.volunteering,
+        logo: req.body.logo,
+        testimonials: req.body.testimonials,
+        socialMediaLinks: req.body.socialMediaLinks,
+        license: req.body.license,
+        funding: req.body.funding,
+      };
       const { id } = req.params;
       const ngo = await NgoService.updateNgo(id, ngoInfo);
       res.status(200).send({ success: true, ngo: ngo });
