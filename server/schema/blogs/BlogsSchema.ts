@@ -15,7 +15,7 @@ const BlogSchema = new Schema(
       required: true,
     },
     tags: {
-      type: [String],
+      type: [{id: String, name: String}],
       required: true,
     },
     publishedDate: {
