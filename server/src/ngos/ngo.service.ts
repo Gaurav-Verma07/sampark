@@ -77,8 +77,9 @@ const updateNgo = async (_id: string, eventInfo: NgoType) => {
 
 const deleteNgo = async (_id: string) => {
   try {
-    const ngoData = await NgoModel.deleteOne({ _id });
-    return ngoData;
+    // const ngoData = await NgoModel.deleteOne({ _id });
+    // return ngoData;
+    return true;
   } catch (error) {
     throw new Error(error as string);
   }
