@@ -11,17 +11,23 @@ interface BlogsDataType {
   content: string;
   image: string;
   author:string;
-  index: number;
 }
 
 function AllBlogs() {
   const [initialLoading, setInitialLoading] = useState<boolean>(false);
 
   const [allBlogsData, setAllBlogsData] = useState<BlogsDataType[]>([]);
+   const [deleteId, setDeleteId] = useState<string>('');
 
   useEffect(() => {
     getData();
   }, []);
+
+   useEffect(() => {
+    setAllBlogsData((prevData) =>
+      prevData.filter((data: BlogsDataType) => data._id !== deleteId),
+    );
+  }, [deleteId]);
 
   const getData = async () => {
     setInitialLoading(true);
@@ -77,8 +83,8 @@ function AllBlogs() {
             {allBlogsData.length > 0 ? (
               allBlogsData.map((data: BlogsDataType, index: number) => (
                 <BlogAdminCard
-                  index={index}
-                  {...data}
+                  setDeleteId={setDeleteId}
+                  blog={data}
                   key={index}
                 />
               ))
