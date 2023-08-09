@@ -40,7 +40,11 @@ const AdminPage = () => {
           width={{ base: 250 }}
           style={{ cursor: 'pointer' }}
         >
-          <Navbar.Section mt="md" style={{ cursor: 'pointer' }}>
+          <Navbar.Section
+            mt="md"
+            style={{ cursor: 'pointer' }}
+            onClick={() => setSelectedOption('orphanages')}
+          >
             Orphanges
           </Navbar.Section>
           <Navbar.Section

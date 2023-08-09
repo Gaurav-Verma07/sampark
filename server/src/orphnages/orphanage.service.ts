@@ -79,6 +79,7 @@ const deleteOrphanage = async (_id: string) => {
   try {
     const orphanage = await OrphanageModel.deleteOne({ _id });
     return orphanage;
+    //return true
   } catch (error) {
     throw new Error(error as string);
   }
