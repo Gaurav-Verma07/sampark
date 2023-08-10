@@ -40,7 +40,9 @@ const AdminPage = () => {
           width={{ base: 250 }}
           style={{ cursor: 'pointer' }}
         >
-          <Navbar.Section mt="md" style={{ cursor: 'pointer' }}>
+          <Navbar.Section mt="md" style={{ cursor: 'pointer' }}
+           onClick={() => setSelectedOption('orphanages')}
+          >
             Orphanges
           </Navbar.Section>
           <Navbar.Section
@@ -50,10 +52,12 @@ const AdminPage = () => {
           >
             NGOS
           </Navbar.Section>
-          <Navbar.Section mt="md" style={{ cursor: 'pointer' }}>
+          <Navbar.Section mt="md" style={{ cursor: 'pointer' }}  onClick={() => setSelectedOption('events')}
+          >
             Events
           </Navbar.Section>
-          <Navbar.Section mt="md" style={{ cursor: 'pointer' }}>
+          <Navbar.Section mt="md" style={{ cursor: 'pointer' }}  onClick={() => setSelectedOption('blogs')}
+          >
             Blogs
           </Navbar.Section>
         </Navbar>

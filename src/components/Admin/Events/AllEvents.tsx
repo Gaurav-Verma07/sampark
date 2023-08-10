@@ -2,10 +2,11 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Button, Text } from '@mantine/core';
+import { Modal, Button, Text } from '@mantine/core';
 import EventAdminCard from './EventsAdminCard';
 
 interface EventsDataType {
+  _id: string;
   name: string;
   organizer: string;
   address: string;
@@ -18,12 +19,18 @@ interface EventsDataType {
 
 function AllEvents() {
   const [initialLoading, setInitialLoading] = useState<boolean>(false);
-
+  const [deleteId, setDeleteId] = useState('');
   const [allEventsData, setAllEventsData] = useState<EventsDataType[]>([]);
 
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    setAllEventsData((prevData) =>
+      prevData.filter((data: EventsDataType) => data._id !== deleteId),
+    );
+  }, [deleteId]);
 
   const getData = async () => {
     setInitialLoading(true);
@@ -79,10 +86,8 @@ function AllEvents() {
             {allEventsData.length > 0 ? (
               allEventsData.map((data: EventsDataType, index: number) => (
                 <EventAdminCard
-                  address={''}
-                  description={''}
-                  index={index}
-                  {...data}
+                  event={data}
+                  setDeleteId={setDeleteId}
                   key={index}
                 />
               ))

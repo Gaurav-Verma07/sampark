@@ -4,6 +4,7 @@ import { NgoService } from './ngo.service';
 import { validationResult, checkSchema } from 'express-validator';
 import { ngoValidationSchema } from '../../validationSchema/ngoValidationSchema';
 import { checkAuth } from '../middleware/auth.middleware';
+import { NgoType } from './ngo.interface';
 
 export const ngoRouter = express.Router();
 interface RequestParams {
@@ -32,9 +33,11 @@ ngoRouter.get('/', async (_, res: Response) => {
 ngoRouter.get('/id/:id', async (req: Request<RequestParams>, res: Response) => {
   try {
     const { id } = req.params;
+    console.log('id: ', id);
     const ngo = await NgoService.getNgoById(id);
     res.status(200).send({ success: true, ngo: ngo });
   } catch (error) {
+    console.log('rror: ', error);
     res.status(500).json({ success: false, message: 'Internal server error' });
   }
 });
@@ -57,20 +60,44 @@ ngoRouter.get(
 ngoRouter.post(
   '/create',
   // checkAuth,
-  // checkSchema(ngoValidationSchema.createNgoSchema),
+  checkSchema(ngoValidationSchema.createNgoSchema),
   async (req: Request, res: Response) => {
     try {
-      // const errors = validationResult(req);
-
-      // if (!errors.isEmpty()) {
-      //   return res.status(422).json({
-      //     errors: errors.array(),
-      //   });
-      // }
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
       const ngoInfo = req.body;
+
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
+
+      const ngoInfo: NgoType = {
+        name: req.body.name,
+        location: req.body.location,
+        contactInformation: req.body.contactInformation,
+        vision: req.body.vision,
+        focusAreas: req.body.focusAreas,
+        projects: req.body.projects,
+        teamMembers: req.body.teamMembers,
+        donations: req.body.donations,
+        volunteering: req.body.volunteering,
+        logo: req.body.logo,
+        testimonials: req.body.testimonials,
+        socialMediaLinks: req.body.socialMediaLinks,
+        license: req.body.license,
+        funding: req.body.funding,
+      };
+
       const ngo = await NgoService.createNgo(ngoInfo);
       res.status(200).send({ success: true, ngo: ngo });
     } catch (error) {
+      console.log(error);
       res
         .status(500)
         .json({ success: false, message: 'Internal server error' });
@@ -91,7 +118,22 @@ ngoRouter.post(
           errors: errors.array(),
         });
       }
-      const ngoInfo = req.body;
+      const ngoInfo: NgoType = {
+        name: req.body.name,
+        location: req.body.location,
+        contactInformation: req.body.contactInformation,
+        vision: req.body.vision,
+        focusAreas: req.body.focusAreas,
+        projects: req.body.projects,
+        teamMembers: req.body.teamMembers,
+        donations: req.body.donations,
+        volunteering: req.body.volunteering,
+        logo: req.body.logo,
+        testimonials: req.body.testimonials,
+        socialMediaLinks: req.body.socialMediaLinks,
+        license: req.body.license,
+        funding: req.body.funding,
+      };
       const { id } = req.params;
       const ngo = await NgoService.updateNgo(id, ngoInfo);
       res.status(200).send({ success: true, ngo: ngo });

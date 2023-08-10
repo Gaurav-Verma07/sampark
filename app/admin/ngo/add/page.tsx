@@ -42,6 +42,11 @@ const NGORegister = () => {
   const [active, setActive] = useState(0);
   const { classes } = useStyles();
 
+  const [contactInfomation, setContactInfomation] = useState({
+    phone: '',
+    website: '',
+    email: '',
+  });
   const [projectInformation, setProjectInformation] = useState([]);
   const [teamMembers, setTeamMembers] = useState([]);
   const [donationDetails, setDonationDetails] = useState({
@@ -53,6 +58,7 @@ const NGORegister = () => {
     contact: '',
   });
   const [testimonialDetails, setTestimonialDetails] = useState([]);
+  const [socialMedia, setSocialMedia] = useState({ twitter: '', linkedIn: '' });
 
   const form = useForm({
     initialValues: {
@@ -122,7 +128,74 @@ const NGORegister = () => {
   };
 
   const registerHandler = async () => {
+    form.values.teamMembers = teamMembers;
+    form.values.testimonials = testimonialDetails;
+    form.values.donations = donationDetails;
+    form.values.volunteering = volunteeringDetails;
+    form.values.socialMediaLinks = socialMedia;
+    form.values.contactInformation = contactInfomation;
+    form.values.projects = projectInformation;
+
     console.log('data: ', form.values);
+    try {
+      const response = await fetch('/api/admin/ngos/add', {
+        method: 'POST',
+        body: JSON.stringify({ data: form.values }),
+      }).then((res) => res.json());
+      console.log(response);
+      if (response.success) {
+        toast.success('NGO data added successfully', {
+          position: 'top-right',
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          closeButton: false,
+        });
+      } else {
+        if (response.errors && response.errors.length > 0) {
+          let errorMessage = '';
+          for (let i = 0; i < response.errors.length; i++) {
+            errorMessage += i+1+'. '+response.errors[i].msg + '\n';
+          }
+          toast.error(errorMessage, {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        } else {
+          console.log('response false');
+          toast.error(response.message, {
+            position: 'top-right',
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            closeButton: false,
+          });
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error('Something went wrong. Please Try Again', {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        closeButton: false,
+      });
+    }
   };
 
   const box1 = {
@@ -168,12 +241,14 @@ const NGORegister = () => {
               mb={30}
               placeholder="NGO Name"
               label="NGO Name"
+              {...form.getInputProps('name')}
             />
             <TextInput
               mt={30}
               mb={30}
               placeholder="Location"
               label="Location"
+              {...form.getInputProps('location')}
             />
             <TextInput
               mt={30}
@@ -181,42 +256,58 @@ const NGORegister = () => {
               placeholder="Phone No"
               label="Phone No"
               type="number"
+              // onChange={(e) => {setContactInfomation((prevValue)=>{
+              //   ...prevValue,
+              //   phone:e.target.value
+              // })}}
             />
             <TextInput
               mt={30}
               mb={30}
               placeholder="Email"
               label="email"
+              // onChange={(e) => {setContactInfomation((prevValue)=>{
+              //     ...prevValue,
+              //     email:e.target.value
+              //   })}}
             />
             <TextInput
               mt={30}
               mb={30}
               placeholder="Website"
               label="website"
+              // onChange={(e) => {setContactInfomation((prevValue)=>{
+              //     ...prevValue,
+              //     website:e.target.value
+              //   })}}
             />
             <Textarea
               mt={30}
               mb={30}
               placeholder="Vision"
               label="NGO Vision"
+              {...form.getInputProps('vision')}
             />
             <TextInput
               mt={30}
               mb={30}
               placeholder="Logo"
               label="NGO Logo"
+              {...form.getInputProps('logo')}
             />
             <TextInput
               mt={30}
               mb={30}
               placeholder="License"
               label="License"
+              {...form.getInputProps('license')}
             />
             <TextInput
               mt={30}
               mb={30}
               placeholder="Funding"
               label="Funding"
+              {...form.getInputProps('funding')}
             />
             <MultiSelect
               mt={30}
@@ -225,6 +316,7 @@ const NGORegister = () => {
               placeholder="Select services provided"
               data={focusAreaOptions}
               value={form.values.focusAreas}
+              onChange={(value) => form.setFieldValue('focusAreas', value)}
             />
             <Button
               variant="outline"
@@ -237,9 +329,17 @@ const NGORegister = () => {
               <Group key={index}>
                 <TextInput
                   label={`Project ${index + 1} Name`}
+                  onChange={(e) => {
+                    projectInformation[index].name = e.target.value;
+                    setProjectInformation([...projectInformation]);
+                  }}
                 />
                 <TextInput
                   label={`Project ${index + 1} Description`}
+                  onChange={(e) => {
+                    projectInformation[index].description = e.target.value;
+                    setProjectInformation([...projectInformation]);
+                  }}
                 />
                 <Button variant="subtle">Delete</Button>
               </Group>
@@ -259,10 +359,18 @@ const NGORegister = () => {
                 <TextInput
                   label={`Team Member ${index + 1} Name`}
                   value={member.name}
+                  onChange={(e) => {
+                    teamMembers[index].name = e.target.value;
+                    setTeamMembers([...teamMembers]);
+                  }}
                 />
                 <TextInput
                   label={`Team Member ${index + 1} Designation`}
                   value={member.designation}
+                  onChange={(e) => {
+                    teamMembers[index].designation = e.target.value;
+                    setTeamMembers([...teamMembers]);
+                  }}
                 />
                 <Button variant="subtle">Delete</Button>
               </Group>
@@ -279,10 +387,18 @@ const NGORegister = () => {
                 <TextInput
                   label={`Testimonial ${index + 1} Name`}
                   value={testimonial.name}
+                  onChange={(e) => {
+                    testimonialDetails[index].name = e.target.value;
+                    setTestimonialDetails([...testimonialDetails]);
+                  }}
                 />
                 <TextInput
                   label={`Testimonial ${index + 1} Testimony`}
                   value={testimonial.testimony}
+                  onChange={(e) => {
+                    testimonialDetails[index].testimony = e.target.value;
+                    setTestimonialDetails([...testimonialDetails]);
+                  }}
                 />
                 <Button variant="subtle">Delete</Button>
               </Group>
@@ -298,6 +414,12 @@ const NGORegister = () => {
               <TextInput
                 label="Donation Contact"
                 value={donationDetails.contact}
+                onChange={(e) =>
+                  setDonationDetails({
+                    ...donationDetails,
+                    contact: e.target.value,
+                  })
+                }
               />
             )}
 
@@ -311,13 +433,29 @@ const NGORegister = () => {
               <TextInput
                 label="Volunteering Contact"
                 value={volunteeringDetails.contact}
+                onChange={(e) =>
+                  setVolunteeringDetails({
+                    ...volunteeringDetails,
+                    contact: e.target.value,
+                  })
+                }
               />
             )}
             <TextInput
               label="Twitter"
+              // value={testimonial.name}
+              onChange={(e) => {
+                socialMedia.twitter = e.target.value;
+                setSocialMedia({ ...socialMedia });
+              }}
             />
             <TextInput
               label="LinkedIn"
+              // value={testimonial.name}
+              onChange={(e) => {
+                socialMedia.linkedIn = e.target.value;
+                setSocialMedia({ ...socialMedia });
+              }}
             />
           </Stepper.Step>
 
@@ -339,6 +477,18 @@ const NGORegister = () => {
           {active === 1 && <Button onClick={registerHandler}>Submit</Button>}
         </Group>
       </Paper>
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        closeButton={false}
+      />
     </div>
   );
 };

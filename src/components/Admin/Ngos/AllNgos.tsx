@@ -6,10 +6,10 @@ import { Button, Text } from '@mantine/core';
 import NgoAdminCard from './NgoAdminCard';
 
 interface NgosDataType {
-  id: number;
+  _id: string;
   name: string;
-  content: string;
-  author: string;
+  address: string;
+  description: string;
   image: string;
 }
 
@@ -17,10 +17,17 @@ function AllNgos() {
   const [initialLoading, setInitialLoading] = useState<boolean>(false);
 
   const [allNgosData, setAllNgosData] = useState<NgosDataType[]>([]);
+  const [deleteId, setDeleteId] = useState<string>('');
 
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    setAllNgosData((prevData) =>
+      prevData.filter((data: NgosDataType) => data._id !== deleteId),
+    );
+  }, [deleteId]);
 
   const getData = async () => {
     setInitialLoading(true);
@@ -76,12 +83,10 @@ function AllNgos() {
             }}
           >
             {allNgosData.length > 0 ? (
-              allNgosData.map((data, index) => (
+              allNgosData.map((data: NgosDataType, index: number) => (
                 <NgoAdminCard
-                  address={''}
-                  description={''}
-                  index={index}
-                  {...data}
+                  ngo={data}
+                  setDeleteId={setDeleteId}
                   key={index}
                 />
               ))

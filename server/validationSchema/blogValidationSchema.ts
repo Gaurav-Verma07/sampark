@@ -1,59 +1,42 @@
 import { Schema } from 'express-validator';
 
 const createBlogSchema: Schema = {
-  name: {
+  title: {
     in: ['body'],
-    isLength: {
-      options: { min: 5 },
-      errorMessage: 'Name must be at least 5 characters long',
-    },
-    notEmpty: {
-      errorMessage: 'Name cannot be empty',
-    },
-  },
-  slug: {
-    in: ['body'],
-    isString: {
-      errorMessage: 'Invalid slug value',
-    },
-    notEmpty: {
-      errorMessage: 'slug cannot be empty',
-    },
-  },
-  content: {
-    in: ['body'],
-    isLength: {
-      options: { min: 50 },
-      errorMessage: 'Name must be at least 50 characters long',
-    },
-    notEmpty: {
-      errorMessage: 'content cannot be empty',
-    },
+    isString: true,
+    notEmpty: true,
   },
   author: {
     in: ['body'],
-    isLength: {
-      options: { min: 3 },
-      errorMessage: 'Name must be at least 3 characters long',
-    },
-    notEmpty: {
-      errorMessage: 'author cannot be empty',
-    },
+    isString: true,
+    notEmpty: true,
   },
-
-  image: {
+  content: {
+    in: ['body'],
+    isString: true,
+    notEmpty: true,
+  },
+  tags: {
     in: ['body'],
     custom: {
-      options: (value: string) => {
-        if (!/\.(png|jpg|jpeg)$/.test(value)) {
-          throw new Error('Image must have a valid extension png, jpg, jpeg');
+      options: (value) => {
+        if (!Array.isArray(JSON.parse(value))) {
+          throw new Error('Tags must be an array');
         }
         return true;
       },
     },
-    notEmpty: {
-      errorMessage: 'image cannot be empty',
-    },
+    notEmpty: true,
+  },
+  publishedDate: {
+    in: ['body'],
+    isDate: true,
+    notEmpty: true,
+  },
+  featuredImage: {
+    in: ['body'],
+    isString: true,
+    notEmpty: true,
   },
 };
 

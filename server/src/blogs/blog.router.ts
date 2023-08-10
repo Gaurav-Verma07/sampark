@@ -64,7 +64,7 @@ blogRouter.get(
 blogRouter.post(
   '/create',
   // checkAuth,
-  // checkSchema(blogValidationSchema.createBlogSchema),
+  checkSchema(blogValidationSchema.createBlogSchema),
   async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
