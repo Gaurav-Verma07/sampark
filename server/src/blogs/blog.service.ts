@@ -77,8 +77,9 @@ const updateBlog = async (_id: string, blogInfo: BlogType) => {
 
 const deleteBlog = async (_id: string) => {
   try {
-    const blogData = await BlogModel.deleteOne({ _id: _id });
-    return blogData;
+    // const blogData = await BlogModel.deleteOne({ _id: _id });
+    // return blogData;
+    return true;
   } catch (error) {
     throw new Error(error as string);
   }
