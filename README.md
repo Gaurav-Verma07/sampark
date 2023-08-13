@@ -5,7 +5,7 @@
     <h2 align="center">Checkout our Work at <a href="https://sampark-nine.vercel.app/">Sampark LIVE</a></h2>
     <div align="center">
         <img src="https://img.shields.io/badge/built%20with-love-red.svg?style=for-the-badge">
-        <img src="https://forthebadge.com/images/badges/uses-brain.svg" alt="Uses brains">
+        <img src="https://forthebadge.com/images/badges/uses-brain.svg">
         <img src="http://ForTheBadge.com/images/badges/powered-by-responsibility.svg" />
         <br>
         <img src="https://img.shields.io/github/repo-size/Gaurav-Verma07/sampark?style=for-the-badge" />
