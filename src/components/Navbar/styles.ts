@@ -6,6 +6,11 @@ const useStyles = createStyles((theme, _params, getRef) => {
     header: {
       paddingBottom: theme.spacing.md,
       marginBottom: theme.spacing.md * 1.5,
+      position: 'sticky',
+      top: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      backdropFilter: 'blur(10px)',
+      zIndex: 1000,
     },
 
     footer: {
@@ -30,8 +35,9 @@ const useStyles = createStyles((theme, _params, getRef) => {
       padding: `${theme.spacing.xs}px ${theme.spacing.sm}px`,
       borderRadius: theme.radius.sm,
       fontWeight: 500,
+      backgroundColor: 'transparent',
       '&:hover': {
-        backgroundColor:
+        backgroundColor: 'rgba(0, 0, 0, 0.1)'
           theme.colorScheme === 'dark'
             ? theme.colors.dark[6]
             : theme.colors.gray[0],
