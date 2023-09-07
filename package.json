@@ -4,11 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "format": "prettier --write .",
-    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -37,12 +36,14 @@
     "firebase": "^9.17.2",
     "google-map-react": "^2.2.0",
     "mapbox-gl": "^2.13.0",
+    "next": "13.4.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-loader-spinner": "^5.3.4",
     "react-icons": "^4.9.0",
+    "react-loader-spinner": "^5.3.4",
     "react-map-gl": "^7.0.21",
     "react-router-dom": "^6.8.2",
+    "react-toastify": "^9.1.3",
     "tabler-icons-react": "^1.56.0"
   },
   "devDependencies": {

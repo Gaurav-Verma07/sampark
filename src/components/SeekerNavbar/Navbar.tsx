@@ -14,7 +14,8 @@ import {
   IconHome2,
   IconUserPlus,
 } from '@tabler/icons';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+// import { NavLink, useNavigate } from 'react-router-dom';
 import useStyles from './styles';
 
 const data = [
@@ -25,27 +26,28 @@ const data = [
 ];
 
 const HomeNavbar = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { classes, cx } = useStyles();
   const [active, setActive] = useState('Billing');
 
   const links = data.map((item) => {
     return (
-      <NavLink
-        className={cx(classes.link, {
-          [classes.linkActive]: item.label === active,
-        })}
-        to={item.link}
-        key={item.label}
-        onClick={(event) => {
-          event.preventDefault();
-          setActive(item.label);
-          navigate(`/seeker/${item.link}`);
-        }}
-      >
-        <item.icon className={classes.linkIcon} stroke={1.5} />
-        <span>{item.label}</span>
-      </NavLink>
+      <></>
+      // <NavLink
+      //   className={cx(classes.link, {
+      //     [classes.linkActive]: item.label === active,
+      //   })}
+      //   to={item.link}
+      //   key={item.label}
+      //   onClick={(event) => {
+      //     event.preventDefault();
+      //     setActive(item.label);
+      //     router.push(`/seeker/${item.link}`);
+      //   }}
+      // >
+      //   <item.icon className={classes.linkIcon} stroke={1.5} />
+      //   <span>{item.label}</span>
+      // </NavLink>
     );
   });
 
@@ -53,7 +55,7 @@ const HomeNavbar = () => {
     const response = confirm('Are you sure you want to LogOut?');
     if (response) {
       localStorage.clear();
-      navigate('/login');
+      router.push('/login');
     }
   };
 

@@ -13,10 +13,13 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconArrowLeft } from '@tabler/icons';
-import { child, get, getDatabase, ref } from 'firebase/database';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
-import { registerUserHandler } from '../../utils/ApiRequests/firebaseAuth';
+// import { child, get, getDatabase, ref } from 'firebase/database';
+import {  useState } from 'react';
+import { useRouter } from 'next/navigation';
+// import { registerUserHandler } from '../../utils/ApiRequests/firebaseAuth';
+import React from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const useStyles = createStyles(() => {
   return {
@@ -34,7 +37,7 @@ const useStyles = createStyles(() => {
 });
 
 const Register = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [active, setActive] = useState(0);
   const { classes } = useStyles();
 
@@ -44,6 +47,11 @@ const Register = () => {
       password: '',
       confirmPassword: '',
       email: '',
+      currentCity: '',
+      address: '',
+      whatsappNumber: '',
+      collegeName: '',
+      inspiration: '',
     },
 
     validate: (values) => {
@@ -64,40 +72,125 @@ const Register = () => {
           email: /^\S+@\S+$/.test(values.email) ? null : 'Invalid email',
         };
       }
+      if (active === 1) {
+        return {
+          currentCity:
+            values.currentCity.trim().length < 0
+              ? 'Please provide your current city name'
+              : null,
+          address:
+            values.currentCity.trim().length < 5
+              ? 'Username must include at least 5 characters'
+              : null,
+          whatsappNumber:
+            values.whatsappNumber.length < 10
+              ? 'Invalid whatsapp Number'
+              : null,
+          collegeName:
+            values.collegeName.trim().length < 0
+              ? 'Please provide your college name'
+              : null,
+        };
+      }
       return {};
     },
   });
 
-  const getResponses = async () => {
-    const dbRef = ref(getDatabase());
-    const response = await get(
-      child(
-        dbRef,
-        `/1MN-kjuUq3k-jp6g-2L1maBkUsB9AggqbYUcgoB1GoH4/Form responses 1`,
-      ),
-    );
-    const responseData = response.val();
-  };
+  // const getResponses = async () => {
+  //   const dbRef = ref(getDatabase());
+  //   const response = await get(
+  //     child(
+  //       dbRef,
+  //       `/1MN-kjuUq3k-jp6g-2L1maBkUsB9AggqbYUcgoB1GoH4/Form responses 1`,
+  //     ),
+  //   );
+  //   const responseData = response.val();
+  // };
 
-  useEffect(() => {
-    getResponses();
-  }, []);
+  // useEffect(() => {
+  //   getResponses();
+  // }, []);
 
-  const nextStep = () =>
+  const nextStep = () => {
     setActive((current) => {
       if (form.validate().hasErrors) {
         return current;
       }
       return current < 3 ? current + 1 : current;
     });
+  };
 
-  const prevStep = () =>
+  const prevStep = () => {
     setActive((current) => (current > 0 ? current - 1 : current));
+  };
 
-  const registerHandler = () => {
-    registerUserHandler(form.values.email, form.values.password);
-    localStorage.setItem('email', JSON.stringify(form.values.email));
-    navigate(`/provider/home`);
+  const registerHandler = async () => {
+    console.log('data: ', form.values);
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/user/register`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify(form.values),
+        },
+      ).then((res) => res.json());
+
+      if (response.success) {
+        toast.success(response.message, {
+          position: 'top-right',
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          closeButton: false,
+        });
+        router.push('provider/home');
+      }
+      if (response.errors && response.errors.length > 0) {
+        const errorMessage = response.errors[0].msg;
+        toast.error(errorMessage, {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      } else {
+        toast.error(response.message, {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error('Something went wrong. Try again', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+
+    // registerUserHandler(form.values.email, form.values.password);
+    // console.log(form.values);
+    // localStorage.setItem('email', JSON.stringify(form.values.email));
+    // router.push(`/provider/home`);
   };
   const box1 = {
     boxShadow:
@@ -109,9 +202,9 @@ const Register = () => {
         <Container>
           <Button
             my={20}
-            className={classes.back}
+            // className={classes.back}
             onClick={() => {
-              navigate('/');
+              router.push('/');
             }}
           >
             {' '}
@@ -163,13 +256,43 @@ const Register = () => {
           </Stepper.Step>
 
           <Stepper.Step label="Second step" description="Personal information">
-            <iframe
+            <TextInput
+              mt={30}
+              mb={30}
+              placeholder="City you're currently residing in?"
+              {...form.getInputProps('currentCity')}
+            />
+            <TextInput
+              mt={30}
+              mb={30}
+              placeholder="Your Address"
+              {...form.getInputProps('address')}
+            />
+            <TextInput
+              mt={30}
+              mb={30}
+              placeholder="Whatsapp Number"
+              {...form.getInputProps('whatsappNumber')}
+            />
+            <TextInput
+              mt={30}
+              mb={30}
+              placeholder="College Name"
+              {...form.getInputProps('collegeName')}
+            />
+            <TextInput
+              mt={30}
+              mb={30}
+              placeholder="What's your  inspiration to join Sampark?"
+              {...form.getInputProps('inspiration')}
+            />
+            {/* <iframe
               src="https://docs.google.com/forms/d/e/1FAIpQLSchL2ptZ48MuMg_U6jq6WXQYqfNHo-Hmao9TI1GENpfLAeIuQ/viewform?embedded=true"
               width="640"
               height="1492"
             >
               Loading…
-            </iframe>
+            </iframe> */}
           </Stepper.Step>
 
           <Stepper.Completed>
@@ -190,6 +313,18 @@ const Register = () => {
           {active == 1 && <Button onClick={registerHandler}>Submit</Button>}
         </Group>
       </Paper>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 };

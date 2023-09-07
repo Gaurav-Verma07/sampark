@@ -15,21 +15,25 @@ const devConfig = {
 };
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || 'demo-sampark-key',
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'demo-sampark.firebaseapp.com',
-  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL || 'https://demo-sampark.asia-southeast1.firebasedatabase.app',
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'demo-sampark',
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || '',
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MEASUREMENT_SENDER_ID || '',
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || '',
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || '',
+  apiKey: process.env.NEXT_FIREBASE_API_KEY || 'demo-sampark-key',
+  authDomain:
+    process.env.NEXT_FIREBASE_AUTH_DOMAIN || 'demo-sampark.firebaseapp.com',
+  databaseURL:
+    process.env.NEXT_FIREBASE_DATABASE_URL ||
+    'https://demo-sampark.asia-southeast1.firebasedatabase.app',
+  projectId: process.env.NEXT_FIREBASE_PROJECT_ID || 'demo-sampark',
+  storageBucket: process.env.NEXT_FIREBASE_STORAGE_BUCKET || '',
+  messagingSenderId: process.env.NEXT_FIREBASE_MEASUREMENT_SENDER_ID || '',
+  appId: process.env.NEXT_FIREBASE_APP_ID || '',
+  measurementId: process.env.NEXT_FIREBASE_MEASUREMENT_ID || '',
 };
 
-
-export const app = initializeApp(import.meta.env.DEV ? devConfig : firebaseConfig);
+export const app = initializeApp(
+  process.env.DEV ? devConfig : firebaseConfig,
+);
 export const auth = getAuth(app);
 
-if (import.meta.env.DEV) {
+if (process.env.DEV) {
   const db = getDatabase();
   const store = getFirestore();
 

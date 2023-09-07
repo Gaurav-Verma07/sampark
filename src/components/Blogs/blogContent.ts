@@ -1,7 +1,7 @@
-import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
+// import SamparkLogo from '../../assets/Images/samparklogotransparent.png';
 export const data = [
   {
-    image: SamparkLogo,
+    image: '/assets/Images/samparklogotransparent.png',
     blogData: ` <div class="blog__main"><h1>How does Sampark work?</h1>
 
     <p class= "blog__text">To put Sampark in a nutshell,
@@ -41,7 +41,7 @@ export const data = [
     <p class= "blog__text">The cloth distribution event had a significant impact on the community. Many individuals who attended the event were unable to afford warm clothes, and the event provided them with much-needed relief.</p></div>`,
   },
   {
-    image: SamparkLogo,
+    // image: SamparkLogo,
     blogData: ` <div class="blog__main"><h1>How does Sampark work?</h1>
 
     <p class= "blog__text">To put Sampark in a nutshell,

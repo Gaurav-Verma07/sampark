@@ -7,7 +7,8 @@ import {
   IconUserCheck,
 } from '@tabler/icons';
 import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+// import { NavLink, useNavigate } from 'react-router-dom';
 import useStyles from './styles';
 
 const data = [
@@ -17,29 +18,30 @@ const data = [
 ];
 
 const HomeNavbar = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { classes, cx } = useStyles();
   const [active, setActive] = useState('Home');
   const [expanded, setExpanded] = useState(false);
 
   const links = data.map((item) => {
     return (
-      <NavLink
-        className={cx(classes.link, {
-          [classes.linkActive]: item.label === active,
-        })}
-        to={item.link}
-        key={item.label}
-        onClick={(event) => {
-          event.preventDefault();
-          setActive(item.label);
-          navigate(`/provider/${item.link}`);
-          setExpanded(false); // Close the mobile menu after clicking a link
-        }}
-      >
-        <item.icon className={classes.linkIcon} size={20} strokeWidth={1.5} />
-        <span>{item.label}</span>
-      </NavLink>
+      <></>
+      // <NavLink
+      //   className={cx(classes.link, {
+      //     [classes.linkActive]: item.label === active,
+      //   })}
+      //   to={item.link}
+      //   key={item.label}
+      //   onClick={(event) => {
+      //     event.preventDefault();
+      //     setActive(item.label);
+      //     router.push(`/provider/${item.link}`);
+      //     setExpanded(false); // Close the mobile menu after clicking a link
+      //   }}
+      // >
+      //   <item.icon className={classes.linkIcon} size={20} strokeWidth={1.5} />
+      //   <span>{item.label}</span>
+      // </NavLink>
     );
   });
 
@@ -47,31 +49,33 @@ const HomeNavbar = () => {
     const response = window.confirm('Are you sure you want to Log Out?');
     if (response) {
       localStorage.clear();
-      navigate('/login');
+      router.push('/login');
     }
   };
 
   return (
     <Navbar
-      shadow="xs"
-      padding={{ xs: 'sm', md: 'md' }}
+      // shadow="xs"
+      // padding={{ xs: 'sm', md: 'md' }}
       style={{ zIndex: 100 }}
-      mobileMenu={
-        <Container size="xs">
-          <div className={classes.mobileMenuContent}>{links}</div>
-        </Container>
-      }
+      // mobileMenu={
+      //   <Container size="xs">
+      //     <div className={classes.mobileMenuContent}>{links}</div>
+      //   </Container>
+      // }
     >
       <Navbar.Section>
         <Group className={classes.header}></Group>
       </Navbar.Section>
 
-      <Navbar.Section position="right">
+      <Navbar.Section 
+      // position="right"
+      >
         <div className={classes.mobileMenuTrigger}>
-          <IconMenu
+          {/* <IconMenu
             onClick={() => setExpanded(!expanded)}
             aria-label="Toggle Menu"
-          />
+          /> */}
         </div>
         <Group
           position="right"

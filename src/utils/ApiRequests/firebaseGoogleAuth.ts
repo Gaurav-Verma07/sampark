@@ -1,11 +1,14 @@
 import {
-  getAuth,
+  // getAuth,
   getRedirectResult,
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
+  // signInWithRedirect,
 } from 'firebase/auth';
-import { app, auth } from '../firebase';
+import {
+  // app,
+  auth,
+} from '../firebase';
 
 const provider = new GoogleAuthProvider();
 provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
