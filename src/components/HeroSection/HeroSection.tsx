@@ -12,8 +12,8 @@ function HeroSection() {
             end poverty.
           </p>
           <button style={{ backgroundColor: 'black', color: 'white', borderRadius: '12px', padding: '10px 20px' }}>
-      Donate
-    </button>
+            Donate
+          </button> 
         </div>
       </div>
     </>
