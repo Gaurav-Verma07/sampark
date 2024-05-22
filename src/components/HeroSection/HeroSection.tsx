@@ -11,7 +11,9 @@ function HeroSection() {
             We connect slum and orphanage kids with local colleges and NGOs to
             end poverty.
           </p>
-          <button>Donate</button>
+          <button style={{ backgroundColor: 'black', color: 'white', borderRadius: '12px', padding: '10px 20px' }}>
+            Donate
+          </button> 
         </div>
       </div>
     </>
