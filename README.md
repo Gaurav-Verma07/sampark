@@ -1,27 +1,27 @@
 <!----------------------Introduction Section---------------------->
 <p align="center">
-    <h1 align="center">Sampark 🙏</h2>
-    <p>Our initiative aims to improve the lives of underprivileged communities by addressing health, sanitation, education, and empowerment. Our volunteers        collect data on specific needs, which is stored in a Google spreadsheet and updated in our Firebase database. We collaborate with NGOs and raise funds            through our Sampark website to provide necessary items. College teams help distribute these items while also conducting classes for slum children. We              prioritize empowerment, collaboration, and community involvement to bring about positive change. Join us in making a lasting impact on the lives of those in       need.</p>
-    <h2 align="center" >Checkout our Work at  <a href="https://sampark-nine.vercel.app/">Sampark LIVE </a></h2>
+    <h1 align="center">Sampark 🙏</h1>
+    <p>Our initiative aims to improve the lives of underprivileged communities by addressing health, sanitation, education, and empowerment. Our volunteers collect data on specific needs, which is stored in a Google spreadsheet and updated in our Firebase database. We collaborate with NGOs and raise funds through our Sampark website to provide necessary items. College teams help distribute these items while also conducting classes for slum children. We prioritize empowerment, collaboration, and community involvement to bring about positive change. Join us in making a lasting impact on the lives of those in need.</p>
+    <h2 align="center">Checkout our Work at <a href="https://sampark-nine.vercel.app/">Sampark LIVE</a></h2>
     <div align="center">
-<img src="https://forthebadge.com/images/badges/built-with-love.svg" />
-<img src="https://forthebadge.com/images/badges/uses-brains.svg" />
-<img src="https://forthebadge.com/images/badges/powered-by-responsibility.svg" />
-  <br>
-  <img src="https://img.shields.io/github/repo-size/Gaurav-Verma07/sampark?style=for-the-badge" />
-  <img src="https://img.shields.io/github/issues-closed/Gaurav-Verma07/sampark?style=for-the-badge" />
-  <img src="https://img.shields.io/github/issues/Gaurav-Verma07/sampark?style=for-the-badge" />
-  <img src="https://img.shields.io/github/issues-pr/Gaurav-Verma07/sampark?style=for-the-badge" />
-  <img src="https://img.shields.io/github/issues-pr-closed-raw/Gaurav-Verma07/sampark?style=for-the-badge" />
-  <img src="https://img.shields.io/github/license/Gaurav-Verma07/sampark?style=for-the-badge" />
-  <img src="https://img.shields.io/github/forks/Gaurav-Verma07/sampark?style=for-the-badge" />
-  <img src="https://img.shields.io/github/contributors/Gaurav-Verma07/sampark?style=for-the-badge" />
-  <img src="https://img.shields.io/github/stars/Gaurav-Verma07/sampark?style=for-the-badge" />
-  </div>
+        <img src="https://img.shields.io/badge/built%20with-love-red.svg?style=for-the-badge">
+        <img src="https://forthebadge.com/images/badges/uses-brain.svg">
+        <img src="http://ForTheBadge.com/images/badges/powered-by-responsibility.svg" />
+        <br>
+        <img src="https://img.shields.io/github/repo-size/Gaurav-Verma07/sampark?style=for-the-badge" />
+        <img src="https://img.shields.io/github/issues-closed/Gaurav-Verma07/sampark?style=for-the-badge" />
+        <img src="https://img.shields.io/github/issues/Gaurav-Verma07/sampark?style=for-the-badge" />
+        <img src="https://img.shields.io/github/issues-pr/Gaurav-Verma07/sampark?style=for-the-badge" />
+        <img src="https://img.shields.io/github/issues-pr-closed-raw/Gaurav-Verma07/sampark?style=for-the-badge" />
+        <img src="https://img.shields.io/github/license/Gaurav-Verma07/sampark?style=for-the-badge" />
+        <img src="https://img.shields.io/github/forks/Gaurav-Verma07/sampark?style=for-the-badge" />
+        <img src="https://img.shields.io/github/contributors/Gaurav-Verma07/sampark?style=for-the-badge" />
+        <img src="https://img.shields.io/github/stars/Gaurav-Verma07/sampark?style=for-the-badge" />
+    </div>
 </p>
 <br>
 
-<!-- ![Samplark Logo](https://github.com/Gaurav-Verma07/sampark/blob/main/public/sampark-logo-transparent.png?raw=true)-->
+<!-- ![Sampark Logo](https://github.com/Gaurav-Verma07/sampark/blob/main/public/sampark-logo-transparent.png?raw=true)-->
 <!-- A social platform to connect NGOs and orphanages to potential social suppliers including schools and colleges. -->
 
 
@@ -29,28 +29,32 @@
 
 ## Installation
 ### Using Docker-Compose
-Simply run
+Simply run:
+
 ```
 docker-compose up
 ```
 
-this will set up the Firebase emulator along with the application in a development environment.
+
+This will set up the Firebase emulator along with the application in a development environment.
 
 ---
 
 ### Local Setup
 **Firebase Emulator Setup**
-To set up the firebase emulator, run:
+To set up the Firebase emulator, run:
+
 ```
 make emulator
 ```
+
 
 **Application Setup**
 Then run the project locally by:
 
 1. Install all the required dependencies using `npm install`.
 2. Run the program locally using `npm run dev`.
- 
+
 <br>
 <h2>Contributing⚡</h2>
 
@@ -58,13 +62,13 @@ We welcome contributions from anyone who is interested in improving this project
 
 - Submit a bug report if you find any issues with the application.
 - Suggest new features or improvements.
-- Submit a pull request to fix a bug or add a feature after an issue is assigned to you. 
+- Submit a pull request to fix a bug or add a feature after an issue is assigned to you.
 
 To submit a pull request, please follow these steps:
 
 1. Fork this repository.
-2. Clone the forked repository.
-```css
+2. Clone the forked repository:
+```bash
 git clone https://github.com/<your-github-username>/sampark
 ```
 3. Navigate to the project directory.
@@ -97,14 +101,13 @@ If you're interested in working on any of the issues, please let us know by subm
 
 <br>
 <h2 align="center">Code of Conduct</h2>
-Contributors are expected to adhere to the following Code of Conduct to ensure a positive and inclusive environment for collaboration
+Contributors are expected to adhere to the following Code of Conduct to ensure a positive and inclusive environment for collaboration.
 <br><br>
- 
- <!----------------------Contributors Section---------------------->
- 
+<!----------------------Contributors Section---------------------->
 <br>
- <h2 align="center">Contributors🎉</h2>
- <p align="center">
+<h2 align="center">Contributors🎉</h2>
+<p align="center">
   <a href="https://github.com/Gaurav-Verma07/sampark/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Gaurav-Verma07/sampark" />
-</a></p>
+  </a>
+</p>
